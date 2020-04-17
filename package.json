@@ -16,6 +16,9 @@
   "author": "monsieurbadia <contact@monsieurbadia.com>",
   "license": "MIT",
   "private": true,
+  "alias": {
+    "#": "./src/"
+  },
   "scripts": {
     "dev:examples": "parcel examples/index.html --global d2k",
     "prod:build": "parcel build src/index.js --out-file d2k.js --experimental-scope-hoisting --global d2k"
@@ -25,7 +28,6 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "jest": "^25.3.0",
     "parcel-bundler": "^1.12.4",
-    "sig3": "^0.0.6",
-    "u3s": "^0.0.6"
+    "u3s": "^0.0.8"
   }
 }
