@@ -1,4 +1,5 @@
 import { reducer } from 'u3s';
+import { onrender } from '../event/event.onrender';
 
 // const parseString = ( str ) => {
   
@@ -33,23 +34,30 @@ const MATERIAL = {
 /** @private */
 const Mesh = ( THREE, parameters ) => {
 
-  const tt = parameters.reduce( ( result, parameter ) => {
+  const group = new THREE.Group(); // TODO: getGroup()
+
+  const meshes = parameters.reduce( ( result, parameter ) => {
 
     if ( !MATERIAL[ parameter.material.type ] ) return parameter;
     
-    const group = new THREE.Group(); // TODO: getGroup()
     const geometry = new THREE.BoxBufferGeometry( ...parameter.geometry.arguments ); // TODO: getGeometry()
     const material = new THREE[ MATERIAL[ parameter.material.type ] ]( { ...parameter.material.arguments } ); // TODO: getMaterial()
     const mesh = new THREE.Mesh( geometry, material ); // TODO: createMesh()
-  
+
+    mesh.position.set( ...parameter.positions );
+
+    group.add( mesh );
+
     return [
       ...result,
-      group.add( mesh )
+      parameter.group ? group : mesh
     ];
 
   }, [] );
 
-  return Object.assign( tt[ 0 ], {} );
+  return Object.assign( meshes[ 0 ], {
+    onrender
+  } );
 
 };
 

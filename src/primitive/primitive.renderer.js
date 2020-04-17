@@ -18,7 +18,7 @@ const onrender = ( renderer, scene, camera, start ) => renderer.setAnimationLoop
 
 const Renderer = ( THREE, parameters ) => {
 
-  const renderer = new THREE.WebGLRenderer();
+  const renderer = new THREE.WebGLRenderer( { antialias: true } );
 
   renderer.setClearColor( 0x000000 );
   renderer.setPixelRatio( parameters.pixelRatio );
