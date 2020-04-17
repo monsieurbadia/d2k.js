@@ -1,48 +1,31 @@
-import { reducer } from 'u3s';
-import { onrender } from '../event/event.onrender';
+import { is, reducer } from 'u3s';
+import { onrender } from '#/event/event';
+import { parseTextToFirstLetterUpperCase } from '#/util/util.parser';
 
-// const parseString = ( str ) => {
-  
-//   return str.toLowerCase().split( '' ).reduce( ( result, s, i ) => [
-//     ...result,
-//     i === 0 ? s.toUpperCase() : s
-//   ], '' ).join( '' );
+/** @private */
+const getGroup = THREE => new THREE.Group();
 
-// };
+/** @private */
+const getGeometry = ( THREE, type, args ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'geometry' ) ]( ...args );
 
-const MATERIAL = {
-  'line-basic': 'LineBasicMaterial',
-  'line-dashed': 'LineDashedMaterial',
-  'material': 'Material',
-  'mesh-basic': 'MeshBasicMaterial',
-  'mesh-depth': 'MeshDepthMaterial',
-  'mesh-distance': 'MeshDistanceMaterial',
-  'lambert': 'MeshLambertMaterial',
-  'matcap': 'MeshMatcapMaterial',
-  'mesh-normal': 'MeshNormalMaterial',
-  'mesh-phong': 'MeshPhongMaterial',
-  'mesh-physical': 'MeshPhysicalMaterial',
-  'mesh-standard': 'MeshStandardMaterial',
-  'mesh-toon': 'MeshToonMaterial',
-  'points': 'PointsMaterial',
-  'raw-shader': 'RawShaderMaterial',
-  'shader': 'ShaderMaterial',
-  'shadow': 'ShadowMaterial',
-  'sprite': 'SpriteMaterial'
-};
+/** @private */
+const getMaterial = ( THREE, type, args ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'material' ) ]( { ...args } );
+
+/** @private */
+const getMesh = ( THREE, geometry, material ) => new THREE.Mesh( geometry, material );
 
 /** @private */
 const Mesh = ( THREE, parameters ) => {
 
-  const group = new THREE.Group(); // TODO: getGroup()
+  if ( !is.array( parameters ) || is.empty( parameters ) ) return;
+
+  const group = getGroup( THREE );
 
   const meshes = parameters.reduce( ( result, parameter ) => {
 
-    if ( !MATERIAL[ parameter.material.type ] ) return parameter;
-    
-    const geometry = new THREE.BoxBufferGeometry( ...parameter.geometry.arguments ); // TODO: getGeometry()
-    const material = new THREE[ MATERIAL[ parameter.material.type ] ]( { ...parameter.material.arguments } ); // TODO: getMaterial()
-    const mesh = new THREE.Mesh( geometry, material ); // TODO: createMesh()
+    const geometry = getGeometry( THREE, parameter.geometry.type, parameter.geometry.arguments );
+    const material = getMaterial( THREE, parameter.material.type, parameter.material.arguments );
+    const mesh = getMesh( THREE, geometry, material );
 
     mesh.position.set( ...parameter.positions );
 

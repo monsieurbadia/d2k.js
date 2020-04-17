@@ -1,10 +1,15 @@
-import { reducer } from 'u3s';
+import { is, oftype, reducer } from 'u3s';
+import { parseTextToFirstLetterUpperCase } from '#/util/util.parser';
+
+/** @private */
+const getCamera = ( THREE, type, args ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'camera' ) ]( ...args );
 
 /** @private */
 const Camera = ( THREE, parameters ) => {
 
-  const instanceName = parameters.option.type === 'default' ? 'Camera' : parameters.option.type; // getInstance() => parseString()
-  const camera = new THREE[ 'PerspectiveCamera' ]( ...parameters.option.arguments );
+  if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) return;
+
+  const camera = getCamera( THREE, parameters.option.type, parameters.option.arguments );
 
   camera.position.set( ...parameters.option.position );
 

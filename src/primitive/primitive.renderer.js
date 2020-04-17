@@ -1,4 +1,4 @@
-import { reducer } from 'u3s';
+import { is, oftype, reducer } from 'u3s';
 import { EVENTS } from '../base/base.events';
 
 /** @public it is a wrapper to be able to pass a callback function inside the setAnimationLoop method. */
@@ -17,6 +17,8 @@ const onrender = ( renderer, scene, camera, start ) => renderer.setAnimationLoop
  */
 
 const Renderer = ( THREE, parameters ) => {
+
+  if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) return; // did i have to return new WebGLRenderer() without config, if no params 
 
   const renderer = new THREE.WebGLRenderer( { antialias: true } );
 
