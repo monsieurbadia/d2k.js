@@ -1,0 +1,31 @@
+{
+  "name": "d2k",
+  "version": "0.0.0",
+  "description": "javascript micro-library based on three.js to create 3d scenes very quickly from a configuration object or a json",
+  "keywords": [
+    "javascript",
+    "d2k",
+    "webgl",
+    "webgl2",
+    "canvas",
+    "renderer",
+    "loaders"
+  ],
+  "main": "dist/d2k.js",
+  "repository": "https://github.com/monsieurbadia/d2k.js.git",
+  "author": "monsieurbadia <contact@monsieurbadia.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev:examples": "parcel examples/index.html --global d2k",
+    "prod:build": "parcel build src/index.js --out-file d2k.js --experimental-scope-hoisting --global d2k"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.0",
+    "jest": "^25.3.0",
+    "parcel-bundler": "^1.12.4",
+    "sig3": "^0.0.6",
+    "u3s": "^0.0.6"
+  }
+}

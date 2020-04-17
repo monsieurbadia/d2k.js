@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k - examples</title>
+  </head>
+  <body>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="../src/index.js"></script>
+    <script>
+
+      const starter = d2k.init( {
+        THREE,
+        camera: {
+          current: {
+            option: {
+              arguments: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+              position: [ 0, 0, 100 ],
+              type: 'default'
+            }
+          }
+        },
+        mesh: {
+          cube: [
+            {
+              geometry: {
+                buffer: true,
+                arguments: [ 20, 20, 20 ],
+                type: 'box'
+              },
+              material: {
+                arguments: {
+                  transparent: true
+                },
+                type: 'mesh-normal'
+              },
+              position: [ 0, 0, 0 ],
+              scene: 'scene1'
+            },
+            {
+              geometry: {
+                buffer: true,
+                arguments: [ 20, 20, 20 ],
+                type: 'box'
+              },
+              material: {
+                arguments: {
+                  transparent: true
+                },
+                type: 'mesh-normal'
+              },
+              position: [ 10, 0, 0 ],
+              scene: 'scene1'
+            }
+          ]
+        },
+        scene: {
+          current: {}
+        },
+        renderer: {
+          current: {
+            antialias: true,
+            canvas: 'webgl',
+            pixelRatio: window.devicePixelRatio,
+            size: [ window.innerWidth, window.innerHeight ]
+          }
+        }
+      } );
+
+      document.body.appendChild( starter.renderer.current.domElement );
+      starter.scene.current.add( starter.mesh.cube );
+      starter.renderer.current.onrender( starter.renderer.current, starter.scene.current, starter.camera.current );
+
+      console.log( starter.mesh );
+
+    </script>
+  </body>
+</html>
