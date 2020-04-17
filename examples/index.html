@@ -17,17 +17,16 @@
             option: {
               arguments: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
               position: [ 0, 0, 100 ],
-              type: 'default'
+              type: 'perspective'
             }
           }
         },
         mesh: {
-          cube: [
+          myMeshName: [
             {
               geometry: {
-                buffer: true,
                 arguments: [ 20, 20, 20 ],
-                type: 'box'
+                type: 'box-buffer'
               },
               material: {
                 arguments: {
@@ -35,12 +34,11 @@
                 },
                 type: 'mesh-normal'
               },
-              position: [ 0, 0, 0 ],
+              positions: [ -20, 0, 0 ],
               scene: 'scene1'
             },
             {
               geometry: {
-                buffer: true,
                 arguments: [ 20, 20, 20 ],
                 type: 'box'
               },
@@ -50,7 +48,7 @@
                 },
                 type: 'mesh-normal'
               },
-              position: [ 10, 0, 0 ],
+              positions: [ 20, 0, 0 ],
               scene: 'scene1'
             }
           ]
@@ -69,8 +67,15 @@
       } );
 
       document.body.appendChild( starter.renderer.current.domElement );
-      starter.scene.current.add( starter.mesh.cube );
+      starter.scene.current.add( starter.mesh.myMeshName );
       starter.renderer.current.onrender( starter.renderer.current, starter.scene.current, starter.camera.current );
+
+      starter.mesh.myMeshName.onrender( time => {
+
+        starter.mesh.myMeshName.children[ 0 ].rotation.x += time;
+        starter.mesh.myMeshName.children[ 0 ].rotation.y += time;
+      
+      } );
 
       console.log( starter.mesh );
 
