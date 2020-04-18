@@ -1,4 +1,4 @@
-import { is, reducer } from 'u3s';
+import { is } from 'u3s';
 import { onloader, onrender } from '=>/core/core.events';
 import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
 
@@ -36,7 +36,7 @@ const getMaterial = ( ENGINE, type, args ) => {
 const getMesh = ( ENGINE, geometry, material ) => new ENGINE.Mesh( geometry, material );
 
 /** @private */
-const Mesh = ( ENGINE, parameters ) => {
+export const THREEMesh = ( ENGINE, parameters ) => {
 
   if ( !is.array( parameters ) || is.empty( parameters ) ) return;
 
@@ -64,8 +64,3 @@ const Mesh = ( ENGINE, parameters ) => {
 
 };
 
-/** @public */
-export const createMesh = payload => ( {
-  ...payload,
-  mesh: reducer( payload.mesh, result => Mesh( payload.ENGINE, result ) )
-} );

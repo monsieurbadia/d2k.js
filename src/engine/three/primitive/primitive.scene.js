@@ -1,10 +1,6 @@
-import { reducer } from 'u3s';
+/**
+ * @author monsieurbadia / https://monsieurbadia.com/
+ */
 
 /** @private */
-const Scene = ENGINE => new ENGINE.Scene();
-
-/** @public */
-export const createScene = payload => ( {
-  ...payload,
-  scene: reducer( payload.scene, _ => Scene( payload.ENGINE ) )
-} );
+export const THREEScene = ENGINE => new ENGINE.Scene();

@@ -1,29 +1,17 @@
 import { pipe } from 'u3s';
-
-import {
-  createDOM
-} from '=>/creater/creater';
-
-import {
-  createCamera,
-  createLight,
-  createLoader,
-  createMesh,
-  createRenderer,
-  createScene
-} from '=>/engine/three/primitive/primitive';
+import { DOM, Creater } from '=>/core/core';
 
 /** @public */
 const init = parameters => {
 
   const operations = [
-    createDOM,
-    createLoader,
-    createScene,
-    createCamera,
-    createRenderer,
-    createMesh,
-    createLight
+    payload => ( { ...payload, dom: DOM() } ),
+    payload => Creater( 'loader', payload ),
+    payload => Creater( 'scene', payload ),
+    payload => Creater( 'camera', payload ),
+    payload => Creater( 'renderer', payload ),
+    payload => Creater( 'mesh', payload ),
+    payload => Creater( 'light', payload )
   ];
 
   const prepare = pipe( ...operations );

@@ -1,4 +1,4 @@
-import { is, oftype, reducer } from 'u3s';
+import { is, oftype } from 'u3s';
 import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
 
 /**
@@ -9,7 +9,7 @@ import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
 const getCamera = ( ENGINE, type, args ) => new ENGINE[ parseTextToFirstLetterUpperCase( type, 'camera' ) ]( ...args );
 
 /** @private */
-const Camera = ( ENGINE, parameters ) => {
+export const THREECamera = ( ENGINE, parameters ) => {
 
   // TODO: check ENGINE before
   if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) console.assert( oftype( parameters ) === 'object', '"%s" is not an "array"', 'camera' );
@@ -21,9 +21,3 @@ const Camera = ( ENGINE, parameters ) => {
   return camera;
 
 };
-
-/** @public */
-export const createCamera = payload => ( {
-  ...payload,
-  camera: reducer( payload.camera, result => Camera( payload.ENGINE, result ) )
-} );

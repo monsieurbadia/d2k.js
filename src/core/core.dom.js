@@ -13,8 +13,3 @@ export const DOM = _ => {
   };
 
 };
-
-export const createDOM = payload => ( {
-  ...payload,
-  dom: DOM()
-} );

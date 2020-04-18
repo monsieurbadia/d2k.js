@@ -6,8 +6,10 @@ yarn-error.log*
 # dependency directories
 node_modules/
 
+dist/
+
 # cache
-.cache
+.cache/
 
 # test
-test/.report
+test/.report/

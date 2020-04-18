@@ -1,5 +1,9 @@
 import { strings } from 'u3s';
 
+/**
+ * @author monsieurbadia / https://monsieurbadia.com/
+ */
+
 /** @public */
 export const parseTextToFirstLetterUpperCase = ( str, insertion ) => {
 
