@@ -1,0 +1,1 @@
+export { createDOM } from './creater.dom';

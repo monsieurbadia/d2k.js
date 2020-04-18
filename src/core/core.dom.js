@@ -1,8 +1,20 @@
-import { EVENTS } from '../base/base.events';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public it adds callbacks relative to the render event */
-export const onrender = f => typeof f === 'function' && EVENTS.renders.push( f );
+/** @public */
+const add = element => document.body.appendChild( element );
+
+/** @public it manages the entire dom */
+export const DOM = _ => {
+
+  return {
+    add
+  };
+
+};
+
+export const createDOM = payload => ( {
+  ...payload,
+  dom: DOM()
+} );

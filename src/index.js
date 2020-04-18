@@ -1,18 +1,23 @@
 import { pipe } from 'u3s';
 
 import {
+  createDOM
+} from '=>/creater/creater';
+
+import {
   createCamera,
   createLight,
   createLoader,
   createMesh,
   createRenderer,
   createScene
-} from './primitive/primitive';
+} from '=>/engine/three/primitive/primitive';
 
 /** @public */
-const init = option => {
+const init = parameters => {
 
   const operations = [
+    createDOM,
     createLoader,
     createScene,
     createCamera,
@@ -22,7 +27,7 @@ const init = option => {
   ];
 
   const prepare = pipe( ...operations );
-  const starter = prepare( option );
+  const starter = prepare( parameters );
 
   delete starter.THREE;
 

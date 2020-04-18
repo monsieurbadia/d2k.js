@@ -1,10 +1,10 @@
 import { reducer } from 'u3s';
 
 /** @private */
-const Scene = THREE => new THREE.Scene();
+const Scene = ENGINE => new ENGINE.Scene();
 
 /** @public */
 export const createScene = payload => ( {
   ...payload,
-  scene: reducer( payload.scene, _ => Scene( payload.THREE ) )
+  scene: reducer( payload.scene, _ => Scene( payload.ENGINE ) )
 } );

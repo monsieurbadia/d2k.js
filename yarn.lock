@@ -6428,10 +6428,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-u3s@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.6.tgz#3f1f58e748a3b79b59a160f1431cf74e41a5e1f0"
-  integrity sha512-4Ci2AGhqKKHUtUsNC+nM0t7Cj5mETdOK9dJDIFcM6JuqCElgr2V8kxBbKBcdNfg4SqpttBqJLU67akjXsg4j3A==
+u3s@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.8.tgz#f00ece539228aee62e3ebf96ea4a07acf45a19d9"
+  integrity sha512-X/Iojd73/KLw3GNWRKMXFCDUkqRgvnyIAUF0R8JmXzFPHaZSU0wUfQps9JQxJSqDT9V3GdFleoZ9bEUBbYruww==
 
 uncss@^0.17.2:
   version "0.17.3"

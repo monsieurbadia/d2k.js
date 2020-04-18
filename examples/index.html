@@ -20,16 +20,16 @@
         margin: 0;
         overflow: hidden;
       }
-
     </style>
   </head>
   <body>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../src/index.js"></script>
     <script>
 
       const starter = d2k.init( {
-        THREE,
+        ENGINE: THREE,
         camera: {
           current: {
             option: {
@@ -50,7 +50,7 @@
         loader: {
           current: {
             option: {
-              args: [ '/cover-front.28969be3.jpg' ],
+              args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
               type: 'texture'
             }
           }
@@ -101,11 +101,12 @@
         }
       } );
 
-      document.body.appendChild( starter.renderer.current.domElement );
+      starter.dom.add( starter.renderer.current.domElement );
       starter.scene.current.add( starter.mesh.myMeshName );
+
       starter.renderer.current.onrender( starter.renderer.current, starter.scene.current, starter.camera.current );
 
-      starter.mesh.myMeshName.onloader( texture => console.log( texture ) );
+      starter.mesh.myMeshName.onloader( textures => console.log( textures ) );
 
       starter.mesh.myMeshName.onrender( time => {
 
