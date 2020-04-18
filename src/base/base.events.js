@@ -1,4 +1,5 @@
 /** @public */
 export const EVENTS = Object.freeze( {
-  renders: []
+  renders: [],
+  loaders: []
 } );
