@@ -1,4 +1,5 @@
 import { reducer } from 'u3s';
+import { EVENTS } from '#/base/base.events';
 import { parseTextToFirstLetterUpperCase } from '#/util/util.parser';
 
 /**
@@ -9,11 +10,13 @@ import { parseTextToFirstLetterUpperCase } from '#/util/util.parser';
 
 const getLoader = ( THREE, type ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'loader' ) ];
 
-const Loader =  ( THREE, parameters ) => {
+const Loader = ( THREE, parameters ) => {
 
   const loader = getLoader( THREE, parameters.option.type );
 
-  return  new Promise( async ( resolve, reject ) => await loader.load( ...parameters.option.arguments, resolve, null, reject ) );
+  return new Promise( ( resolve, reject ) =>
+    loader.load( ...parameters.option.arguments, resolve, null, reject ) )
+      .then( response => EVENTS.loaders.forEach( loader => loader( response ) ) );
 
 };
 

@@ -18,7 +18,7 @@ const onrender = ( renderer, scene, camera, start ) => renderer.setAnimationLoop
 
 const Renderer = ( THREE, parameters ) => {
 
-  if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) return; // did i have to return new WebGLRenderer() without config, if no params 
+  if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) return; // do i have to return new WebGLRenderer() without config, if no params 
 
   const renderer = new THREE.WebGLRenderer( { antialias: true } );
 

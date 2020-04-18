@@ -1,5 +1,5 @@
 import { is, reducer } from 'u3s';
-import { onrender } from '#/event/event';
+import { onloader, onrender } from '#/event/event';
 import { parseTextToFirstLetterUpperCase } from '#/util/util.parser';
 
 /** @private */
@@ -54,6 +54,7 @@ const Mesh = ( THREE, parameters ) => {
   }, [] );
 
   return Object.assign( meshes[ 0 ], {
+    onloader,
     onrender
   } );
 
