@@ -33,7 +33,7 @@
         camera: {
           current: {
             option: {
-              arguments: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+              args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
               position: [ 0, 0, 100 ],
               type: 'perspective'
             }
@@ -42,8 +42,16 @@
         light: {
           current: {
             option: {
-              arguments: [ '0xffffbb 0x080820 1'  ],
+              args: [ '0xffffbb 0x080820 1'  ],
               type: 'hemisphere'
+            }
+          }
+        },
+        loader: {
+          current: {
+            option: {
+              args: [ '/cover-front.28969be3.jpg' ],
+              type: 'texture'
             }
           }
         },
@@ -51,11 +59,11 @@
           myMeshName: [
             {
               geometry: {
-                arguments: [ 20, 20, 20 ],
+                args: [ 20, 20, 20 ],
                 type: 'box-buffer'
               },
               material: {
-                arguments: {
+                args: {
                   transparent: true
                 },
                 type: 'mesh-normal'
@@ -66,11 +74,11 @@
             },
             {
               geometry: {
-                arguments: [ 20, 20, 20 ],
+                args: [ 20, 20, 20 ],
                 type: 'box'
               },
               material: {
-                arguments: {
+                args: {
                   transparent: true
                 },
                 type: 'shader'
@@ -86,7 +94,6 @@
         },
         renderer: {
           current: {
-            antialias: true,
             canvas: 'webgl',
             pixelRatio: window.devicePixelRatio,
             size: [ window.innerWidth, window.innerHeight ]
@@ -98,11 +105,16 @@
       starter.scene.current.add( starter.mesh.myMeshName );
       starter.renderer.current.onrender( starter.renderer.current, starter.scene.current, starter.camera.current );
 
+      starter.mesh.myMeshName.onloader( texture => console.log( texture ) );
+
       starter.mesh.myMeshName.onrender( time => {
 
         starter.mesh.myMeshName.children[ 0 ].rotation.x += time;
         starter.mesh.myMeshName.children[ 0 ].rotation.y += time;
       
+        starter.mesh.myMeshName.children[ 1 ].rotation.x += time;
+        starter.mesh.myMeshName.children[ 1 ].rotation.y += time;
+
       } );
 
       console.log( starter );

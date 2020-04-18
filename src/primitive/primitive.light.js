@@ -8,7 +8,7 @@ const convert = str => str.split( ' ' ).map( ( value ) => window.parseInt( value
 const getLight = ( THREE, type, args ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'light' ) ]( ...args );
 
 /** @private */
-const Light = ( THREE, parameters ) => getLight( THREE, parameters.option.type, convert( ...parameters.option.arguments ) );
+const Light = ( THREE, parameters ) => getLight( THREE, parameters.option.type, convert( ...parameters.option.args ) );
 
 /** @public */
 export const createLight = payload => ( {

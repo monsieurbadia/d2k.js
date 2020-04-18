@@ -40,8 +40,8 @@ const Mesh = ( THREE, parameters ) => {
 
   const meshes = parameters.reduce( ( result, parameter ) => {
 
-    const geometry = getGeometry( THREE, parameter.geometry.type, parameter.geometry.arguments );
-    const material = getMaterial( THREE, parameter.material.type, parameter.material.arguments );
+    const geometry = getGeometry( THREE, parameter.geometry.type, parameter.geometry.args );
+    const material = getMaterial( THREE, parameter.material.type, parameter.material.args );
     const mesh = getMesh( THREE, geometry, material );
 
     mesh.position.set( ...parameter.positions );

@@ -9,7 +9,7 @@ const Camera = ( THREE, parameters ) => {
 
   if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) return;
 
-  const camera = getCamera( THREE, parameters.option.type, parameters.option.arguments );
+  const camera = getCamera( THREE, parameters.option.type, parameters.option.args );
 
   camera.position.set( ...parameters.option.position );
 

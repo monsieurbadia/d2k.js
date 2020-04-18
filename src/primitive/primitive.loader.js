@@ -15,7 +15,7 @@ const Loader = ( THREE, parameters ) => {
   const loader = getLoader( THREE, parameters.option.type );
 
   return new Promise( ( resolve, reject ) =>
-    loader.load( ...parameters.option.arguments, resolve, null, reject ) )
+    loader.load( ...parameters.option.args, resolve, null, reject ) )
       .then( response => EVENTS.loaders.forEach( loader => loader( response ) ) );
 
 };
