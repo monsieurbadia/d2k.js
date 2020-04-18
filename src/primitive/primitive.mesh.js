@@ -9,7 +9,24 @@ const getGroup = THREE => new THREE.Group();
 const getGeometry = ( THREE, type, args ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'geometry' ) ]( ...args );
 
 /** @private */
-const getMaterial = ( THREE, type, args ) => new THREE[ parseTextToFirstLetterUpperCase( type, 'material' ) ]( { ...args } );
+const getMaterial = ( THREE, type, args ) => {
+
+  const primitiveName = parseTextToFirstLetterUpperCase( type, 'material' );
+
+  if ( primitiveName.includes( 'Shader' ) ) {
+
+    Object.assign( args, {
+      uniforms: {
+        resolution: { type: 'v2', value: new THREE.Vector2() },
+        time: { type: 'f', value: 1.0 }
+      }
+    } );
+
+  }
+
+  return new THREE[ parseTextToFirstLetterUpperCase( type, 'material' ) ]( { ...args } );
+
+};
 
 /** @private */
 const getMesh = ( THREE, geometry, material ) => new THREE.Mesh( geometry, material );
@@ -29,11 +46,9 @@ const Mesh = ( THREE, parameters ) => {
 
     mesh.position.set( ...parameter.positions );
 
-    group.add( mesh );
-
     return [
       ...result,
-      parameter.group ? group : mesh
+      parameter.group ? group.add( mesh ) : mesh
     ];
 
   }, [] );

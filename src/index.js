@@ -2,6 +2,7 @@ import { pipe } from 'u3s';
 
 import {
   createCamera,
+  createLight,
   createMesh,
   createRenderer,
   createScene
@@ -14,7 +15,8 @@ const init = option => {
     createScene,
     createCamera,
     createRenderer,
-    createMesh
+    createMesh,
+    createLight
   ];
 
   const prepare = pipe( ...operations );
