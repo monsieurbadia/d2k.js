@@ -22,183 +22,38 @@
       }
 
       canvas {
-			position: absolute;
-			left: 0;
-			right: 0;
-			top: 0;
-			bottom: 0;
-			z-index: 100;
-			margin: auto;
-		}
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        margin: auto;
+      }
+
+      nav {
+        color: color;
+        z-index: 200;
+        position: absolute;
+      }
+
     </style>
   </head>
   <body>
-    <script src="https://cdn.babylonjs.com/babylon.js"></script>
-    <script src="https://threejs.org/build/three.min.js"></script>
+
+    <div id="root">
+      <nav class="d2k-navigation">
+        <ul class="d2k-navigation">
+          <li>
+            <h4>create a scene</h4>
+            <a href="./page/create-a-scene/page-create-a-scene-babylon.html">babylon</a>
+            <a href="./page/create-a-scene/page-create-a-scene-three.html">three</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+
     <script src="../src/index.js"></script>
-    <script>
 
-      // const starter = d2k.onready( {
-      //   ENGINE: THREE,
-      //   camera: {
-      //     current: {
-      //       option: {
-      //         args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
-      //         position: [ 0, 0, 100 ],
-      //         type: 'perspective'
-      //       }
-      //     }
-      //   },
-      //   light: {
-      //     current: {
-      //       option: {
-      //         args: [ '0xffffbb 0x080820 1'  ],
-      //         type: 'hemisphere'
-      //       }
-      //     }
-      //   },
-      //   loader: {
-      //     current: {
-      //       option: {
-      //         args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-      //         type: 'texture'
-      //       }
-      //     }
-      //   },
-      //   mesh: {
-      //     myMeshName: [
-      //       {
-      //         geometry: {
-      //           args: [ 20, 20, 20 ],
-      //           type: 'box-buffer'
-      //         },
-      //         material: {
-      //           args: {
-      //             transparent: true
-      //           },
-      //           type: 'mesh-normal'
-      //         },
-      //         positions: [ -20, 0, 0 ],
-      //         scene: 'scene1',
-      //         group: {}
-      //       },
-      //       {
-      //         geometry: {
-      //           args: [ 20, 20, 20 ],
-      //           type: 'box'
-      //         },
-      //         material: {
-      //           args: {
-      //             transparent: true
-      //           },
-      //           type: 'shader'
-      //         },
-      //         positions: [ 20, 0, 0 ],
-      //         scene: 'scene1',
-      //         group: {}
-      //       }
-      //     ]
-      //   },
-      //   scene: {
-      //     current: {}
-      //   },
-      //   renderer: {
-      //     current: {
-      //       canvas: 'webgl',
-      //       pixelRatio: window.devicePixelRatio,
-      //       size: [ window.innerWidth, window.innerHeight ]
-      //     }
-      //   }
-      // } );
-
-      // starter.dom.add( starter.renderer.current.domElement );
-      // starter.scene.current.add( starter.mesh.myMeshName );
-
-      // starter.renderer.current.onrender( starter.renderer.current, starter.scene.current, starter.camera.current );
-
-      // starter.mesh.myMeshName.onloader( textures => console.log( textures ) );
-
-      // starter.mesh.myMeshName.onrender( time => {
-
-      //   starter.mesh.myMeshName.children[ 0 ].rotation.x += time;
-      //   starter.mesh.myMeshName.children[ 0 ].rotation.y += time;
-      
-      //   starter.mesh.myMeshName.children[ 1 ].rotation.x += time;
-      //   starter.mesh.myMeshName.children[ 1 ].rotation.y += time;
-
-      // } );
-
-      // console.log( starter );
-
-      const BABYLONstarter = d2k.onready( {
-        ENGINE: BABYLON,
-        camera: {
-          current: {
-            option: {
-              args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
-              position: [ 0, 0, 100 ],
-              type: 'arc-rotate'
-            }
-          }
-        },
-        light: {
-          current: {
-            option: {
-              args: [ '0xffffbb 0x080820 1'  ],
-              type: 'hemispheric'
-            }
-          }
-        },
-        // loader: {
-        //   current: {
-        //     option: {
-        //       args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-        //       type: 'texture'
-        //     }
-        //   }
-        // },
-        mesh: {
-          myMeshName: [
-            {
-              geometry: {
-                args: [ 20, 20, 20 ],
-                type: 'box-buffer'
-              },
-              material: {
-                args: {
-                  transparent: true
-                },
-                type: 'mesh-normal'
-              },
-              positions: [ -20, 0, 0 ],
-              scene: 'scene1',
-              group: {}
-            }
-          ]
-        },
-        scene: {
-          current: {}
-        },
-        // renderer: {
-        //   current: {
-        //     canvas: 'webgl',
-        //     pixelRatio: window.devicePixelRatio,
-        //     size: [ window.innerWidth, window.innerHeight ]
-        //   }
-        // }
-      } );
-
-      const canvas = BABYLONstarter.ENGINE.coreData.engine.getRenderingCanvas();
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      document.body.appendChild( canvas );
-
-      BABYLONstarter.ENGINE.coreData.engine.runRenderLoop( () => {
-        BABYLONstarter.ENGINE.coreData.scene.render();
-      } );
-
-      console.log( BABYLONstarter );
-
-    </script>
   </body>
 </html>

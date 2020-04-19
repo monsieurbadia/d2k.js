@@ -1,5 +1,5 @@
-import { reducer } from 'u3s';
-import { CORERenderer } from '=>/core/core.renderer';
+import { reducer, strings } from 'u3s';
+import SIG3 from 'SIG3';
 
 import {
   BABYLONCamera,
@@ -23,46 +23,47 @@ import {
  */
 
 /** @private */
-const PRIMITIVES = {
-  CORE: {
-    renderer: CORERenderer
-  },
-  BABYLON: {
-    camera: BABYLONCamera,
-    light: BABYLONLight,
-    // loader: BABYLONLoader,
-    mesh: BABYLONMesh,
-    renderer: BABYLONEngine,
-    scene: BABYLONScene,
-  },
-  THREE: {
-    camera: THREECamera,
-    light: THREELight,
-    loader: THREELoader,
-    mesh: THREEMesh,
-    renderer: THREERenderer,
-    scene: THREEScene,
-  },
+const PRIMITIVE = {
+  BABYLONCamera,
+  BABYLONLight,
+  BABYLONMesh,
+  BABYLONEngine,
+  BABYLONScene,
+  THREECamera,
+  THREELight,
+  THREELoader,
+  THREEMesh,
+  THREERenderer,
+  THREEScene
 };
 
 /** @public */
 export const Creater = ( key, payload ) => {
 
-  let Instance;
+  const currentInstanceName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
+  const Instance = PRIMITIVE[ `${ currentInstanceName }${ strings.toFirstLetterUpperCase( key ) }` ];
 
-  if ( payload.ENGINE.BoxBufferGeometry ) {
-
-    Instance = PRIMITIVES.THREE[ key ];
-
-  } else {
-
-    Instance = PRIMITIVES.BABYLON[ key ];
-
-  }
+  payload.ENGINE.coreData.station = new SIG3.Station();
 
   return {
     ...payload,
-    [ key ]: reducer( payload[ key ], result => Instance( payload.ENGINE, result ) )
+    [ key ]: reducer( payload[ key ], result => {
+    
+      const instance = Instance( payload.ENGINE, result );
+      
+      instance.fs = [ state => {
+
+        console.log( state );
+
+        return state;
+
+      } ];
+
+      payload.ENGINE.coreData.station.onsignal( 'event:oncreate', instance );
+
+      return instance;
+
+    } )
   };
 
 };
