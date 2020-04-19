@@ -28,7 +28,7 @@
     <script src="../src/index.js"></script>
     <script>
 
-      const starter = d2k.init( {
+      const starter = d2k.onready( {
         ENGINE: THREE,
         camera: {
           current: {
@@ -118,7 +118,83 @@
 
       } );
 
-      console.log( starter );
+      // console.log( starter );
+
+      // const BABYLONstarter = d2k.onready( {
+      //   ENGINE: BABYLON,
+      //   camera: {
+      //     current: {
+      //       option: {
+      //         args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+      //         position: [ 0, 0, 100 ],
+      //         type: 'free'
+      //       }
+      //     }
+      //   },
+      //   light: {
+      //     current: {
+      //       option: {
+      //         args: [ '0xffffbb 0x080820 1'  ],
+      //         type: 'directional'
+      //       }
+      //     }
+      //   },
+        // loader: {
+        //   current: {
+        //     option: {
+        //       args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
+        //       type: 'texture'
+        //     }
+        //   }
+        // },
+      //   mesh: {
+      //     myMeshName: [
+      //       {
+      //         geometry: {
+      //           args: [ 20, 20, 20 ],
+      //           type: 'box-buffer'
+      //         },
+      //         material: {
+      //           args: {
+      //             transparent: true
+      //           },
+      //           type: 'mesh-normal'
+      //         },
+      //         positions: [ -20, 0, 0 ],
+      //         scene: 'scene1',
+      //         group: {}
+      //       }
+      //     ]
+      //   },
+      //   scene: {
+      //     current: {}
+      //   },
+      //   renderer: {
+      //     current: {
+      //       canvas: 'webgl',
+      //       pixelRatio: window.devicePixelRatio,
+      //       size: [ window.innerWidth, window.innerHeight ]
+      //     }
+      //   }
+      // } );
+
+//       const canvas = BABYLONstarter.ENGINE.coreData.engine.getRenderingCanvas();
+//       canvas.width = window.innerWidth;
+//       canvas.height = window.innerHeight;
+//       document.body.appendChild( canvas );
+
+//       animate();
+//       function animate() {
+
+// requestAnimationFrame( animate );
+
+
+//   //  box.rotation.x += 0.005;
+// // box.rotation.y += 0.01;
+// BABYLONstarter.scene.current.render();
+// }
+
+      // console.log( BABYLONstarter );
 
     </script>
   </body>

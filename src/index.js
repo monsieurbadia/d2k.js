@@ -1,12 +1,19 @@
 import { pipe } from 'u3s';
 import { DOM, Creater } from '=>/core/core';
+// import { BABYLONEngine } from './engine/babylon/primitive/primitive.babylon.engine';
 
 /** @public */
-const init = parameters => {
+const onready = parameters => {
+
+  parameters.ENGINE.coreData = {};
 
   const operations = [
     payload => ( { ...payload, dom: DOM() } ),
     payload => Creater( 'loader', payload ),
+    // payload => {
+    //   parameters.ENGINE.coreData.engine = BABYLONEngine( parameters.ENGINE );
+    //   return payload;
+    // },
     payload => Creater( 'scene', payload ),
     payload => Creater( 'camera', payload ),
     payload => Creater( 'renderer', payload ),
@@ -16,6 +23,11 @@ const init = parameters => {
 
   const prepare = pipe( ...operations );
   const starter = prepare( parameters );
+
+  Object
+    .keys( starter )
+    .filter( key => starter[ key ] === undefined )
+    .forEach( key => delete starter[ key ] );
 
   delete starter.THREE;
 
@@ -30,7 +42,7 @@ const init = parameters => {
  */
 
 export const d2k = Object.freeze( {
-  init
+  onready
 } );
 
 module.exports = d2k;

@@ -1,4 +1,13 @@
 import { reducer } from 'u3s';
+import { CORERenderer } from '=>/core/core.renderer';
+
+import {
+  BABYLONCamera,
+  BABYLONEngine,
+  BABYLONLight,
+  BABYLONMesh,
+  BABYLONScene
+} from '=>/engine/babylon/primitive/primitive';
 
 import {
   THREECamera,
@@ -15,13 +24,16 @@ import {
 
 /** @private */
 const PRIMITIVES = {
+  CORE: {
+    renderer: CORERenderer
+  },
   BABYLON: {
-    // camera: BABYLONCamera
-    // light: BABYLONLight,
+    camera: BABYLONCamera,
+    light: BABYLONLight,
     // loader: BABYLONLoader,
-    // mesh: BABYLONMesh,
-    // renderer: BABYLONRenderer,
-    // scene: BABYLONScene,
+    mesh: BABYLONMesh,
+    renderer: BABYLONEngine,
+    scene: BABYLONScene,
   },
   THREE: {
     camera: THREECamera,
@@ -35,7 +47,7 @@ const PRIMITIVES = {
 
 /** @public */
 export const Creater = ( key, payload ) => {
-  
+
   let Instance;
 
   if ( payload.ENGINE.BoxBufferGeometry ) {

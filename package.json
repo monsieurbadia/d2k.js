@@ -1,7 +1,7 @@
 {
   "name": "d2k",
   "version": "0.0.0",
-  "description": "javascript micro-library based on three.js to create 3d scenes very quickly from a configuration object or a json",
+  "description": "une micro-surcouche javascript aux bibliothèques de moteur 3d pour créer des primitives de façon élégante et modulaire.",
   "keywords": [
     "javascript",
     "d2k",

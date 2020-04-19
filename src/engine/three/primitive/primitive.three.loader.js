@@ -7,7 +7,7 @@ import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
  */
 
 /** @private */
-const getLoader = ( ENGINE, type ) => new ENGINE[ parseTextToFirstLetterUpperCase( type, 'loader' ) ];
+const getLoader = ( ENGINE, type ) => new ENGINE[ parseTextToFirstLetterUpperCase( type, 'loader' ) ]();
 
 /** @public */
 export const THREELoader = ( ENGINE, parameters ) => {
