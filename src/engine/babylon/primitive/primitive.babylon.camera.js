@@ -8,9 +8,17 @@ import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
 /** @private */
 export const BABYLONCamera = ( ENGINE, parameters ) => {
 
-  const camera = new ENGINE[ parseTextToFirstLetterUpperCase( parameters.option.type, 'camera' ) ]( "camera", new ENGINE.Vector3( 0, 0, 0 ), ENGINE.coreData.scene );
+  const camera = new ENGINE[ parseTextToFirstLetterUpperCase( parameters.option.type, 'camera' ) ](     "Camera",
+    Math.PI / 2,
+    Math.PI / 2,
+    2,
+    ENGINE.Vector3.Zero(),
+    ENGINE.coreData.scene
+  );
 
-  ENGINE.coreData.scene.activeCamera.attachControl( ENGINE.coreData.engine.getRenderingCanvas(), false );
+  camera.setTarget( ENGINE.Vector3.Zero() );
+
+  ENGINE.coreData.scene.activeCamera.attachControl( ENGINE.coreData.engine.getRenderingCanvas(), true );
   ENGINE.coreData.scene.autoClear = false;
 
   return camera;

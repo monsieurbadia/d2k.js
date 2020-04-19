@@ -1,6 +1,6 @@
 import { pipe } from 'u3s';
 import { DOM, Creater } from '=>/core/core';
-// import { BABYLONEngine } from './engine/babylon/primitive/primitive.babylon.engine';
+import { BABYLONEngine } from './engine/babylon/primitive/primitive.babylon.engine';
 
 /** @public */
 const onready = parameters => {
@@ -10,10 +10,10 @@ const onready = parameters => {
   const operations = [
     payload => ( { ...payload, dom: DOM() } ),
     payload => Creater( 'loader', payload ),
-    // payload => {
-    //   parameters.ENGINE.coreData.engine = BABYLONEngine( parameters.ENGINE );
-    //   return payload;
-    // },
+    payload => {
+      parameters.ENGINE.coreData.engine = BABYLONEngine( parameters.ENGINE );
+      return payload;
+    },
     payload => Creater( 'scene', payload ),
     payload => Creater( 'camera', payload ),
     payload => Creater( 'renderer', payload ),
