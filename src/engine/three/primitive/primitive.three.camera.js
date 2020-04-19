@@ -5,16 +5,13 @@ import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
-const getCamera = ( ENGINE, type, args ) => new ENGINE[ parseTextToFirstLetterUpperCase( type, 'camera' ) ]( ...args );
-
-/** @private */
+/** @public */
 export const THREECamera = ( ENGINE, parameters ) => {
 
-  // TODO: check ENGINE before
-  if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) console.assert( oftype( parameters ) === 'object', '"%s" is not an "array"', 'camera' );
+  if ( oftype( ENGINE ) !== 'object' || is.empty( ENGINE ) ) console.assert( oftype( ENGINE ) === 'object', '"%s" is not an "object"', 'camera' );
 
-  const camera = getCamera( ENGINE, parameters.option.type, parameters.option.args );
+  const instanceName = parseTextToFirstLetterUpperCase( parameters.option.type, 'camera' );
+  const camera = new ENGINE[ instanceName ]( ...parameters.option.args );
 
   camera.position.set( ...parameters.option.position );
 

@@ -1,22 +1,19 @@
 import { is } from 'u3s';
 import { EVENTS } from '=>/core/core.events';
-import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
+import { parseTextToFirstLetterUpperCase } from '=>/util/util';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
-const getLoader = ( ENGINE, type ) => new ENGINE[ parseTextToFirstLetterUpperCase( type, 'loader' ) ]();
-
 /** @public */
 export const THREELoader = ( ENGINE, parameters ) => {
 
-  const loader = getLoader( ENGINE, parameters.option.type );
+  const loader = new ENGINE[ parseTextToFirstLetterUpperCase( parameters.option.type, 'loader' ) ]();
   const sources = !is.array( parameters.option.args ) ? [ parameters.option.args ] : parameters.option.args;
   const args = sources.map( async source => {
   
-    const texture = loader.load( source.url );
+    const texture = await loader.load( source.url );
 
     texture.name = source.name;
 

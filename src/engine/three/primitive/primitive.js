@@ -1,6 +1,9 @@
 export { THREECamera } from './primitive.three.camera';
+export { THREEGeometry } from './primitive.three.geometry';
+export { THREEGroup } from './primitive.three.group';
 export { THREELight } from './primitive.three.light';
 export { THREELoader } from './primitive.three.loader';
+export { THREEMaterial } from './primitive.three.material';
 export { THREEMesh } from './primitive.three.mesh';
 export { THREERenderer } from './primitive.three.renderer';
 export { THREEScene } from './primitive.three.scene';

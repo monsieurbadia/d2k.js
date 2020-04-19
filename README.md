@@ -2,13 +2,13 @@
 
 # d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] 
 
-> *A WebGL micro-library based on [three.js](https://threejs.org) that will helping you create 3d primitives*
+> *a javascript micro-layer to 3d engine libraries to create primitives in an elegant and modular way.*
 
-[npm]: https://img.shields.io/npm/v/w2gl
-[npm-url]: https://www.npmjs.com/package/w2gl
-[build-size]: https://badgen.net/bundlephobia/minzip/w2gl
-[build-size-url]: https://bundlephobia.com/result?p=w2gl
-[npm-downloads]: https://img.shields.io/npm/dw/w2gl
-[npmtrends-url]: https://www.npmtrends.com/w2gl
-[dev-dependencies]: https://img.shields.io/david/dev/monsieurbadia/w2gl.js
-[dev-dependencies-url]: https://david-dm.org/monsieurbadia/w2gl.js#info=devDependencies
+[npm]: https://img.shields.io/npm/v/d2k
+[npm-url]: https://www.npmjs.com/package/d2k
+[build-size]: https://badgen.net/bundlephobia/minzip/d2k
+[build-size-url]: https://bundlephobia.com/result?p=d2k
+[npm-downloads]: https://img.shields.io/npm/dw/d2k
+[npmtrends-url]: https://www.npmtrends.com/d2k
+[dev-dependencies]: https://img.shields.io/david/dev/monsieurbadia/d2k.js
+[dev-dependencies-url]: https://david-dm.org/monsieurbadia/d2k.js#info=devDependencies

@@ -3,9 +3,4 @@
  */
 
 /** @private */
-export const THREEScene = ENGINE => {
-
-  console.log( ENGINE)
-  return new ENGINE.Scene();
-
-};
+export const THREEScene = ENGINE => new ENGINE.Scene();
