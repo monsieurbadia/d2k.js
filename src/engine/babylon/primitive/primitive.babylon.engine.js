@@ -5,10 +5,10 @@
 /** @public */
 export const BABYLONEngine = ENGINE => {
 
-  const { canvas } = ENGINE.d2kCoreData;
+  const { canvas } = ENGINE.coreData;
   const engine = new ENGINE.Engine( canvas, true );
 
-  ENGINE.d2kCoreData.engine = engine;
+  ENGINE.coreData.engine = engine;
 
   return engine;
 

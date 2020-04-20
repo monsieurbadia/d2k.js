@@ -21,6 +21,7 @@ je ne suis pas un développeur, je suis juste un gars normal qui porte la progra
 primitive         | babylon | three    |
 ------------------|---------|----------|
 camera            | ⭕      | ⭕       |
+font              | ❌      | ❌       |
 geometry          | ❌      | ⭕       |
 group             | ❌      | ⭕       |
 light             | ⭕      | ⭕       |
@@ -28,6 +29,7 @@ loader            | ❌      | ⭕       |
 material          | ⭕      | ⭕       |
 mesh              | ⭕      | ⭕       |
 renderer / engine | ⭕      | ⭕       |
+shader            | ❌      | ⭕       |
 scene             | ⭕      | ⭕       |
 
 ## Installation

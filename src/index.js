@@ -6,12 +6,12 @@ import { Creater, DOM, Renderer } from '=>/core/core';
  */
 
 /** @private */
-const D2KCOREDATA = {};
+const COREDATA = {};
 
 /** @public */
 const onready = parameters => {
 
-  parameters.ENGINE.d2kCoreData = D2KCOREDATA;
+  parameters.ENGINE.coreData = COREDATA;
 
   const OPERATIONS = [
     payload => ( { ...payload, dom: DOM( payload.ENGINE ) } ),
@@ -39,11 +39,15 @@ const onready = parameters => {
 };
 
 /** @public */
-const onstack = ( BABYLON, THREE, f ) => {
+const onstack = ( TARGET, SOURCE, f = () => {} ) => {
 
-  const renderer = Renderer( [ BABYLON, THREE ] );
+  // Engine.assign( TARGET, SOURCE );
 
-  renderer.onrender( () => {} );
+  const renderer = Renderer( [ TARGET, SOURCE ] );
+
+  renderer.onrender( f );
+
+  return renderer;
 
 };
 

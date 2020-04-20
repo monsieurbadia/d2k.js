@@ -41,7 +41,7 @@ export const THREERenderer = ( ENGINE, parameters ) => {
 
   if ( oftype( ENGINE ) !== 'object' || is.empty( ENGINE ) ) return;
 
-  const canvas = ENGINE.d2kCoreData.canvas;
+  const canvas = ENGINE.coreData.canvas;
   const renderer = new ENGINE.WebGLRenderer( { antialias: true, canvas } );
 
   renderer.timer = new ENGINE.Clock();

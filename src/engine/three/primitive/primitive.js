@@ -1,4 +1,5 @@
 export { THREECamera } from './primitive.three.camera';
+export { THREECSS3DRenderer } from './primitive.three.css3d';
 export { THREEGeometry } from './primitive.three.geometry';
 export { THREEGroup } from './primitive.three.group';
 export { THREELight } from './primitive.three.light';

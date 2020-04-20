@@ -2,8 +2,8 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const onresetstate = renderer => {
-  
+const resetstate = renderer => {
+
   const gl = renderer.getContext();
 
   gl.enable( gl.DEPTH_TEST );
@@ -26,7 +26,7 @@ const onrender = ( BABYLON, THREE ) => {
 
     window.requestAnimationFrame( render );
 
-    onresetstate( THREE.renderer.current );
+    resetstate( THREE.renderer.current );
 
     THREE.renderer.current.render( THREE.scene.current, THREE.camera.current );
     BABYLON.scene.current.render();
@@ -36,19 +36,19 @@ const onrender = ( BABYLON, THREE ) => {
   return f => {
 
     render();
-    if (f) f();
+    if ( f ) f();
 
   };
 
 };
 
 /** @see use threejs and babylonjs together on one canvas? https://github.com/BabylonJS/Babylon.js/issues/3447 */
-export const Renderer = ( ENGINES ) => {
+export const Renderer = ENGINES => {
 
   const BABYLON = ENGINES[ 0 ];
   const THREE = ENGINES[ 1 ];
 
-  return Object.assign( {},  {
+  return Object.assign( {}, {
     onrender: onrender( BABYLON, THREE )
   } );
 

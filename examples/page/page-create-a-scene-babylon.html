@@ -4,6 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>d2k - create a scene with the babylon.js engine</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+
+    body {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 100;
+      margin: auto;
+    }
+
+    nav {
+      color: color;
+      z-index: 200;
+      position: absolute;
+    }
+  </style>
 </head>
 <body>
   
@@ -67,10 +99,7 @@
       BABYLONstarter.dom.canvas.height = window.innerHeight;
       
       BABYLONstarter.dom.add( BABYLONstarter.dom.canvas );
-
-      BABYLONstarter.ENGINE.d2kCoreData.engine.runRenderLoop( () => {
-        BABYLONstarter.scene.current.render();
-      } );
+      BABYLONstarter.engine.current.runRenderLoop( _ => BABYLONstarter.scene.current.render() );
 
       console.log( BABYLONstarter );
 

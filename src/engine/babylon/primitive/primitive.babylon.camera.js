@@ -14,13 +14,13 @@ export const BABYLONCamera = ( ENGINE, parameters ) => {
     Math.PI / 2,
     2,
     ENGINE.Vector3.Zero( 0, 0, 10 ),
-    ENGINE.d2kCoreData.scene
+    ENGINE.coreData.scene
   );
 
   camera.setTarget( ENGINE.Vector3.Zero() );
 
-  ENGINE.d2kCoreData.scene.activeCamera.attachControl( ENGINE.d2kCoreData.canvas, true );
-  ENGINE.d2kCoreData.scene.autoClear = false;
+  ENGINE.coreData.scene.activeCamera.attachControl( ENGINE.coreData.canvas, true );
+  ENGINE.coreData.scene.autoClear = false;
 
   return camera;
 

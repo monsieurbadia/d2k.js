@@ -1,7 +1,7 @@
 {
   "name": "d2k",
   "version": "0.0.0",
-  "description": "une micro-surcouche javascript aux bibliothèques de moteur 3d pour créer des primitives de façon élégante et modulaire.",
+  "description": "javascript micro-layer to 3d engine libraries to create primitives in an elegant and modular way.",
   "keywords": [
     "javascript",
     "d2k",

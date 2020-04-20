@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create a scene with the three.js engine</title>
+    <title>d2k - examples - object.assign( babylon , three ) - experimental</title>
     <style>
       * {
         box-sizing: border-box;
@@ -38,12 +38,13 @@
     </style>
   </head>
   <body>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', function() {
-
+      window.addEventListener( 'DOMContentLoaded', function () {
+        
         const THREEstarter = d2k.onready( {
           ENGINE: THREE,
           camera: {
@@ -118,23 +119,76 @@
           }
         } );
 
-        THREEstarter.dom.add( THREEstarter.renderer.current.domElement );
-        THREEstarter.scene.current.add( THREEstarter.mesh.myMeshName );
-        THREEstarter.renderer.current.onrender( THREEstarter.renderer.current, THREEstarter.scene.current, THREEstarter.camera.current );
-        THREEstarter.mesh.myMeshName.onloader( textures => console.log( textures ) );
-
+        const BABYLONstarter = d2k.onready( {
+          ENGINE: BABYLON,
+          camera: {
+            current: {
+              option: {
+                args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+                position: [ 0, 0, 100 ],
+                type: 'arc-rotate'
+              }
+            }
+          },
+          light: {
+            current: {
+              option: {
+                args: [ '0xffffbb 0x080820 1'  ],
+                type: 'hemispheric'
+              }
+            }
+          },
+          mesh: {
+            myMeshName: [
+              {
+                geometry: {
+                  args: [ 20, 20, 20 ],
+                  type: 'box-buffer'
+                },
+                material: {
+                  args: {
+                    transparent: true
+                  },
+                  type: 'mesh-normal'
+                },
+                positions: [ -20, 0, 0 ],
+                scene: 'scene1',
+                group: {}
+              }
+            ]
+          },
+          scene: {
+            current: {}
+          },
+          engine: {
+            current: {
+              canvas: 'webgl',
+              pixelRatio: window.devicePixelRatio,
+              size: [ window.innerWidth, window.innerHeight ]
+            }
+          }
+        } );
+    
         THREEstarter.mesh.myMeshName.onrender( time => {
-
+  
           THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
           THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
         
           THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
           THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
-
+  
         } );
+  
+        console.log( BABYLONstarter, THREEstarter );
 
-        console.log( THREEstarter );
+        d2k.onstack( BABYLONstarter, THREEstarter );
 
+        THREEstarter.scene.current.add( THREEstarter.mesh.myMeshName );
+        
+        THREEstarter.dom.canvas.width = window.innerWidth;
+        THREEstarter.dom.canvas.height = window.innerHeight;
+        
+        document.body.appendChild( THREEstarter.dom.canvas );
       }, false );
 
     </script>

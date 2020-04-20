@@ -5,7 +5,7 @@
 /** @public */
 export const BABYLONScene = ENGINE => {
 
-  const { engine, canvas } = ENGINE.d2kCoreData;
+  const { engine, canvas } = ENGINE.coreData;
   const scene = new ENGINE.Scene( engine );
 
   scene.autoClear = false;
@@ -19,7 +19,7 @@ export const BABYLONScene = ENGINE => {
 
   };
 
-  ENGINE.d2kCoreData.scene = scene;
+  ENGINE.coreData.scene = scene;
 
   return Object.assign( scene, {} );
 
