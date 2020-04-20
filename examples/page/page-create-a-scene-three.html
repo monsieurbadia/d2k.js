@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k - create a scene with the three.js engine</title>
+  </head>
+  <body>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="../../src/index.js"></script>
+    <script>
+
+      window.addEventListener( 'DOMContentLoaded', function() {
+
+        const THREEstarter = d2k.onready( {
+          ENGINE: THREE,
+          camera: {
+            current: {
+              option: {
+                args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+                position: [ 0, 0, 100 ],
+                type: 'perspective'
+              }
+            }
+          },
+          light: {
+            current: {
+              option: {
+                args: [ '0xffffbb 0x080820 1'  ],
+                type: 'hemisphere'
+              }
+            }
+          },
+          loader: {
+            current: {
+              option: {
+                args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
+                type: 'texture'
+              }
+            }
+          },
+          mesh: {
+            myMeshName: [
+              {
+                geometry: {
+                  args: [ 20, 20, 20 ],
+                  type: 'box-buffer'
+                },
+                material: {
+                  args: {
+                    transparent: true
+                  },
+                  type: 'mesh-normal'
+                },
+                positions: [ -20, 0, 0 ],
+                scene: 'scene1',
+                group: {}
+              },
+              {
+                geometry: {
+                  args: [ 20, 20, 20 ],
+                  type: 'box'
+                },
+                material: {
+                  args: {
+                    uniforms: { mouse: {} },
+                    transparent: true
+                  },
+                  type: 'shader'
+                },
+                positions: [ 20, 0, 0 ],
+                scene: 'scene1',
+                group: {}
+              }
+            ]
+          },
+          scene: {
+            current: {}
+          },
+          renderer: {
+            current: {
+              canvas: 'webgl',
+              pixelRatio: window.devicePixelRatio,
+              size: [ window.innerWidth, window.innerHeight ]
+            }
+          }
+        } );
+
+        THREEstarter.dom.add( THREEstarter.renderer.current.domElement );
+        THREEstarter.scene.current.add( THREEstarter.mesh.myMeshName );
+
+        THREEstarter.renderer.current.onrender( THREEstarter.renderer.current, THREEstarter.scene.current, THREEstarter.camera.current );
+
+        // THREEstarter.mesh.myMeshName.onloader( textures => console.log( textures ) );
+
+        THREEstarter.mesh.myMeshName.onrender( time => {
+
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
+        
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
+
+        } );
+
+
+        console.log( THREEstarter );
+
+      }, false );
+
+    </script>
+  </body>
+</html>

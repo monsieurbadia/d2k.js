@@ -1,6 +1,23 @@
 import { is, oftype } from 'u3s';
 import { EVENTS } from '=>/core/core.events';
 
+/** @private */
+const onresetstate = renderer => {
+  
+  const gl = renderer.getContext();
+
+  gl.enable( gl.DEPTH_TEST );
+  gl.depthFunc( gl.LEQUAL );
+  gl.enable( gl.CULL_FACE );
+  gl.cullFace( gl.BACK );
+  gl.clearDepth(1);
+  gl.clear( gl.DEPTH_BUFFER_BIT );
+  gl.bindVertexArray( null );
+
+  renderer.state.reset();
+
+};
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
@@ -15,21 +32,23 @@ const onrender = ( renderer, scene, camera, start ) => renderer.setAnimationLoop
 } : null );
 
 /**
- * Renderer
+ * THREERenderer
  * 
  * @public
  */
 
 export const THREERenderer = ( ENGINE, parameters ) => {
 
-  if ( oftype( parameters ) !== 'object' || is.empty( parameters ) ) return; // do i have to return new WebGLRenderer() without config, if no params 
+  if ( oftype( ENGINE ) !== 'object' || is.empty( ENGINE ) ) return;
 
-  const renderer = new ENGINE.WebGLRenderer( { antialias: true } );
+  const canvas = ENGINE.d2kCoreData.canvas;
+  const renderer = new ENGINE.WebGLRenderer( { antialias: true, canvas } );
+
+  renderer.timer = new ENGINE.Clock();
+  renderer.autoClear = false;
 
   renderer.setClearColor( 0x000000 );
   renderer.setPixelRatio( parameters.pixelRatio );
-  renderer.setSize( ...parameters.size, true );
-  renderer.timer = new ENGINE.Clock();
 
   return Object.assign( renderer, {
     onrender

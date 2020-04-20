@@ -1,21 +1,28 @@
 import { pipe } from 'u3s';
-import { DOM, Creater } from '=>/core/core';
+import { Creater, DOM, Renderer } from '=>/core/core';
 
-const OPERATIONS = [
-  payload => ( { ...payload, dom: DOM() } ),
-  payload => Creater( 'loader', payload ),
-  payload => Creater( 'engine', payload ),
-  payload => Creater( 'scene', payload ),
-  payload => Creater( 'camera', payload ),
-  payload => Creater( 'renderer', payload ),
-  payload => Creater( 'mesh', payload ),
-  payload => Creater( 'light', payload )
-];
+/**
+ * @author monsieurbadia / https://monsieurbadia.com/
+ */
+
+/** @private */
+const D2KCOREDATA = {};
 
 /** @public */
 const onready = parameters => {
 
-  parameters.ENGINE.coreData = {};
+  parameters.ENGINE.d2kCoreData = D2KCOREDATA;
+
+  const OPERATIONS = [
+    payload => ( { ...payload, dom: DOM( payload.ENGINE ) } ),
+    payload => Creater( 'loader', payload ),
+    payload => Creater( 'engine', payload ),
+    payload => Creater( 'scene', payload ),
+    payload => Creater( 'camera', payload ),
+    payload => Creater( 'renderer', payload ),
+    payload => Creater( 'mesh', payload ),
+    payload => Creater( 'light', payload )
+  ];
 
   const prepare = pipe( ...OPERATIONS );
   const starter = prepare( parameters );
@@ -31,6 +38,15 @@ const onready = parameters => {
 
 };
 
+/** @public */
+const onstack = ( BABYLON, THREE, f ) => {
+
+  const renderer = Renderer( [ BABYLON, THREE ] );
+
+  renderer.onrender( () => {} );
+
+};
+
 /** 
  * d2k
  * 
@@ -38,7 +54,8 @@ const onready = parameters => {
  */
 
 export const d2k = Object.freeze( {
-  onready
+  onready,
+  onstack
 } );
 
 module.exports = d2k;

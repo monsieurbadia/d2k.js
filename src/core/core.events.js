@@ -17,13 +17,10 @@ export const onrender = f => typeof f === 'function' && EVENTS.renders.push( f )
 /**
  * events
  * @public
- * @station
  */
 
 export const Events = _ => {
 
-  return {
-    // station
-  };
+  return {};
 
 };

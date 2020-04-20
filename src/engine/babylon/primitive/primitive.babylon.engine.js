@@ -2,13 +2,13 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
+/** @public */
 export const BABYLONEngine = ENGINE => {
 
-  const canvas = document.createElement( 'canvas' );
+  const { canvas } = ENGINE.d2kCoreData;
   const engine = new ENGINE.Engine( canvas, true );
 
-  // TODO: use sig3
-  ENGINE.coreData.engine = engine;
+  ENGINE.d2kCoreData.engine = engine;
 
   return engine;
 

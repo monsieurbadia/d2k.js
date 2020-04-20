@@ -16,6 +16,20 @@ c'est de mon retour d'expérience que m'est venu l'idée de créé **d2k** avec 
 
 je ne suis pas un développeur, je suis juste un gars normal qui porte la programmation dans son coeur et qui souhaite apporter sa pierre à l'édifice dans le monde de l'open source. Si ce projet peut donner envie à une personne à s'intéresser au webgl. j'aurai contribué à ce que le développement 3d ne meurt jamais. dernier point, actuellement **d2k** support three.js mais à l'avenir il tachera de supporté d'autres librairies afin que chacun puisse utiliser sa bibliothèque préférée. je pense notamment à babylon.js. donc d'autres changements seront à venir pour le bien de tous, je l'espère. 
 
+## Support des primitives
+
+primitive         | babylon | three    |
+------------------|---------|----------|
+camera            | ⭕      | ⭕       |
+geometry          | ❌      | ⭕       |
+group             | ❌      | ⭕       |
+light             | ⭕      | ⭕       |
+loader            | ❌      | ⭕       |
+material          | ⭕      | ⭕       |
+mesh              | ⭕      | ⭕       |
+renderer / engine | ⭕      | ⭕       |
+scene             | ⭕      | ⭕       |
+
 ## Installation
 
 avant de commencer, il va falloir installer le projet.
@@ -38,7 +52,7 @@ si tu n'es pas à l'aise avec les lignes de commandes, tu peux aussi télécharg
 
 ## Démarrer le projet
 
-une fois que ton installation est faite, il nous reste plus qu'un importer la librairie dans ton script ou ta page html.
+une fois que ton installation est faite, il te reste plus qu'un importer la librairie dans ton script ou ta page html comme ceci.
 
 ```js
 import d2k from 'd2k';
@@ -56,9 +70,11 @@ console.log( d2k ); // voilà, je te présente d2k ton nouveau gars sûre.
 
 ## Demo
 
-
 ## API
 
+## Todo
+
+- [ ] json support
 
 [npm]: https://img.shields.io/npm/v/d2k
 [npm-url]: https://www.npmjs.com/package/d2k

@@ -43,27 +43,9 @@ export const Creater = ( key, payload ) => {
   const currentInstanceName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
   const Instance = PRIMITIVE[ `${ currentInstanceName }${ strings.toFirstLetterUpperCase( key ) }` ];
 
-  payload.ENGINE.coreData.station = new SIG3.Station();
-
   return {
     ...payload,
-    [ key ]: reducer( payload[ key ], result => {
-    
-      const instance = Instance( payload.ENGINE, result );
-      
-      instance.fs = [ state => {
-
-        console.log( state );
-
-        return state;
-
-      } ];
-
-      payload.ENGINE.coreData.station.onsignal( 'event:oncreate', instance );
-
-      return instance;
-
-    } )
+    [ key ]: reducer( payload[ key ], result => Instance( payload.ENGINE, result ) )
   };
 
 };

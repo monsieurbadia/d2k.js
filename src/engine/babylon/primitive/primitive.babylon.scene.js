@@ -2,15 +2,24 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const BABYLONScene = ( ENGINE, parameters ) => {
+/** @public */
+export const BABYLONScene = ENGINE => {
 
-  const scene = new ENGINE.Scene( ENGINE.coreData.engine );
+  const { engine, canvas } = ENGINE.d2kCoreData;
+  const scene = new ENGINE.Scene( engine );
 
   scene.autoClear = false;
 
-  scene.attachControl( ENGINE.coreData.engine.getRenderingCanvas() );
+  scene.attachControl( canvas );
 
-  ENGINE.coreData.scene = scene;
+  scene.beforeRender = () => {
+
+    engine._currentProgram = null;
+    engine.wipeCaches( true );
+
+  };
+
+  ENGINE.d2kCoreData.scene = scene;
 
   return Object.assign( scene, {} );
 

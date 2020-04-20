@@ -2,7 +2,7 @@
 
 # d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] 
 
-> *a javascript micro-layer to 3d engine libraries to create primitives in an elegant and modular way.*
+> *javascript micro-layer to 3d engine libraries to create primitives in an elegant and modular way.*
 
 [npm]: https://img.shields.io/npm/v/d2k
 [npm-url]: https://www.npmjs.com/package/d2k

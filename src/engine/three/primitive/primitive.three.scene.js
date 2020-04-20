@@ -2,5 +2,10 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
+/** 
+ * THREEScene
+ * 
+ * @private
+ */
+
 export const THREEScene = ENGINE => new ENGINE.Scene();

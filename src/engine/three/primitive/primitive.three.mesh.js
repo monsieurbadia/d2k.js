@@ -7,13 +7,11 @@ import {
   THREEMaterial
 } from './primitive';
 
-import { getInstance } from '=>/util/util';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public TODO: split geometry and material */
+/** @public */
 export const THREEMesh = ( ENGINE, parameters ) => {
 
   if ( !is.array( parameters ) || is.empty( parameters ) ) return;
