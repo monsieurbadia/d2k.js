@@ -181,14 +181,11 @@
   
         console.log( BABYLONstarter, THREEstarter );
 
-        d2k.onstack( BABYLONstarter, THREEstarter );
+        d2k.onlayering( THREEstarter, BABYLONstarter );
 
+        document.body.appendChild( THREEstarter.renderer.current.domElement );
         THREEstarter.scene.current.add( THREEstarter.mesh.myMeshName );
         
-        THREEstarter.dom.canvas.width = window.innerWidth;
-        THREEstarter.dom.canvas.height = window.innerHeight;
-        
-        document.body.appendChild( THREEstarter.dom.canvas );
       }, false );
 
     </script>
