@@ -1,4 +1,4 @@
-import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
+import { strings } from 'u3s';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -7,7 +7,9 @@ import { parseTextToFirstLetterUpperCase } from '=>/util/util.parser';
 /** @public */
 export const BABYLONLight = ( ENGINE, parameters ) => {
 
-  const light = new ENGINE[ parseTextToFirstLetterUpperCase( parameters.option.type, 'light' ) ]( "light", new BABYLON.Vector3( 0, -1, 0 ), ENGINE.coreData.scene );
+  // TODO:
+  const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'light' )
+  const light = new ENGINE[ instanceName ]( 'light', new BABYLON.Vector3( 0, -1, 0 ), ENGINE.coreData.scene );
 
   return light;
 

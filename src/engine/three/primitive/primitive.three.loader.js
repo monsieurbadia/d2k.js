@@ -1,6 +1,5 @@
-import { is } from 'u3s';
+import { is, strings } from 'u3s';
 import { EVENTS } from '=>/core/core.events';
-import { parseTextToFirstLetterUpperCase } from '=>/util/util';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -9,7 +8,7 @@ import { parseTextToFirstLetterUpperCase } from '=>/util/util';
 /** @public */
 export const THREELoader = ( ENGINE, parameters ) => {
 
-  const loader = new ENGINE[ parseTextToFirstLetterUpperCase( parameters.option.type, 'loader' ) ]();
+  const loader = new ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'loader' ) ]();
   const sources = !is.array( parameters.option.args ) ? [ parameters.option.args ] : parameters.option.args;
   const args = sources.map( async source => {
   

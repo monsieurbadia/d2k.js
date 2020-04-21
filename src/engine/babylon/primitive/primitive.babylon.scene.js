@@ -2,6 +2,14 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
+/** @private */
+const beforerender = engine => _ => {
+
+  engine._currentProgram = null;
+  engine.wipeCaches( true );
+
+};
+
 /** @public */
 export const BABYLONScene = ENGINE => {
 
@@ -9,18 +17,11 @@ export const BABYLONScene = ENGINE => {
   const scene = new ENGINE.Scene( engine );
 
   scene.autoClear = false;
+  scene.beforeRender = beforerender( engine );
+  ENGINE.coreData.scene = scene;
 
   scene.attachControl( canvas );
 
-  scene.beforeRender = () => {
-
-    engine._currentProgram = null;
-    engine.wipeCaches( true );
-
-  };
-
-  ENGINE.coreData.scene = scene;
-
-  return Object.assign( scene, {} );
+  return scene;
 
 };

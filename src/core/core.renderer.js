@@ -2,54 +2,46 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const resetstate = renderer => {
-
-  const gl = renderer.getContext();
-
-  gl.enable( gl.DEPTH_TEST );
-  gl.depthFunc( gl.LEQUAL );
-  gl.enable( gl.CULL_FACE );
-  gl.cullFace( gl.BACK );
-  gl.clearDepth(1);
-  gl.clear( gl.DEPTH_BUFFER_BIT );
-  gl.bindVertexArray( null );
-
-  renderer.state.reset();
-
-};
-
-/** @public */
-const onrender = ( BABYLON, THREE ) => {
+/** @private */
+const beforerender = ( THREE, BABYLON ) => {
 
   /** @private */
-  const render = _ => {
+  const render = _ => THREE.renderer.current.setAnimationLoop( _ => {
 
-    window.requestAnimationFrame( render );
-
-    resetstate( THREE.renderer.current );
-
+    THREE.renderer.current.resetState( THREE.renderer.current );
+    THREE.renderer.current?.renders.forEach( render => render( THREE.renderer.current.timer.getDelta() ) );
     THREE.renderer.current.render( THREE.scene.current, THREE.camera.current );
     BABYLON.scene.current.render();
+  
+  } );
 
-  };
-
+  /** @public */
   return f => {
 
+    if ( f ) THREE.renderer.current?.renders.push( f );
+
     render();
-    if ( f ) f();
 
   };
 
 };
 
-/** @see use threejs and babylonjs together on one canvas? https://github.com/BabylonJS/Babylon.js/issues/3447 */
+/**
+ * renderer
+ * 
+ * @public 
+ * @see threejs-and-babylonjs-together-on-one-canvas / https://github.com/BabylonJS/Babylon.js/issues/3447
+ */
+
 export const Renderer = ENGINES => {
 
-  const BABYLON = ENGINES[ 0 ];
-  const THREE = ENGINES[ 1 ];
+  const THREE = ENGINES[ 0 ];
+  const BABYLON = ENGINES[ 1 ];
+
+  THREE.renderer.current.setSize( window.innerWidth, window.innerHeight );
 
   return Object.assign( {}, {
-    onrender: onrender( BABYLON, THREE )
+    onrender: beforerender( THREE, BABYLON )
   } );
 
 };

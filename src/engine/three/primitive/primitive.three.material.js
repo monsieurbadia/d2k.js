@@ -1,4 +1,4 @@
-import { parseTextToFirstLetterUpperCase } from '=>/util/util';
+import { strings } from 'u3s';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -30,7 +30,7 @@ const snoopAndInsert = args => {
 /** @public */
 export const THREEMaterial = ( ENGINE, parameters ) => {
   
-  const instaneName = parseTextToFirstLetterUpperCase( parameters.type, 'material' );
+  const instaneName = strings.toFirstLetterUpperCaseReducer( parameters.type, 'material' );
   const argsParsed = { ...snoopAndInsert( parameters.args ) };
   const material = new ENGINE[ instaneName ]( argsParsed );
 

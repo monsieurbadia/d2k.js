@@ -1,5 +1,4 @@
 import { reducer, strings } from 'u3s';
-import SIG3 from 'SIG3';
 
 import {
   BABYLONCamera,
@@ -40,8 +39,9 @@ const PRIMITIVE = {
 /** @public */
 export const Creater = ( key, payload ) => {
 
-  const currentInstanceName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
-  const Instance = PRIMITIVE[ `${ currentInstanceName }${ strings.toFirstLetterUpperCase( key ) }` ];
+  const currentEngineName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
+  const currentInstanceName = `${ currentEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
+  const Instance = PRIMITIVE[ currentInstanceName ];
 
   return {
     ...payload,

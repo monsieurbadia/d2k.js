@@ -1,4 +1,10 @@
 /**
+ * @author monsieurbadia / https://monsieurbadia.com/
+ */
+
+// TODO: hook to wrap the css3d feature
+
+/**
  * Based on http://www.emagix.net/academic/mscs-project/item/camera-sync-with-css3-and-webgl-threejs
  * @author mrdoob / http://mrdoob.com/
  * @author yomotsu / https://yomotsu.net/

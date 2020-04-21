@@ -1,16 +1,22 @@
 import { is, oftype } from 'u3s';
 import { EVENTS } from '=>/core/core.events';
 
+/**
+ * @author monsieurbadia / https://monsieurbadia.com/
+ */
+
 /** @private */
-const onresetstate = renderer => {
-  
+const resetState = renderer => {
+
+  if ( !renderer ) return;
+
   const gl = renderer.getContext();
 
   gl.enable( gl.DEPTH_TEST );
   gl.depthFunc( gl.LEQUAL );
   gl.enable( gl.CULL_FACE );
   gl.cullFace( gl.BACK );
-  gl.clearDepth(1);
+  gl.clearDepth( 1 );
   gl.clear( gl.DEPTH_BUFFER_BIT );
   gl.bindVertexArray( null );
 
@@ -18,18 +24,14 @@ const onresetstate = renderer => {
 
 };
 
-/**
- * @author monsieurbadia / https://monsieurbadia.com/
- */
-
 /** @public it is a wrapper to be able to pass a callback function inside the setAnimationLoop method. */
-const onrender = ( renderer, scene, camera, start ) => renderer.setAnimationLoop( start !== null ? _ => {
+const onrender = ( f, renderer, scene, camera ) =>
+  renderer.setAnimationLoop( oftype( f ) !== 'null' ? _ => {
 
-  EVENTS.renders.forEach( render => render( renderer.timer.getDelta() ) );
+    renderer.renders.forEach( render => render( renderer.timer.getDelta() ) );
+    renderer.render( scene, camera );
 
-  renderer.render( scene, camera );
-
-} : null );
+  } : null );
 
 /**
  * THREERenderer
@@ -47,11 +49,13 @@ export const THREERenderer = ( ENGINE, parameters ) => {
   renderer.timer = new ENGINE.Clock();
   renderer.autoClear = false;
 
-  renderer.setClearColor( 0x000000 );
-  renderer.setPixelRatio( parameters.pixelRatio );
+  renderer.setClearColor( parameters?.background );
+  renderer.setPixelRatio( parameters?.pixelRatio );
 
   return Object.assign( renderer, {
-    onrender
+    ...EVENTS,
+    onrender,
+    resetState
   } );
 
 };

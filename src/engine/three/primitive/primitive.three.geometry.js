@@ -1,8 +1,8 @@
-import { parseTextToFirstLetterUpperCase } from '=>/util/util';
+import { strings } from 'u3s';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
 /** @public */
-export const THREEGeometry = ( ENGINE, parameters ) => new ENGINE[ parseTextToFirstLetterUpperCase( parameters.type, 'geometry' )  ]( ...parameters.args );
+export const THREEGeometry = ( ENGINE, parameters ) => new ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.type, 'geometry' )  ]( ...parameters.args );
