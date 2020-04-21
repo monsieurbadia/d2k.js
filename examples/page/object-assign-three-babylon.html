@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - examples - object.assign( babylon , three ) - experimental</title>
+    <title>d2k - examples - object.assign( three , babylon ) - experimental</title>
     <style>
       * {
         box-sizing: border-box;
@@ -45,7 +45,7 @@
 
       window.addEventListener( 'DOMContentLoaded', function () {
         
-        const THREEstarter = d2k.onready( {
+        const THREEstarter = d2k.onwebgl( {
           ENGINE: THREE,
           camera: {
             current: {
@@ -108,7 +108,9 @@
             ]
           },
           scene: {
-            current: {}
+            current: {},
+            toto: {},
+            toti: {}
           },
           renderer: {
             current: {
@@ -119,7 +121,7 @@
           }
         } );
 
-        const BABYLONstarter = d2k.onready( {
+        const BABYLONstarter = d2k.onwebgl( {
           ENGINE: BABYLON,
           camera: {
             current: {
@@ -151,9 +153,7 @@
                   },
                   type: 'mesh-normal'
                 },
-                positions: [ -20, 0, 0 ],
-                scene: 'scene1',
-                group: {}
+                positions: [ -20, 0, 0 ]
               }
             ]
           },
@@ -168,27 +168,26 @@
             }
           }
         } );
-    
-        // THREEstarter.mesh.myMeshName.onrender( time => {
-  
-        //   THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
-        //   THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
-        
-        //   THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
-        //   THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
-  
-        // } );
-  
+
+        THREEstarter.mesh.myMeshName.onrender( time => {
+
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
+
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
+
+        } );
+
+        d2k
+          .onlayering( THREEstarter, BABYLONstarter )
+          .onrender();
+
+        THREEstarter.dom.add( THREEstarter.renderer.current.domElement );
+        THREEstarter.scene.current.add( THREEstarter.mesh.myMeshName );
+
         console.log( BABYLONstarter, THREEstarter );
 
-        d2k.onstack( BABYLONstarter, THREEstarter );
-
-        THREEstarter.scene.current.add( THREEstarter.mesh.myMeshName );
-        
-        THREEstarter.dom.canvas.width = window.innerWidth;
-        THREEstarter.dom.canvas.height = window.innerHeight;
-        
-        document.body.appendChild( THREEstarter.dom.canvas );
       }, false );
 
     </script>
