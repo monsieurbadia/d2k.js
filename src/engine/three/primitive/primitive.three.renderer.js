@@ -25,13 +25,30 @@ const resetState = renderer => {
 };
 
 /** @public it is a wrapper to be able to pass a callback function inside the setAnimationLoop method. */
-const onrender = ( f, renderer, scene, camera ) =>
-  renderer.setAnimationLoop( oftype( f ) !== 'null' ? _ => {
+// const onrender = ( {renderer: { current: renderer}, scene: {current: scene}, camera: { current: camera}} ) =>
 
-    renderer.renders.forEach( render => render( renderer.timer.getDelta() ) );
+//   renderer.setAnimationLoop( _ => {
+
+//     for (let i = 0; i < renderer.renders.length; i++) {
+//       if (renderer.renders[i](renderer.timer.getDelta()) === null)
+//         return null;
+//     }
+//     // renderer.renders.forEach( render => render( renderer.timer.getDelta() ) );
+//     renderer.render( scene, camera );
+
+//   });
+
+const onrender = ( { renderer, scene, camera } ) =>
+  renderer.setAnimationLoop( _ => {
+
+    for ( let i = 0; i < renderer.renders.length; i++ ) {
+      if ( renderer.renders[ i ]( renderer.timer.getDelta() ) === null )
+        return null;
+    }
+
     renderer.render( scene, camera );
 
-  } : null );
+  } );
 
 /**
  * THREERenderer

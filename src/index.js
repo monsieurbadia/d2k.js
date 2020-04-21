@@ -1,5 +1,5 @@
 import { pipe } from 'u3s';
-import { Creater, DOM, Renderer } from '=>/core/core';
+import { Creater, Version, DOM, Renderer } from '=>/core/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -25,16 +25,18 @@ const onwebgl = parameters => {
 
   parameters.ENGINE.coreData = COREDATA;
 
+  const makeOperation = type => callback => Creater(type, callback);
+
   // TODO:
   const OPERATIONS = [
     payload => ( { ...payload, dom: DOM( payload.ENGINE ) } ),
-    payload => Creater( 'loader', payload ),
-    payload => Creater( 'engine', payload ),
-    payload => Creater( 'scene', payload ),
-    payload => Creater( 'camera', payload ),
-    payload => Creater( 'renderer', payload ),
-    payload => Creater( 'mesh', payload ),
-    payload => Creater( 'light', payload )
+    makeOperation('loader'),
+    makeOperation('engine'),
+    makeOperation('scene'),
+    makeOperation('camera'),
+    makeOperation('mesh'),
+    makeOperation('light'),
+    makeOperation('renderer')
   ];
 
   const prepare = pipe( ...OPERATIONS );
