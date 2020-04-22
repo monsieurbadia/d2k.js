@@ -5,20 +5,20 @@ import { strings } from 'u3s';
  */
 
 /** @public */
-export const BABYLONCamera = ( ENGINE, parameters ) => {
+export const BABYLONCamera = ( RENDERING_ENGINE, parameters ) => {
 
   // TODO:
-  const { canvas, scene } = ENGINE.coreData;
-  const camera = new ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'camera' ) ](
+  const { canvas, scene } = RENDERING_ENGINE.coreData;
+  const camera = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'camera' ) ](
     'Camera',
     Math.PI / 2,
     Math.PI / 2,
     2,
-    ENGINE.Vector3.Zero(),
+    RENDERING_ENGINE.Vector3.Zero(),
     scene
   );
 
-  camera.setTarget( ENGINE.Vector3.Zero() );
+  camera.setTarget( RENDERING_ENGINE.Vector3.Zero() );
   scene.activeCamera.attachControl( canvas, true );
 
   return camera;

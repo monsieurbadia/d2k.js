@@ -21,7 +21,7 @@ export const DOM = ENGINE => {
   canvas.style.width = `${ width }px`;
   canvas.style.height = `${ height }px`;
 
-  ENGINE.coreData.canvas = !ENGINE.coreData.canvas ? canvas : ENGINE.coreData.canvas;
+  // ENGINE.coreData.canvas = !ENGINE.coreData.canvas ? canvas : ENGINE.coreData.canvas;
 
   return {
     add,

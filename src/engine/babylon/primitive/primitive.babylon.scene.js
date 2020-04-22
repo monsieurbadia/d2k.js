@@ -3,24 +3,24 @@
  */
 
 /** @private */
-const beforerender = engine => _ => {
+const beforerender = RENDERING_ENGINE => _ => {
 
-  engine._currentProgram = null;
-  engine.wipeCaches( true );
+  RENDERING_ENGINE._currentProgram = null;
+  RENDERING_ENGINE.wipeCaches( true );
 
 };
 
 /** @public */
-export const BABYLONScene = ENGINE => {
+export const BABYLONScene = RENDERING_ENGINE => {
 
-  const { engine, canvas } = ENGINE.coreData;
-  const scene = new ENGINE.Scene( engine );
+  const { engine } = RENDERING_ENGINE.coreData;
+  const scene = new RENDERING_ENGINE.Scene( engine );
 
   scene.autoClear = false;
   scene.beforeRender = beforerender( engine );
-  ENGINE.coreData.scene = scene;
+  RENDERING_ENGINE.coreData.scene = scene;
 
-  scene.attachControl( canvas );
+  // scene.attachControl( canvas );
 
   return scene;
 

@@ -40,8 +40,6 @@ const PRIMITIVE = {
 /** @public */
 export const Creater = ( key, payload ) => {
 
-  // console.log( key, payload )
-
   const currentEngineName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
   const currentInstanceName = `${ currentEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
   const Instance = PRIMITIVE[ currentInstanceName ];
@@ -53,6 +51,112 @@ export const Creater = ( key, payload ) => {
 
 };
 
+/** @public */
+const babylonStarterConf = ( init = {} ) => {
+
+  const conf = init;
+
+  const use = engine => {
+
+    Object.assign( conf, { dom: DOM( engine ) } );
+
+    conf.RENDERING_ENGINE = engine;
+    conf.RENDERING_ENGINE.coreData = {
+      canvas: conf.dom.canvas
+    };
+
+    conf.engine = BABYLONEngine( conf.RENDERING_ENGINE );
+
+    return babylonStarterConf( conf );
+
+  };
+
+  const withCamera = ( { name, config } ) => {
+    
+    if ( conf.camera === undefined ) {
+      conf.camera = {};
+    }
+    
+    console.log( BABYLONCamera( conf.RENDERING_ENGINE, config ) );
+    conf.camera[ name ] = BABYLONCamera( conf.RENDERING_ENGINE, config );
+    
+    return babylonStarterConf( conf );
+
+  };
+
+  const withLight = ( { name, config } ) => {
+
+    if ( conf.light === undefined ) {
+      conf.light = {};
+    }
+
+    conf.light[ name ] = BABYLONLight( conf.RENDERING_ENGINE, config );
+
+    return babylonStarterConf( conf );
+
+  };
+
+  const withMesh = ( { name, config } ) => {
+
+    if ( conf.mesh === undefined ) {
+      conf.mesh = {};
+    }
+
+    conf.mesh[ name ] = BABYLONMesh( conf.RENDERING_ENGINE, config );
+
+    return babylonStarterConf( conf );
+
+  };
+
+  const withScene = ( { name, config } ) => {
+    
+    if ( conf.scene === undefined ) {
+      conf.scene = {};
+    }
+    
+    conf.scene[ name ] = BABYLONScene( conf.RENDERING_ENGINE );
+
+    return babylonStarterConf( conf );
+
+  };
+
+  const withRenderer = ( { name, config } ) => {
+
+    if ( conf.renderer === undefined ) {
+      conf.renderer = {}
+    }
+
+    conf.renderer
+    return babylonStarterConf( conf );
+
+  };
+
+  const value = () => conf;
+
+  return {
+    use,
+    value,
+    withCamera,
+    withLight,
+    withMesh,
+    withRenderer,
+    withScene
+  };
+
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 /** @public */
 const onstarter = ( init = {} ) => {
@@ -62,7 +166,10 @@ const onstarter = ( init = {} ) => {
   const useEngine = engine => {
 
     conf.ENGINE = engine;
-    conf.ENGINE.coreData = {};
+    conf.ENGINE.coreData = {
+      BABYLON: {},
+      THREE: {}
+    };
 
     Object.assign( conf, { dom: DOM( engine ) } );
 
@@ -77,7 +184,7 @@ const onstarter = ( init = {} ) => {
       conf.camera = {};
 
     }
-    
+
     conf.camera[ name ] = THREECamera( conf.ENGINE, config );
 
     return onstarter( conf );
@@ -263,7 +370,8 @@ const onstarter = ( init = {} ) => {
 };
 
 const d2k = Object.assign( {
-  onstarter
+  onstarter,
+  babylonStarterConf
 } );
 
 module.exports = d2k;

@@ -39,6 +39,8 @@ const PRIMITIVE = {
 /** @public */
 export const Creater = ( key, payload ) => {
 
+  console.log( key, payload )
+
   const currentEngineName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
   const currentInstanceName = `${ currentEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
   const Instance = PRIMITIVE[ currentInstanceName ];

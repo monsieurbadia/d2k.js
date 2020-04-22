@@ -41,7 +41,7 @@
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../../src/starter.js"></script>
     <script>
-      window.addEventListener( 'DOMContentLoaded', function () {
+      window.addEventListener( 'DOMContentLoaded', _ => {
 
         const starter = d2k.onstarter()
           .useEngine( THREE )
@@ -99,24 +99,24 @@
               scene: 'scene1'
             }
           } )
-          // .withLight( {
-          //   name: 'toto',
-          //   config: {
-          //     option: {
-          //       args: [ '0xffffbb 0x080820 1'  ],
-          //       type: 'hemisphere'
-          //     }
-          //   }
-          // } )
-          // .withLoader( {
-          //   name: 'textures',
-          //   config: {
-          //     option: {
-          //       args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-          //       type: 'texture'
-          //     }
-          //   }
-          // } )
+          .withLight( {
+            name: 'toto',
+            config: {
+              option: {
+                args: [ '0xffffbb 0x080820 1'  ],
+                type: 'hemisphere'
+              }
+            }
+          } )
+          .withLoader( {
+            name: 'textures',
+            config: {
+              option: {
+                args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
+                type: 'texture'
+              }
+            }
+          } )
           .withScene( {
             name: 'mySceneName',
             config: {
@@ -131,9 +131,8 @@
           } )
           .value();
 
-          console.log( 'index', starter );
+        console.log( 'index', starter );
 
-        // NEW NEW NEW
         starter.mesh.myMeshName.onloader( textures => console.log( textures ) );
 
         starter.mesh.myMeshName.onrender( time => {
