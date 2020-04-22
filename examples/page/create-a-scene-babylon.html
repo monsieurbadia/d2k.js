@@ -38,14 +38,14 @@
     </style>
   </head>
   <body>
-    <canvas id="webglRenderering"></canvas>
+    <canvas id="viewRendering"></canvas>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="../../src/starter.js"></script>
     <script>
 
       window.addEventListener( 'DOMContentLoaded', () => {
         
-        const BABYLONstarter = d2k.babylonStarterConf( { canvas: document.getElementById( 'webglRenderering' ) } )
+        const BABYLONstarter = d2k.babylonStarterConf( { canvas: document.getElementById( 'viewRendering' ) } )
           .use( BABYLON )
           .withScene( {
             name: 'current'

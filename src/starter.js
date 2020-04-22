@@ -38,6 +38,9 @@ const PRIMITIVE = {
 };
 
 /** @public */
+const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
+
+/** @public */
 export const Creater = ( RENDERING_ENGINE, key, payload ) => {
 
   const currentEngineName = payload.RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
@@ -335,8 +338,8 @@ const onstarter = ( init = {} ) => {
     const starter = composer( config );
 
     conf.scene[ name ] = scene;
-    
-    starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
+
+    // starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
 
     return onstarter( conf );
 
@@ -358,6 +361,7 @@ const onstarter = ( init = {} ) => {
 };
 
 const d2k = Object.assign( {
+  onlayering,
   onstarter,
   babylonStarterConf
 } );

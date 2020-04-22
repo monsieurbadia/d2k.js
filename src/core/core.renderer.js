@@ -3,15 +3,16 @@
  */
 
 /** @private */
-const beforerender = ( THREE, BABYLON ) => {
+const beforerender = ( THREE, SOURCE ) => {
 
   /** @private */
   const render = _ => THREE.renderer.current.setAnimationLoop( _ => {
 
     THREE.renderer.current.resetState( THREE.renderer.current );
     THREE.renderer.current?.renders.forEach( render => render( THREE.renderer.current.timer.getDelta() ) );
-    THREE.renderer.current.render( THREE.scene.current, THREE.camera.current );
-    BABYLON.scene.current.render();
+
+    THREE.renderer.current.render( THREE.scene.mySceneName, THREE.camera.current );
+    SOURCE.scene.current.render();
   
   } );
 
@@ -33,15 +34,15 @@ const beforerender = ( THREE, BABYLON ) => {
  * @see threejs-and-babylonjs-together-on-one-canvas / https://github.com/BabylonJS/Babylon.js/issues/3447
  */
 
-export const Renderer = ENGINES => {
+export const Renderer = ( [ TARGET, SOURCE ] ) => {
 
-  const THREE = ENGINES[ 0 ];
-  const BABYLON = ENGINES[ 1 ];
+  const THREEstarter = TARGET;
+  const BABYLONstarter = SOURCE;
 
-  THREE.renderer.current.setSize( window.innerWidth, window.innerHeight );
+  THREEstarter.renderer.current.setSize( window.innerWidth, window.innerHeight );
 
   return Object.assign( {}, {
-    onrender: beforerender( THREE, BABYLON )
+    onrender: beforerender( THREEstarter, BABYLONstarter )
   } );
 
 };

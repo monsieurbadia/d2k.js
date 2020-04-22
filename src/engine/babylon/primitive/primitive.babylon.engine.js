@@ -8,7 +8,7 @@ import { EVENTS } from '=>/core/core.events';
 const onrender = ( { engine, scene } ) => {
   
   for ( let i = 0; i < engine.renders.length; i++ ) {
-    if ( engine.renders[ i ]( engine.timer.getDelta() ) === null )
+    if ( engine.renders[ i ]( engine?.timer.getDelta() ) === null )
       return null;
   }
 

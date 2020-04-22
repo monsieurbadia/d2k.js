@@ -31,7 +31,7 @@ const onrender = ( { renderer, scene, camera } ) =>
       if ( renderer.renders[ i ]( renderer.timer.getDelta() ) === null )
         return null;
     }
-
+    
     renderer.render( scene, camera );
 
   } );
