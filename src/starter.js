@@ -339,7 +339,7 @@ const onstarter = ( init = {} ) => {
 
     conf.scene[ name ] = scene;
 
-    // starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
+    starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
 
     return onstarter( conf );
 
