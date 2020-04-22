@@ -3,16 +3,16 @@
  */
 
 /** @public */
-export const EVENTS = Object.freeze( {
+export const FS = Object.freeze( {
   renders: [],
   loaders: []
 } );
 
 /** @public */
-export const onloader = f => typeof f === 'function' && EVENTS.loaders.push( f );
+export const onloader = f => typeof f === 'function' && FS.loaders.push( f );
 
 /** @public */
-export const onrender = f => typeof f === 'function' && EVENTS.renders.push( f );
+export const onrender = f => typeof f === 'function' && FS.renders.push( f );
 
 /**
  * events

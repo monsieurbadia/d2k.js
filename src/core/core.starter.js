@@ -37,6 +37,8 @@ const PRIMITIVE = {
   THREEScene
 };
 
+
+
 /** @public */
 const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
 
@@ -360,10 +362,12 @@ const onstarter = ( init = {} ) => {
 
 };
 
-const d2k = Object.assign( {
-  onlayering,
-  onstarter,
-  babylonStarterConf
-} );
+export const Starter = _ => {
 
-module.exports = d2k;
+  return Object.assign( {
+    onlayering,
+    onstarter,
+    babylonStarterConf
+  } );
+
+};

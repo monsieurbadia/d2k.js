@@ -1,5 +1,5 @@
 import { is, oftype } from 'u3s';
-import { EVENTS } from '=>/core/core.events';
+import { FS } from '=>/core/core.events';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -55,7 +55,7 @@ export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
   renderer.setSize( window.innerWidth, window.innerHeight );
 
   return Object.assign( renderer, {
-    ...EVENTS,
+    ...FS,
     onrender,
     resetState
   } );

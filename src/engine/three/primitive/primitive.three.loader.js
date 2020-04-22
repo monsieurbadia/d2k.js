@@ -1,5 +1,5 @@
 import { is, strings } from 'u3s';
-import { EVENTS } from '=>/core/core.events';
+import { FS } from '=>/core/core.events';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -20,6 +20,6 @@ export const THREELoader = ( RENDERING_ENGINE, parameters ) => {
 
   } );
 
-  return Promise.all( args ).then( response => EVENTS.loaders.forEach( loader => loader( response ) ) );
+  return Promise.all( args ).then( response => FS.loaders.forEach( loader => loader( response ) ) );
 
 };

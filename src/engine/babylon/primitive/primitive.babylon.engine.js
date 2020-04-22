@@ -1,4 +1,4 @@
-import { EVENTS } from '=>/core/core.events';
+import { FS } from '=>/core/core.events';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -28,7 +28,7 @@ export const BABYLONEngine = RENDERING_ENGINE => {
   RENDERING_ENGINE.coreData.engine = engine;
 
   return Object.assign( engine, {
-    ...EVENTS,
+    ...FS,
     onrender
   } );
 
