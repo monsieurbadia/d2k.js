@@ -1,6 +1,20 @@
+import { EVENTS } from '=>/core/core.events';
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
+
+/** @public */
+const onrender = ( { engine, scene } ) => {
+  
+  for ( let i = 0; i < engine.renders.length; i++ ) {
+    if ( engine.renders[ i ]( engine.timer.getDelta() ) === null )
+      return null;
+  }
+
+  engine.runRenderLoop( _ => scene.render() );
+
+};
 
 /** @public */
 export const BABYLONEngine = RENDERING_ENGINE => {
@@ -10,6 +24,9 @@ export const BABYLONEngine = RENDERING_ENGINE => {
 
   RENDERING_ENGINE.coreData.engine = engine;
 
-  return engine;
+  return Object.assign( engine, {
+    ...EVENTS,
+    onrender
+  } );
 
 };

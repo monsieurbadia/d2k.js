@@ -20,8 +20,6 @@ export const BABYLONScene = RENDERING_ENGINE => {
   scene.beforeRender = beforerender( engine );
   RENDERING_ENGINE.coreData.scene = scene;
 
-  // scene.attachControl( canvas );
-
   return scene;
 
 };

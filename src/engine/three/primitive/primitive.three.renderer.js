@@ -24,20 +24,6 @@ const resetState = renderer => {
 
 };
 
-/** @public it is a wrapper to be able to pass a callback function inside the setAnimationLoop method. */
-// const onrender = ( {renderer: { current: renderer}, scene: {current: scene}, camera: { current: camera}} ) =>
-
-//   renderer.setAnimationLoop( _ => {
-
-//     for (let i = 0; i < renderer.renders.length; i++) {
-//       if (renderer.renders[i](renderer.timer.getDelta()) === null)
-//         return null;
-//     }
-//     // renderer.renders.forEach( render => render( renderer.timer.getDelta() ) );
-//     renderer.render( scene, camera );
-
-//   });
-
 const onrender = ( { renderer, scene, camera } ) =>
   renderer.setAnimationLoop( _ => {
 
@@ -56,14 +42,14 @@ const onrender = ( { renderer, scene, camera } ) =>
  * @public
  */
 
-export const THREERenderer = ( ENGINE, parameters ) => {
+export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
 
-  if ( oftype( ENGINE ) !== 'object' || is.empty( ENGINE ) ) return;
+  if ( oftype( RENDERING_ENGINE ) !== 'object' || is.empty( RENDERING_ENGINE ) ) return;
 
-  const canvas = ENGINE.coreData.canvas;
-  const renderer = new ENGINE.WebGLRenderer( { antialias: true, canvas } );
+  const canvas = RENDERING_ENGINE.coreData.canvas;
+  const renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas } );
 
-  renderer.timer = new ENGINE.Clock();
+  renderer.timer = new RENDERING_ENGINE.Clock();
   renderer.autoClear = false;
 
   renderer.setClearColor( parameters?.background );

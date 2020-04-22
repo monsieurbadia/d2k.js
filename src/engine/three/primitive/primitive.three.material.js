@@ -28,11 +28,11 @@ const snoopAndInsert = args => {
 };
 
 /** @public */
-export const THREEMaterial = ( ENGINE, parameters ) => {
+export const THREEMaterial = ( RENDERING_ENGINE, parameters ) => {
   
   const instaneName = strings.toFirstLetterUpperCaseReducer( parameters.type, 'material' );
   const argsParsed = { ...snoopAndInsert( parameters.args ) };
-  const material = new ENGINE[ instaneName ]( argsParsed );
+  const material = new RENDERING_ENGINE[ instaneName ]( argsParsed );
 
   return material;
 

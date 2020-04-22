@@ -77,7 +77,6 @@ const babylonStarterConf = ( init = {} ) => {
       conf.camera = {};
     }
     
-    console.log( BABYLONCamera( conf.RENDERING_ENGINE, config ) );
     conf.camera[ name ] = BABYLONCamera( conf.RENDERING_ENGINE, config );
     
     return babylonStarterConf( conf );
@@ -163,10 +162,10 @@ const onstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const useEngine = engine => {
+  const use = engine => {
 
-    conf.ENGINE = engine;
-    conf.ENGINE.coreData = {
+    conf.RENDERING_ENGINE = engine;
+    conf.RENDERING_ENGINE.coreData = {
       BABYLON: {},
       THREE: {}
     };
@@ -185,7 +184,7 @@ const onstarter = ( init = {} ) => {
 
     }
 
-    conf.camera[ name ] = THREECamera( conf.ENGINE, config );
+    conf.camera[ name ] = THREECamera( conf.RENDERING_ENGINE, config );
 
     return onstarter( conf );
 
@@ -199,7 +198,7 @@ const onstarter = ( init = {} ) => {
 
     }
 
-    conf.light[ name ] = THREELight( conf.ENGINE, config );
+    conf.light[ name ] = THREELight( conf.RENDERING_ENGINE, config );
 
     return onstarter( conf );
 
@@ -213,7 +212,7 @@ const onstarter = ( init = {} ) => {
 
     }
 
-    conf.mesh[ name ] = THREEMesh( conf.ENGINE, config );
+    conf.mesh[ name ] = THREEMesh( conf.RENDERING_ENGINE, config );
 
     return onstarter( conf );
 
@@ -227,7 +226,7 @@ const onstarter = ( init = {} ) => {
 
     }
 
-    conf.loader[ name ] = THREELoader( conf.ENGINE, config );
+    conf.loader[ name ] = THREELoader( conf.RENDERING_ENGINE, config );
 
     return onstarter( conf );
 
@@ -241,7 +240,7 @@ const onstarter = ( init = {} ) => {
 
     }
 
-    conf.renderer[ name ] = THREERenderer( conf.ENGINE, config );
+    conf.renderer[ name ] = THREERenderer( conf.RENDERING_ENGINE, config );
 
     return onstarter( conf );
 
@@ -341,7 +340,7 @@ const onstarter = ( init = {} ) => {
 
     };
 
-    conf.scene[ name ] = THREEScene( conf.ENGINE, config );
+    conf.scene[ name ] = THREEScene( conf.RENDERING_ENGINE, config );
 
     const starter = composer( config );
 
@@ -357,7 +356,7 @@ const onstarter = ( init = {} ) => {
   const value = _ => conf;
 
   return {
-    useEngine,
+    use,
     withCamera,
     withLight,
     withLoader,

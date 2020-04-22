@@ -5,10 +5,10 @@ import { strings } from 'u3s';
  */
 
 /** @oublic */
-export const THREELight = ( ENGINE, parameters ) => {
+export const THREELight = ( RENDERING_ENGINE, parameters ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'light' );
-  const light = new ENGINE[ instanceName ]( strings.ToInt( ...parameters.option.args, ' ' ) );
+  const light = new RENDERING_ENGINE[ instanceName ]( strings.ToInt( ...parameters.option.args, ' ' ) );
   
   return light;
 

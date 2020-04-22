@@ -12,15 +12,41 @@ les librairies de moteur de rendu 3d nous offrent un niveau d'abstraction à la 
 
 c'est de mon retour d'expérience que m'est venu l'idée de créé **d2k** avec 2 buts bien distincts en tête: le premier était de déléguer la création des primitives à un poto sûre qui s'en occuperait à ma place pour ensuite me les restituer une fois qu'il sa tâche effectué de cette manière je peux vraiment me concentré sur la composition d'une scène. et enfin la seconde était de pouvoir trouver une façon plus simple de créer une scène afin d'attirer les curieux vers l'univers obscur de la trois dimensions, un monde incroyablement captivant que je vous invite à rejoindre. Et j'espère que que la materia noire **d2k** y sera pour quelque chose. 
 
+## Objectifs
+
+d2K doit être capable de :
+
+- supporter glsl -> pour créer une scène 3d au travers des shaders et du GPU.
+- supporter webgl -> pour créer une scène 3d au travers de primitives.
+- supporter webgpu -> pour créer une scène 3d au travers du GPU.
+- supporter css3d -> pour créer une scène 3d au travers du moteur 3d css.
+- supporter three -> pour créer une scène 3d au travers de la librairie three.js
+- supporter babylon -> pour créer une scène 3d au travers de la librairie babylon.js
+- supporter la superposition -> pour créer une scène 3d au travers de moteur 3d distincts
+- supporter json -> pour préparer et configurer nos scènes côté server
+
 ## Avertissement
 
 je ne suis pas un développeur, je suis juste un gars normal qui porte la programmation dans son coeur et qui souhaite apporter sa pierre à l'édifice dans le monde de l'open source. Si ce projet peut donner envie à une personne à s'intéresser au webgl. j'aurai contribué à ce que le développement 3d ne meurt jamais. dernier point, actuellement **d2k** support three.js mais à l'avenir il tachera de supporté d'autres librairies afin que chacun puisse utiliser sa bibliothèque préférée. je pense notamment à babylon.js. donc d'autres changements seront à venir pour le bien de tous, je l'espère. 
 
-## Support des primitives
+## Support
+
+engine            | supported | 
+------------------|-----------|
+css3d             | ❌        |
+glsl              | ❌        |
+webgl             | ⭕        |
+webgpu            | ❌        |
+
+3d engine library | supported |
+------------------|-----------|
+babylon.js        | ⭕        |
+three.js          | ⭕        |
 
 primitive         | babylon | three    |
 ------------------|---------|----------|
 camera            | ⭕      | ⭕       |
+effect            | ❌      | ❌       |
 font              | ❌      | ❌       |
 geometry          | ❌      | ⭕       |
 group             | ❌      | ⭕       |
@@ -28,9 +54,16 @@ light             | ⭕      | ⭕       |
 loader            | ❌      | ⭕       |
 material          | ⭕      | ⭕       |
 mesh              | ⭕      | ⭕       |
-renderer / engine | ⭕      | ⭕       |
-shader            | ❌      | ⭕       |
+renderer          | ⭕      | ⭕       |
 scene             | ⭕      | ⭕       |
+
+feature           | supported | 
+------------------|-----------|
+mouse             | ❌        |
+monitor           | ❌        |
+orbit-control     | ❌        |
+timer             | ⭕        |
+trackball         | ❌        |
 
 ## Installation
 
@@ -77,6 +110,14 @@ console.log( d2k ); // voilà, je te présente d2k ton nouveau gars sûre.
 ## Todo
 
 - [ ] json support
+- [x] webgl support
+- [x] d2k must to be able to do layering between both renderers
+- [ ] webgpu support
+- [ ] glsl support
+- [ ] css3d support
+- [ ] three font loader support
+- [x] babylon.js support
+- [x] three.js support 
 
 [npm]: https://img.shields.io/npm/v/d2k
 [npm-url]: https://www.npmjs.com/package/d2k

@@ -6,9 +6,9 @@ import { EVENTS } from '=>/core/core.events';
  */
 
 /** @public */
-export const THREELoader = ( ENGINE, parameters ) => {
+export const THREELoader = ( RENDERING_ENGINE, parameters ) => {
 
-  const loader = new ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'loader' ) ]();
+  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'loader' ) ]();
   const sources = !is.array( parameters.option.args ) ? [ parameters.option.args ] : parameters.option.args;
   const args = sources.map( async source => {
   

@@ -48,14 +48,13 @@
         const BABYLONstarter = d2k.babylonStarterConf()
           .use( BABYLON )
           .withScene( {
-            name: 'current',
-            config: {}
+            name: 'current'
           } )
           .withCamera( {
             name: 'current',
             config: {
               option: {
-                args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+                args: [ Math.PI / 2, Math.PI / 2, 2, [ 0, 0, 5 ] ],
                 position: [ 0, 0, 100 ],
                 type: 'arc-rotate'
               }
@@ -84,11 +83,9 @@
 
         console.log( BABYLONstarter );
 
-        BABYLONstarter.dom.canvas.width = window.innerWidth;
-        BABYLONstarter.dom.canvas.height = window.innerHeight;
-        
+        BABYLONstarter.dom.setSize( { canvas: BABYLONstarter.dom.canvas, width: window.innerWidth, height: window.innerHeight } );
         BABYLONstarter.dom.add( BABYLONstarter.dom.canvas );
-        BABYLONstarter.engine.runRenderLoop( _ => BABYLONstarter.scene.current.render() );
+        BABYLONstarter.engine.onrender( { engine: BABYLONstarter.engine, scene: BABYLONstarter.scene.current } );
 
       }, false );
 

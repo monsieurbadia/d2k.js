@@ -8,4 +8,4 @@
  * @private
  */
 
-export const THREEScene = ENGINE => new ENGINE.Scene();
+export const THREEScene = RENDERING_ENGINE => new RENDERING_ENGINE.Scene();
