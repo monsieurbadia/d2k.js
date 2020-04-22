@@ -8,3 +8,4 @@ export { THREEMaterial } from './primitive.three.material';
 export { THREEMesh } from './primitive.three.mesh';
 export { THREERenderer } from './primitive.three.renderer';
 export { THREEScene } from './primitive.three.scene';
+export { THREEShader } from './primitive.three.shader';

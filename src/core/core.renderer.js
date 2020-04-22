@@ -12,10 +12,12 @@ const beforerender = ( THREE, SOURCE ) => {
   /** @private */
   const render = _ => renderer.setAnimationLoop( _ => {
 
-    const time = renderer.timer.getDelta();
+    for ( let i = 0; i < renders.length; i++ ) {
+      if ( renders[ i ]( renderer.timer.getDelta() ) === null )
+        return null;
+    }
 
     renderer.resetState( renderer );
-    renders.forEach( render => render( time ) );
     renderer.render( THREE.scene.mySceneName, THREE.camera.current );
     SOURCE.scene.current.render();
 

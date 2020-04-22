@@ -7,34 +7,37 @@
   </head>
   <body>
     <canvas id="viewRendering" touch-action="none"></canvas>
+    <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../../src/index.js"></script>
     <script>
 
       window.addEventListener( 'DOMContentLoaded', _ => {
 
-        const canvas = document.getElementById( 'viewwRenderer' );
-        const GLGLstarter = d2k.onstarter( { canvas } )
-          .use( THREE )
-          .withShader(  {
-            name: 'myShadername',
-            config : {
-              vertex: `
-                void main () {
-                  gl_Position = vec4(position, 1.0);
-                }
-              `,
-              fragment: `
-                uniform vec2 resolution;
-                uniform float time;
+        // const canvas = document.getElementById( 'viewRendering' );
+        // const GLGLstarter = d2k.onstarter( { canvas } )
+        //   .use( THREE, true )
+          // .withShader(  {
+          //   name: 'myShadername',
+          //   config : {
+          //     vertex: `
+          //       void main () {
+          //         gl_Position = vec4(position, 1.0);
+          //       }
+          //     `,
+          //     fragment: `
+          //       uniform vec2 resolution;
+          //       uniform float time;
 
-                void main () {
-                  vec2 st = gl_FragCoord.xy / resolution.xy;
-                  gl_FragColor=vec4(st.x, st.y, 0.0, 1.0);
-                }
-              `
-            }
-          } )
-          .value();
+          //       void main () {
+          //         vec2 st = gl_FragCoord.xy / resolution.xy;
+          //         gl_FragColor=vec4(st.x, st.y, 0.0, 1.0);
+          //       }
+          //     `
+          //   }
+          // } )
+          // .value();
+
+        // console.log( GLGLstarter );
 
       }, false );
     </script>
