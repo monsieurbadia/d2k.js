@@ -1,4 +1,4 @@
-import { Starter } from '=>/core/core';
+import { Starter } from '=>/starter/starter';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/

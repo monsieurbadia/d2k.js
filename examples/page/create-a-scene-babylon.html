@@ -45,8 +45,11 @@
 
       window.addEventListener( 'DOMContentLoaded', () => {
         
-        const BABYLONstarter = d2k.babylonStarterConf( { canvas: document.getElementById( 'viewRendering' ) } )
+        const BABYLONstarter = d2k.onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
           .use( BABYLON )
+          .withEngine( {
+            name: 'current'
+          } )
           .withScene( {
             name: 'current'
           } )
@@ -83,7 +86,7 @@
 
         console.log( BABYLONstarter );
 
-        BABYLONstarter.engine.onrender( { engine: BABYLONstarter.engine, scene: BABYLONstarter.scene.current } );
+        BABYLONstarter.engine.current.onrender( { engine: BABYLONstarter.engine.current, scene: BABYLONstarter.scene.current } );
 
       }, false );
 

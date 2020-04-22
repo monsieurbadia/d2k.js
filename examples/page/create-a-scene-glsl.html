@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k - create a scene glsl</title>
+  </head>
+  <body>
+    <canvas id="viewRendering" touch-action="none"></canvas>
+    <script src="../../src/index.js"></script>
+    <script>
+
+      window.addEventListener( 'DOMContentLoaded', _ => {
+
+        const canvas = document.getElementById( 'viewwRenderer' );
+        const GLGLstarter = d2k.onstarter( { canvas } )
+          .use( THREE )
+          .withShader(  {
+            name: 'myShadername',
+            config : {
+              vertex: `
+                void main () {
+                  gl_Position = vec4(position, 1.0);
+                }
+              `,
+              fragment: `
+                uniform vec2 resolution;
+                uniform float time;
+
+                void main () {
+                  vec2 st = gl_FragCoord.xy / resolution.xy;
+                  gl_FragColor=vec4(st.x, st.y, 0.0, 1.0);
+                }
+              `
+            }
+          } )
+          .value();
+
+      }, false );
+    </script>
+  </body>
+</html>

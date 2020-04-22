@@ -5,23 +5,28 @@
 /** @private */
 const beforerender = ( THREE, SOURCE ) => {
 
+  const { renderer: { current: renderer } } = THREE;
+  const { engine: { current: engine } } = SOURCE;
+  const renders = [ ...renderer.renders, ...engine.renders ];
+
   /** @private */
-  const render = _ => THREE.renderer.current.setAnimationLoop( _ => {
+  const render = _ => renderer.setAnimationLoop( _ => {
 
-    THREE.renderer.current.resetState( THREE.renderer.current );
-    THREE.renderer.current?.renders.forEach( render => render( THREE.renderer.current.timer.getDelta() ) );
+    const time = renderer.timer.getDelta();
 
-    THREE.renderer.current.render( THREE.scene.mySceneName, THREE.camera.current );
+    renderer.resetState( renderer );
+    renders.forEach( render => render( time ) );
+    renderer.render( THREE.scene.mySceneName, THREE.camera.current );
     SOURCE.scene.current.render();
-  
+
   } );
 
   /** @public */
   return f => {
 
-    if ( f ) THREE.renderer.current?.renders.push( f );
-
     render();
+    
+    if ( f ) renders.push( f );
 
   };
 

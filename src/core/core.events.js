@@ -21,6 +21,8 @@ export const onrender = f => typeof f === 'function' && FS.renders.push( f );
 
 export const Events = _ => {
 
-  return {};
+  return {
+    ...FS
+  };
 
 };
