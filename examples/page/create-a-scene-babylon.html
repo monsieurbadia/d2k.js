@@ -38,14 +38,14 @@
     </style>
   </head>
   <body>
-    
+    <canvas id="webglRenderering"></canvas>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="../../src/starter.js"></script>
     <script>
 
       window.addEventListener( 'DOMContentLoaded', () => {
-
-        const BABYLONstarter = d2k.babylonStarterConf()
+        
+        const BABYLONstarter = d2k.babylonStarterConf( { canvas: document.getElementById( 'webglRenderering' ) } )
           .use( BABYLON )
           .withScene( {
             name: 'current'
@@ -83,8 +83,6 @@
 
         console.log( BABYLONstarter );
 
-        BABYLONstarter.dom.setSize( { canvas: BABYLONstarter.dom.canvas, width: window.innerWidth, height: window.innerHeight } );
-        BABYLONstarter.dom.add( BABYLONstarter.dom.canvas );
         BABYLONstarter.engine.onrender( { engine: BABYLONstarter.engine, scene: BABYLONstarter.scene.current } );
 
       }, false );

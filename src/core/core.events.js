@@ -11,7 +11,7 @@ export const EVENTS = Object.freeze( {
 /** @public */
 export const onloader = f => typeof f === 'function' && EVENTS.loaders.push( f );
 
-/** @public it adds callbacks relative to the render event */
+/** @public */
 export const onrender = f => typeof f === 'function' && EVENTS.renders.push( f );
 
 /**

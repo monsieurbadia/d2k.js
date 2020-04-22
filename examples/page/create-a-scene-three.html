@@ -43,7 +43,9 @@
     <script>
       window.addEventListener( 'DOMContentLoaded', _ => {
 
-        const starter = d2k.onstarter()
+        const canvas = document.createElement( 'canvas' );
+
+        const starter = d2k.onstarter( { canvas } )
           .use( THREE )
           .withCamera( {
             name: 'current',
@@ -92,7 +94,6 @@
           .withRenderer( {
             name: 'current',
             config: {
-              canvas: 'webgl',
               pixelRatio: window.devicePixelRatio,
               size: [ window.innerWidth, window.innerHeight ],
               camera: 'current',
@@ -133,6 +134,16 @@
 
         console.log( 'index', starter );
 
+        // starter.renderer.current.domElement.width = window.innerWidth;
+        // starter.renderer.current.domElement.height = window.innerHeight;
+        // starter.renderer.current.domElement.style.width = `${ window.innerWidth }px`;
+        // starter.renderer.current.domElement.style.height = `${ window.innerHeight }px`;
+
+        starter.scene.mySceneName.add( starter.mesh.myMeshName );
+
+        document.body.appendChild( starter.renderer.current.domElement );
+
+        // starter.dom.add( starter.renderer.current.domElement );
         starter.mesh.myMeshName.onloader( textures => console.log( textures ) );
 
         starter.mesh.myMeshName.onrender( time => {

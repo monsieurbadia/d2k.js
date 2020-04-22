@@ -1,5 +1,5 @@
 import { is, pipe, reducer, strings } from 'u3s';
-import { /*Creater,*/ /*Version,*/ DOM, Renderer } from '=>/core/core';
+import { /*Creater,*/ Renderer } from '=>/core/core';
 
 import {
   BABYLONCamera,
@@ -38,15 +38,17 @@ const PRIMITIVE = {
 };
 
 /** @public */
-export const Creater = ( key, payload ) => {
+export const Creater = ( RENDERING_ENGINE, key, payload ) => {
 
-  const currentEngineName = payload.ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
+  const currentEngineName = payload.RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
   const currentInstanceName = `${ currentEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
   const Instance = PRIMITIVE[ currentInstanceName ];
 
+  // console.log( RENDERING_ENGINE, key, payload );
+
   return {
     ...payload,
-    [ key ]: reducer( payload[ key ], result => Instance( payload.ENGINE, result ) )
+    [ key ]: reducer( payload[ key ], result => Instance( result ) )
   };
 
 };
@@ -58,11 +60,9 @@ const babylonStarterConf = ( init = {} ) => {
 
   const use = engine => {
 
-    Object.assign( conf, { dom: DOM( engine ) } );
-
     conf.RENDERING_ENGINE = engine;
     conf.RENDERING_ENGINE.coreData = {
-      canvas: conf.dom.canvas
+      canvas: conf.canvas
     };
 
     conf.engine = BABYLONEngine( conf.RENDERING_ENGINE );
@@ -150,13 +150,6 @@ const babylonStarterConf = ( init = {} ) => {
 
 
 
-
-
-
-
-
-
-
 /** @public */
 const onstarter = ( init = {} ) => {
 
@@ -166,11 +159,8 @@ const onstarter = ( init = {} ) => {
 
     conf.RENDERING_ENGINE = engine;
     conf.RENDERING_ENGINE.coreData = {
-      BABYLON: {},
-      THREE: {}
+      canvas: conf.canvas
     };
-
-    Object.assign( conf, { dom: DOM( engine ) } );
 
     return onstarter( conf );
 
@@ -311,6 +301,7 @@ const onstarter = ( init = {} ) => {
 
             if ( is.empty( conf.mesh ) ) break;
 
+            // TODO:
             const mesh = option.reduce( ( m, k ) => ( { ...m, [ k ]: conf.mesh[ k ] } ), {} );
 
             return {
@@ -340,14 +331,12 @@ const onstarter = ( init = {} ) => {
 
     };
 
-    conf.scene[ name ] = THREEScene( conf.RENDERING_ENGINE, config );
-
+    const scene = THREEScene( conf.RENDERING_ENGINE, config );
     const starter = composer( config );
 
-    conf.scene[ name ].add( starter.mesh.myMeshName );
-    starter.renderer.onrender( { renderer: starter.renderer, scene: conf.scene[ name ], camera: starter.camera.main } )
-
-    document.body.appendChild( starter.renderer.domElement );
+    conf.scene[ name ] = scene;
+    
+    starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
 
     return onstarter( conf );
 

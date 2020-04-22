@@ -44,16 +44,15 @@ const onrender = ( { renderer, scene, camera } ) =>
 
 export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
 
-  if ( oftype( RENDERING_ENGINE ) !== 'object' || is.empty( RENDERING_ENGINE ) ) return;
-
-  const canvas = RENDERING_ENGINE.coreData.canvas;
+  const { canvas } = RENDERING_ENGINE.coreData;
   const renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas } );
 
   renderer.timer = new RENDERING_ENGINE.Clock();
   renderer.autoClear = false;
 
-  renderer.setClearColor( parameters?.background );
-  renderer.setPixelRatio( parameters?.pixelRatio );
+  renderer.setClearColor( parameters.background );
+  renderer.setPixelRatio( parameters.pixelRatio );
+  renderer.setSize( window.innerWidth, window.innerHeight );
 
   return Object.assign( renderer, {
     ...EVENTS,
