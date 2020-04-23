@@ -1,0 +1,85 @@
+{
+  "camera": {
+    "name": "current",
+    "config": {
+      "option": {
+        "args": [ 75, 1, 0.1, 1000 ],
+        "position": [ 0, 0, 100 ],
+        "type": "perspective"
+      }
+    }
+  },
+  "mesh": {
+    "name": "current",
+    "config": [ {
+      "geometry": {
+        "args": [ 20, 20, 20 ],
+        "type": "box-buffer"
+      },
+      "material": {
+        "args": {
+          "transparent": true
+        },
+        "type": "mesh-normal"
+      },
+      "positions": [ -20, 0, 0 ],
+      "scene": "scene1",
+      "group": {}
+    },
+    {
+      "geometry": {
+        "args": [ 20, 20, 20 ],
+        "type": "box"
+      },
+      "material": {
+        "args": {
+          "uniforms": { "mouse": {} },
+          "transparent": true
+        },
+        "type": "shader"
+      },
+      "positions": [ 20, 0, 0 ],
+      "scene": "scene1",
+      "group": {}
+    } ]
+  },
+  "renderer": {
+    "name": "current",
+    "config": {
+      "pixelRatio": 0,
+      "size": [],
+      "camera": "current",
+      "scene": "scene1"
+    }
+  },
+  "light": {
+    "name": "current",
+    "config": {
+      "option": {
+        "args": [ "0xffffbb 0x080820 1" ],
+        "type": "hemisphere"
+      }
+    }
+  },
+  "loader": {
+    "name": "current",
+    "config": {
+      "option": {
+        "args": [ { "name": "img-1", "url": "/cover-front.28969be3.jpg" }, { "name": "img-2", "url": "/cover-front.28969be3.jpg" } ],
+        "type": "texture"
+      }
+    }
+  },
+  "scene": {
+    "name": "current",
+    "config": {
+      "mesh": [ "current" ],
+      "light": [ "current" ],
+      "camera": {
+        "main": "current",
+        "others": [ "another" ]
+      },
+      "renderer": "current"
+    }
+  }
+}

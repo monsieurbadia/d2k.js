@@ -2,27 +2,14 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
-export const FS = Object.freeze( {
+/** @public callbacks */
+export const eventsCallback = Object.freeze( {
   renders: [],
   loaders: []
 } );
 
 /** @public */
-export const onloader = f => typeof f === 'function' && FS.loaders.push( f );
+export const onloader = f => typeof f === 'function' && eventsCallback.loaders.push( f );
 
 /** @public */
-export const onrender = f => typeof f === 'function' && FS.renders.push( f );
-
-/**
- * events
- * @public
- */
-
-export const Events = _ => {
-
-  return {
-    ...FS
-  };
-
-};
+export const onrender = f => typeof f === 'function' && eventsCallback.renders.push( f );

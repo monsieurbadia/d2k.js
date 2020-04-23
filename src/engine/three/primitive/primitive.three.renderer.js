@@ -1,5 +1,5 @@
-import { is, oftype } from 'u3s';
-import { FS } from '=>/core/core.events';
+import { is } from 'u3s';
+import { eventsCallback } from '=>/core/core.events';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -8,7 +8,7 @@ import { FS } from '=>/core/core.events';
 /** @private */
 const resetState = renderer => {
 
-  if ( !renderer ) return;
+  if ( is.empty( renderer ) ) return;
 
   const gl = renderer.getContext();
 
@@ -42,20 +42,24 @@ const onrender = ( { renderer, scene, camera } ) =>
  * @public
  */
 
-export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
+let renderer;
 
+ export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
+
+  const { background, pixelRatio } = parameters;
   const { canvas } = RENDERING_ENGINE.coreData;
-  const renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas } );
+
+  if ( is.empty( renderer ) ) renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas } );
 
   renderer.timer = new RENDERING_ENGINE.Clock();
   renderer.autoClear = false;
 
-  renderer.setClearColor( parameters.background );
-  renderer.setPixelRatio( parameters.pixelRatio );
+  renderer.setClearColor( background );
+  renderer.setPixelRatio( pixelRatio === 0 ? window.pixelRatio : pixelRatio );
   renderer.setSize( window.innerWidth, window.innerHeight );
 
   return Object.assign( renderer, {
-    ...FS,
+    ...eventsCallback,
     onrender,
     resetState
   } );

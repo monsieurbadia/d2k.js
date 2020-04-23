@@ -105,6 +105,47 @@ console.log( d2k ); // voilà, je te présente d2k ton nouveau gars sûre.
 
 ## Demo
 
+```js
+
+// babylon
+d2k.onstarter()
+  .use( BABYLON )
+  .withEngine()
+  .withScene()
+  .withLight()
+  .withMesh()
+  .value();
+
+// three
+window.addEventListener( 'DOMContentLoaded', _ => {
+
+  const canvas = document.getElementById( 'viewRendering' );
+
+  const starter = d2k.onstarter( { canvas } )
+    .use( THREE )
+    .withCamera( sceneConfig.camera )
+    .withMesh( sceneConfig.mesh )
+    .withRenderer( sceneConfig.renderer )
+    .withLight( sceneConfig.light )
+    .withScene( sceneConfig.scene )
+    .value();
+
+  const {
+    mesh: { current:  mesh },
+    scene: { current:  scene }
+  } = starter;
+
+  scene.add( mesh );
+
+}, false );
+
+// glsl
+d2k.onstarter()
+  .use( THREE )
+  .withShader()
+  .value();
+```
+
 ## API
 
 ## Todo

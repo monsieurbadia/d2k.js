@@ -5,4 +5,4 @@ import { strings } from 'u3s';
  */
 
 /** @public */
-export const THREEGroup = RENDERING_ENGINE => new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( 'group', null ) ]();
+export const THREEGroup = RENDERING_ENGINE => new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( 'group' ) ]();

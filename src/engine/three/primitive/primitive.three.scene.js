@@ -3,7 +3,7 @@
  */
 
 /** 
- * THREEScene
+ * three scene
  * 
  * @private
  */

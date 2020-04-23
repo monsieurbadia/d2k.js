@@ -6271,6 +6271,11 @@ test-exclude@^6.0.0:
     glob "^7.1.4"
     minimatch "^3.0.4"
 
+three@^0.115.0:
+  version "0.115.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.115.0.tgz#540d800c381b9da2334c024f0fbe4d23f84eb05e"
+  integrity sha512-mAV2Ky3RdcbdSbR9capI+tKLvRldWYxd4151PZTT/o7+U2jh9Is3a4KmnYwzyUAhB2ZA3pXSgCd2DOY4Tj5kow==
+
 throat@^5.0.0:
   version "5.0.0"
   resolved "https://registry.yarnpkg.com/throat/-/throat-5.0.0.tgz#c5199235803aad18754a667d659b5e72ce16764b"
@@ -6428,10 +6433,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-u3s@^0.0.10:
-  version "0.0.10"
-  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.10.tgz#fc44f95b1d35126a33830b55550e610779fbc07f"
-  integrity sha512-7Q8kavlXtbYrY8P0jQYh2K0BdHnDvi1sfm26hSxw9YdTku7u92D17+mY/xXc4BVOBP+TVqKW9PY1pnOIQBZnGw==
+u3s@^0.0.12:
+  version "0.0.12"
+  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.12.tgz#8fe4bd18814d12a6a3af374b8c589f0b738a42b1"
+  integrity sha512-CmhnnRc7efkSeHc950P88MFDazBh01bT8TW021lIegQI+ulbfxji8a3mj5V2wETwrAWUXX+Zw4ZhoEJgFhJrNw==
 
 uncss@^0.17.2:
   version "0.17.3"

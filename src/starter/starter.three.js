@@ -1,4 +1,7 @@
-import { is } from 'u3s';
+import {
+  is,
+  flatten
+} from 'u3s';
 
 import {
   THREECamera,
@@ -12,14 +15,6 @@ import {
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
-
-// TODO: move to u3s
-const flatten = array =>
-  array.reduce( ( result, val ) =>
-    is.array( val )
-      ? [ ...result, ...flatten( val ) ]
-      : [ ...result, val ]
-    , [] );
 
 const composeScene = ( { scene, primitives } ) => {
 

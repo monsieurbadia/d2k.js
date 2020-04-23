@@ -133,7 +133,15 @@
           } )
           .value();
 
+        THREEstarter.mesh.myMeshName.onrender( time => {
 
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
+
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
+
+        } );
 
         const BABYLONstarter = d2k.onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
           .use( BABYLON )
@@ -187,16 +195,6 @@
         d2k.onlayering( [ THREEstarter, BABYLONstarter ] ).onrender();
 
         // THREEstarter.mesh.myMeshName.onloader( textures => console.log( textures ) );
-
-        THREEstarter.mesh.myMeshName.onrender( time => {
-
-          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
-          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
-
-          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
-          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
-
-        } );
 
       }, false );
 

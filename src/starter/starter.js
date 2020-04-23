@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { Renderer } from '=>/core/core';
+import { Renderer, Version } from '=>/core/core';
 import { onbabylonstarter } from './starter.babylon';
 import { onglslstarter } from './starter.glsl';
 import { onthreestarter } from './starter.three';
@@ -9,15 +9,12 @@ import { onthreestarter } from './starter.three';
  */
 
 /** @public */
-const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
-
-/** @public */
 const onstarter = ( init = {} ) => {
 
   const conf = init;
 
   const use = ( renderingEngine, Is ) => {
-    
+
     if ( is.empty( renderingEngine ) ) return;
 
     conf.RENDERING_ENGINE = renderingEngine;
@@ -39,6 +36,8 @@ const onstarter = ( init = {} ) => {
 
   const value = _ => conf;
 
+  Version();
+
   return {
     use,
     value
@@ -48,6 +47,8 @@ const onstarter = ( init = {} ) => {
 
 /** @public */
 export const Starter = _ => {
+
+  const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
 
   return Object.assign( {
     onlayering,
