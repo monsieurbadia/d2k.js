@@ -1,5 +1,3 @@
-// import { frozen } from 'u3s';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */

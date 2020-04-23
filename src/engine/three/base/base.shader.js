@@ -1,11 +1,9 @@
-import { frozen } from 'u3s';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
 /** @public */
-export const SHADER = frozen( {
+export const SHADER = {
   CAMERA: {
     type: 'perspective'
   },
@@ -50,4 +48,4 @@ export const SHADER = frozen( {
       value: 1.0
     }
   }
-} );
+};

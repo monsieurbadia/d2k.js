@@ -70,9 +70,7 @@ export const onthreestarter = ( init = {} ) => {
   const withLight = ( { name, config } ) => {
 
     if ( is.empty( conf.light ) ) {
-
       conf.light = {};
-
     }
 
     conf.light[ name ] = THREELight( conf.RENDERING_ENGINE, config );
@@ -84,9 +82,7 @@ export const onthreestarter = ( init = {} ) => {
   const withMesh = ( { name, config } ) => {
 
     if ( is.empty( conf.mesh ) ) {
-
       conf.mesh = {};
-
     }
 
     conf.mesh[ name ] = THREEMesh( conf.RENDERING_ENGINE, config );
@@ -98,9 +94,7 @@ export const onthreestarter = ( init = {} ) => {
   const withLoader = ( { name, config } ) => {
 
     if ( is.empty( conf.loader ) ) {
-
       conf.loader = {};
-
     }
 
     conf.loader[ name ] = THREELoader( conf.RENDERING_ENGINE, config );
@@ -112,9 +106,7 @@ export const onthreestarter = ( init = {} ) => {
   const withRenderer = ( { name, config } ) => {
 
     if ( is.empty( conf.renderer ) ) {
-
       conf.renderer = {};
-
     }
 
     conf.renderer[ name ] = THREERenderer( conf.RENDERING_ENGINE, config );

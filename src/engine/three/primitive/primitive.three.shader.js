@@ -1,5 +1,7 @@
 import { merge } from 'u3s';
 import { MATH, SHADER } from '=>/engine/three/base/base';
+import { onloader, onrender } from '=>/core/core.events';
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
@@ -54,17 +56,23 @@ const compile = shade =>
 
 /**
  * three shader
+ * 
  * @public
  */
 
-export const THREEShader = ( RENDERING_ENGINE, option ) => {
+export const THREEShader = ( RENDERING_ENGINE, parameters ) => {
 
-  const shader = {};
-  // shader.uniforms = createUniforms( RENDERING_ENGINE, merge( SHADER.UNIFORMS, option.uniforms ) );
-  // shader.fragmentShader = option.fragment;
-  // shader.vertexShader = option.vertex;
+  const uniforms = createUniforms( RENDERING_ENGINE, merge( SHADER.UNIFORMS, parameters.uniforms ) );
+  const fragmentShader = parameters.fragment;
+  const vertexShader = parameters.vertex;
+  const shade = compile( { uniforms, fragmentShader, vertexShader } );
+  const geometry = new RENDERING_ENGINE.PlaneBufferGeometry( 2, 2 );
+  const material = new RENDERING_ENGINE.ShaderMaterial( shade );
+  const shader = new RENDERING_ENGINE.Mesh( geometry, material );
 
-  // return Object.assign( shader, compile( shader ) );
+  return Object.assign( shader, {
+    onloader,
+    onrender
+  } );
 
-  return shader;
 };
