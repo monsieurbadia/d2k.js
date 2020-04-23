@@ -16,7 +16,7 @@ const onstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const use = ( renderingEngine, isShader ) => {
+  const use = ( renderingEngine, Is ) => {
     
     if ( is.empty( renderingEngine ) ) return;
 
@@ -27,13 +27,13 @@ const onstarter = ( init = {} ) => {
 
     if ( conf.RENDERING_ENGINE.SceneComponentConstants ) {
       return onbabylonstarter( conf );
-    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && isShader ) {
+    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && Is === 'glsl' ) {
       return onglslstarter( conf );
-    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !isShader ) {
+    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !Is ) {
       return onthreestarter( conf );
     }
 
-    return console.log( 'invalid engine' );
+    return console.log( 'invalid rendering engine' );
 
   };
 

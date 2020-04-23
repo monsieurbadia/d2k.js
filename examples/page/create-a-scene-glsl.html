@@ -4,6 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>d2k - create a scene glsl</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        margin: auto;
+      }
+
+      nav {
+        color: color;
+        z-index: 200;
+        position: absolute;
+      }
+    </style>
   </head>
   <body>
     <canvas id="viewRendering" touch-action="none"></canvas>
@@ -15,7 +47,7 @@
 
         const canvas = document.getElementById( 'viewRendering' );
         const GLGLstarter = d2k.onstarter( { canvas } )
-          .use( THREE, true )
+          .use( THREE, 'glsl' )
           .withShader(  {
             name: 'myShaderName',
             config : {
@@ -46,13 +78,12 @@
           } )
           .value();
 
-        GLGLstarter.shader.myShaderName.onrender( ( e) => {
-          // console.log( e );
+        GLGLstarter.shader.myShaderName.onrender( time => {
+          // console.log( time );
         } );
 
-        console.log( GLGLstarter );
-
       }, false );
+
     </script>
   </body>
 </html>
