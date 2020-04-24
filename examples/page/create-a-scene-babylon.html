@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create a scene with the babylon engine</title>
+    <title>d2k - create a scene with the babylon rendering engine</title>
     <style>
       * {
         box-sizing: border-box;
@@ -83,8 +83,6 @@
             }
           } )
           .value();
-
-        console.log( BABYLONstarter );
 
         BABYLONstarter.engine.current.onrender( { engine: BABYLONstarter.engine.current, scene: BABYLONstarter.scene.current } );
 

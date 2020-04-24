@@ -1,4 +1,4 @@
-import { is } from 'u3s';
+import { is, oftype } from 'u3s';
 import { onloader, onrender } from '=>/core/core.events';
 
 import {
@@ -11,29 +11,35 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
+/** @private */
+const DYNAMICS_PROPERTIES = [
+  'position',
+  'rotation',
+  'scale'
+];
+
 /** @public */
 export const THREEMesh = ( RENDERING_ENGINE, parameters ) => {
 
-  if ( !is.array( parameters ) || is.empty( parameters ) ) return;
-
   const group = THREEGroup( RENDERING_ENGINE );
+  const params = !is.array( parameters ) ? [ { ...parameters } ] : parameters;
 
-  const meshes = parameters.reduce( ( result, parameter ) => {
+  const mesh = params.map( parameter => {
 
     const geometry = THREEGeometry( RENDERING_ENGINE, parameter.geometry );
     const material = THREEMaterial( RENDERING_ENGINE, parameter.material );
-    const mesh = new RENDERING_ENGINE.Mesh( geometry, material );
+    const currentMesh = new RENDERING_ENGINE.Mesh( geometry, material );
 
-    mesh.position.set( ...parameter.positions );
+    Object
+      .keys( parameter )
+      .filter( key => DYNAMICS_PROPERTIES.includes( key ) )
+      .forEach( key => currentMesh[ key ].set( ...parameter[ key ] ) );
 
-    return [
-      ...result,
-      parameter.group ? group.add( mesh ) : mesh
-    ];
+    return oftype( parameters ) === 'array' ? group.add( currentMesh ) : currentMesh;
 
-  }, [] );
+  } )[ 0 ];
 
-  return Object.assign( meshes[ 0 ], {
+  return Object.assign( mesh, {
     onloader,
     onrender
   } );

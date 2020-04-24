@@ -69,7 +69,7 @@
                 },
                 type: 'mesh-normal'
               },
-              positions: [ -20, 0, 0 ],
+              position: [ -20, 0, 0 ],
               scene: 'scene1',
               group: {}
             },
@@ -85,7 +85,7 @@
                 },
                 type: 'shader'
               },
-              positions: [ 20, 0, 0 ],
+              position: [ 20, 0, 0 ],
               scene: 'scene1',
               group: {}
             } ]
@@ -130,12 +130,6 @@
             }
           } )
           .value();
-
-        console.log( 'index', THREEstarter );
-
-        THREEstarter.scene.mySceneName.add( THREEstarter.mesh.myMeshName );
-
-        document.body.appendChild( THREEstarter.renderer.current.domElement );
 
         THREEstarter.mesh.myMeshName.onloader( textures => console.log( textures ) );
 
