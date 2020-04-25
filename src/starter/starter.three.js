@@ -10,7 +10,7 @@ import {
   THREEMesh,
   THREERenderer,
   THREEScene
-} from '=>/engine/three/primitive/primitive';
+} from '=>/engine/three';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/

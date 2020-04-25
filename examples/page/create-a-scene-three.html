@@ -42,91 +42,90 @@
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../../src/index.js"></script>
     <script>
-      window.addEventListener( 'DOMContentLoaded', _ => {
+      window.addEventListener( "DOMContentLoaded", _ => {
 
-        const THREEstarter = d2k.onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
+        const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
           .use( THREE )
           .withCamera( {
-            name: 'current',
+            name: "current",
             config: {
               option: {
                 args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
                 position: [ 0, 0, 100 ],
-                type: 'perspective'
+                type: "perspective"
               }
             }
           } )
           .withMesh( {
-            name: 'myMeshName',
+            name: "myMeshName",
             config: [ {
               geometry: {
                 args: [ 20, 20, 20 ],
-                type: 'box-buffer'
+                type: "box-buffer"
               },
               material: {
                 args: {
                   transparent: true
                 },
-                type: 'mesh-normal'
+                type: "mesh-normal"
               },
               position: [ -20, 0, 0 ],
-              scene: 'scene1',
+              scene: "scene1",
               group: {}
             },
             {
               geometry: {
                 args: [ 20, 20, 20 ],
-                type: 'box'
+                type: "box"
               },
               material: {
                 args: {
                   uniforms: { mouse: {} },
                   transparent: true
                 },
-                type: 'shader'
+                type: "shader"
               },
               position: [ 20, 0, 0 ],
-              scene: 'scene1',
+              scene: "scene1",
               group: {}
             } ]
           } )
           .withRenderer( {
-            name: 'current',
+            name: "current",
             config: {
               pixelRatio: window.devicePixelRatio,
               size: [ window.innerWidth, window.innerHeight ],
-              camera: 'current',
-              scene: 'scene1'
+              type: "webgl"
             }
           } )
           .withLight( {
-            name: 'toto',
+            name: "toto",
             config: {
               option: {
-                args: [ '0xffffbb 0x080820 1'  ],
-                type: 'hemisphere'
+                args: [ "0xffffbb 0x080820 1"  ],
+                type: "hemisphere"
               }
             }
           } )
           .withLoader( {
-            name: 'textures',
+            name: "textures",
             config: {
               option: {
-                args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-                type: 'texture'
+                args: [ { name: "img-1", url: "/cover-front.28969be3.jpg" }, { name: "img-2", url: "/cover-front.28969be3.jpg" } ],
+                type: "texture"
               }
             }
           } )
           .withScene( {
-            name: 'mySceneName',
+            name: "mySceneName",
             config: {
-              mesh: [ 'myMeshName' ],
-              light: [ 'toto' ],
+              mesh: [ "myMeshName" ],
+              light: [ "toto" ],
               camera: {
-                main: 'current',
-                others: [ 'another' ]
+                main: "current",
+                others: [ "another" ]
               },
-              renderer: 'current'
+              renderer: "current"
             }
           } )
           .value();

@@ -1,12 +1,12 @@
 import { is } from 'u3s';
-import { Creater } from '=>/core/core';
+import { Creater } from '=>/core';
 
 import {
   BABYLONEngine,
   BABYLONLight,
   BABYLONMesh,
   BABYLONScene
-} from '=>/engine/babylon/primitive/primitive';
+} from '=>/engine/babylon';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -22,7 +22,7 @@ export const onbabylonstarter = ( init = {} ) => {
     if ( is.empty( conf.engine ) ) {
 
       conf.engine = {};
-      
+
     };
 
     conf.engine[ name ] = BABYLONEngine( conf.RENDERING_ENGINE );

@@ -1,15 +1,15 @@
+import { Dom } from '=>/core';
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
 const beforerender = ( THREE, SOURCE ) => {
 
   const { renderer: { current: renderer } } = THREE;
   const { engine: { current: engine } } = SOURCE;
   const renders = [ ...renderer.renders, ...engine.renders ];
 
-  /** @private */
   const render = _ => renderer.setAnimationLoop( _ => {
 
     for ( let i = 0; i < renders.length; i++ ) {
@@ -23,7 +23,6 @@ const beforerender = ( THREE, SOURCE ) => {
 
   } );
 
-  /** @public */
   return f => {
 
     render();
@@ -43,13 +42,10 @@ const beforerender = ( THREE, SOURCE ) => {
 
 export const Renderer = ( [ TARGET, SOURCE ] ) => {
 
-  const THREEstarter = TARGET;
-  const BABYLONstarter = SOURCE;
-
-  THREEstarter.renderer.current.setSize( window.innerWidth, window.innerHeight );
+  TARGET.renderer.current.setSize( ...Dom.size );
 
   return Object.assign( {}, {
-    onrender: beforerender( THREEstarter, BABYLONstarter )
+    onrender: beforerender( TARGET, SOURCE )
   } );
 
 };

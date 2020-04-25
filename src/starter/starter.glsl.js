@@ -1,10 +1,11 @@
 import { is } from 'u3s';
-import { eventsCallback } from '=>/core/core.events';
+import { CALLBACKS } from '=>/base';
+import { Dom } from '=>/core';
 
 import {
   THREEShader,
   THREEScene
-} from '=>/engine/three/primitive/primitive';
+} from '=>/engine/three';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -42,15 +43,15 @@ export const onglslstarter = ( init = {} ) => {
 
     camera.position.set( 0, 0, -1 );
     renderer.setClearColor( 0x000000 );
-    renderer.setPixelRatio( window.devicePixelRatio );
+    renderer.setPixelRatio( Dom.pixelRatio );
     renderer.setSize( ...config.size, true );
     renderer.timer = new conf.RENDERING_ENGINE.Clock();
-    
-    Object.assign( renderer, { ...eventsCallback } );
+
+    Object.assign( renderer, { ...CALLBACKS } );
 
     conf.renderer[ name ] = renderer;
 
-    renderer.setAnimationLoop( () => {
+    renderer.setAnimationLoop( _ => {
 
       renderer.renders.forEach( render => render( renderer.timer.getDelta() ) );
       renderer.render( scene, camera );

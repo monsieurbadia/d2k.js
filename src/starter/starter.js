@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { Renderer, Version } from '=>/core/core';
+import { Renderer, Version } from '=>/core';
 import { onbabylonstarter } from './starter.babylon';
 import { onglslstarter } from './starter.glsl';
 import { onthreestarter } from './starter.three';
@@ -8,7 +8,8 @@ import { onthreestarter } from './starter.three';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
+let version;
+
 const onstarter = ( init = {} ) => {
 
   const conf = init;
@@ -36,7 +37,7 @@ const onstarter = ( init = {} ) => {
 
   const value = _ => conf;
 
-  Version();
+  if ( version === undefined ) version = Version( null );
 
   return {
     use,

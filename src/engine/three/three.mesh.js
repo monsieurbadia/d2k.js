@@ -1,24 +1,22 @@
 import { is, oftype } from 'u3s';
-import { onloader, onrender } from '=>/core/core.events';
+import { Events } from '=>/core';
 
 import {
   THREEGeometry,
   THREEGroup,
   THREEMaterial
-} from './primitive';
+} from '.';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
 const DYNAMICS_PROPERTIES = [
   'position',
   'rotation',
   'scale'
 ];
 
-/** @public */
 export const THREEMesh = ( RENDERING_ENGINE, parameters ) => {
 
   const group = THREEGroup( RENDERING_ENGINE );
@@ -40,8 +38,7 @@ export const THREEMesh = ( RENDERING_ENGINE, parameters ) => {
   } )[ 0 ];
 
   return Object.assign( mesh, {
-    onloader,
-    onrender
+    ...Events
   } );
 
 };

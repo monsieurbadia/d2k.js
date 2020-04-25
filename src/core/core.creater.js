@@ -6,7 +6,7 @@ import {
   BABYLONLight,
   BABYLONMesh,
   BABYLONScene
-} from '=>/engine/babylon/primitive/primitive';
+} from '=>/engine/babylon';
 
 import {
   THREECamera,
@@ -15,13 +15,12 @@ import {
   THREEMesh,
   THREERenderer,
   THREEScene
-} from '=>/engine/three/primitive/primitive';
+} from '=>/engine/three';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
 const PRIMITIVE = {
   BABYLONCamera,
   BABYLONLight,
@@ -36,13 +35,11 @@ const PRIMITIVE = {
   THREEScene
 };
 
-/** @public */
 export const Creater = ( RENDERING_ENGINE, key, payload ) => {
 
   const currentEngineName = RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
   const currentInstanceName = `${ currentEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
-  const Instance = PRIMITIVE[ currentInstanceName ];
   
-  return Instance( RENDERING_ENGINE, payload );
+  return PRIMITIVE[ currentInstanceName ]( RENDERING_ENGINE, payload );
 
 };

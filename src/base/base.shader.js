@@ -2,7 +2,6 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const SHADER = {
   CAMERA: {
     type: 'perspective'

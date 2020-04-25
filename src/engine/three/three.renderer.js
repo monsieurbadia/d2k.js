@@ -1,25 +1,17 @@
 import { is } from 'u3s';
-import { eventsCallback } from '=>/core/core.events';
+import { CALLBACKS } from '=>/base';
+import { Dom } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @private */
 const resetState = renderer => {
 
   if ( is.empty( renderer ) ) return;
 
-  const gl = renderer.getContext();
-
-  gl.enable( gl.DEPTH_TEST );
-  gl.depthFunc( gl.LEQUAL );
-  gl.enable( gl.CULL_FACE );
-  gl.cullFace( gl.BACK );
-  gl.clearDepth( 1 );
-  gl.clear( gl.DEPTH_BUFFER_BIT );
-  gl.bindVertexArray( null );
-
+  renderer.getContext().bindVertexArray( null );
+  renderer.clear( true, true, true );
   renderer.state.reset();
 
 };
@@ -44,7 +36,7 @@ const onrender = ( { renderer, scene, camera } ) =>
 
 let renderer;
 
- export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
+export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
 
   const { background, pixelRatio } = parameters;
   const { canvas } = RENDERING_ENGINE.coreData;
@@ -55,11 +47,11 @@ let renderer;
   renderer.autoClear = false;
 
   renderer.setClearColor( background );
-  renderer.setPixelRatio( pixelRatio === 0 ? window.pixelRatio : pixelRatio );
-  renderer.setSize( window.innerWidth, window.innerHeight );
+  renderer.setPixelRatio( pixelRatio === null ? Dom.pixelRatio : pixelRatio );
+  renderer.setSize( ...Dom.size );
 
   return Object.assign( renderer, {
-    ...eventsCallback,
+    ...CALLBACKS,
     onrender,
     resetState
   } );
