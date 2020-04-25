@@ -13,10 +13,10 @@ export const Version = semver => {
 
   const show = _ => {
 
-    if ( /Chrome/.test( navigator.userAgent ) ) {
+    if ( /(Chrome|Firefox)/i.test( navigator.userAgent ) ) {
       console.log.apply( console, args );
     } else if ( window.console ) {
-      console.log( `${ author } ${ website } `);
+      console.log( `${ name } ${ message } `);
     }
 
     return true;

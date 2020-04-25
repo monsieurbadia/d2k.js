@@ -6,13 +6,11 @@ export const SHADER = {
   TYPE: {
     vertexShader: {
       name: '#include <core_vertex>',
-      template: '',
-      type: 'vertex'
+      template: ''
     },
     fragmentShader: {
       name: '#include <core_fragment>',
-      template: '',
-      type: 'fragment'
+      template: ''
     }
   },
   UNIFORMS: {

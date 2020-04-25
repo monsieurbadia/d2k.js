@@ -4,9 +4,9 @@ import { Dom } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const beforerender = ( THREE, SOURCE ) => {
+const beforerender = ( TARGET, SOURCE ) => {
 
-  const { renderer: { current: renderer } } = THREE;
+  const { renderer: { current: renderer } } = TARGET;
   const { engine: { current: engine } } = SOURCE;
   const renders = [ ...renderer.renders, ...engine.renders ];
 
@@ -18,7 +18,7 @@ const beforerender = ( THREE, SOURCE ) => {
     }
 
     renderer.resetState( renderer );
-    renderer.render( THREE.scene.mySceneName, THREE.camera.current );
+    renderer.render( TARGET.scene.mySceneName, TARGET.camera.current );
     SOURCE.scene.current.render();
 
   } );

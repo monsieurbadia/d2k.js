@@ -5,4 +5,10 @@ import { strings } from 'u3s';
  */
 
 /** @public */
-export const THREEGeometry = ( RENDERING_ENGINE, parameters ) => new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.type, 'geometry' )  ]( ...parameters.args );
+export const THREEGeometry = ( RENDERING_ENGINE, parameters ) => {
+  
+  const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.type, 'geometry' );
+
+  return new RENDERING_ENGINE[ instanceName ]( ...parameters.args );
+
+};
