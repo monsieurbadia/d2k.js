@@ -4,26 +4,31 @@
 
 > *micro-bibliothèque javascript basé sur [three.js](https://threejs.org) pour créer des scènes 3d très rapidement à partir d'un objet de configuration ou d'un json*
 
-## Problème
+# Problem
 
-les librairies de moteur de rendu 3d nous offrent un niveau d'abstraction à la webgl très intéressant pour le développement de projet 3d. merci aux personnes qui travaillent sur ces projets, vous êtes dans le turfu ! après avoir créer pas mal de projets avec ces technologies, j'ai remarqué qu'il y avait des récurrences lors de la déclaration d'une scène avant d'avoir un affichage à l'écran. pour en citer quelques uns: scene, camera, renderer, geometry, material, font, loaders, etc. 
+- dry (don't repeat yourself) by implementing the same scenes, cameras, lights, meshes, renderers.
+- against the babylon vs three
 
-## Solution
+# Solution
 
-c'est de mon retour d'expérience que m'est venu l'idée de créé **d2k** avec 2 buts bien distincts en tête: le premier était de déléguer la création des primitives à un poto sûre qui s'en occuperait à ma place pour ensuite me les restituer une fois qu'il sa tâche effectué de cette manière je peux vraiment me concentré sur la composition d'une scène. et enfin la seconde était de pouvoir trouver une façon plus simple de créer une scène afin d'attirer les curieux vers l'univers obscur de la trois dimensions, un monde incroyablement captivant que je vous invite à rejoindre. Et j'espère que que la materia noire **d2k** y sera pour quelque chose. 
+## Goal
+
+d2k must :
+  - supports json config
+  - supports glsl
+  - supports babylon.js
+  - supports three.js
+  - define an abstract that can be easiest to used
 
 ## Objectifs
 
-d2K doit être capable de :
+d2K doit :
 
-- supporter glsl -> pour créer une scène 3d au travers des shaders et du GPU.
-- supporter webgl -> pour créer une scène 3d au travers de primitives.
-- supporter webgpu -> pour créer une scène 3d au travers du GPU.
-- supporter css3d -> pour créer une scène 3d au travers du moteur 3d css.
-- supporter three -> pour créer une scène 3d au travers de la librairie three.js
-- supporter babylon -> pour créer une scène 3d au travers de la librairie babylon.js
-- supporter la superposition -> pour créer une scène 3d au travers de moteur 3d distincts
-- supporter json -> pour préparer et configurer nos scènes côté server
+- supporter glsl
+- supporter three
+- supporter babylon 
+- supporter json
+- supporter l'insertion d'une scène 3d dans un canvas existant
 
 ## Avertissement
 
@@ -33,20 +38,18 @@ je ne suis pas un développeur, je suis juste un gars normal qui porte la progra
 
 engine            | supported | 
 ------------------|-----------|
-css3d             | ❌        |
-glsl              | ❌        |
+glsl              | ⭕        |
 webgl             | ⭕        |
-webgpu            | ❌        |
 
 3d engine library | supported |
 ------------------|-----------|
 babylon.js        | ⭕        |
 three.js          | ⭕        |
+both              | ⭕        |
 
 primitive         | babylon | three    |
 ------------------|---------|----------|
 camera            | ⭕      | ⭕       |
-effect            | ❌      | ❌       |
 font              | ❌      | ❌       |
 geometry          | ❌      | ⭕       |
 group             | ❌      | ⭕       |
@@ -60,10 +63,8 @@ scene             | ⭕      | ⭕       |
 feature           | supported | 
 ------------------|-----------|
 mouse             | ❌        |
-monitor           | ❌        |
-orbit-control     | ❌        |
 timer             | ⭕        |
-trackball         | ❌        |
+
 
 ## Installation
 
@@ -106,6 +107,20 @@ console.log( d2k ); // voilà, je te présente d2k ton nouveau gars sûre.
 ## Demo
 
 ```js
+// syntax
+d2k.onstarter()
+  .use()
+  .withEngine()
+  .withScene()
+  .withLight()
+  .withMesh()
+  .value();
+
+// glsl
+d2k.onstarter()
+  .use( THREE )
+  .withShader()
+  .value();
 
 // babylon
 d2k.onstarter()
@@ -117,32 +132,13 @@ d2k.onstarter()
   .value();
 
 // three
-window.addEventListener( 'DOMContentLoaded', _ => {
-
-  const canvas = document.getElementById( 'viewRendering' );
-
-  const starter = d2k.onstarter( { canvas } )
-    .use( THREE )
-    .withCamera( sceneConfig.camera )
-    .withMesh( sceneConfig.mesh )
-    .withRenderer( sceneConfig.renderer )
-    .withLight( sceneConfig.light )
-    .withScene( sceneConfig.scene )
-    .value();
-
-  const {
-    mesh: { current:  mesh },
-    scene: { current:  scene }
-  } = starter;
-
-  scene.add( mesh );
-
-}, false );
-
-// glsl
-d2k.onstarter()
+const starter = d2k.onstarter( { canvas } )
   .use( THREE )
-  .withShader()
+  .withCamera( sceneConfig.camera )
+  .withMesh( sceneConfig.mesh )
+  .withRenderer( sceneConfig.renderer )
+  .withLight( sceneConfig.light )
+  .withScene( sceneConfig.scene )
   .value();
 ```
 
