@@ -4,10 +4,10 @@
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d de façon intuitive, élégante et flexible.*
 
-## <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="35" viewBox="0 -10 100 100"><polygon points="20,80 36.2,80 36.2,63.8 31,63.8 31,74.7 25.3,74.7 25.3,47.2 52.8,47.2 52.8,69 69,69 69,63.8 58.1,63.8  58.1,47.2 69,47.2 69,41.9 25.3,41.9 25.3,25.3 41.9,25.3 41.9,31 31,31 31,36.2 47.2,36.2 47.2,25.3 58.1,25.3 58.1,20 20,20"/><polygon points="80,80 80,20 63.8,20 63.8,31 52.8,31 52.8,36.2 69,36.2 69,25.3 74.7,25.3 74.7,52.8 63.8,52.8 63.8,58.1 74.7,58.1 74.7,74.7 47.2,74.7 47.2,52.8 31,52.8 31,58.1 41.9,58.1 41.9,80"/><polygon points="85.7,85.7 14.3,85.7 14.3,52.8 2.5,52.8 2.5,58.1 9.1,58.1 9.1,90.9 90.9,90.9 90.9,58.1 97.5,58.1 97.5,52.8 85.7,52.8"/><polygon points="90.9,41.9 90.9,9.1 9.1,9.1 9.1,41.9 2.5,41.9 2.5,47.2 14.3,47.2 14.3,14.3 85.7,14.3 85.7,47.2 97.5,47.2 97.5,41.9"/></svg> Problèmes
+## <img src="./icons/icon-problem.svg"/> Problèmes
 
 - implémenter la même chose entre chaque projet (don't repeat yourself).
-- manque d'innovation des starter webgl du type `starter-three-de-la-mort-qui-tue`, `babylon-starter-kit`, `react-babylon-starter`, `vue-three-starter++`, etc.
+- manque d'innovation des starter webgl du type `starter-three-de-la-mort-qui-tue`, `babylon-starter-kit`, `react-babylon-starter`, `vue-three-starter++`, etc.
 - perdre mon temps pour afficher un simple cube.
 - manque de fonctionnalités dans certaines librairies de moteur 3d.
 - api webgl trop complexe pour donner envie aux jeunes de s'intéresser à la programmation 3d.
@@ -178,9 +178,9 @@ scene             | ⭕      | ⭕       |
 
 *⭐️ this repository if this project helped you!*  
 
-logo - [@mllemartins](https://twitter.com/mllemartins)
-icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)
-code - [@monsieurbadia](https://twitter.com/monsieurbadia)
+logo - [@mllemartins](https://twitter.com/mllemartins)    
+icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)   
+code - [@monsieurbadia](https://twitter.com/monsieurbadia)    
 
 [npm]: https://img.shields.io/npm/v/d2k
 [npm-url]: https://www.npmjs.com/package/d2k
