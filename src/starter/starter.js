@@ -37,7 +37,7 @@ const onstarter = ( init = {} ) => {
 
   const value = _ => conf;
 
-  if ( version === undefined ) version = Version( null );
+  if ( version === undefined ) version = Version();
 
   return {
     use,

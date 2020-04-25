@@ -11,7 +11,7 @@ export const BABYLONCamera = ( RENDERING_ENGINE, { name, config } ) => {
   const [ alpha, beta, radius, target ] = config.option.args;
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.option.type, 'camera' );
   const camera = new RENDERING_ENGINE[ instanceName ](
-    name, alpha, beta, radius, ...target, scene
+    name, alpha, beta, radius, new RENDERING_ENGINE.Vector3.Zero( ...target ), scene
   );
 
   camera.setTarget( RENDERING_ENGINE.Vector3.Zero() );
