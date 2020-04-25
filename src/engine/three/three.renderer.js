@@ -49,7 +49,6 @@ export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
 
   renderer.setClearColor( background );
   renderer.setPixelRatio( pixelRatio === null ? Dom.pixelRatio : pixelRatio );
-  renderer.setSize( ...Dom.size );
 
   return Object.assign( renderer, {
     ...CALLBACKS,

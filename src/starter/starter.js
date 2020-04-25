@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { Renderer, Version } from '=>/core';
+import { Dom, Renderer, Version } from '=>/core';
 import { onbabylonstarter } from './starter.babylon';
 import { onglslstarter } from './starter.glsl';
 import { onthreestarter } from './starter.three';
@@ -10,6 +10,8 @@ import { onthreestarter } from './starter.three';
 
 let version;
 
+const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
+
 const onstarter = ( init = {} ) => {
 
   const conf = init;
@@ -17,6 +19,8 @@ const onstarter = ( init = {} ) => {
   const use = ( renderingEngine, Is ) => {
 
     if ( is.empty( renderingEngine ) ) return;
+
+    Dom.setCanvasSize( conf.canvas );
 
     conf.RENDERING_ENGINE = renderingEngine;
     conf.RENDERING_ENGINE.coreData = {
@@ -47,13 +51,8 @@ const onstarter = ( init = {} ) => {
 };
 
 /** @public */
-export const Starter = _ => {
-
-  const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
-
-  return Object.assign( {
+export const Starter = _ => Object
+  .assign( {
     onlayering,
     onstarter
   } );
-
-};
