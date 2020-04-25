@@ -40,8 +40,9 @@ export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
 
   const { background, pixelRatio } = parameters;
   const { canvas } = RENDERING_ENGINE.coreData;
+  const context = canvas.getContext( 'webgl2', { alpha: false } );
 
-  if ( is.empty( renderer ) ) renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas } );
+  if ( is.empty( renderer ) ) renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas, context } );
 
   renderer.timer = new RENDERING_ENGINE.Clock();
   renderer.autoClear = false;
