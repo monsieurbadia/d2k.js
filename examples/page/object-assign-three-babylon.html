@@ -21,18 +21,11 @@
       }
 
       canvas {
-        position: absolute;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
         z-index: 100;
-        margin: auto;
-      }
-
-      nav {
-        color: color;
-        z-index: 200;
         position: absolute;
       }
     </style>
@@ -40,7 +33,7 @@
   <body>
     <canvas id="viewRendering" touch-action="none"></canvas>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
-    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="https://threejs.org/build/three.js"></script>
     <script src="../../src/index.js"></script>
     <script>
       window.addEventListener( 'DOMContentLoaded', _ => {
@@ -193,8 +186,6 @@
           .value();
 
         d2k.onlayering( [ THREEstarter, BABYLONstarter ] ).onrender();
-
-        // THREEstarter.mesh.myMeshName.onloader( textures => console.log( textures ) );
 
       }, false );
 

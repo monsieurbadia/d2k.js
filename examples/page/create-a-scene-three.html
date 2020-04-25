@@ -21,18 +21,11 @@
       }
 
       canvas {
-        position: absolute;
         left: 0;
         right: 0;
         top: 0;
         bottom: 0;
         z-index: 100;
-        margin: auto;
-      }
-
-      nav {
-        color: color;
-        z-index: 200;
         position: absolute;
       }
     </style>
@@ -130,7 +123,7 @@
           } )
           .value();
 
-        THREEstarter.mesh.myMeshName.onloader( textures => console.log( textures ) );
+        THREEstarter.mesh.myMeshName.onloader( textures => textures );
 
         THREEstarter.mesh.myMeshName.onrender( time => {
 
