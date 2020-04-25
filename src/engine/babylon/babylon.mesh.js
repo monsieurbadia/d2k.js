@@ -5,10 +5,9 @@
 /** @public */
 export const BABYLONMesh = ( RENDERING_ENGINE, parameters ) => {
 
-  // TODO: agrs input: [ { "diameter": 1, "segments": 32 } ]
-  const { name } = parameters;
+  const { args } = parameters.option;
   const { scene } = RENDERING_ENGINE.coreData;
-  const mesh = BABYLON.MeshBuilder.CreateSphere( name, { diameter: 1, segments: 32 }, scene );
+  const mesh = RENDERING_ENGINE.MeshBuilder.CreateSphere( name, args, scene );
 
   return mesh;
 

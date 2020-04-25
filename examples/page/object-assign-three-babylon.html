@@ -175,7 +175,7 @@
             name: 'myLightName',
             config: {
               option: {
-                args: [ '0xffffbb 0x080820 1' ],
+                args: [ 0, -1, 0 ],
                 type: 'hemispheric'
               }
             }
@@ -184,7 +184,7 @@
             name: 'current',
             config: {
               option: {
-                args: [ 1, 1, 0 ],
+                args: { diameter: 1, segments: 32 },
                 position: [ 0, 0, 100 ],
                 type: 'sphere'
               }
