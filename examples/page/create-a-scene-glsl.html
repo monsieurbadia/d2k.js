@@ -51,12 +51,12 @@
           .withShader(  {
             name: 'myShaderName',
             config : {
-              vertex: `
+              vertexShader: `
                 void main () {
                   gl_Position = vec4(position, 1.0);
                 }
               `,
-              fragment: `
+              fragmentShader: `
                 uniform vec2 resolution;
                 uniform float time;
 

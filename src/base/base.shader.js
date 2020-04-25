@@ -3,31 +3,13 @@
  */
 
 export const SHADER = {
-  CAMERA: {
-    type: 'perspective'
-  },
-  RENDERER: {
-    name: 'current',
-    config: {
-      option: {
-        antialias: true,
-        pixelRatio: window.devicePixelRatio,
-        size: [ window.innerWidth, window.innerHeight ],
-      }
-    }
-  },
   TYPE: {
-    color: {
-      name: '#include <core_color>',
-      template: '',
-      type: 'fragment'
-    },
-    vertex: {
+    vertexShader: {
       name: '#include <core_vertex>',
       template: '',
       type: 'vertex'
     },
-    fragment: {
+    fragmentShader: {
       name: '#include <core_fragment>',
       template: '',
       type: 'fragment'

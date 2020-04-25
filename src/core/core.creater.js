@@ -35,6 +35,7 @@ const PRIMITIVE = {
   THREEScene
 };
 
+/** @public */
 export const Creater = ( RENDERING_ENGINE, key, payload ) => {
 
   const currentEngineName = RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
