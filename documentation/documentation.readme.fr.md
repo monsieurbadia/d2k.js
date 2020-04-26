@@ -1,13 +1,13 @@
 # <img src="../images/d2k-logo-standard.png"/>
 
-# d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
+# <img src="../../d2k.js/images/d2k-logo-standard.svg"/>  d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d de façon intuitive, élégante et flexible.*
 
 ## <img src="./icons/icon-problem.svg"/> Problèmes
 
 - implémenter la même chose entre chaque projet (don't repeat yourself).
-- manque d'innovation des starter webgl du type `starter-three-de-la-mort-qui-tue`, `babylon-starter-kit`, `react-babylon-starter`, `vue-three-starter++`, et autres.
+- manque d'innovation des starters webgl du type `three-starter-de-la-mort-qui-tue` `react-babylon-starter` `vue-three-starter++` et autres..
 - perdre mon temps pour afficher un simple cube.
 - manque de fonctionnalités dans certaines librairies de moteur 3d.
 - api webgl trop complexe pour donner envie aux jeunes de s'intéresser à la programmation 3d.
@@ -18,7 +18,7 @@
 - automatiser la création des primitives.
 - automatiser la composition de la scène
 - définir une abstraction plus simplifiée.
-- donner plus de
+- implémenter des nouvelles fonctionnalités aux primitives.
 - créer une ou plusieurs scène(s) à partir d'un fichier `.json`.
 - switcher entre babylon et three en une seule ligne de code.
 - créer des expériences expérimentales comme par exemple être capable de faire un `Object.assign( THREE, BABYLON )`, qui donnerait à un canvas unique la possibilité d'afficher les deux scènes en simultané à l'écran.
@@ -27,7 +27,7 @@
 
 - supporter `GLSL`
 - supporter `THREE`
-- supporter `BABYLON` 
+- supporter `BABYLON`
 - supporter `JSON`
 - supporter `Object.assign( THREE, BABYLON )`
 
@@ -37,8 +37,8 @@ je ne suis pas un développeur, je suis un gars normal qui porte la programmatio
 
 ## <img src="./icons/icon-installation.svg"/> Installation
 
-Avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js`. Une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.
-
+Avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js`. Une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
+   
 **terminal**
 
 ```sh
@@ -79,7 +79,7 @@ Voici un aperçu de la syntaxe de **d2k**.
 
 **glsl starter**
 
-crée une scène au travers des shaders en `glsl`.
+crée une scène au travers des shaders en `glsl`   
 
 ```js
 const GLSLstarter = d2k.onstarter( { glsl: true } )
