@@ -1,6 +1,6 @@
 # <img src="../images/d2k-logo-standard.png"/>
 
-# <img src="../../d2k.js/images/d2k-logo-standard.svg"/>  d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
+# <img src="../images/d2k-logo-standard.svg"/>  d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d de façon intuitive, élégante et flexible.*
 
@@ -35,8 +35,8 @@
 
 je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source. Pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps disparaîtrons. Des changements seront à venir pour le confort de tous, je l'espère. TriForce
 
-## <img src="./icons/icon-installation.svg"/> Installation
-
+## <img src="./icons/icon-installation.svg"/> Installation    
+    
 Avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js`. Une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
    
 **terminal**
@@ -90,7 +90,7 @@ const GLSLstarter = d2k.onstarter( { glsl: true } )
 
 **babylon starter**
 
-crée une scène à partir des primitives provenant de `babylon.js`.
+crée une scène à partir des primitives provenant de `babylon.js`    
 
 ```js
 const BABYLONstarter = d2k.onstarter()
@@ -155,6 +155,87 @@ const THREEstarter = d2k.onstarter()
           args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
           position: [ 0, 0, 100 ],
           type: "perspective"
+      } );
+    ```
+
+  - ### `.withMesh( config )`
+
+    *create a mesh from a config object.*
+
+    ##### params
+
+    `config` **{ Object }**: mesh config.  
+    `returns` **{ Object }**: collection of methods. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .withMesh( {
+        "name": "current",
+        "config": {
+          "geometry": {
+            "args": [ 20, 20, 20 ],
+            "type": "box-buffer"
+          },
+          "material": {
+            "args": {
+              "transparent": true
+            },
+            "type": "mesh-normal"
+          },
+          "positions": [ -20, 0, 0 ],
+          "scene": "scene1",
+          "group": ""
+        }
+      } );
+    ```
+
+  - ### `.withRenderer( config )`
+
+    *create a renderer from a config object.*
+
+    ##### params
+
+    `config` **{ Object }**: renderer config.  
+    `returns` **{ Object }**: collection of methods. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .withRenderer( {
+        "name": "myRendererName",
+        "config": {
+          "pixelRatio" :null,
+          "size": [],
+          "camera": "current",
+          "scene": "scene1"
+        }
+      } );
+    ```
+
+  - ### `.withLight( config )`
+
+    *create a light from a config object.*
+
+    ##### params
+
+    `config` **{ Object }**: light config.  
+    `returns` **{ Object }**: collection of methods. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .withLight( {
+        "name": "myLightName",
+        "config": {
+          "pixelRatio" :null,
+          "size": [],
+          "camera": "current",
+          "scene": "scene1"
+        }
       } );
     ```
 
