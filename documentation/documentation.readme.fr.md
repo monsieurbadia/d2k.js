@@ -1,13 +1,13 @@
 # <img src="../images/d2k-logo-standard.png"/>
 
-# d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]  -->
+# d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d de façon intuitive, élégante et flexible.*
 
 ## <img src="./icons/icon-problem.svg"/> Problèmes
 
 - implémenter la même chose entre chaque projet (don't repeat yourself).
-- manque d'innovation des starter webgl du type `starter-three-de-la-mort-qui-tue`, `babylon-starter-kit`, `react-babylon-starter`, `vue-three-starter++`, etc.
+- manque d'innovation des starter webgl du type `starter-three-de-la-mort-qui-tue`, `babylon-starter-kit`, `react-babylon-starter`, `vue-three-starter++`, et autres.
 - perdre mon temps pour afficher un simple cube.
 - manque de fonctionnalités dans certaines librairies de moteur 3d.
 - api webgl trop complexe pour donner envie aux jeunes de s'intéresser à la programmation 3d.
@@ -160,19 +160,19 @@ const THREEstarter = d2k.onstarter()
 
 ## <img src="./icons/icon-primitive.svg"/> Primitives
 
-primitive         | babylon | three    |
-------------------|---------|----------|
-audio             | ❌      | ❌       |
-camera            | ⭕      | ⭕       |
-font              | ❌      | ❌       |
-geometry          | ❌      | ⭕       |
-group             | ❌      | ⭕       |
-light             | ⭕      | ⭕       |
-loader            | ❌      | ⭕       |
-material          | ⭕      | ⭕       |
-mesh              | ⭕      | ⭕       |
-renderer          | ⭕      | ⭕       |
-scene             | ⭕      | ⭕       |
+primitive         | babylon.js                          | three.js                            |
+------------------|-------------------------------------|-------------------------------------|
+audio             | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-check.svg"/> |
+camera            | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
+font              | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-check.svg"/> |
+geometry          | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-not.svg"/>   |
+group             | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-not.svg"/>   |
+light             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
+loader            | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-not.svg"/>   |
+material          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
+mesh              | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
+renderer          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
+scene             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 
 ## <img src="./icons/icon-supports.svg"/> Supports
 
