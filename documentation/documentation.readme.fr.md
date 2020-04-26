@@ -4,6 +4,8 @@
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et flexible.*
 
+[anglais](../README.md) - [français](./documentation.readme.fr.md)    
+
 ## <img src="./icons/icon-problem.svg"/> Problèmes
 
 - implémenter la même chose entre chaque projet (don't repeat yourself).
@@ -33,11 +35,11 @@
 
 ## <img src="./icons/icon-disclaimer.svg"/> Avertissement
 
-je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source. Pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps disparaîtrons. Des changements seront à venir pour le confort de tous, je l'espère. TriForce
+je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
 
 ## <img src="./icons/icon-installation.svg"/> Installation    
     
-Avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js`. Une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
+Avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js`. une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
    
 **terminal**
 
@@ -123,15 +125,15 @@ const THREEstarter = d2k.onstarter()
 
   *initialise une `scene` à partir d'un objet `init` passer en paramètre de la méthode `.onstarter`*
 
-  ##### params
+  ##### paramètres
 
   `init` **{ Object }**: initialisation d'un `starter`
   `returns` **{ Object }**: collection de méthodes. 
 
-  ##### example
+  ##### exemple
 
   ```js
-  d2k.onstarter( {
+  const starter = d2k.onstarter( {
     canvas: document.getElementById( 'myCanvasId' ),
     glsl: false
   } );
@@ -141,12 +143,12 @@ const THREEstarter = d2k.onstarter()
 
     *définit un `RENDERING_ENGINE` à partir de la bibliothèque `BABYLON` | `THREE` passer en paramètre de la méthode `.use`*
 
-    ##### params
+    ##### paramètres
 
     `RENDERING_ENGINE` **{ Object }**: la librairie souhaitée `THREE` | `BABYLON`     
     `returns` **{ Object }**: collection de méthodes.     
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -157,12 +159,12 @@ const THREEstarter = d2k.onstarter()
 
     *crée une `camera` à partir d'un objet `config` passer en pamètre de la méthode `.withCamera`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition de la config d'une `camera`.  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -180,12 +182,12 @@ const THREEstarter = d2k.onstarter()
 
     *définit un `engine` à partir d'un objet `config` passer en paramètre de la méthode `.withEngine`*
 
-    ##### params
+    ##### paramètres
 
     `RENDERING_ENGINE` **{ Object }**: la librairie souhaitée `THREE` | `BABYLON`     
     `returns` **{ Object }**: collection de méthodes.     
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -197,12 +199,12 @@ const THREEstarter = d2k.onstarter()
 
     *crée un `mesh` à partir d'un objet `config` passer en paramètre de la méthode `.withMesh`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition de la config d'un `mesh`  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -229,12 +231,12 @@ const THREEstarter = d2k.onstarter()
 
     *crée une `light` à partir d'un objet `config` passer en paramètre de la méthode `.withLight`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition de la config d'une `light`  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -254,12 +256,12 @@ const THREEstarter = d2k.onstarter()
 
     *charge un(e) `texture` `object` à partir d'un objet `config` passer en paramètre de la méthode `.withLoader`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition de la config d'un `loader`  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -279,12 +281,12 @@ const THREEstarter = d2k.onstarter()
 
     *crée un `renderer` à partir d'un objet `config` passer paramètre de la méthode `.withRenderer`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition de la config d'un `renderer`  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -304,12 +306,12 @@ const THREEstarter = d2k.onstarter()
 
     *compose une `scene` à partir d'un objet `config` passer en paramètre de la méthode `.withScene`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition la config d'une `scene`  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -332,12 +334,12 @@ const THREEstarter = d2k.onstarter()
 
     *crée des `shader` à partir d'un objet `config` passer en paramètre de la méthode `.withShader`*
 
-    ##### params
+    ##### paramètres
 
     `config` **{ Object }**: définition la config des `shader`  
     `returns` **{ Object }**: collection de méthodes. 
 
-    ##### example
+    ##### exemple
 
     ```js
     const starter = d2k.onstarter( /* init */ )
@@ -379,21 +381,27 @@ mesh              | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon
 renderer          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 scene             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 
-## ©️ License
+## Références
+
+- [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
+- [BabylonJS](http://www.babylonjs.com/)
+- [three.js](https://threejs.org/)
+
+## <img src="./icons/icon-copyright.svg"/> License
 
 Copyright ©️ 2019 monsieurbadia
 
 Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
 
-## <img src="./icons/icon-supports.svg"/>  Montrez votre support
+## <img src="./icons/icon-supports.svg"/> Support
 
 *N'hésite pas à mettre une ⭐ si ce projet t'a aidé.*  
 
 ## <img src="./icons/icon-heart.svg"/> Contributeurs
 
-logo - [@mllemartins](https://twitter.com/mllemartins) avec amour    
-icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet) avec amour  
-code - [@monsieurbadia](https://twitter.com/monsieurbadia) avec amour   
+logo - [@mllemartins](https://twitter.com/mllemartins)        
+icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)     
+code - [@monsieurbadia](https://twitter.com/monsieurbadia)       
 
 [npm]: https://img.shields.io/npm/v/d2k
 [npm-url]: https://www.npmjs.com/package/d2k
