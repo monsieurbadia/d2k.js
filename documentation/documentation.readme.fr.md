@@ -6,7 +6,7 @@
 
 [anglais](../README.md) - [français](./documentation.readme.fr.md)    
 
-## <img src="./icons/icon-problem.svg"/> Problèmes
+## <img src="../images/icons/icon-problem.svg"/> Problèmes
 
 - implémenter la même chose entre chaque projet (don't repeat yourself).
 - manque d'innovation des starters webgl du type `three-starter-de-la-mort-qui-tue` `vue-babylon-starter++` etc.
@@ -15,7 +15,7 @@
 - api webgl trop complexe pour donner envie aux jeunes de s'intéresser à la programmation 3d.
 - contre cette guerre "babylon vs three" sur la toile.
 
-## <img src="./icons/icon-solution.svg"/> Solutions
+## <img src="../images/icons/icon-solution.svg"/> Solutions
 
 - automatiser la création des primitives.
 - automatiser la composition de la scène
@@ -25,7 +25,7 @@
 - switcher entre babylon et three en une seule ligne de code.
 - créer des expériences expérimentales comme par exemple être capable de faire un `Object.assign( THREE, BABYLON )`, qui donnerait à un canvas unique la possibilité d'afficher les deux scènes en simultané à l'écran.
 
-## <img src="./icons/icon-goals.svg"/> Objectifs
+## <img src="../images/icons/icon-goals.svg"/> Objectifs
 
 - supporter `GLSL`
 - supporter `THREE`
@@ -33,11 +33,11 @@
 - supporter `JSON`
 - supporter `Object.assign( THREE, BABYLON )`
 
-## <img src="./icons/icon-disclaimer.svg"/> Avertissement
+## <img src="../images/icons/icon-disclaimer.svg"/> Avertissement
 
 je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
 
-## <img src="./icons/icon-installation.svg"/> Installation    
+## <img src="../images/icons/icon-installation.svg"/> Installation    
     
 avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js` une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
 
@@ -59,7 +59,7 @@ voilà, le projet est installé. vérifie tout de même dans `.package.json` si 
 
 télécharge le projet, copie le fichier `d2k.js` qui se situe dans le dossier `/dist` ensuite libre à toi de l'installer dans l'endroit prévu à cet effet dans ton application.
 
-## <img src="./icons/icon-start-project.svg"/> Démarrer le projet
+## <img src="../images/icons/icon-start-project.svg"/> Démarrer le projet
 
 maintenant, tu n'as plus qu'à importer **d2k** dans ton module ou ta page html.
 
@@ -75,7 +75,7 @@ import d2k from 'd2k';
 <script src="./d2k.js"></script>
 ```
 
-## <img src="./icons/icon-syntax.svg"/> Syntaxe
+## <img src="../images/icons/icon-syntax.svg"/> Syntaxe
 
 voici un aperçu de la syntaxe de **d2k** qui permet de faire du chaînage de méthodes pour composer une `scene` étape par étape.
 
@@ -119,7 +119,7 @@ const THREEstarter = d2k.onstarter()
   .value();
 ```
 
-## <img src="./icons/icon-api.svg"/> API
+## <img src="../images/icons/icon-api.svg"/> API
 
 - ### `d2k.onstarter( init )`
 
@@ -365,39 +365,39 @@ const THREEstarter = d2k.onstarter()
       } );
     ```
 
-## <img src="./icons/icon-primitive.svg"/> Primitives
+## <img src="../images/icons/icon-primitive.svg"/> Primitives
 
-primitive         | babylon.js                          | three.js                            |
-------------------|-------------------------------------|-------------------------------------|
-audio             | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-check.svg"/> |
-camera            | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
-font              | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-check.svg"/> |
-geometry          | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-not.svg"/>   |
-group             | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-not.svg"/>   |
-light             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
-loader            | <img src="./icons/icon-check.svg"/> | <img src="./icons/icon-not.svg"/>   |
-material          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
-mesh              | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
-renderer          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
-scene             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
+primitive         | babylon.js                                  | three.js                                    |
+------------------|---------------------------------------------|---------------------------------------------|
+audio             | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-check.svg"/> |
+camera            | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
+font              | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-check.svg"/> |
+geometry          | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
+group             | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
+light             | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
+loader            | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
+material          | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
+mesh              | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
+renderer          | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
+scene             | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
 
-## <img src="./icons/icon-reference.svg"/> Références
+## <img src="../images/icons/icon-reference.svg"/> Références
 
 - [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
 - [BabylonJS](http://www.babylonjs.com)
 - [three.js](https://threejs.org)
 
-## <img src="./icons/icon-copyright.svg"/> License
+## <img src="../images/icons/icon-copyright.svg"/> License
 
 Copyright ©️ 2019 monsieurbadia
 
 Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
 
-## <img src="./icons/icon-supports.svg"/> Support
+## <img src="../images/icons/icon-supports.svg"/> Support
 
 *N'hésite pas à mettre une ⭐ si ce projet t'a aidé.*  
 
-## <img src="./icons/icon-heart.svg"/> Contributeurs
+## <img src="../images/icons/icon-heart.svg"/> Contributeurs
 
 logo - [@mllemartins](https://twitter.com/mllemartins)        
 icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)     
