@@ -41,7 +41,7 @@
         const canvas = document.getElementById( 'viewRendering' );
         const GLGLstarter = d2k.onstarter( { canvas } )
           .use( THREE, 'glsl' )
-          .withShader(  {
+          .withShader( {
             name: 'myShaderName',
             config : {
               vertexShader: `

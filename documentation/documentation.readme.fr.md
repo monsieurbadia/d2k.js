@@ -1,13 +1,13 @@
 # <img src="../images/d2k-logo-standard.png"/>
 
-# <img src="../images/d2k-logo-standard.svg"/>  d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
+# <img src="../images/d2k-logo-standard.svg"/> d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
 
-> *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d de façon intuitive, élégante et flexible.*
+> *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et flexible.*
 
 ## <img src="./icons/icon-problem.svg"/> Problèmes
 
 - implémenter la même chose entre chaque projet (don't repeat yourself).
-- manque d'innovation des starters webgl du type `three-starter-de-la-mort-qui-tue` `react-babylon-starter` `vue-three-starter++` et autres..
+- manque d'innovation des starters webgl du type `three-starter-de-la-mort-qui-tue` `vue-babylon-starter++` etc.
 - perdre mon temps pour afficher un simple cube.
 - manque de fonctionnalités dans certaines librairies de moteur 3d.
 - api webgl trop complexe pour donner envie aux jeunes de s'intéresser à la programmation 3d.
@@ -55,7 +55,7 @@ voilà, le projet est installé. vérifie tout de même dans `.package.json` si 
 
 **alternative**
 
-télécharge le projet, copie le fichier `d2k.js` qui se situe dans le dossier `dist`. Ensuite libre à toi de l'installer dans l'endroit prévu à cet effet dans ton application.
+télécharge le projet, copie le fichier `d2k.js` qui se situe dans le dossier `/dist` ensuite libre à toi de l'installer dans l'endroit prévu à cet effet dans ton application.
 
 ## <img src="./icons/icon-start-project.svg"/> Démarrer le projet
 
@@ -75,11 +75,11 @@ import d2k from 'd2k';
 
 ## <img src="./icons/icon-syntax.svg"/> Syntaxe
 
-Voici un aperçu de la syntaxe de **d2k**.
+voici un aperçu de la syntaxe de **d2k** qui permet de faire du chaînage de méthodes pour composer une `scene` étape par étape.
 
 **glsl starter**
 
-crée une scène au travers des shaders en `glsl`   
+crée une scène 100% `gpu` au travers des `shader` en `glsl`   
 
 ```js
 const GLSLstarter = d2k.onstarter( { glsl: true } )
@@ -90,7 +90,7 @@ const GLSLstarter = d2k.onstarter( { glsl: true } )
 
 **babylon starter**
 
-crée une scène à partir des primitives provenant de `babylon.js`    
+crée une scène à partir des primitives provenant de `BABYLON`    
 
 ```js
 const BABYLONstarter = d2k.onstarter()
@@ -104,7 +104,8 @@ const BABYLONstarter = d2k.onstarter()
 
 **three starter**
 
-crée une scène à partir des primitives fournit par `three.js`.
+crée une scène à partir des primitives fournit par `THREE`   
+
 ```js
 const THREEstarter = d2k.onstarter()
   .use( THREE ) // <-- use three
@@ -118,14 +119,14 @@ const THREEstarter = d2k.onstarter()
 
 ## <img src="./icons/icon-api.svg"/> API
 
-- ### <a name="onstarter"></a>[`d2k.onstarter( init )`](https://github.com/monsieurbadia/d2k.js/blob/master/src/starter/starter.js)
+- ### `d2k.onstarter( init )`
 
-  *initialize a scene from a init object.*
+  *initialise une `scene` à partir d'un objet `init` passer en paramètre de la méthode `.onstarter`*
 
   ##### params
 
-  `init` **{ Object }**: global settings.
-  `returns` **{ Object }**: collection of methods. 
+  `init` **{ Object }**: initialisation d'un `starter`
+  `returns` **{ Object }**: collection de méthodes. 
 
   ##### example
 
@@ -136,19 +137,36 @@ const THREEstarter = d2k.onstarter()
   } );
   ```
 
-  - ### `.withCamera( config )`
+  - ### `.use( RENDERING_ENGINE )`
 
-    *create a camera from a config object.*
+    *définit un `RENDERING_ENGINE` à partir de la bibliothèque `BABYLON` | `THREE` passer en paramètre de la méthode `.use`*
 
     ##### params
 
-    `config` **{ Object }**: camera config.  
-    `returns` **{ Object }**: collection of methods. 
+    `RENDERING_ENGINE` **{ Object }**: la librairie souhaitée `THREE` | `BABYLON`     
+    `returns` **{ Object }**: collection de méthodes.     
 
     ##### example
 
     ```js
     const starter = d2k.onstarter( /* init */ )
+      .use( THREE );
+    ```
+
+  - ### `.withCamera( config )`
+
+    *crée une `camera` à partir d'un objet `config` passer en pamètre de la méthode `.withCamera`*
+
+    ##### params
+
+    `config` **{ Object }**: définition de la config d'une `camera`.  
+    `returns` **{ Object }**: collection de méthodes. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
       .withCamera( {
         name: 'myCameraName',
         config: {
@@ -158,83 +176,189 @@ const THREEstarter = d2k.onstarter()
       } );
     ```
 
-  - ### `.withMesh( config )`
+  - ### `.withEngine( config )`
 
-    *create a mesh from a config object.*
+    *définit un `engine` à partir d'un objet `config` passer en paramètre de la méthode `.withEngine`*
 
     ##### params
 
-    `config` **{ Object }**: mesh config.  
-    `returns` **{ Object }**: collection of methods. 
+    `RENDERING_ENGINE` **{ Object }**: la librairie souhaitée `THREE` | `BABYLON`     
+    `returns` **{ Object }**: collection de méthodes.     
 
     ##### example
 
     ```js
     const starter = d2k.onstarter( /* init */ )
-      .withMesh( {
-        "name": "current",
-        "config": {
-          "geometry": {
-            "args": [ 20, 20, 20 ],
-            "type": "box-buffer"
-          },
-          "material": {
-            "args": {
-              "transparent": true
-            },
-            "type": "mesh-normal"
-          },
-          "positions": [ -20, 0, 0 ],
-          "scene": "scene1",
-          "group": ""
-        }
-      } );
+      .use( BABYLON || THREE )
+      .withEngine( { name: 'myEngineName' } );
     ```
 
-  - ### `.withRenderer( config )`
+  - ### `.withMesh( config )`
 
-    *create a renderer from a config object.*
+    *crée un `mesh` à partir d'un objet `config` passer en paramètre de la méthode `.withMesh`*
 
     ##### params
 
-    `config` **{ Object }**: renderer config.  
-    `returns` **{ Object }**: collection of methods. 
+    `config` **{ Object }**: définition de la config d'un `mesh`  
+    `returns` **{ Object }**: collection de méthodes. 
 
     ##### example
 
     ```js
     const starter = d2k.onstarter( /* init */ )
-      .withRenderer( {
-        "name": "myRendererName",
-        "config": {
-          "pixelRatio" :null,
-          "size": [],
-          "camera": "current",
-          "scene": "scene1"
+      .use( BABYLON || THREE )
+      .withMesh( {
+        name: "myMeshName",
+        config: {
+          geometry: {
+            args: [ 20, 20, 20 ],
+            type: "box-buffer"
+          },
+          material: {
+            args: { "transparent": true },
+            type: "mesh-normal"
+          },
+          positions: [ -20, 0, 0 ],
+          scene: "scene1",
+          group: ""
         }
       } );
     ```
 
   - ### `.withLight( config )`
 
-    *create a light from a config object.*
+    *crée une `light` à partir d'un objet `config` passer en paramètre de la méthode `.withLight`*
 
     ##### params
 
-    `config` **{ Object }**: light config.  
-    `returns` **{ Object }**: collection of methods. 
+    `config` **{ Object }**: définition de la config d'une `light`  
+    `returns` **{ Object }**: collection de méthodes. 
 
     ##### example
 
     ```js
     const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
       .withLight( {
-        "name": "myLightName",
-        "config": {
-          "pixelRatio" :null,
-          "size": [],
-          "camera": "current",
-          "scene": "scene1"
+        name: "myLightName",
+        config: {
+          pixelRatio :null,
+          size: [],
+          camera: "current",
+          scene: "scene1"
+        }
+      } );
+    ```
+
+  - ### `.withLoader( config )`
+
+    *charge un(e) `texture` `object` à partir d'un objet `config` passer en paramètre de la méthode `.withLoader`*
+
+    ##### params
+
+    `config` **{ Object }**: définition de la config d'un `loader`  
+    `returns` **{ Object }**: collection de méthodes. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
+      .withLoader( {
+        name: "myLoaderName",
+        config: {
+          option: {
+            args: [ { name: "myImage1Name", url: "./my-image-2-path.jpg" }, { name: "myImage2Name", url: "./my-image-2-path.jpg" } ],
+            type: "texture"
+          }
+        }
+      } );
+    ```
+
+  - ### `.withRenderer( config )`
+
+    *crée un `renderer` à partir d'un objet `config` passer paramètre de la méthode `.withRenderer`*
+
+    ##### params
+
+    `config` **{ Object }**: définition de la config d'un `renderer`  
+    `returns` **{ Object }**: collection de méthodes. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
+      .withRenderer( {
+        name: "myRendererName",
+        config: {
+          pixelRatio :null,
+          size: [],
+          camera: "current",
+          scene: "scene1"
+        }
+      } );
+    ```
+
+  - ### `.withScene( config )`
+
+    *compose une `scene` à partir d'un objet `config` passer en paramètre de la méthode `.withScene`*
+
+    ##### params
+
+    `config` **{ Object }**: définition la config d'une `scene`  
+    `returns` **{ Object }**: collection de méthodes. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
+      .withScene( {
+        name: "mySceneName",
+        config: {
+          mesh: [ "myMeshName" ],
+          light: [ "myLightName" ],
+          camera: {
+            main: "myCameraName",
+            others: []
+          },
+          renderer: "myRendererName"
+        }
+      } );
+    ```
+
+  - ### `.withShader( config )`
+
+    *crée des `shader` à partir d'un objet `config` passer en paramètre de la méthode `.withShader`*
+
+    ##### params
+
+    `config` **{ Object }**: définition la config des `shader`  
+    `returns` **{ Object }**: collection de méthodes. 
+
+    ##### example
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
+      .withShader( {
+        name: 'myShaderName',
+        config : {
+          vertexShader: `
+            void main () {
+              gl_Position = vec4(position, 1.0);
+            }
+          `,
+          fragmentShader: `
+            uniform vec2 resolution;
+            uniform float time;
+
+            void main () {
+              vec2 st = gl_FragCoord.xy / resolution.xy;
+              gl_FragColor=vec4(st.x, st.y, 0.0, 1.0);
+            }
+          `
         }
       } );
     ```
@@ -255,13 +379,21 @@ mesh              | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon
 renderer          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 scene             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 
-## <img src="./icons/icon-supports.svg"/> Supports
+## ©️ License
 
-*⭐️ this repository if this project helped you!*  
+Copyright ©️ 2019 monsieurbadia
 
-logo - [@mllemartins](https://twitter.com/mllemartins)    
-icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)   
-code - [@monsieurbadia](https://twitter.com/monsieurbadia)    
+Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
+
+## <img src="./icons/icon-supports.svg"/>  Montrez votre support
+
+*N'hésite pas à mettre une ⭐ si ce projet t'a aidé.*  
+
+## <img src="./icons/icon-heart.svg"/> Contributeurs
+
+logo - [@mllemartins](https://twitter.com/mllemartins) avec amour    
+icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet) avec amour  
+code - [@monsieurbadia](https://twitter.com/monsieurbadia) avec amour   
 
 [npm]: https://img.shields.io/npm/v/d2k
 [npm-url]: https://www.npmjs.com/package/d2k
