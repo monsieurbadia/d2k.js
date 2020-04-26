@@ -6,20 +6,18 @@ export const CONFIG = {
   camera: {
     name: "current",
     config: {
-      option: {
-        args: [
-          75,
-          null,
-          0.1,
-          1000
-        ],
-        position: [
-          0,
-          0,
-          100
-        ],
-        type: "perspective"
-      }
+      args: [
+        75,
+        null,
+        0.1,
+        1000
+      ],
+      position: [
+        0,
+        0,
+        100
+      ],
+      type: "perspective"
     }
   },
   renderer: {

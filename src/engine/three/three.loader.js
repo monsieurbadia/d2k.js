@@ -8,8 +8,8 @@ import { CALLBACKS } from '=>/base';
 /** @public */
 export const THREELoader = ( RENDERING_ENGINE, parameters ) => {
 
-  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'loader' ) ]();
-  const sources = !is.array( parameters.option.args ) ? [ parameters.option.args ] : parameters.option.args;
+  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameters.type, 'loader' ) ]();
+  const sources = !is.array( parameters.args ) ? [ parameters.args ] : parameters.args;
   const args = sources.map( async source => {
 
     const texture = await loader.load( source.url );

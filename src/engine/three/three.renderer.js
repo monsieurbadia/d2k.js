@@ -38,7 +38,6 @@ let renderer;
 
 export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
 
-  const { background, pixelRatio } = parameters;
   const { canvas } = RENDERING_ENGINE.coreData;
   const context = canvas.getContext( 'webgl2', { alpha: false } );
 
@@ -47,8 +46,8 @@ export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
   renderer.timer = new RENDERING_ENGINE.Clock();
   renderer.autoClear = false;
 
-  renderer.setClearColor( background );
-  renderer.setPixelRatio( pixelRatio === null ? Dom.pixelRatio : pixelRatio );
+  renderer.setClearColor( parameters.background );
+  renderer.setPixelRatio( parameters.pixelRatio === null ? Dom.pixelRatio : parameters.pixelRatio );
 
   return Object.assign( renderer, {
     ...CALLBACKS,

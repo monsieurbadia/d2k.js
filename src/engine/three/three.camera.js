@@ -7,10 +7,10 @@ import { strings } from 'u3s';
 /** @public */
 export const THREECamera = ( RENDERING_ENGINE, parameters ) => {
 
-  const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.option.type, 'camera' );
-  const camera = new RENDERING_ENGINE[ instanceName ]( ...parameters.option.args );
+  const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.type, 'camera' );
+  const camera = new RENDERING_ENGINE[ instanceName ]( ...parameters.args );
 
-  camera.position.set( ...parameters.option.position );
+  camera.position.set( ...parameters.position );
 
   return camera;
 

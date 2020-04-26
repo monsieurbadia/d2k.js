@@ -51,30 +51,24 @@
           .withCamera( {
             name: 'current',
             config: {
-              option: {
-                args: [ Math.PI / 2, Math.PI / 2, 2, [ 0, 0, 5 ] ],
-                position: [ 0, 0, 100 ],
-                type: 'arc-rotate'
-              }
+              args: [ Math.PI / 2, Math.PI / 2, 2, [ 0, 0, 5 ] ],
+              position: [ 0, 0, 100 ],
+              type: 'arc-rotate'
             }
           } )
           .withLight( {
             name: 'myLightName',
             config: {
-              option: {
-                args: [ 0, -1, 0 ],
-                type: 'hemispheric'
-              }
+              args: [ 0, -1, 0 ],
+              type: 'hemispheric'
             }
           } )
           .withMesh( {
             name: 'current',
             config: {
-              option: {
-                args: { diameter: 1, segments: 32 },
-                position: [ 0, 0, 100 ],
-                type: 'sphere'
-              }
+              args: { diameter: 1, segments: 32 },
+              position: [ 0, 0, 100 ],
+              type: 'sphere'
             }
           } )
           .value();

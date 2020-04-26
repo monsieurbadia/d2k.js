@@ -42,11 +42,9 @@
           .withCamera( {
             name: "current",
             config: {
-              option: {
-                args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
-                position: [ 0, 0, 100 ],
-                type: "perspective"
-              }
+              args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+              position: [ 0, 0, 100 ],
+              type: "perspective"
             }
           } )
           .withMesh( {
@@ -94,19 +92,15 @@
           .withLight( {
             name: "toto",
             config: {
-              option: {
-                args: [ "0xffffbb 0x080820 1"  ],
-                type: "hemisphere"
-              }
+              args: [ "0xffffbb 0x080820 1"  ],
+              type: "hemisphere"
             }
           } )
           .withLoader( {
             name: "textures",
             config: {
-              option: {
-                args: [ { name: "img-1", url: "/cover-front.28969be3.jpg" }, { name: "img-2", url: "/cover-front.28969be3.jpg" } ],
-                type: "texture"
-              }
+              args: [ { name: "img-1", url: "/cover-front.28969be3.jpg" }, { name: "img-2", url: "/cover-front.28969be3.jpg" } ],
+              type: "texture"
             }
           } )
           .withScene( {

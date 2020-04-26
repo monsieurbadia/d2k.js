@@ -10,13 +10,14 @@ import { onthreestarter } from './starter.three';
 
 let version;
 
+/** @public */
 const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
 
 const onstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const use = ( renderingEngine, Is ) => {
+  const use = ( renderingEngine, isShader ) => {
 
     if ( is.empty( renderingEngine ) ) return;
 
@@ -29,9 +30,9 @@ const onstarter = ( init = {} ) => {
 
     if ( conf.RENDERING_ENGINE.SceneComponentConstants ) {
       return onbabylonstarter( conf );
-    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && Is === 'glsl' ) {
+    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && isShader ) {
       return onglslstarter( conf );
-    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !Is ) {
+    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !isShader ) {
       return onthreestarter( conf );
     }
 

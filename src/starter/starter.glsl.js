@@ -13,6 +13,7 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
+/** @public */
 export const onglslstarter = ( init = {} ) => {
 
   const conf = init;
