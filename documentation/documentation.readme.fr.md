@@ -39,8 +39,8 @@ je ne suis pas un développeur, je suis un gars normal qui porte la programmatio
 
 ## <img src="./icons/icon-installation.svg"/> Installation    
     
-Avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js`. une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
-   
+avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js` une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
+
 **terminal**
 
 ```sh
