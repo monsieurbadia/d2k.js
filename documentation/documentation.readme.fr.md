@@ -2,7 +2,7 @@
 
 # <img src="../images/d2k-logo-standard.svg"/> d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
 
-> *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et flexible.*
+> *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et fonctionnelle.*
 
 [anglais](../README.md) - [français](./documentation.readme.fr.md)    
 
@@ -381,11 +381,11 @@ mesh              | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon
 renderer          | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 scene             | <img src="./icons/icon-not.svg"/>   | <img src="./icons/icon-not.svg"/>   |
 
-## Références
+## <img src="./icons/icon-reference.svg"/> Références
 
 - [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
-- [BabylonJS](http://www.babylonjs.com/)
-- [three.js](https://threejs.org/)
+- [BabylonJS](http://www.babylonjs.com)
+- [three.js](https://threejs.org)
 
 ## <img src="./icons/icon-copyright.svg"/> License
 

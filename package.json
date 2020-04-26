@@ -1,15 +1,16 @@
 {
   "name": "d2k",
   "version": "0.0.0",
-  "description": "javascript micro-layer to 3d engine libraries to create primitives in an elegant and modular way.",
+  "description": "javascript micro-layer based on three.js and babylon.js to create 3d scenes quickly in an intuitive, elegant and functional way.",
   "keywords": [
     "javascript",
     "d2k",
     "webgl",
     "webgl2",
+    "mesh",
     "canvas",
     "renderer",
-    "loaders",
+    "loader",
     "rendering engine"
   ],
   "main": "build/d2k.js",
@@ -31,8 +32,5 @@
     "parcel-bundler": "^1.12.4",
     "sig3": "^0.0.6",
     "u3s": "^0.0.12"
-  },
-  "dependencies": {
-    "three": "^0.115.0"
   }
 }

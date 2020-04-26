@@ -1,10 +1,12 @@
 import { is } from 'u3s';
-import { CALLBACKS } from '=>/base';
+import { CONFIG } from '=>/base';
 import { Dom } from '=>/core';
 
 import {
+  THREECamera,
+  THREERenderer,
+  THREEScene,
   THREEShader,
-  THREEScene
 } from '=>/engine/three';
 
 /**
@@ -37,29 +39,22 @@ export const onglslstarter = ( init = {} ) => {
 
     }
 
-    const scene = new conf.RENDERING_ENGINE.Scene( THREEScene );
-    const camera = new conf.RENDERING_ENGINE.Camera();
-    const renderer = new conf.RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas: conf.RENDERING_ENGINE.coreData.canvas } );
-
-    camera.position.set( 0, 0, -1 );
-    renderer.setClearColor( 0x000000 );
-    renderer.setPixelRatio( Dom.pixelRatio );
-    renderer.setSize( ...config.size, true );
-    renderer.timer = new conf.RENDERING_ENGINE.Clock();
-
-    Object.assign( renderer, { ...CALLBACKS } );
+    const renderer = THREERenderer( conf.RENDERING_ENGINE, config );
+    const scene = THREEScene( conf.RENDERING_ENGINE );
+    const camera = THREECamera( conf.RENDERING_ENGINE, CONFIG.camera.config );
 
     conf.renderer[ name ] = renderer;
 
-    renderer.setAnimationLoop( _ => {
+    scene.add( conf.shader.myShaderName );
+    camera.position.set( 0, 0, -1 );
 
-      renderer.renders.forEach( render => render( renderer.timer.getDelta() ) );
-      renderer.render( scene, camera );
-
+    renderer.onrender( {
+      renderer,
+      scene,
+      camera,
     } );
 
-    scene.add( conf.shader.myShaderName );
-    document.body.appendChild( renderer.domElement );
+    Dom.add( Dom.body, renderer.domElement );
 
     return onglslstarter( conf );
 

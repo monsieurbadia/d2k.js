@@ -2,6 +2,8 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
+const add = ( element, child ) => element.appendChild( child );
+
 const setCanvasSize = ( element, width = window.innerWidth, height = window.innerHeight ) => {
     
   element.width = width;
@@ -15,9 +17,13 @@ const setCanvasSize = ( element, width = window.innerWidth, height = window.inne
 /** @public */
 export const Dom = {
 
+  get body () { return document.body; },
+
   get pixelRatio () { return window.pixelRatio; },
 
   get size () { return [ window.innerWidth, window.innerHeight ]; },
+
+  add,
 
   setCanvasSize
 
