@@ -10,8 +10,8 @@ export const THREEMaterial = ( RENDERING_ENGINE, parameters ) => {
   
   const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.type, 'material' );
   const uniforms = Chunk.createUniforms( RENDERING_ENGINE, parameters.args.uniforms );
-  const material = new RENDERING_ENGINE[ instanceName ]( uniforms ? { uniforms } : {} );
+  const params = { ...parameters.args, uniforms };
   
-  return material;
+  return new RENDERING_ENGINE[ instanceName ]( params );
 
 };

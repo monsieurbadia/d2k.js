@@ -10,16 +10,15 @@ import { onthreestarter } from './starter.three';
 
 let version;
 
-/** @public */
 const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
 
 const onstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const use = ( renderingEngine, isShader ) => {
+  const use = ( renderingEngine, isShader = false ) => {
 
-    if ( is.empty( renderingEngine ) ) return;
+    if ( is.empty( renderingEngine ) ) return onstarter( conf );
 
     Dom.setCanvasSize( conf.canvas );
 

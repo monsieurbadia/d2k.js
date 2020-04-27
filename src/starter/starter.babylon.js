@@ -1,13 +1,6 @@
 import { is } from 'u3s';
 import { Creater } from '=>/core';
 
-import {
-  BABYLONEngine,
-  BABYLONLight,
-  BABYLONMesh,
-  BABYLONScene
-} from '=>/engine/babylon';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
@@ -17,7 +10,7 @@ export const onbabylonstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const withEngine = ( { name, config } ) => {
+  const withEngine = ( ...parameters ) => {
 
     if ( is.empty( conf.engine ) ) {
 
@@ -25,13 +18,13 @@ export const onbabylonstarter = ( init = {} ) => {
 
     };
 
-    conf.engine[ name ] = BABYLONEngine( conf.RENDERING_ENGINE );
+    conf.engine = Creater.createPrimitive( parameters, 'engine', conf.RENDERING_ENGINE );
 
     return onbabylonstarter( conf );
 
   };
 
-  const withCamera = ( ...payload ) => {
+  const withCamera = ( ...parameters ) => {
 
     if ( is.empty( conf.camera ) ) {
 
@@ -39,15 +32,13 @@ export const onbabylonstarter = ( init = {} ) => {
 
     }
 
-    const cams = payload.reduce( ( result, value ) => ( { ...result, [ value.name ]: Creater( conf.RENDERING_ENGINE, 'camera', value ) } ), {} );
-
-    conf.camera = cams;
+    conf.camera = Creater.createPrimitive( parameters, 'camera', conf.RENDERING_ENGINE );
 
     return onbabylonstarter( conf );
 
   };
 
-  const withLight = ( { name, config } ) => {
+  const withLight = ( ...parameters ) => {
 
     if ( is.empty( conf.light ) ) {
 
@@ -55,13 +46,13 @@ export const onbabylonstarter = ( init = {} ) => {
 
     }
 
-    conf.light[ name ] = BABYLONLight( conf.RENDERING_ENGINE, config );
+    conf.light = Creater.createPrimitive( parameters, 'light', conf.RENDERING_ENGINE );
 
     return onbabylonstarter( conf );
 
   };
 
-  const withMesh = ( { name, config } ) => {
+  const withMesh = ( ...parameters ) => {
 
     if ( is.empty( conf.mesh ) ) {
 
@@ -69,13 +60,13 @@ export const onbabylonstarter = ( init = {} ) => {
 
     }
 
-    conf.mesh[ name ] = BABYLONMesh( conf.RENDERING_ENGINE, config );
+    conf.mesh = Creater.createPrimitive( parameters, 'mesh', conf.RENDERING_ENGINE );
 
     return onbabylonstarter( conf );
 
   };
 
-  const withScene = ( { name, config } ) => {
+  const withScene = ( ...parameters ) => {
 
     if ( is.empty( conf.scene ) ) {
 
@@ -83,7 +74,7 @@ export const onbabylonstarter = ( init = {} ) => {
 
     }
 
-    conf.scene[ name ] = BABYLONScene( conf.RENDERING_ENGINE );
+    conf.scene = Creater.createPrimitive( parameters, 'scene', conf.RENDERING_ENGINE );
 
     return onbabylonstarter( conf );
 

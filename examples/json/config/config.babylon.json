@@ -1,0 +1,34 @@
+{
+  "camera":{
+    "name":"current",
+    "config":{
+      "args": [ 0, 0, 2, [ 0, 0, 5 ] ],
+      "position": [ 0, 0, 100 ],
+      "type": "arc-rotate"
+    }
+  },
+  "mesh": {
+    "name":"current",
+    "config":{
+      "args":{
+        "diameter": 1,
+        "segments": 32
+      },
+      "position": [ 0, 0, 100 ],
+      "type": "sphere"
+    }
+  },
+  "engine":{
+    "name":"current"
+  },
+  "light":{
+    "name":"current",
+    "config":{
+      "args": [ 0, -1, 0 ],
+      "type": "hemispheric"
+    }
+  },
+  "scene":{
+    "name":"current"
+  }
+}

@@ -1,6 +1,5 @@
 import { is } from 'u3s';
 import { CONFIG } from '=>/base';
-import { Dom } from '=>/core';
 
 import {
   THREECamera,
@@ -17,20 +16,6 @@ import {
 export const onglslstarter = ( init = {} ) => {
 
   const conf = init;
-
-  const withUniform = ( { name, config } ) => {
-
-    if ( is.empty( conf.shader ) ) {
-
-      conf.shader = {};
-
-    }
-
-    conf.shader[ name ] = THREEShader( conf.RENDERING_ENGINE, config );
-
-    return onglslstarter( conf );
-
-  };
 
   const withRenderer = ( { name, config } ) => {
 
@@ -55,8 +40,6 @@ export const onglslstarter = ( init = {} ) => {
       camera,
     } );
 
-    Dom.add( Dom.body, renderer.domElement );
-
     return onglslstarter( conf );
 
   };
@@ -80,8 +63,7 @@ export const onglslstarter = ( init = {} ) => {
   return {
     value,
     withRenderer,
-    withShader,
-    withUniform
+    withShader
   };
 
 };

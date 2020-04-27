@@ -1,110 +1,73 @@
-import {
-  is,
-  flatten
-} from 'u3s';
-
-import {
-  THREECamera,
-  THREELight,
-  THREELoader,
-  THREEMesh,
-  THREERenderer,
-  THREEScene
-} from '=>/engine/three';
+import { is } from 'u3s';
+import { Creater } from '=>/core';
+import { THREEScene } from '=>/engine/three';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const composeScene = ( { scene, primitives } ) => {
-
-  const composedScene = {};
-  const cameras = flatten( Object.values( primitives.camera ) );
-  const meshes = primitives.mesh;
-  const lights = primitives.light;
-  const renderers = primitives.renderer;
-
-  composedScene.camera = cameras.reduce( ( result, value ) => ( {
-    ...result,
-    [ value ]: scene.camera[ value ]
-  } ), {} );
-
-  composedScene.mesh = meshes.reduce( ( result, value ) => ( {
-    ...result,
-    [ value ]: scene.mesh[ value ]
-  } ), {} );
-
-  composedScene.light = lights.reduce( ( result, value ) => ( {
-    ...result,
-    [ value ]: scene.light[ value ]
-  } ), {} );
-
-  composedScene.renderer = scene.renderer[ renderers ];
-
-  return composedScene;
-
-};
+// note: (primitive) must return a default camera if engine or config is undefined
 
 /** @public */
 export const onthreestarter = ( init = {} ) => {
 
   const conf = init;
 
-  const withCamera = ( { name, config } ) => {
+  const withCamera = ( ...parameters ) => {
 
     if ( is.empty( conf.camera ) ) {
       conf.camera = {};
     }
 
-    conf.camera[ name ] = THREECamera( conf.RENDERING_ENGINE, config );
+    conf.camera = Creater.createPrimitive( parameters, 'camera', conf.RENDERING_ENGINE );
 
     return onthreestarter( conf );
 
   };
 
-  const withLight = ( { name, config } ) => {
+  const withLight = ( ...parameters ) => {
 
     if ( is.empty( conf.light ) ) {
       conf.light = {};
     }
 
-    conf.light[ name ] = THREELight( conf.RENDERING_ENGINE, config );
+    conf.light = Creater.createPrimitive( parameters, 'light', conf.RENDERING_ENGINE );
 
     return onthreestarter( conf );
 
   };
 
-  const withMesh = ( { name, config } ) => {
+  const withMesh = ( ...parameters ) => {
 
     if ( is.empty( conf.mesh ) ) {
       conf.mesh = {};
     }
 
-    conf.mesh[ name ] = THREEMesh( conf.RENDERING_ENGINE, config );
+    conf.mesh = Creater.createPrimitive( parameters, 'mesh', conf.RENDERING_ENGINE );
 
     return onthreestarter( conf );
 
   };
 
-  const withLoader = ( { name, config } ) => {
+  const withLoader = ( ...parameters ) => {
 
     if ( is.empty( conf.loader ) ) {
       conf.loader = {};
     }
 
-    conf.loader[ name ] = THREELoader( conf.RENDERING_ENGINE, config );
+    conf.loader = Creater.createPrimitive( parameters, 'loader', conf.RENDERING_ENGINE );
 
     return onthreestarter( conf );
 
   };
 
-  const withRenderer = ( { name, config } ) => {
+  const withRenderer = ( ...parameters ) => {
 
     if ( is.empty( conf.renderer ) ) {
       conf.renderer = {};
     }
 
-    conf.renderer[ name ] = THREERenderer( conf.RENDERING_ENGINE, config );
+    conf.renderer = Creater.createPrimitive( parameters, 'renderer', conf.RENDERING_ENGINE );
 
     return onthreestarter( conf );
 
@@ -118,8 +81,8 @@ export const onthreestarter = ( init = {} ) => {
 
     }
 
+    const starter = Creater.composeScene( { parameter: conf, primitives: config } );
     const scene = THREEScene( conf.RENDERING_ENGINE, config );
-    const starter = composeScene( { scene: conf, primitives: config } );
 
     conf.scene[ name ] = scene;
 

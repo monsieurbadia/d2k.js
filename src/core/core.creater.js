@@ -1,4 +1,4 @@
-import { strings } from 'u3s';
+import { flatten, is, strings } from 'u3s';
 
 import {
   BABYLONCamera,
@@ -35,12 +35,62 @@ const PRIMITIVE = {
   THREEScene
 };
 
-/** @public */
-export const Creater = ( RENDERING_ENGINE, key, payload ) => {
+const composeScene = ( { parameter, primitives } ) => {
 
-  const currentEngineName = RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
-  const currentInstanceName = `${ currentEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
+  const composedScene = {};
+  const cameras = flatten( Object.values( primitives.camera ) );
+  const meshes = primitives.mesh;
+  const lights = primitives.light;
+  const renderers = primitives.renderer;
+
+
+  composedScene.camera = cameras.reduce( ( result, value ) => ( {
+    ...result,
+    [ value ]: parameter.camera[ value ]
+  } ), {} );
+
+  composedScene.mesh = meshes.reduce( ( result, value ) => ( {
+    ...result,
+    [ value ]: parameter.mesh[ value ]
+  } ), {} );
+
+  composedScene.light = lights.reduce( ( result, value ) => ( {
+    ...result,
+    [ value ]: parameter.light[ value ]
+  } ), {} );
+
+  composedScene.renderer = parameter.renderer[ renderers ];
+
+  return composedScene;
+
+};
+
+const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
+
+  const currentRenderingEngineName = RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
+  const currentInstanceName = `${ currentRenderingEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
+
+  const primitive = ( result, parameter ) => {
+
+    if ( is.empty( parameter.config ) ) parameter.config = {};
   
-  return PRIMITIVE[ currentInstanceName ]( RENDERING_ENGINE, payload );
+    parameter.config.name = parameter.name;
+
+    return {
+      ...result,
+      [ parameter.name ]: PRIMITIVE[ currentInstanceName ]( RENDERING_ENGINE, parameter.config )
+    };
+
+  };
+
+  return parameters.reduce( primitive, {} );
+
+};
+
+/** @public */
+export const Creater = {
+
+  composeScene,
+  createPrimitive
 
 };

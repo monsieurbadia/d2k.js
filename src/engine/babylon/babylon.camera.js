@@ -5,11 +5,11 @@ import { strings } from 'u3s';
  */
 
 /** @public */
-export const BABYLONCamera = ( RENDERING_ENGINE, { name, config } ) => {
+export const BABYLONCamera = ( RENDERING_ENGINE, parameter ) => {
 
   const { canvas, scene } = RENDERING_ENGINE.coreData;
-  const [ alpha, beta, radius, target ] = config.args;
-  const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'camera' );
+  const [ alpha, beta, radius, target ] = parameter.args;
+  const instanceName = strings.toFirstLetterUpperCaseReducer( parameter.type, 'camera' );
   const camera = new RENDERING_ENGINE[ instanceName ](
     name, alpha, beta, radius, new RENDERING_ENGINE.Vector3.Zero( ...target ), scene
   );

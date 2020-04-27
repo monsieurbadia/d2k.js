@@ -119,6 +119,14 @@ const THREEstarter = d2k.onstarter()
   .value();
 ```
 
+**mesh events**
+
+chaque mesh détient des méthodes d'évènements qui sont appelés dans des contextes précis `onrender` `onloader`
+
+```js
+starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set( time, time, 0 ) );
+```
+
 ## <img src="../images/icons/icon-api.svg"/> API
 
 - ### `d2k.onstarter( init )`
@@ -127,8 +135,8 @@ const THREEstarter = d2k.onstarter()
 
   ##### paramètres
 
-  `init` **{ Object }**: initialisation d'un `starter`
-  `returns` **{ Object }**: collection de méthodes. 
+  `init` **{ Object }**: initialisation d'un `starter`    
+  `returns` **{ Object }**: collection de méthodes.     
 
   ##### exemple
 
@@ -358,12 +366,32 @@ const THREEstarter = d2k.onstarter()
 
             void main () {
               vec2 st = gl_FragCoord.xy / resolution.xy;
-              gl_FragColor=vec4(st.x, st.y, 0.0, 1.0);
+              gl_FragColor = vec4(st.x, st.y, 0.0, 1.0);
             }
           `
         }
       } );
     ```
+
+- ### `d2k.onlayering( TARGET, SOURCE )`
+
+  *crée une `scene` à partir d'une `TARGET` et d'une `SOURCE` passer en paramètres de la méthode `.onlayering`. cette méthode va récupérer deux `starter` différents pour les fusionner et afficher les deux scènes a travers un canvas unique. nb: attention, cette partie est encore expérimentale.*   
+
+  ##### paramètres
+
+  `TARGET` **{ Object }**: un starter `THREE`
+  `SOURCE` **{ Object }**: un starter `BABYLON`
+  `returns` **{ Object }**: un `renderer`.   
+
+  ##### exemple
+
+  ```js
+  const starter = d2k.onlayering( THREEstarter, BABYLONstarter );
+  ```
+
+- ### `starter`
+  
+  *contient l'ensemble de primitives que tu as créé à l'aide des méthodes `.with*`*
 
 ## <img src="../images/icons/icon-primitive.svg"/> Primitives
 

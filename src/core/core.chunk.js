@@ -7,7 +7,7 @@ import { MATH, SHADER } from '=>/base';
 
 const createUniforms = ( RENDERING_ENGINE, uniforms ) => {
 
-  if ( Object.keys( { ...uniforms } ).find( key => uniforms[ key ].type ) === undefined ) return;
+  if ( Object.keys( { ...uniforms } ).find( key => uniforms[ key ].type ) === undefined ) return uniforms;
 
   const byCoreUniforms = key => MATH.TYPES.includes( uniforms[ key ].type );
   const coreUniforms = ( result, key ) => {
