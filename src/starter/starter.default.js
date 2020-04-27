@@ -1,8 +1,11 @@
 import { is } from 'u3s';
 import { Dom, Renderer, Version } from '=>/core';
-import { onbabylonstarter } from './starter.babylon';
-import { onglslstarter } from './starter.glsl';
-import { onthreestarter } from './starter.three';
+
+import {
+  onbabylonstarter,
+  onglslstarter,
+  onthreestarter
+} from '=>/starter';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -10,9 +13,9 @@ import { onthreestarter } from './starter.three';
 
 let version;
 
-const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
+export const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
 
-const onstarter = ( init = {} ) => {
+export const onstarter = ( init = {} ) => {
 
   const conf = init;
 
@@ -49,10 +52,3 @@ const onstarter = ( init = {} ) => {
   };
 
 };
-
-/** @public */
-export const Starter = _ => Object
-  .assign( {
-    onlayering,
-    onstarter
-  } );

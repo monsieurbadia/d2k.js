@@ -5,7 +5,7 @@ import {
   THREEGeometry,
   THREEGroup,
   THREEMaterial
-} from '.';
+} from '=>/engine/three';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
