@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create a scene with the three engine</title>
+    <title>d2k - create a scene with the three rendering engine</title>
     <style>
       * {
         box-sizing: border-box;
@@ -37,6 +37,21 @@
     <script>
       window.addEventListener( "DOMContentLoaded", _ => {
 
+        // const toto = fetch( 'https://github.com/monsieurbadia/d2k.js/blob/master/examples/json/config/config.three.json' )
+        //   .then( response => response.json() )
+        //   .then( res => {
+
+        //     const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+        //       .use( THREE )
+        //       .withCamera( sceneConfig.camera )
+        //       .withMesh( sceneConfig.mesh )
+        //       .withRenderer( sceneConfig.renderer )
+        //       .withLight( sceneConfig.light )
+        //       .withScene( sceneConfig.scene )
+        //       .value();
+
+        //   } )
+        
         const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
           .use( THREE )
           .withCamera( {

@@ -23,7 +23,7 @@
 - implémenter des nouvelles fonctionnalités aux primitives.
 - créer une ou plusieurs scène(s) à partir d'un fichier `.json`.
 - switcher entre babylon et three en une seule ligne de code.
-- créer des expériences expérimentales comme par exemple être capable de faire un `Object.assign( THREE, BABYLON )`, qui donnerait à un canvas unique la possibilité d'afficher les deux scènes en simultané à l'écran.
+- créer des expériences expérimentales comme par exemple être capable de faire un `Object.assign( THREE, BABYLON )`, qui donnerait à un canvas unique la possibilité d'afficher les deux scènes en simultanée à l'écran.
 
 ## <img src="../images/icons/icon-goals.svg"/> Objectifs
 
@@ -32,6 +32,8 @@
 - supporter `BABYLON`
 - supporter `JSON`
 - supporter `Object.assign( THREE, BABYLON )`
+- supporter `chrome` `firefox` `safari`
+- ne passer dépasser les `50 KB`
 
 ## <img src="../images/icons/icon-disclaimer.svg"/> Avertissement
 

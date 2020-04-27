@@ -1,3 +1,5 @@
+import { ua } from 'u3s';
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
@@ -13,7 +15,7 @@ export const Version = semver => {
 
   const show = _ => {
 
-    if ( /(Chrome|Firefox)/i.test( navigator.userAgent ) ) {
+    if ( ua.browser() ) {
       console.log.apply( console, args );
     } else if ( window.console ) {
       console.log( `${ name } ${ message } `);
