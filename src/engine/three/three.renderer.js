@@ -34,22 +34,22 @@ const onrender = ( { renderer, scene, camera } ) =>
  * @public
  */
 
-let renderer;
-
 export const THREERenderer = ( RENDERING_ENGINE, parameter ) => {
 
+  const renderer = {};
   const { canvas } = RENDERING_ENGINE.coreData;
   const context = canvas.getContext( 'webgl2', { alpha: false } );
+  const pixelRatio = !is.exist( parameter.pixelRatio ) ? Dom.pixelRatio : parameter.pixelRatio;
 
-  if ( is.empty( renderer ) ) renderer = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas, context } );
+  if ( is.empty( renderer.current ) ) renderer.current = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas, context } );
 
-  renderer.timer = new RENDERING_ENGINE.Clock();
-  renderer.autoClear = false;
+  renderer.current.timer = new RENDERING_ENGINE.Clock();
+  renderer.current.autoClear = false;
 
-  renderer.setClearColor( parameter.background );
-  renderer.setPixelRatio( parameter.pixelRatio === null ? Dom.pixelRatio : parameter.pixelRatio );
+  renderer.current.setClearColor( parameter.background );
+  renderer.current.setPixelRatio( pixelRatio );
 
-  return Object.assign( renderer, {
+  return Object.assign( renderer.current, {
     ...CALLBACKS,
     onrender,
     resetState

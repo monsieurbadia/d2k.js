@@ -32,7 +32,7 @@
 - supporter `BABYLON`
 - supporter `JSON`
 - supporter `Object.assign( THREE, BABYLON )`
-- supporter `chrome` `firefox` `safari`
+- supporter `chrome` `edge` `firefox` `safari`
 - ne passer dépasser les `50 KB`
 
 ## <img src="../images/icons/icon-disclaimer.svg"/> Avertissement

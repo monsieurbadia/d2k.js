@@ -21,29 +21,32 @@ export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
   const group = THREEGroup( RENDERING_ENGINE );
   const params = !is.array( parameter ) ? [ { ...parameter } ] : parameter;
+  const byValidParameter = param => oftype( param ) === 'object'
 
-  const mesh = params.reduce( ( result, param ) => {
+  const mesh = params
+    .filter( byValidParameter )
+    .reduce( ( result, param ) => {
 
-    const geometry = THREEGeometry( RENDERING_ENGINE, param.geometry );
-    const material = THREEMaterial( RENDERING_ENGINE, param.material );
-    const currentMesh = new RENDERING_ENGINE.Mesh( geometry, material );
+      const geometry = THREEGeometry( RENDERING_ENGINE, param.geometry );
+      const material = THREEMaterial( RENDERING_ENGINE, param.material );
+      const currentMesh = new RENDERING_ENGINE.Mesh( geometry, material );
 
-    Object
-      .keys( param )
-      .filter( key => DYNAMICS_PROPERTIES.includes( key ) )
-      .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
+      Object
+        .keys( param )
+        .filter( key => DYNAMICS_PROPERTIES.includes( key ) )
+        .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
 
-    Object
-      .assign( currentMesh, {
-        ...Events
-      } );
+      Object
+        .assign( currentMesh, {
+          ...Events
+        } );
 
-    return {
-      ...result,
-      [ param.name ]: oftype( parameter ) === 'array' ? group.add( currentMesh ) : currentMesh
-    };
+      return {
+        ...result,
+        [ param.name ]: oftype( parameter ) === 'array' ? group.add( currentMesh ) : currentMesh
+      };
 
-  }, {} );
+    }, {} );
 
   return Object.assign( mesh[ parameter.name ], {
     ...Events

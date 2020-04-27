@@ -1,4 +1,4 @@
-import { flatten, is, strings } from 'u3s';
+import { is, strings } from 'u3s';
 
 import {
   BABYLONCamera,
@@ -35,30 +35,45 @@ const PRIMITIVE = {
   THREEScene
 };
 
-const composeScene = ( { parameter, primitives } ) => {
+const composeScene = ( { parameter, selectedPrimitives } ) => {
 
   const composedScene = {};
-  const cameras = flatten( Object.values( primitives.camera ) );
-  const meshes = primitives.mesh;
-  const lights = primitives.light;
-  const renderers = primitives.renderer;
 
-  composedScene.camera = cameras.reduce( ( result, value ) => ( {
-    ...result,
-    [ value ]: parameter.camera[ value ]
-  } ), {} );
+  const getPrimitives = ( { primitivesName, parameter } ) => {
 
-  composedScene.mesh = meshes.reduce( ( result, value ) => ( {
-    ...result,
-    [ value ]: parameter.mesh[ value ]
-  } ), {} );
+    const primitive = ( result, value ) => ( {
+      ...result,
+      [ value ]: parameter[ value ]
+    } );
 
-  composedScene.light = lights.reduce( ( result, value ) => ( {
-    ...result,
-    [ value ]: parameter.light[ value ]
-  } ), {} );
+    return primitivesName?.reduce( primitive, {} );
 
-  composedScene.renderer = parameter.renderer[ renderers ];
+  };
+
+  composedScene.camera = Object
+    .assign(
+      {
+        main: parameter.camera[ selectedPrimitives.camera.main ]
+      },
+      {
+        others: getPrimitives( {
+          primitivesName: selectedPrimitives.camera.others,
+          parameter: parameter.camera
+        } )
+      }
+    );
+
+  composedScene.mesh = getPrimitives( {
+    primitivesName: selectedPrimitives.mesh,
+    parameter: parameter.mesh
+  } );
+
+  composedScene.light = getPrimitives( {
+    primitivesName: selectedPrimitives.light,
+    parameter: parameter.light
+  } );
+
+  composedScene.renderer = parameter.renderer[ selectedPrimitives.renderer ];
 
   return composedScene;
 
@@ -88,9 +103,9 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
 };
 
 /** @public */
-export const Creater = {
+export const Creater = Object.freeze( {
 
   composeScene,
   createPrimitive
 
-};
+} );

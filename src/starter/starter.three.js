@@ -81,15 +81,15 @@ export const onthreestarter = ( init = {} ) => {
 
     }
 
-    const starter = Creater.composeScene( { parameter: conf, primitives: config } );
+    const starter = Creater.composeScene( { parameter: conf, selectedPrimitives: config } );
     const scene = THREEScene( conf.RENDERING_ENGINE, config );
 
     conf.scene[ name ] = scene;
 
-    Object.keys( starter.mesh ).forEach( key => scene.add( starter.mesh[ key ] ) );
-    Object.keys( starter.light ).forEach( key => scene.add( starter.light[ key ] ) );
+    if ( is.exist( starter.mesh ) ) Object.keys( starter.mesh ).forEach( key => scene.add( starter.mesh[ key ] ) );
+    if ( is.exist( starter.light ) ) Object.keys( starter.light ).forEach( key => scene.add( starter.light[ key ] ) );
 
-    starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.current } );
+    starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
 
     return onthreestarter( conf );
 

@@ -34,7 +34,7 @@
           },
           "type":"mesh-normal"
         },
-        "positions":[
+        "position":[
           -20,
           0,
           0
@@ -60,7 +60,7 @@
           },
           "type":"shader"
         },
-        "positions":[
+        "position":[
           20,
           0,
           0
@@ -72,7 +72,9 @@
     "name":"myRendererName",
     "config":{
       "pixelRatio":null,
-      "size":[]
+      "size":[
+
+      ]
     }
   },
   "light":{
@@ -111,7 +113,9 @@
       ],
       "camera":{
         "main":"myCameraName",
-        "others":[]
+        "others":[
+
+        ]
       },
       "renderer":"myRendererName"
     }

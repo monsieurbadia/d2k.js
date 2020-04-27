@@ -5,12 +5,15 @@ import { strings } from 'u3s';
  */
 
 /** @public */
-export const THREECamera = ( RENDERING_ENGINE, parameter ) => {
+export const THREECamera = ( RENDERING_ENGINE, { args, name, position, type } ) => {
 
-  const instanceName = strings.toFirstLetterUpperCaseReducer( parameter.type, 'camera' );
-  const camera = new RENDERING_ENGINE[ instanceName ]( ...parameter.args );
+  const instanceName = strings.toFirstLetterUpperCaseReducer( type, 'camera' );
+  const parsedArgs = args.map( arg => arg === null || arg === undefined ? ( arg = window.innerWidth / window.innerHeight ) : arg );
+  const camera = new RENDERING_ENGINE[ instanceName ]( ...parsedArgs );
 
-  camera.position.set( ...parameter.position );
+  camera.name = name;
+
+  camera.position.set( ...position );
 
   return camera;
 

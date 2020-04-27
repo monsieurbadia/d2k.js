@@ -19,7 +19,7 @@ export const Dom = {
 
   get body () { return document.body; },
 
-  get pixelRatio () { return window.pixelRatio; },
+  get pixelRatio () { return window.devicePixelRatio; },
 
   get size () { return [ window.innerWidth, window.innerHeight ]; },
 
