@@ -103,9 +103,9 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
 };
 
 /** @public */
-export const Creater = Object.freeze( {
+export const Creater = {
 
   composeScene,
   createPrimitive
 
-} );
+};

@@ -6,8 +6,6 @@ import { THREEScene } from '=>/engine/three';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-// note: (primitive) must return a default camera if engine or config is undefined
-
 /** @public */
 export const onthreestarter = ( init = {} ) => {
 

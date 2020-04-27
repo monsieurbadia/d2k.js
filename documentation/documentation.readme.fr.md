@@ -395,6 +395,55 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
   
   *contient l'ensemble de primitives que tu as créé à l'aide des méthodes `.with*`*
 
+## <img src="../images/icons/icon-config.svg"/> Configuration
+
+*une `scene` peut être créer à partir d'un fichier `.json` qui devra respecté le format suivant : [.json format](./config/config.format.md)*    
+
+**default fetch**
+
+```js
+const starter = fetch( 'my-scene-config-endpoint.json' )
+  .then( response => response.json() )
+  .then( sceneConfig => 
+    d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+      .use( THREE )
+      .withLoader( sceneConfig.loader )
+      .withCamera( sceneConfig.camera )
+      .withRenderer( sceneConfig.renderer )
+      .withMesh( sceneConfig.mesh )
+      .withLight( sceneConfig.light )
+      .withScene( sceneConfig.scene )
+      .value();
+  );
+
+// output: Promise
+```
+
+**async fetch**
+
+```js
+const fetchStarterScene = async ( url ) => {
+
+  const response = await fetch( url );
+  const starter = await response.json();
+
+  return d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+    .use( THREE )
+    .withLoader( sceneConfig.loader )
+    .withCamera( sceneConfig.camera )
+    .withRenderer( sceneConfig.renderer )
+    .withMesh( sceneConfig.mesh )
+    .withLight( sceneConfig.light )
+    .withScene( sceneConfig.scene )
+    .value();
+
+};
+
+const starter = fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
+
+// output: { RENDERING_ENGINE: {..}, camera: {...}, canvas: {...}, light: {...}, mesh: {...}, renderer: {...} scene: {...} }
+```
+
 ## <img src="../images/icons/icon-primitive.svg"/> Primitives
 
 primitive         | babylon.js                                  | three.js                                    |

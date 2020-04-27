@@ -35,114 +35,95 @@
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../../src/index.js"></script>
     <script>
-
       window.addEventListener( "DOMContentLoaded", _ => {
 
-        const toto = fetch( 'https://raw.githubusercontent.com/monsieurbadia/d2k.js/master/examples/json/config/config.three.json?token=AC76PCMLWIPZID4O36KJJI26U4X3O' )
-          .then( response => response.json() )
-          .then( sceneConfig => {
+        const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+          .use( THREE )
+          .withCamera( {
+            name: "current",
+            config: {
+              args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
+              position: [ 0, 0, 100 ],
+              type: "perspective"
+            }
+          } )
+          .withMesh( {
+            name: "myMeshName",
+            config: [ {
+              geometry: {
+                args: [ 20, 20, 20 ],
+                type: "box-buffer"
+              },
+              material: {
+                args: {
+                  transparent: true
+                },
+                type: "mesh-normal"
+              },
+              position: [ -20, 0, 0 ]
+            },
+            {
+              geometry: {
+                args: [ 20, 20, 20 ],
+                type: "box"
+              },
+              material: {
+                args: {
+                  uniforms: { mouse: {} },
+                  transparent: true
+                },
+                type: "shader"
+              },
+              position: [ 20, 0, 0 ]
+            } ]
+          } )
+          .withRenderer( {
+            name: "current",
+            config: {
+              pixelRatio: window.devicePixelRatio,
+              size: [ window.innerWidth, window.innerHeight ],
+              type: "webgl"
+            }
+          } )
+          .withLight( {
+            name: "toto",
+            config: {
+              args: [ "0xffffbb 0x080820 1"  ],
+              type: "hemisphere"
+            }
+          } )
+          .withLoader( {
+            name: "textures",
+            config: {
+              args: [ { name: "img-1", url: "/cover-front.28969be3.jpg" }, { name: "img-2", url: "/cover-front.28969be3.jpg" } ],
+              type: "texture"
+            }
+          } )
+          .withScene( {
+            name: "mySceneName",
+            config: {
+              mesh: [ "myMeshName" ],
+              light: [ "toto" ],
+              camera: {
+                main: "current",
+                others: [ "another" ]
+              },
+              renderer: "current"
+            }
+          } )
+          .value();
 
-            const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
-              .use( THREE )
-              .withCamera( sceneConfig.camera )
-              .withMesh( sceneConfig.mesh )
-              .withRenderer( sceneConfig.renderer )
-              .withLight( sceneConfig.light )
-              .withScene( sceneConfig.scene )
-              .value();
+        THREEstarter.mesh.myMeshName.onloader( textures => textures );
 
-            } );
-        
-        // const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
-        //   .use( THREE )
-        //   .withCamera( {
-        //     name: "current",
-        //     config: {
-        //       args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
-        //       position: [ 0, 0, 100 ],
-        //       type: "perspective"
-        //     }
-        //   } )
-        //   .withMesh( {
-        //     name: "myMeshName",
-        //     config: [ {
-        //       geometry: {
-        //         args: [ 20, 20, 20 ],
-        //         type: "box-buffer"
-        //       },
-        //       material: {
-        //         args: {
-        //           transparent: true
-        //         },
-        //         type: "mesh-normal"
-        //       },
-        //       position: [ -20, 0, 0 ]
-        //     },
-        //     {
-        //       geometry: {
-        //         args: [ 20, 20, 20 ],
-        //         type: "box"
-        //       },
-        //       material: {
-        //         args: {
-        //           uniforms: { mouse: {} },
-        //           transparent: true
-        //         },
-        //         type: "shader"
-        //       },
-        //       position: [ 20, 0, 0 ]
-        //     } ]
-        //   } )
-        //   .withRenderer( {
-        //     name: "current",
-        //     config: {
-        //       pixelRatio: window.devicePixelRatio,
-        //       size: [ window.innerWidth, window.innerHeight ],
-        //       type: "webgl"
-        //     }
-        //   } )
-        //   .withLight( {
-        //     name: "toto",
-        //     config: {
-        //       args: [ "0xffffbb 0x080820 1" ],
-        //       type: "hemisphere"
-        //     }
-        //   } )
-        //   .withLoader( {
-        //     name: "textures",
-        //     config: {
-        //       args: [
-        //         { name: "img-1", type: 'images', url: "/cover-front.28969be3.jpg" },
-        //         { name: "img-2", url: "/cover-front.28969be3.jpg" }
-        //       ],
-        //       type: "texture"
-        //     }
-        //   } )
-        //   .withScene( {
-        //     name: "mySceneName",
-        //     config: {
-        //       mesh: [ "myMeshName" ],
-        //       light: [ "toto" ],
-        //       camera: {
-        //         main: "current",
-        //         others: [ "another" ]
-        //       },
-        //       renderer: "current"
-        //     }
-        //   } )
-        //   .value();
+        THREEstarter.mesh.myMeshName.onrender( time => {
 
-        // THREEstarter.mesh.myMeshName.onloader( textures => textures );
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
 
-        // THREEstarter.mesh.myMeshName.onrender( time => {
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
+          THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
 
-        //   THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
-        //   THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
-
-        //   THREEstarter.mesh.myMeshName.children[ 1 ].rotation.x += time;
-        //   THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
-
-        // } );
+        } );
 
       }, false );
 
