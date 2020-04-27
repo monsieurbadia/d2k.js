@@ -17,27 +17,35 @@ const DYNAMICS_PROPERTIES = [
   'scale'
 ];
 
-export const THREEMesh = ( RENDERING_ENGINE, parameters ) => {
+export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
   const group = THREEGroup( RENDERING_ENGINE );
-  const params = !is.array( parameters ) ? [ { ...parameters } ] : parameters;
+  const params = !is.array( parameter ) ? [ { ...parameter } ] : parameter;
 
-  const mesh = params.map( parameter => {
+  const mesh = params.reduce( ( result, param ) => {
 
-    const geometry = THREEGeometry( RENDERING_ENGINE, parameter.geometry );
-    const material = THREEMaterial( RENDERING_ENGINE, parameter.material );
+    const geometry = THREEGeometry( RENDERING_ENGINE, param.geometry );
+    const material = THREEMaterial( RENDERING_ENGINE, param.material );
     const currentMesh = new RENDERING_ENGINE.Mesh( geometry, material );
 
     Object
-      .keys( parameter )
+      .keys( param )
       .filter( key => DYNAMICS_PROPERTIES.includes( key ) )
-      .forEach( key => currentMesh[ key ].set( ...parameter[ key ] ) );
+      .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
 
-    return oftype( parameters ) === 'array' ? group.add( currentMesh ) : currentMesh;
+    Object
+      .assign( currentMesh, {
+        ...Events
+      } );
 
-  } )[ 0 ];
+    return {
+      ...result,
+      [ param.name ]: oftype( parameter ) === 'array' ? group.add( currentMesh ) : currentMesh
+    };
 
-  return Object.assign( mesh, {
+  }, {} );
+
+  return Object.assign( mesh[ parameter.name ], {
     ...Events
   } );
 

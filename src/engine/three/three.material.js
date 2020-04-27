@@ -6,11 +6,11 @@ import { Chunk } from '=>/core';
  */
 
 /** @public */
-export const THREEMaterial = ( RENDERING_ENGINE, parameters ) => {
+export const THREEMaterial = ( RENDERING_ENGINE, parameter ) => {
   
-  const instanceName = strings.toFirstLetterUpperCaseReducer( parameters.type, 'material' );
-  const uniforms = Chunk.createUniforms( RENDERING_ENGINE, parameters.args.uniforms );
-  const params = { ...parameters.args, uniforms };
+  const instanceName = strings.toFirstLetterUpperCaseReducer( parameter.type, 'material' );
+  const uniforms = Chunk.createUniforms( RENDERING_ENGINE, parameter.args.uniforms );
+  const params = { ...parameter.args, uniforms };
   
   return new RENDERING_ENGINE[ instanceName ]( params );
 

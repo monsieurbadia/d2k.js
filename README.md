@@ -2,16 +2,21 @@
 
 # d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] 
 
-> *javascript micro-layer to 3d engine libraries to create primitives in an elegant and modular way.*
+> *javascript micro-layer based on [three.js](https://threejs.org) and [babylon.js](https://www.babylonjs.com) to create 3d scenes quickly in an intuitive, elegant and functional way.*
 
-# Problem
+[english](./README.md) - [french](./documentation/documentation.readme.fr.md)   
+
+## Problem
 
 - dry (don't repeat yourself) by implementing the same scenes, cameras, lights, meshes, renderers.
 - against the babylon vs three
 
-# Solution
+## Solution
 
-## Goal
+- give the things you do not want to repeat to d2k
+- used babyblon and three in a same thing and in the same canvas but you can also used a single rendering engine
+
+## Goals
 
 d2k must :
   - supports json config

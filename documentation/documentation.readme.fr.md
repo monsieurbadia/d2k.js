@@ -35,7 +35,7 @@
 
 ## <img src="../images/icons/icon-disclaimer.svg"/> Avertissement
 
-je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
+je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur, souhaite contribuer à l'open source et aider la communauté 3d. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps, disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
 
 ## <img src="../images/icons/icon-installation.svg"/> Installation    
     

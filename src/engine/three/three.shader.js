@@ -7,10 +7,10 @@ import { Chunk, Events } from '=>/core';
  */
 
 /** @public */
-export const THREEShader = ( RENDERING_ENGINE, parameters ) => {
+export const THREEShader = ( RENDERING_ENGINE, parameter ) => {
 
-  const { fragmentShader, vertexShader } = parameters;
-  const uniforms = Chunk.createUniforms( RENDERING_ENGINE, merge( SHADER.UNIFORMS, parameters.uniforms ) );
+  const { fragmentShader, vertexShader } = parameter;
+  const uniforms = Chunk.createUniforms( RENDERING_ENGINE, merge( SHADER.UNIFORMS, parameter.uniforms ) );
   const shaderChunk = Chunk.compile( { uniforms, fragmentShader, vertexShader } );
   const geometry = new RENDERING_ENGINE.PlaneBufferGeometry( 2, 2 );
   const material = new RENDERING_ENGINE.ShaderMaterial( shaderChunk );

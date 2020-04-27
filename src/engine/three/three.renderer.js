@@ -36,7 +36,7 @@ const onrender = ( { renderer, scene, camera } ) =>
 
 let renderer;
 
-export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
+export const THREERenderer = ( RENDERING_ENGINE, parameter ) => {
 
   const { canvas } = RENDERING_ENGINE.coreData;
   const context = canvas.getContext( 'webgl2', { alpha: false } );
@@ -46,8 +46,8 @@ export const THREERenderer = ( RENDERING_ENGINE, parameters ) => {
   renderer.timer = new RENDERING_ENGINE.Clock();
   renderer.autoClear = false;
 
-  renderer.setClearColor( parameters.background );
-  renderer.setPixelRatio( parameters.pixelRatio === null ? Dom.pixelRatio : parameters.pixelRatio );
+  renderer.setClearColor( parameter.background );
+  renderer.setPixelRatio( parameter.pixelRatio === null ? Dom.pixelRatio : parameter.pixelRatio );
 
   return Object.assign( renderer, {
     ...CALLBACKS,

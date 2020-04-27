@@ -74,6 +74,10 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
 
     if ( is.empty( parameter.config ) ) parameter.config = {};
   
+    if ( is.array( parameter.config ) ) {
+      parameter.config.forEach( ( conf ) => conf.name = parameter.name );
+    }
+
     parameter.config.name = parameter.name;
 
     return {

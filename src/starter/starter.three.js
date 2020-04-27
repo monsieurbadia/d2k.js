@@ -87,6 +87,8 @@ export const onthreestarter = ( init = {} ) => {
     conf.scene[ name ] = scene;
 
     Object.keys( starter.mesh ).forEach( key => scene.add( starter.mesh[ key ] ) );
+    Object.keys( starter.light ).forEach( key => scene.add( starter.light[ key ] ) );
+
     starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.current } );
 
     return onthreestarter( conf );

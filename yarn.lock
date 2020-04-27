@@ -5848,11 +5848,6 @@ shellwords@^0.1.1:
   resolved "https://registry.yarnpkg.com/shellwords/-/shellwords-0.1.1.tgz#d6b9181c1a48d397324c84871efbcfc73fc0654b"
   integrity sha512-vFwSUfQvqybiICwZY5+DAWIPLKsWO31Q91JSKl3UYv+K5c2QRPzn0qzec6QPu1Qc9eHYItiP3NdJqNVqetYAww==
 
-sig3@^0.0.6:
-  version "0.0.6"
-  resolved "https://registry.yarnpkg.com/sig3/-/sig3-0.0.6.tgz#f0d0928fd462d3ed865b65f9b9ee1dc770eef404"
-  integrity sha512-+0L3T9K4/8Hya3VdQVgKt3bwAp+Gh7ZYCXCvZPSPpreRfcSel+lIukuQdfeNd1Xe8/GOG/8EU+a0jZKrXAQY9A==
-
 signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
@@ -6428,10 +6423,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-u3s@^0.0.12:
-  version "0.0.12"
-  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.12.tgz#8fe4bd18814d12a6a3af374b8c589f0b738a42b1"
-  integrity sha512-CmhnnRc7efkSeHc950P88MFDazBh01bT8TW021lIegQI+ulbfxji8a3mj5V2wETwrAWUXX+Zw4ZhoEJgFhJrNw==
+u3s@^0.0.13:
+  version "0.0.13"
+  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.13.tgz#7044e560238431f46e6836b167281306b0d113c2"
+  integrity sha512-2gspwrhPxk+Nz8Spp2OSaKhzOedj4DaXnfDklvrGqlp8WKL1Xs6g905ENKX0GUpFjLyem/rDh7vyFTBl3Gm7Kw==
 
 uncss@^0.17.2:
   version "0.17.3"
