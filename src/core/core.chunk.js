@@ -55,6 +55,8 @@ const compile = chunks => {
 
 /** @public */
 export const Chunk = {
+
   createUniforms,
   compile
+
 };

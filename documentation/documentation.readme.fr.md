@@ -4,6 +4,8 @@
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et fonctionnelle.*
 
+<a href="https://twitter.com/monsieurbadia"><img src="./../images/icons/icon-twitter.svg"/> suis moi sur twitter</a>
+
 [anglais](../README.md) - [français](./documentation.readme.fr.md)    
 
 ## <img src="../images/icons/icon-problem.svg"/> Problèmes
@@ -402,10 +404,12 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
 **default fetch**
 
 ```js
-const starter = fetch( 'my-scene-config-endpoint.json' )
+fetch( 'https://mydomain.com/my/scene/config/endpoint' )
   .then( response => response.json() )
-  .then( sceneConfig => 
-    d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+  .then( sceneConfig => {
+    
+    const canvas = document.createElement( "canvas" );
+    const starter = d2k.onstarter( { canvas } )
       .use( THREE )
       .withLoader( sceneConfig.loader )
       .withCamera( sceneConfig.camera )
@@ -414,9 +418,10 @@ const starter = fetch( 'my-scene-config-endpoint.json' )
       .withLight( sceneConfig.light )
       .withScene( sceneConfig.scene )
       .value();
-  );
 
-// output: Promise
+    document.body.appendChild( canvas );
+
+  } );
 ```
 
 **async fetch**
@@ -425,9 +430,9 @@ const starter = fetch( 'my-scene-config-endpoint.json' )
 const fetchStarterScene = async ( url ) => {
 
   const response = await fetch( url );
-  const starter = await response.json();
-
-  return d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+  const sceneConfig = await response.json();
+  const canvas = document.createElement( "canvas" );
+  const data = d2k.onstarter( { canvas } )
     .use( THREE )
     .withLoader( sceneConfig.loader )
     .withCamera( sceneConfig.camera )
@@ -437,11 +442,13 @@ const fetchStarterScene = async ( url ) => {
     .withScene( sceneConfig.scene )
     .value();
 
+  document.body.appendChild( canvas );
+
+  return data;
+
 };
 
-const starter = fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
-
-// output: { RENDERING_ENGINE: {..}, camera: {...}, canvas: {...}, light: {...}, mesh: {...}, renderer: {...} scene: {...} }
+fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
 ```
 
 ## <img src="../images/icons/icon-primitive.svg"/> Primitives
