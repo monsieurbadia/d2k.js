@@ -43,7 +43,6 @@ const composeScene = ( { parameter, primitives } ) => {
   const lights = primitives.light;
   const renderers = primitives.renderer;
 
-
   composedScene.camera = cameras.reduce( ( result, value ) => ( {
     ...result,
     [ value ]: parameter.camera[ value ]
@@ -73,10 +72,7 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
   const primitive = ( result, parameter ) => {
 
     if ( is.empty( parameter.config ) ) parameter.config = {};
-  
-    if ( is.array( parameter.config ) ) {
-      parameter.config.forEach( ( conf ) => conf.name = parameter.name );
-    }
+    if ( is.array( parameter.config ) ) parameter.config.forEach( ( conf ) => conf.name = parameter.name );
 
     parameter.config.name = parameter.name;
 

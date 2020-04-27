@@ -1,6 +1,6 @@
 {
   "camera":{
-    "name":"current",
+    "name":"myCameraName",
     "config":{
       "args":[
         75,
@@ -17,7 +17,7 @@
     }
   },
   "mesh":{
-    "name":"current",
+    "name":"myMeshName",
     "config":[
       {
         "geometry":{
@@ -38,11 +38,7 @@
           -20,
           0,
           0
-        ],
-        "scene":"scene1",
-        "group":{
-
-        }
+        ]
       },
       {
         "geometry":{
@@ -68,23 +64,19 @@
           20,
           0,
           0
-        ],
-        "scene":"scene1",
-        "group":{
-
-        }
+        ]
       }
     ]
   },
   "renderer":{
-    "name":"current",
+    "name":"myRendererName",
     "config":{
       "pixelRatio":null,
       "size":[]
     }
   },
   "light":{
-    "name":"current",
+    "name":"myLightName",
     "config":{
       "args":[
         "0xffffbb 0x080820 1"
@@ -93,7 +85,7 @@
     }
   },
   "loader":{
-    "name":"current",
+    "name":"myLoaderName",
     "config":{
       "args":[
         {
@@ -109,19 +101,19 @@
     }
   },
   "scene":{
-    "name":"current",
+    "name":"mySceneNane",
     "config":{
       "mesh":[
-        "current"
+        "myMeshName"
       ],
       "light":[
-        "current"
+        "myLightName"
       ],
       "camera":{
-        "main":"current",
+        "main":"myCameraName",
         "others":[]
       },
-      "renderer":"current"
+      "renderer":"myRendererName"
     }
   }
 }
