@@ -21,7 +21,7 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const PRIMITIVE = {
+const PRIMITIVE = Object.freeze( {
   BABYLONCamera,
   BABYLONLight,
   BABYLONMesh,
@@ -33,7 +33,7 @@ const PRIMITIVE = {
   THREEMesh,
   THREERenderer,
   THREEScene
-};
+} );
 
 const composeScene = ( { parameter, selectedPrimitives } ) => {
 

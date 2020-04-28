@@ -1,4 +1,4 @@
-import { Dom } from '=>/core';
+// import { Dom } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -40,12 +40,9 @@ const beforerender = ( TARGET, SOURCE ) => {
  * @see threejs-and-babylonjs-together-on-one-canvas / https://github.com/BabylonJS/Babylon.js/issues/3447
  */
 
-export const Renderer = ( [ TARGET, SOURCE ] ) => {
 
-  TARGET.renderer.current.setSize( ...Dom.size );
+export const Renderer = {
 
-  return Object.assign( {}, {
-    onrender: beforerender( TARGET, SOURCE )
-  } );
+  assign: ( TARGET, SOURCE ) => ( { onrender: beforerender( TARGET, SOURCE ) } )
 
 };

@@ -14,7 +14,9 @@ export const onthreestarter = ( init = {} ) => {
   const withCamera = ( ...parameters ) => {
 
     if ( is.empty( conf.camera ) ) {
+
       conf.camera = {};
+      
     }
 
     conf.camera = Creater.createPrimitive( parameters, 'camera', conf.RENDERING_ENGINE );
@@ -26,7 +28,9 @@ export const onthreestarter = ( init = {} ) => {
   const withLight = ( ...parameters ) => {
 
     if ( is.empty( conf.light ) ) {
+
       conf.light = {};
+      
     }
 
     conf.light = Creater.createPrimitive( parameters, 'light', conf.RENDERING_ENGINE );
@@ -38,7 +42,9 @@ export const onthreestarter = ( init = {} ) => {
   const withMesh = ( ...parameters ) => {
 
     if ( is.empty( conf.mesh ) ) {
+
       conf.mesh = {};
+      
     }
 
     conf.mesh = Creater.createPrimitive( parameters, 'mesh', conf.RENDERING_ENGINE );
@@ -50,7 +56,9 @@ export const onthreestarter = ( init = {} ) => {
   const withLoader = ( ...parameters ) => {
 
     if ( is.empty( conf.loader ) ) {
+
       conf.loader = {};
+      
     }
 
     conf.loader = Creater.createPrimitive( parameters, 'loader', conf.RENDERING_ENGINE );
@@ -62,7 +70,9 @@ export const onthreestarter = ( init = {} ) => {
   const withRenderer = ( ...parameters ) => {
 
     if ( is.empty( conf.renderer ) ) {
+
       conf.renderer = {};
+      
     }
 
     conf.renderer = Creater.createPrimitive( parameters, 'renderer', conf.RENDERING_ENGINE );

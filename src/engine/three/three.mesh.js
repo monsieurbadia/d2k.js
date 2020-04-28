@@ -1,4 +1,5 @@
 import { is, oftype } from 'u3s';
+import { MESH } from '=>/base';
 import { Events } from '=>/core';
 
 import {
@@ -11,17 +12,11 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const DYNAMICS_PROPERTIES = [
-  'position',
-  'rotation',
-  'scale'
-];
-
 export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
   const group = THREEGroup( RENDERING_ENGINE );
   const params = !is.array( parameter ) ? [ { ...parameter } ] : parameter;
-  const byValidParameter = param => oftype( param ) === 'object'
+  const byValidParameter = param => oftype( param ) === 'object';
 
   const mesh = params
     .filter( byValidParameter )
@@ -33,7 +28,7 @@ export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
       Object
         .keys( param )
-        .filter( key => DYNAMICS_PROPERTIES.includes( key ) )
+        .filter( key => MESH.DYNAMICS_PROPERTIES.includes( key ) )
         .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
 
       Object

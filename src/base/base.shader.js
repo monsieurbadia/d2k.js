@@ -3,6 +3,7 @@
  */
 
 export const SHADER = {
+
   TYPE: {
     vertexShader: {
       name: '#include <core_vertex>',
@@ -13,6 +14,7 @@ export const SHADER = {
       template: ''
     }
   },
+
   UNIFORMS: {
     mouse: {
       type: 'v2',
@@ -20,11 +22,15 @@ export const SHADER = {
     },
     resolution: {
       type: 'v2',
-      value: [ window.innerWidth, window.innerHeight ]
+      value: [
+        window.innerWidth,
+        window.innerHeight
+      ]
     },
     time: {
       type: 'f',
       value: 1.0
     }
   }
+
 };

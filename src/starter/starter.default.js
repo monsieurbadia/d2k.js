@@ -13,13 +13,13 @@ import {
 
 let version;
 
-export const onlayering = ( TARGET, SOURCE ) => Renderer( TARGET, SOURCE );
+export const onlayering = ( ...[ TARGET = {}, SOURCE = {} ] ) => Renderer.assign( TARGET, SOURCE );
 
 export const onstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const use = ( renderingEngine, isShader = false ) => {
+  const use = ( renderingEngine ) => {
 
     if ( is.empty( renderingEngine ) ) return onstarter( conf );
 
@@ -32,9 +32,9 @@ export const onstarter = ( init = {} ) => {
 
     if ( conf.RENDERING_ENGINE.SceneComponentConstants ) {
       return onbabylonstarter( conf );
-    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && isShader ) {
+    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && conf.glsl ) {
       return onglslstarter( conf );
-    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !isShader ) {
+    } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !conf.glsl ) {
       return onthreestarter( conf );
     }
 

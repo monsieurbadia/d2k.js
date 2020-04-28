@@ -1,6 +1,6 @@
 {
   "camera":{
-    "name":"current",
+    "name":"myCameraName",
     "config":{
       "args": [ 0, 0, 2, [ 0, 0, 5 ] ],
       "position": [ 0, 0, 100 ],
@@ -8,7 +8,7 @@
     }
   },
   "mesh": {
-    "name":"current",
+    "name":"myMeshName",
     "config":{
       "args":{
         "diameter": 1,
@@ -19,16 +19,16 @@
     }
   },
   "engine":{
-    "name":"current"
+    "name":"myEngineName"
   },
   "light":{
-    "name":"current",
+    "name":"myLightName",
     "config":{
       "args": [ 0, -1, 0 ],
       "type": "hemispheric"
     }
   },
   "scene":{
-    "name":"current"
+    "name":"mySceneName"
   }
 }

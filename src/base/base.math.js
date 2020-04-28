@@ -2,19 +2,18 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const MATH_PRIMITIVES = {
-  v2: 'Vector2',
-  v3: 'Vector3',
-  v4: 'Vector4'
-};
+export const MATH = Object.freeze( {
 
-const MATH_TYPES = [
-  'v2',
-  'v3',
-  'v4'
-];
+  PRIMITIVES: {
+    v2: 'Vector2',
+    v3: 'Vector3',
+    v4: 'Vector4'
+  },
 
-export const MATH = {
-  PRIMITIVES: MATH_PRIMITIVES,
-  TYPES: MATH_TYPES
-};
+  TYPES: [
+    'v2',
+    'v3',
+    'v4'
+  ]
+
+} );

@@ -165,13 +165,23 @@
             name: 'current',
             config: {
               args: { diameter: 1, segments: 32 },
-              position: [ 0, 0, 100 ],
+              position: [ 0, 0, 0 ],
               type: 'sphere'
+            }
+          },
+          {
+            name: 'oui',
+            config: {
+              args: { size: 0.35 },
+              position: [ 1, 0, 0 ],
+              type: 'box'
             }
           } )
           .value();
 
-        d2k.onlayering( [ THREEstarter, BABYLONstarter ] ).onrender();
+        d2k
+          .onlayering( THREEstarter, BABYLONstarter )
+          .onrender();
 
       }, false );
 

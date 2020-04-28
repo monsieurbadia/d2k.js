@@ -3,6 +3,8 @@
  */
 
 export const CALLBACKS = Object.freeze( {
+
   renders: [],
   loaders: []
+
 } );

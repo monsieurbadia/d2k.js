@@ -2,9 +2,10 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const CONFIG = {
+export const CONFIG = Object.freeze( {
+
   camera: {
-    name: "current",
+    name: 'current',
     config: {
       args: [
         75,
@@ -17,9 +18,10 @@ export const CONFIG = {
         0,
         100
       ],
-      type: "perspective"
+      type: 'perspective'
     }
   },
+
   renderer: {
     name: 'current',
     config: {
@@ -27,5 +29,5 @@ export const CONFIG = {
       size: [ window.innerWidth, window.innerHeight ],
     }
   }
-};
- 
+
+} );

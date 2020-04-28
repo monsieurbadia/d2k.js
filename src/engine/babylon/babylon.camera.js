@@ -8,7 +8,7 @@ import { strings } from 'u3s';
 export const BABYLONCamera = ( RENDERING_ENGINE, parameter ) => {
 
   const { canvas, scene } = RENDERING_ENGINE.coreData;
-  const [ alpha, beta, radius, target ] = parameter.args;
+  const [ alpha = false, beta = 1, radius = 1, target = [ 0, 0, 0 ] ] = parameter.args;
   const instanceName = strings.toFirstLetterUpperCaseReducer( parameter.type, 'camera' );
   const camera = new RENDERING_ENGINE[ instanceName ](
     name, alpha, beta, radius, new RENDERING_ENGINE.Vector3.Zero( ...target ), scene
