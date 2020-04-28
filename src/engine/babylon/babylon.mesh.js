@@ -17,7 +17,16 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
     .filter( byValidParameter )
     .reduce( ( result, param ) => {
 
-      const currentMesh = RENDERING_ENGINE.MeshBuilder[ instanceName ]( name, parameter.args, scene );
+      const currentMesh = RENDERING_ENGINE.MeshBuilder[ instanceName ]( name, param.args, scene );
+      
+      if ( is.exist( param.material ) ) {
+
+        const materialInstanceName = strings.toFirstLetterUpperCaseReducer( param.material.type, 'material' );
+        
+        currentMesh.material = new RENDERING_ENGINE[ materialInstanceName ]( param.material.name, scene );
+        currentMesh.material.emissiveColor = new RENDERING_ENGINE.Color3( ...param.material.emissiveColor );
+
+      }
 
       Object
         .keys( param )
@@ -31,7 +40,7 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
 
       return {
         ...result,
-        [ param.name ]: oftype( parameter ) === 'array' ? group.add( currentMesh ) : currentMesh
+        [ param.name ]: oftype( param ) === 'array' ? group.add( currentMesh ) : currentMesh
       };
 
     }, {} );

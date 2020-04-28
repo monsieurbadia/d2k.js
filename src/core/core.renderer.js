@@ -1,5 +1,3 @@
-// import { Dom } from '=>/core';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
@@ -33,10 +31,10 @@ const beforerender = ( TARGET, SOURCE ) => {
 
 };
 
-/** @see threejs-and-babylonjs-together-on-one-canvas / https://github.com/BabylonJS/Babylon.js/issues/3447 */
+/** @see babylonjs-and-pixijs / https://doc.babylonjs.com/resources/babylonjs_and_pixijs */
 
-export const Renderer = {
+export const Renderer = Object.freeze( {
 
   assign: ( TARGET, SOURCE ) => ( { onrender: beforerender( TARGET, SOURCE ) } )
 
-};
+} );

@@ -4,6 +4,10 @@
 
 export const SHADER = Object.freeze( {
 
+  GEOMETRY: {
+    args: [ 2, 2 ]
+  },
+
   TYPE: {
     vertexShader: {
       name: '#include <core_vertex>',

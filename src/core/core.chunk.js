@@ -53,9 +53,9 @@ const compile = chunks => {
 
 };
 
-export const Chunk = {
+export const Chunk = Object.freeze( {
 
   createUniforms,
   compile
 
-};
+} );

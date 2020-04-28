@@ -11,7 +11,6 @@ const resetState = renderer => {
   if ( is.empty( renderer ) ) return;
 
   renderer.getContext().bindVertexArray( null );
-  renderer.clear( true, true, true );
   renderer.state.reset();
 
 };

@@ -4,17 +4,22 @@ import { CALLBACKS } from '=>/base'
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const onrender = ( { engine, scene } ) =>
-  engine.runRenderLoop( _ => {
+const onrender = ( { engine, scene } ) => {
+
+  const renderLoop = _ => {
 
     for ( let i = 0; i < engine.renders.length; i++ ) {
-      if ( engine.renders[ i ]( engine?.timer.getDelta() ) === null )
+      if ( engine.renders[ i ]( engine.getDeltaTime() ) === null )
         return null;
     }
 
     scene.render();
 
-  } );
+  };
+
+  engine.runRenderLoop( renderLoop );
+
+}
 
 export const BABYLONEngine = RENDERING_ENGINE => {
 

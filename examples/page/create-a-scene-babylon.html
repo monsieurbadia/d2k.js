@@ -46,7 +46,11 @@
             name: 'current'
           } )
           .withScene( {
-            name: 'current'
+            name: 'current',
+            config: {
+              autoClear: true,
+              clearColor: [ 0.6, 0.6, 0.6 ]
+            }
           } )
           .withCamera( {
             name: 'current',
@@ -60,30 +64,50 @@
             name: 'myLightName',
             config: {
               args: [ 0, 1, 0 ],
-              type: 'hemispheric'
+              type: 'point'
             }
           } )
           .withMesh( {
-            name: 'current',
+            name: 'myMesh1Name',
             config: {
-              args: { diameter: 1, segments: 32 },
-              position: [ 0, 0, 0 ],
-              type: 'sphere'
+              args: { size: 0.25 },
+              position: [ -0.25, 0, 0 ],
+              type: 'box',
+              material: {
+                name: 'material',
+                type: 'standard',
+                emissiveColor: [ 0.1, 0.50, 0.75 ]
+              }
             }
           },
           {
-            name: 'hjdej',
+            name: 'myMesh2Name',
             config: {
-              args: { diameter: 1, segments: 32 },
-              position: [ 1, 0, 0 ],
-              type: 'box'
+              args: { size: 0.25 },
+              position: [ 0.25, 0, 0 ],
+              type: 'box',
+              material: {
+                name: 'material',
+                type: 'standard',
+                emissiveColor: [ 0.1, 0.50, 0.75 ]
+              }
             }
           } )
           .value();
 
-        BABYLONstarter.engine.current.onrender( { engine: BABYLONstarter.engine.current, scene: BABYLONstarter.scene.current } );
+          BABYLONstarter.mesh.myMesh2Name.onrender( time => {
+          
+            BABYLONstarter.mesh.myMesh1Name.rotation.x -= time * 0.001;
+            BABYLONstarter.mesh.myMesh1Name.rotation.y -= time * 0.001;
 
-      }, false );
+            BABYLONstarter.mesh.myMesh2Name.rotation.x -= time * 0.001;
+            BABYLONstarter.mesh.myMesh2Name.rotation.y -= time * 0.001;
+          
+          } );
+          
+          BABYLONstarter.engine.current.onrender( { engine: BABYLONstarter.engine.current, scene: BABYLONstarter.scene.current } );
+      
+        }, false );
 
     </script>
   </body>
