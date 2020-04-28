@@ -6,7 +6,6 @@ import { THREEScene } from '=>/engine/three';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const onthreestarter = ( init = {} ) => {
 
   const conf = init;

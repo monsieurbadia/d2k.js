@@ -6,7 +6,6 @@ import { Events } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
 
   const { scene } = RENDERING_ENGINE.coreData;

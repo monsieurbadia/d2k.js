@@ -28,12 +28,6 @@ const onrender = ( { renderer, scene, camera } ) =>
 
   } );
 
-/**
- * THREERenderer
- * 
- * @public
- */
-
 export const THREERenderer = ( RENDERING_ENGINE, parameter ) => {
 
   const renderer = {};

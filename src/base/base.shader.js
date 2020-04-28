@@ -2,7 +2,7 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const SHADER = {
+export const SHADER = Object.freeze( {
 
   TYPE: {
     vertexShader: {
@@ -33,4 +33,4 @@ export const SHADER = {
     }
   }
 
-};
+} );

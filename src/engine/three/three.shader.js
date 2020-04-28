@@ -6,7 +6,6 @@ import { Chunk, Events } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const THREEShader = ( RENDERING_ENGINE, parameter ) => {
 
   const { fragmentShader, vertexShader } = parameter;

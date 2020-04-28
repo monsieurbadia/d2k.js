@@ -2,7 +2,6 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const BABYLONScene = RENDERING_ENGINE => {
 
   const { engine } = RENDERING_ENGINE.coreData;

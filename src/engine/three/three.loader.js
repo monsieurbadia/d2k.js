@@ -15,7 +15,6 @@ const textures = loader => async source => {
 
 };
 
-/** @public */
 export const THREELoader = ( RENDERING_ENGINE, parameter ) => {
 
   const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameter.type, 'loader' ) ]();

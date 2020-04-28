@@ -16,7 +16,6 @@ const onrender = ( { engine, scene } ) =>
 
   } );
 
-/** @public */
 export const BABYLONEngine = RENDERING_ENGINE => {
 
   const { canvas } = RENDERING_ENGINE.coreData;

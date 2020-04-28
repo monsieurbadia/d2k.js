@@ -2,7 +2,7 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const MESH = {
+export const MESH = Object.freeze( {
 
   DYNAMICS_PROPERTIES: [
     'position',
@@ -10,4 +10,4 @@ export const MESH = {
     'scale'
   ]
 
-};
+} );

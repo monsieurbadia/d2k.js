@@ -4,7 +4,6 @@ import { strings } from 'u3s';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @oublic */
 export const THREELight = ( RENDERING_ENGINE, parameter ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( parameter.type, 'light' );

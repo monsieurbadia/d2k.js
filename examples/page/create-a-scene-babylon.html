@@ -59,7 +59,7 @@
           .withLight( {
             name: 'myLightName',
             config: {
-              args: [ 0, -1, 0 ],
+              args: [ 0, 1, 0 ],
               type: 'hemispheric'
             }
           } )
@@ -67,8 +67,16 @@
             name: 'current',
             config: {
               args: { diameter: 1, segments: 32 },
-              position: [ 0, 0, 100 ],
+              position: [ 0, 0, 0 ],
               type: 'sphere'
+            }
+          },
+          {
+            name: 'hjdej',
+            config: {
+              args: { diameter: 1, segments: 32 },
+              position: [ 1, 0, 0 ],
+              type: 'box'
             }
           } )
           .value();

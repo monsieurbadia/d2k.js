@@ -5,7 +5,6 @@ import { Creater } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const onbabylonstarter = ( init = {} ) => {
 
   const conf = init;

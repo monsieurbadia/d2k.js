@@ -33,13 +33,7 @@ const beforerender = ( TARGET, SOURCE ) => {
 
 };
 
-/**
- * renderer
- * 
- * @public 
- * @see threejs-and-babylonjs-together-on-one-canvas / https://github.com/BabylonJS/Babylon.js/issues/3447
- */
-
+/** @see threejs-and-babylonjs-together-on-one-canvas / https://github.com/BabylonJS/Babylon.js/issues/3447 */
 
 export const Renderer = {
 

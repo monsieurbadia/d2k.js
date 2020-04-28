@@ -102,7 +102,6 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
 
 };
 
-/** @public */
 export const Creater = {
 
   composeScene,

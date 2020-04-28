@@ -14,7 +14,6 @@ const setCanvasSize = ( element, width = window.innerWidth, height = window.inne
 
 };
 
-/** @public */
 export const Dom = {
 
   get body () { return document.body; },

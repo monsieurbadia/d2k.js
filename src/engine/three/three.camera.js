@@ -4,7 +4,6 @@ import { strings } from 'u3s';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-/** @public */
 export const THREECamera = ( RENDERING_ENGINE, { args, name, position, type } ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( type, 'camera' );

@@ -4,7 +4,7 @@
 
 > *micro-surcouche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et fonctionnelle.*
 
-<a href="https://twitter.com/monsieurbadia"><img src="./../images/icons/icon-twitter.svg"/> suis moi sur twitter</a>
+<a href="https://twitter.com/monsieurbadia"><img src="./../images/icons/icon-twitter.svg"/>suis moi sur twitter</a>
 
 [anglais](../README.md) - [français](./documentation.readme.fr.md)    
 
@@ -35,11 +35,10 @@
 - supporter `JSON`
 - supporter `Object.assign( THREE, BABYLON )`
 - supporter `chrome` `edge` `firefox` `safari`
-- ne passer dépasser les `50 KB`
 
 ## <img src="../images/icons/icon-disclaimer.svg"/> Avertissement
 
-je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur, souhaite contribuer à l'open source et aider la communauté 3d. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps, disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
+je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source et aider la communauté 3d. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps, disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
 
 ## <img src="../images/icons/icon-installation.svg"/> Installation    
     
@@ -57,7 +56,7 @@ OU
 yarn add d2k
 ```
 
-voilà, le projet est installé. vérifie tout de même dans `.package.json` si il se trouve bien dans les dépendances de ton application.
+voilà, le projet est installé. vérifie dans `.package.json` si `d2k` se trouve bien dans les dépendances de ton application.
 
 **alternative**
 
@@ -164,7 +163,7 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
 
     ```js
     const starter = d2k.onstarter( /* init */ )
-      .use( THREE );
+      .use( BABYLON || THREE );
     ```
 
   - ### `.withCamera( config )`
@@ -193,6 +192,7 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
   - ### `.withEngine( config )`
 
     *définit un `engine` à partir d'un objet `config` passer en paramètre de la méthode `.withEngine`*
+    *nb: cette méthode est disponibl exclusivement pour *
 
     ##### paramètres
 
@@ -203,7 +203,7 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
 
     ```js
     const starter = d2k.onstarter( /* init */ )
-      .use( BABYLON || THREE )
+      .use( BABYLON )
       .withEngine( { name: 'myEngineName' } );
     ```
 
@@ -233,8 +233,6 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
             type: "mesh-normal"
           },
           positions: [ -20, 0, 0 ],
-          scene: "scene1",
-          group: ""
         }
       } );
     ```
@@ -281,10 +279,8 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
       .withLoader( {
         name: "myLoaderName",
         config: {
-          option: {
-            args: [ { name: "myImage1Name", url: "./my-image-2-path.jpg" }, { name: "myImage2Name", url: "./my-image-2-path.jpg" } ],
-            type: "texture"
-          }
+          args: [ { name: "myImage1Name", url: "./my-image-2-path.jpg" }, { name: "myImage2Name", url: "./my-image-2-path.jpg" } ],
+          type: "texture"
         }
       } );
     ```
