@@ -1,3 +1,5 @@
+import { Events } from '=>/base';
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
@@ -16,9 +18,12 @@ const setCanvasSize = ( element, width = window.innerWidth, height = window.inne
 
 export const Dom = {
 
+  ...Events,
+
   get body () { return document.body; },
   get pixelRatio () { return window.devicePixelRatio; },
   get size () { return [ window.innerWidth, window.innerHeight ]; },
+
   add,
   setCanvasSize
 

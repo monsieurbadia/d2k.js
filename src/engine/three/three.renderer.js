@@ -6,6 +6,61 @@ import { Dom } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
+const beforerenderlayering = ( TARGET, SOURCE ) => {
+
+  const { renderer: { current: renderer } } = TARGET;
+  const { engine: { current: engine } } = SOURCE;
+  const renders = [ ...renderer.renders, ...engine.renders ];
+
+  const render = _ => renderer.setAnimationLoop( _ => {
+
+    for ( let i = 0; i < renders.length; i++ ) {
+      if ( renders[ i ]( renderer.timer.getDelta() ) === null )
+        return null;
+    }
+
+    renderer.resetState( renderer );
+    renderer.render( TARGET.scene.mySceneName, TARGET.camera.current );
+    SOURCE.scene.current.render();
+
+  } );
+
+  return f => {
+
+    render();
+    
+    if ( f ) renders.push( f );
+
+  };
+
+};
+
+const onrender = ( { renderer, scene, camera } ) => {
+
+  renderer.setAnimationLoop( _ => {
+
+    for ( let i = 0; i < renderer.renders.length; i++ ) {
+      if ( renderer.renders[ i ]( renderer.timer.getDelta() ) === null )
+        return null;
+    }
+    
+    if ( resize( renderer ) ) {
+
+      camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
+
+      camera.updateProjectionMatrix();
+      renderer.resizers.forEach( resizer => resizer( [ renderer.domElement.clientWidth / renderer.domElement.clientHeight ] ) );
+
+    }
+
+    renderer.render( scene, camera );
+
+  } );
+
+};
+
+const assign = ( TARGET, SOURCE ) => ( { onrenderlayering: beforerenderlayering( TARGET, SOURCE ) } );
+
 const resetState = renderer => {
 
   if ( is.empty( renderer ) ) return;
@@ -27,31 +82,6 @@ const resize = renderer => {
 
 };
 
-const onrender = ( { renderer, scene, camera } ) => {
-
-  renderer.setAnimationLoop( _ => {
-
-    for ( let i = 0; i < renderer.renders.length; i++ ) {
-      if ( renderer.renders[ i ]( renderer.timer.getDelta() ) === null )
-        return null;
-    }
-    
-    if ( resize( renderer ) ) {
-
-      camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
-      camera.updateProjectionMatrix();
-
-    }
-
-    renderer.render( scene, camera );
-
-  } );
-
-}
-
-
-
-
 export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) => {
 
   const renderer = {};
@@ -69,6 +99,7 @@ export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) =>
 
   return Object.assign( renderer.current, {
     ...CALLBACKS,
+    assign,
     onrender,
     resetState
   } );

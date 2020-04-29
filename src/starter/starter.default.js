@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { Dom, Renderer, Version } from '=>/core';
+import { Dom, Version } from '=>/core';
 
 import {
   onbabylonstarter,
@@ -13,7 +13,7 @@ import {
 
 let version;
 
-export const onlayering = ( ...[ TARGET = {}, SOURCE = {} ] ) => Renderer.assign( TARGET, SOURCE );
+export const onlayering = ( ...[ TARGET = {}, SOURCE = {} ] ) => TARGET.renderer.current.assign( TARGET, SOURCE );
 
 export const onstarter = ( init = {} ) => {
 
