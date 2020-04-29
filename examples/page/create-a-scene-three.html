@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create a scene with the three rendering engine</title>
+    <title>d2k - create a scene with the threejs rendering engine</title>
     <style>
       * {
         box-sizing: border-box;
@@ -44,6 +44,8 @@
             config: {
               args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
               position: [ 0, 0, 100 ],
+              rotation: [ 0, 0, 0 ],
+              scale: [ 0, 0, 0 ],
               type: "perspective"
             }
           } )
@@ -60,7 +62,9 @@
                 },
                 type: "mesh-normal"
               },
-              position: [ -20, 0, 0 ]
+              position: [ -20, 0, 0 ],
+              rotation: [ 0, 0, 0 ],
+              scale: [ 1, 1, 1 ]
             },
             {
               geometry: {
@@ -69,12 +73,13 @@
               },
               material: {
                 args: {
-                  uniforms: { mouse: {} },
                   transparent: true
                 },
-                type: "shader"
+                type: "mesh-normal"
               },
-              position: [ 20, 0, 0 ]
+              position: [ 20, 0, 0 ],
+              rotation: [ 0, 0, 0 ],
+              scale: [ 1, 1, 1 ]
             } ]
           } )
           .withRenderer( {
@@ -89,6 +94,8 @@
             name: "toto",
             config: {
               args: [ "0xffffbb 0x080820 1"  ],
+              position: [ 0, 0, 0 ],
+              rotation: [ 0, 0, 0 ],
               type: "hemisphere"
             }
           } )
@@ -124,6 +131,8 @@
           THREEstarter.mesh.myMeshName.children[ 1 ].rotation.y += time;
 
         } );
+
+      window.THREEstarter = THREEstarter;
 
       }, false );
 

@@ -15,7 +15,20 @@ const resetState = renderer => {
 
 };
 
-const onrender = ( { renderer, scene, camera } ) =>
+const resize = renderer => {
+
+  const width = window.innerWidth;
+  const height = window.innerHeight;
+  const needsToBeResized = renderer.domElement.width !== width || renderer.domElement.height !== height;
+
+  if ( needsToBeResized ) renderer.setSize( width, height );
+
+  return needsToBeResized;
+
+};
+
+const onrender = ( { renderer, scene, camera } ) => {
+
   renderer.setAnimationLoop( _ => {
 
     for ( let i = 0; i < renderer.renders.length; i++ ) {
@@ -23,9 +36,21 @@ const onrender = ( { renderer, scene, camera } ) =>
         return null;
     }
     
+    if ( resize( renderer ) ) {
+
+      camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
+      camera.updateProjectionMatrix();
+
+    }
+
     renderer.render( scene, camera );
 
   } );
+
+}
+
+
+
 
 export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) => {
 
