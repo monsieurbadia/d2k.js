@@ -4,11 +4,11 @@ import { strings } from 'u3s';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const BABYLONCamera = ( RENDERING_ENGINE, parameter ) => {
+export const BABYLONCamera = ( RENDERING_ENGINE, { args, type } ) => {
 
   const { canvas, scene } = RENDERING_ENGINE.coreData;
-  const [ alpha = false, beta = 1, radius = 1, target = [ 0, 0, 0 ] ] = parameter.args;
-  const instanceName = strings.toFirstLetterUpperCaseReducer( parameter.type, 'camera' );
+  const [ alpha = false, beta = 1, radius = 1, target = [ 0, 0, 0 ] ] = args;
+  const instanceName = strings.toFirstLetterUpperCaseReducer( type, 'camera' );
   const camera = new RENDERING_ENGINE[ instanceName ](
     name, alpha, beta, radius, new RENDERING_ENGINE.Vector3.Zero( ...target ), scene
   );

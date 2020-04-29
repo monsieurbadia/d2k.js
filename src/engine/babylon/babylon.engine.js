@@ -19,7 +19,7 @@ const onrender = ( { engine, scene } ) => {
 
   engine.runRenderLoop( renderLoop );
 
-}
+};
 
 export const BABYLONEngine = RENDERING_ENGINE => {
 

@@ -91,7 +91,6 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
 
     parameter.config.name = parameter.name;
 
-    // console.log( parameter )
     return {
       ...result,
       [ parameter.name ]: PRIMITIVE[ currentInstanceName ]( RENDERING_ENGINE, parameter.config )

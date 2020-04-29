@@ -38,7 +38,7 @@ export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
       return {
         ...result,
-        [ param.name ]: oftype( parameter ) === 'array' ? group.add( currentMesh ) : currentMesh
+        [ param.name ]: oftype( params ) === 'array' ? group.add( currentMesh ) : currentMesh
       };
 
     }, {} );

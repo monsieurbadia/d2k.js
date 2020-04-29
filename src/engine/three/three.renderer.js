@@ -27,20 +27,20 @@ const onrender = ( { renderer, scene, camera } ) =>
 
   } );
 
-export const THREERenderer = ( RENDERING_ENGINE, parameter ) => {
+export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) => {
 
   const renderer = {};
   const { canvas } = RENDERING_ENGINE.coreData;
   const context = canvas.getContext( 'webgl2', { alpha: false } );
-  const pixelRatio = !is.exist( parameter.pixelRatio ) ? Dom.pixelRatio : parameter.pixelRatio;
+  const currentPixelRatio = !is.exist( pixelRatio ) ? Dom.pixelRatio : pixelRatio;
 
   if ( is.empty( renderer.current ) ) renderer.current = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas, context } );
 
   renderer.current.timer = new RENDERING_ENGINE.Clock();
   renderer.current.autoClear = false;
 
-  renderer.current.setClearColor( parameter.background );
-  renderer.current.setPixelRatio( pixelRatio );
+  renderer.current.setClearColor( background );
+  renderer.current.setPixelRatio( currentPixelRatio );
 
   return Object.assign( renderer.current, {
     ...CALLBACKS,

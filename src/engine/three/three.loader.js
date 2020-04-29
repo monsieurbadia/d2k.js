@@ -5,22 +5,22 @@ import { CALLBACKS } from '=>/base';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const textures = loader => async source => {
+const textures = loader => async ( { name, url } ) => {
 
-  const texture = await loader.load( source.url );
+  const texture = await loader.load( url );
 
-  texture.name = source.name;
+  texture.name = name;
 
   return texture;
 
 };
 
-export const THREELoader = ( RENDERING_ENGINE, parameter ) => {
+export const THREELoader = ( RENDERING_ENGINE, { args, type } ) => {
 
-  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( parameter.type, 'loader' ) ]();
-  const sources = !is.array( parameter.args ) ? [ parameter.args ] : parameter.args;
-  const args = sources.map( textures( loader ) );
+  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( type, 'loader' ) ]();
+  const sources = !is.array( args ) ? [ args ] : args;
+  const textureArgs = sources.map( textures( loader ) );
 
-  return Promise.all( args ).then( response => setTimeout( _=> CALLBACKS.loaders.forEach( loader => loader( response ) ) ), 0 );
+  return Promise.all( textureArgs ).then( response => setTimeout( _=> CALLBACKS.loaders.forEach( loader => loader( response ) ) ), 0 );
 
 };
