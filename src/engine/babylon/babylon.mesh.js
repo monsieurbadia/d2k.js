@@ -1,6 +1,6 @@
 import{ is, oftype, strings } from 'u3s';
 import { MESH } from '=>/base';
-import { Events } from '=>/core';
+import { Event } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -35,7 +35,7 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
 
       Object
         .assign( currentMesh, {
-          ...Events
+          ...Event
         } );
 
       return {
@@ -46,7 +46,7 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
     }, {} );
 
   return Object.assign( mesh[ parameter.name ], {
-    ...Events
+    ...Event
   } );
 
 };

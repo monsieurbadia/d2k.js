@@ -1,6 +1,6 @@
 import { merge } from 'u3s';
 import { SHADER } from '=>/base';
-import { Chunk, Events } from '=>/core';
+import { Chunk, Event } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -15,7 +15,7 @@ export const THREEShader = ( RENDERING_ENGINE, { uniforms, fragmentShader, verte
   const shader = new RENDERING_ENGINE.Mesh( geometry, material );
 
   return Object.assign( shader, {
-    ...Events
+    ...Event
   } );
 
 };

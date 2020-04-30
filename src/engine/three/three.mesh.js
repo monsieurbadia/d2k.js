@@ -1,6 +1,6 @@
 import { is, oftype } from 'u3s';
 import { MESH } from '=>/base';
-import { Events } from '=>/core';
+import { Event } from '=>/core';
 
 import {
   THREEGeometry,
@@ -33,7 +33,7 @@ export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
       Object
         .assign( currentMesh, {
-          ...Events
+          ...Event
         } );
 
       return {
@@ -44,7 +44,7 @@ export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
     }, {} );
 
   return Object.assign( mesh[ parameter.name ], {
-    ...Events
+    ...Event
   } );
 
 };

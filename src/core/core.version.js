@@ -21,8 +21,10 @@ export const Version = semver => {
       console.log( `${ name } ${ version } `);
     }
 
+    return true;
+
   };
 
-  show();
+  return show();
 
 };
