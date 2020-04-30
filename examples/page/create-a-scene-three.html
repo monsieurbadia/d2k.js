@@ -107,13 +107,19 @@
             }
           } )
           .withScene( {
-            name: "mySceneName",
+            name: "mySceneName"
+          } )
+          .composify( {
             config: {
-              mesh: [ "myMeshName" ],
-              light: [ "toto" ],
+              scene: {
+                main: "mySceneName",
+                others: [ { name: "mySceneBackgroundName" } ]
+              },
+              mesh: [ { name: "myMeshName", parent: "main" } ],
+              light: [ { name: "toto", parent: "main" } ],
               camera: {
                 main: "current",
-                others: [ "another" ]
+                others: [ { name: "another" } ]
               },
               renderer: "current"
             }
@@ -134,6 +140,7 @@
 
       window.THREEstarter = THREEstarter;
 
+      console.log( THREEstarter )
       }, false );
 
     </script>

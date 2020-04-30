@@ -1,4 +1,4 @@
-import { is } from 'u3s';
+import { is, merge } from 'u3s';
 import { Creater } from '=>/core';
 import { THREEScene } from '=>/engine/three';
 
@@ -88,15 +88,44 @@ export const onthreestarter = ( init = {} ) => {
 
     }
 
-    const starter = Creater.composeScene( { parameter: conf, selectedPrimitives: config } );
     const scene = THREEScene( conf.RENDERING_ENGINE, config );
 
     conf.scene[ name ] = scene;
 
-    if ( is.exist( starter.mesh ) ) Object.keys( starter.mesh ).forEach( key => scene.add( starter.mesh[ key ] ) );
-    if ( is.exist( starter.light ) ) Object.keys( starter.light ).forEach( key => scene.add( starter.light[ key ] ) );
+    return onthreestarter( conf );
 
-    starter.renderer.onrender( { renderer: starter.renderer, scene, camera: starter.camera.main } );
+  };
+
+  const composify = ( { config } ) => {
+
+    const cleanUselessProperty = ( object, properties ) => properties.forEach( property => delete object[ property ] );
+
+    const starter = Creater.composeScene( {
+      parameter: conf,
+      selectedPrimitives: config
+    } );
+
+    const objects3D = merge(
+      starter.light,
+      starter.mesh
+    );
+
+    if ( is.exist( objects3D ) ) {
+
+      Object.keys( objects3D ).forEach( key => starter.scene[ objects3D[ key ].userData.currentScene ].add( objects3D[ key ] ) );
+    
+    };
+
+    starter.renderer.onrender( {
+      renderer: starter.renderer,
+      scene: starter.scene.main,
+      camera: starter.camera.main
+    } );
+
+    cleanUselessProperty( conf, [
+      'canvas',
+      'RENDERING_ENGINE'
+    ] );
 
     return onthreestarter( conf );
 
@@ -111,6 +140,7 @@ export const onthreestarter = ( init = {} ) => {
     withMesh,
     withRenderer,
     withScene,
+    composify,
     value,
   };
 

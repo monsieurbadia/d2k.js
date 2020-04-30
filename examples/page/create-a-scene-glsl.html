@@ -69,9 +69,16 @@
           } )
           .value();
 
-        GLGLstarter.shader.myShaderName.onrender( time => {
-          // console.log( time );
+        // GLGLstarter.shader.myShaderName.onrender( time => console.log( time ) );
+
+        GLGLstarter.event.onresize( size => {
+
+          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = size[ 0 ];
+          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size[ 1 ];
+
         } );
+
+        // console.log( GLGLstarter );
 
       }, false );
 

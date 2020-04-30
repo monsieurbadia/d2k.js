@@ -107,15 +107,21 @@
             }
           } )
           .withScene( {
-            name: 'mySceneName',
+            name: "mySceneName"
+          } )
+          .composify( {
             config: {
-              mesh: [ 'myMeshName' ],
-              light: [ 'toto' ],
-              camera: {
-                main: 'current',
-                others: [ 'another' ]
+              scene: {
+                main: "mySceneName",
+                others: [ { name: "mySceneBackgroundName" } ]
               },
-              renderer: 'current'
+              mesh: [ { name: "myMeshName", parent: "main" } ],
+              light: [ { name: "toto", parent: "main" } ],
+              camera: {
+                main: "current",
+                others: [ { name: "another" } ]
+              },
+              renderer: "current"
             }
           } )
           .value();
@@ -191,7 +197,7 @@
 
         d2k
           .onlayering( THREEstarter, BABYLONstarter )
-          .onrenderlayering()
+          .onrenderlayering();
 
       }, false );
 

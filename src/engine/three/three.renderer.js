@@ -6,7 +6,7 @@ import { Dom } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const beforerenderlayering = ( TARGET, SOURCE ) => {
+const beforerenderlayering = ( { TARGET, SOURCE } ) => {
 
   const { renderer: { current: renderer } } = TARGET;
   const { engine: { current: engine } } = SOURCE;
@@ -19,7 +19,8 @@ const beforerenderlayering = ( TARGET, SOURCE ) => {
         return null;
     }
 
-    renderer.resetState( renderer );
+    renderer.getContext().bindVertexArray( null );
+    renderer.state.reset();
     renderer.render( TARGET.scene.mySceneName, TARGET.camera.current );
     SOURCE.scene.current.render();
 
@@ -49,7 +50,7 @@ const onrender = ( { renderer, scene, camera } ) => {
       camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
 
       camera.updateProjectionMatrix();
-      renderer.resizers.forEach( resizer => resizer( [ renderer.domElement.clientWidth / renderer.domElement.clientHeight ] ) );
+      renderer.resizers.forEach( resizer => resizer( [ renderer.domElement.clientWidth, renderer.domElement.clientHeight ] ) );
 
     }
 
@@ -59,16 +60,7 @@ const onrender = ( { renderer, scene, camera } ) => {
 
 };
 
-const assign = ( TARGET, SOURCE ) => ( { onrenderlayering: beforerenderlayering( TARGET, SOURCE ) } );
-
-const resetState = renderer => {
-
-  if ( is.empty( renderer ) ) return;
-
-  renderer.getContext().bindVertexArray( null );
-  renderer.state.reset();
-
-};
+const assign = ( TARGET, SOURCE ) => ( { onrenderlayering: beforerenderlayering( { TARGET, SOURCE } ) } );
 
 const resize = renderer => {
 
@@ -100,8 +92,7 @@ export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) =>
   return Object.assign( renderer.current, {
     ...CALLBACKS,
     assign,
-    onrender,
-    resetState
+    onrender
   } );
 
 };

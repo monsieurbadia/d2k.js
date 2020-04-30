@@ -12,7 +12,9 @@ const createUniforms = ( RENDERING_ENGINE, uniforms = {} ) => {
   const byCoreUniforms = key => MATH.TYPES.includes( uniforms[ key ].type );
   const coreUniforms = ( result, key ) => {
 
-    uniforms[ key ].value = new RENDERING_ENGINE[ MATH.PRIMITIVES[ uniforms[ key ].type ] ]( ...uniforms[ key ].value );
+    const instanceName = MATH.PRIMITIVES[ uniforms[ key ].type ];
+
+    uniforms[ key ].value = new RENDERING_ENGINE[ instanceName ]( ...uniforms[ key ].value );
 
     return {
       ...result,

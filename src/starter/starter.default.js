@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { Dom, Version } from '=>/core';
+import { Dom, Events, Version } from '=>/core';
 
 import {
   onbabylonstarter,
@@ -25,9 +25,10 @@ export const onstarter = ( init = {} ) => {
 
     Dom.setCanvasSize( conf.canvas );
 
+    conf.event = Events;
     conf.RENDERING_ENGINE = renderingEngine;
     conf.RENDERING_ENGINE.coreData = {
-      canvas: conf.canvas
+      canvas: conf.canvas,
     };
 
     if ( conf.RENDERING_ENGINE.SceneComponentConstants ) {

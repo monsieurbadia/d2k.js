@@ -39,14 +39,23 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
 
   const composedScene = {};
 
-  const getPrimitives = ( { primitivesName, parameter } ) => {
+  const getPrimitive = ( { primitivesName, parameter } ) => {
 
-    const primitive = ( result, value ) => ( {
-      ...result,
-      [ value ]: parameter[ value ]
-    } );
+    const byDefinedPrimitives = primitive => is.exist( parameter[ primitive.name ] );
+    const primitive = ( result, config ) => { 
 
-    return primitivesName?.reduce( primitive, {} );
+      parameter[ config.name ].userData = { currentScene: config.parent };
+
+      return {
+        ...result,
+        [ config.name ]: parameter[ config.name ]
+      };
+    
+    };
+
+    return primitivesName
+      ?.filter( byDefinedPrimitives )
+      .reduce( primitive, {} );
 
   };
 
@@ -56,24 +65,37 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
         main: parameter.camera[ selectedPrimitives.camera.main ]
       },
       {
-        others: getPrimitives( {
+        others: getPrimitive( {
           primitivesName: selectedPrimitives.camera.others,
           parameter: parameter.camera
         } )
       }
     );
 
-  composedScene.mesh = getPrimitives( {
+  composedScene.mesh = getPrimitive( {
     primitivesName: selectedPrimitives.mesh,
     parameter: parameter.mesh
   } );
 
-  composedScene.light = getPrimitives( {
+  composedScene.light = getPrimitive( {
     primitivesName: selectedPrimitives.light,
     parameter: parameter.light
   } );
 
   composedScene.renderer = parameter.renderer[ selectedPrimitives.renderer ];
+
+  composedScene.scene = Object
+    .assign(
+      {
+        main: parameter.scene[ selectedPrimitives.scene.main ]
+      },
+      {
+        others: getPrimitive( {
+          primitivesName: selectedPrimitives.scene.others,
+          parameter: parameter.scene
+        } )
+      }
+    );
 
   return composedScene;
 
