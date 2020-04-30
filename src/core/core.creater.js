@@ -43,12 +43,14 @@ const oncreate = ( { conf, name, starter } ) => ( ...parameters ) => {
 
   };
 
+  const params = name === 'renderer' ? [ parameters[ 0 ] ] : parameters;
+
   return starter(
     Object
       .assign(
         conf,
         {
-          [ name ]: Creater.createPrimitive( parameters, name, conf.RENDERING_ENGINE )
+          [ name ]: Creater.createPrimitive( params, name, conf.RENDERING_ENGINE )
         }
       )
     );

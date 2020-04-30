@@ -13,7 +13,7 @@ import {
 
 let version;
 
-export const onlayering = ( ...[ TARGET = {}, SOURCE = {} ] ) => TARGET.renderer.current.assign( TARGET, SOURCE );
+export const onlayering = ( ...[ TARGET = {}, SOURCE = {} ] ) => TARGET.renderer[ Object.keys( TARGET.renderer ) ].assign( TARGET, SOURCE );
 
 export const onstarter = ( init = {} ) => {
 

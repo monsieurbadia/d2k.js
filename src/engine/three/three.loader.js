@@ -5,9 +5,9 @@ import { CALLBACKS } from '=>/base';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const textures = loader => async ( { name, url } ) => {
+const loadTexture = loader => ( { name, url } ) => {
 
-  const texture = await loader.load( url );
+  const texture = loader.load( url );
 
   texture.name = name;
 
@@ -15,12 +15,19 @@ const textures = loader => async ( { name, url } ) => {
 
 };
 
-export const THREELoader = ( RENDERING_ENGINE, { args, type } ) => {
+export const THREELoader = async ( RENDERING_ENGINE, { args, type } ) => {
 
   const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( type, 'loader' ) ]();
-  const sources = !is.array( args ) ? [ args ] : args;
-  const textureArgs = sources.map( textures( loader ) );
+  const sources = is.array( args ) ? args : [ args ];
+  const textureArgs = sources.map( loadTexture( loader ) );
 
-  return Promise.all( textureArgs ).then( response => setTimeout( _=> CALLBACKS.loaders.forEach( loader => loader( response ) ) ), 0 );
+  const textures = await Promise
+    .all( textureArgs )
+    .then( response => response )
+    .catch( error => error );
+
+  CALLBACKS.loaders.forEach( loader => loader( textures ) );
+
+  return textures;
 
 };

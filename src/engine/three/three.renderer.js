@@ -47,9 +47,13 @@ const onrender = ( { renderer, scene, camera } ) => {
     
     if ( resize( renderer ) ) {
 
-      camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
+      if ( is.exist( camera ) ) {
 
-      camera.updateProjectionMatrix();
+        camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
+        camera.updateProjectionMatrix();
+
+      }
+
       renderer.resizers.forEach( resizer => resizer( [ renderer.domElement.clientWidth, renderer.domElement.clientHeight ] ) );
 
     }
@@ -61,6 +65,13 @@ const onrender = ( { renderer, scene, camera } ) => {
 };
 
 const assign = ( TARGET, SOURCE ) => ( { onrenderlayering: beforerenderlayering( { TARGET, SOURCE } ) } );
+
+const clean = renderer => {
+
+  renderer.clear();
+  renderer.dispose();
+
+};
 
 const resize = renderer => {
 
@@ -76,7 +87,7 @@ const resize = renderer => {
 
 export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) => {
 
-  const renderer = {};
+  const renderer = Object.create( null );
   const { canvas } = RENDERING_ENGINE.coreData;
   const context = canvas.getContext( 'webgl2', { alpha: false } );
   const currentPixelRatio = !is.exist( pixelRatio ) ? Dom.pixelRatio : pixelRatio;
@@ -91,8 +102,9 @@ export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) =>
 
   return Object.assign( renderer.current, {
     ...CALLBACKS,
+    onrender,
     assign,
-    onrender
+    clean
   } );
 
 };
