@@ -88,8 +88,8 @@ crée une scène 100% `gpu` au travers des `shader` en `glsl`
 
 ```js
 const GLSLstarter = d2k.onstarter( { glsl: true } )
-  .use( THREE ) // <-- use three and enable glsl shader
-  .withShader()
+  .use( THREE )
+  .withShader( /* shader config */ )
   .value();
 ```
 
@@ -98,12 +98,12 @@ const GLSLstarter = d2k.onstarter( { glsl: true } )
 crée une scène à partir des primitives provenant de `BABYLON`    
 
 ```js
-const BABYLONstarter = d2k.onstarter()
-  .use( BABYLON ) // <-- use babylon
-  .withEngine()
-  .withScene()
-  .withLight()
-  .withMesh()
+const BABYLONstarter = d2k.onstarter( /* init config */ )
+  .use( BABYLON )
+  .withEngine( /* engine config */ )
+  .withScene( /* scene config */ )
+  .withLight( /* light config */ )
+  .withMesh( /* mesh config */ )
   .value();
 ```
 
@@ -112,13 +112,15 @@ const BABYLONstarter = d2k.onstarter()
 crée une scène à partir des primitives fournit par `THREE`   
 
 ```js
-const THREEstarter = d2k.onstarter()
-  .use( THREE ) // <-- use three
-  .withCamera()
-  .withMesh()
-  .withRenderer()
-  .withLight()
-  .withScene()
+const THREEstarter = d2k.onstarter( /* init config */ )
+  .use( THREE )
+  .withCamera( /* camera config */ )
+  .withRenderer( /* renderer config */ )
+  .withLoader( /* loader config */ )
+  .withMesh( /* mesh config */ )
+  .withLight( /* light config */ )
+  .withScene( /* scene config */ )
+  .composify( /* your scene composition */)
   .value();
 ```
 
@@ -312,7 +314,7 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
 
   - ### `.withScene( config )`
 
-    *compose une `scene` à partir d'un objet `config` passer en paramètre de la méthode `.withScene`*
+    *crée une `scene` à partir d'un objet `config` passer en paramètre de la méthode `.withScene`*
 
     ##### paramètres
 
@@ -325,17 +327,8 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
     const starter = d2k.onstarter( /* init */ )
       .use( BABYLON || THREE )
       .withScene( {
-        name: "mySceneName",
-        config: {
-          mesh: [ "myMeshName" ],
-          light: [ "myLightName" ],
-          camera: {
-            main: "myCameraName",
-            others: []
-          },
-          renderer: "myRendererName"
-        }
-      } );
+        name: "mySceneName"
+      );
     ```
 
   - ### `.withShader( config )`
@@ -369,6 +362,37 @@ starter.mesh.myMeshName.onrender( timer => starter.mesh.myMeshName.rotation.set(
               gl_FragColor = vec4(st.x, st.y, 0.0, 1.0);
             }
           `
+        }
+      } );
+    ```
+
+  - ### `.composify( config )`
+
+    *compose une `scene` à partir d'un objet `config` passer en paramètre de la méthode `.withScene`*
+
+    ##### paramètres
+
+    `config` **{ Object }**: définition la config d'une `scene`  
+    `returns` **{ Object }**: collection de méthodes. 
+
+    ##### exemple
+
+    ```js
+    const starter = d2k.onstarter( /* init */ )
+      .use( BABYLON || THREE )
+      .composify( {
+        config: {
+          scene: {
+            main: "mySceneName",
+            others: [ { name: "mySceneBackgroundName" } ]
+          },
+          mesh: [ { name: "myMeshName", parent: "main" } ],
+          light: [ { name: "myLightName", parent: "main" } ],
+          camera: {
+            main: "current",
+            others: [ { name: "another" } ]
+          },
+          renderer: "current"
         }
       } );
     ```
