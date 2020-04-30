@@ -35,6 +35,26 @@ const PRIMITIVE = Object.freeze( {
   THREEScene
 } );
 
+const oncreate = ( { conf, name, starter } ) => ( ...parameters ) => {
+
+  if ( is.empty( conf[ name ] ) ) {
+
+    conf[ name ] = {};
+
+  };
+
+  return starter(
+    Object
+      .assign(
+        conf,
+        {
+          [ name ]: Creater.createPrimitive( parameters, name, conf.RENDERING_ENGINE )
+        }
+      )
+    );
+
+};
+
 const composeScene = ( { parameter, selectedPrimitives } ) => {
 
   const composedScene = {};
@@ -126,6 +146,7 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
 
 export const Creater = Object.freeze( {
 
+  oncreate,
   composeScene,
   createPrimitive
 
