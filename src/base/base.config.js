@@ -4,12 +4,12 @@
 
 export const CONFIG = Object.freeze( {
 
-  camera: {
+  CAMERA: {
     name: 'current',
     config: {
       args: [
         75,
-        null,
+        window.innerWidth / window.innerHeight,
         0.1,
         1000
       ],
@@ -22,7 +22,7 @@ export const CONFIG = Object.freeze( {
     }
   },
 
-  renderer: {
+  RENDERER: {
     name: 'current',
     config: {
       pixelRatio: window.devicePixelRatio,

@@ -16,22 +16,24 @@ export const onglslstarter = ( init = {} ) => {
 
   const conf = init;
 
-  const withRenderer = ( { name, config } ) => {
+  const withShader = ( { name, config } ) => {
 
-    if ( is.empty( conf.renderer ) ) {
+    if ( is.empty( conf.shader ) ) {
 
+      conf.shader = {};
       conf.renderer = {};
 
     }
 
-    const renderer = THREERenderer( conf.RENDERING_ENGINE, config );
+    const shader = THREEShader( conf.RENDERING_ENGINE, config )
+    const renderer = THREERenderer( conf.RENDERING_ENGINE, CONFIG.RENDERER.config );
     const scene = THREEScene( conf.RENDERING_ENGINE );
-    const camera = THREECamera( conf.RENDERING_ENGINE, CONFIG.camera.config );
+    const camera = THREECamera( conf.RENDERING_ENGINE, CONFIG.CAMERA.config );
 
-    conf.renderer[ name ] = renderer;
+    conf.shader[ name ] = shader;
+    conf.renderer.current = renderer;
 
     scene.add( conf.shader.myShaderName );
-    camera.position.set( 0, 0, -1 );
 
     renderer.onrender( {
       renderer,
@@ -43,25 +45,10 @@ export const onglslstarter = ( init = {} ) => {
 
   };
 
-  const withShader = ( { name, config } ) => {
-
-    if ( is.empty( conf.shader ) ) {
-
-      conf.shader = {};
-
-    }
-
-    conf.shader[ name ] = THREEShader( conf.RENDERING_ENGINE, config );
-
-    return onglslstarter( conf );
-
-  };
-
   const value = _ => conf;
 
   return {
     value,
-    withRenderer,
     withShader
   };
 
