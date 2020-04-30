@@ -6,9 +6,9 @@ import { ua } from 'u3s';
 
 export const Version = semver => {
 
-  const [ name, message ] = [ `d2k.js | v${ semver || '0.0.0' }`, 'by @monsieurbadia' ];
+  const [ name, version ] = [ `d2k.js`, `v${ semver || '0.0.0' }` ];
   const args = [
-    `%c ${ name } %c ${ message } `,
+    `%c ${ name } %c ${ version } `,
     `color: #ffffff; background: #000000; padding: 3px 0;`,
     `padding: 3px 0; color: #000000; background: #ffffff; text-decoration: none;`,
   ];
@@ -18,13 +18,11 @@ export const Version = semver => {
     if ( ua.browser() ) {
       console.log.apply( console, args );
     } else if ( window.console ) {
-      console.log( `${ name } ${ message } `);
+      console.log( `${ name } ${ version } `);
     }
-
-    return true;
 
   };
 
-  return show();
+  show();
 
 };
