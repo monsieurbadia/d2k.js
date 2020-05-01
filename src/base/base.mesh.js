@@ -4,10 +4,20 @@
 
 export const MESH = Object.freeze( {
 
-  DYNAMICS_PROPERTIES: [
-    'position',
-    'rotation',
-    'scale'
-  ]
+  BABYLON: {
+    DYNAMIC_PROPERTIES: [
+      'position',
+      'rotation',
+      'scaling'
+    ]
+  },
+
+  THREE: {
+    DYNAMIC_PROPERTIES: [
+      'position',
+      'rotation',
+      'scale'
+    ]
+  }
 
 } );

@@ -18,7 +18,7 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
     .reduce( ( result, param ) => {
 
       const currentMesh = RENDERING_ENGINE.MeshBuilder[ instanceName ]( name, param.args, scene );
-      
+
       if ( is.exist( param.material ) ) {
 
         const materialInstanceName = strings.toFirstLetterUpperCaseReducer( param.material.type, 'material' );
@@ -30,7 +30,7 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
 
       Object
         .keys( param )
-        .filter( key => MESH.DYNAMICS_PROPERTIES.includes( key ) )
+        .filter( key => MESH.BABYLON.DYNAMIC_PROPERTIES.includes( key ) )
         .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
 
       Object
@@ -40,7 +40,7 @@ export const BABYLONMesh = ( RENDERING_ENGINE, parameter ) => {
 
       return {
         ...result,
-        [ param.name ]: oftype( param ) === 'array' ? group.add( currentMesh ) : currentMesh
+        [ param.name ]: is.array( param ) ? group.add( currentMesh ) : currentMesh
       };
 
     }, {} );

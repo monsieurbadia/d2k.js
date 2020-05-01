@@ -1,4 +1,4 @@
-import { CALLBACKS } from '=>/base'
+import { CALLBACK } from '=>/base'
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -29,7 +29,7 @@ export const BABYLONEngine = RENDERING_ENGINE => {
   RENDERING_ENGINE.coreData.engine = engine;
 
   return Object.assign( engine, {
-    ...CALLBACKS,
+    ...CALLBACK,
     onrender
   } );
 

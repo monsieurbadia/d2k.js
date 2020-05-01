@@ -2,7 +2,7 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const CALLBACKS = Object.freeze( {
+export const CALLBACK = Object.freeze( {
 
   loaders: [],
   renders: [],

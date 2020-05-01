@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { CONFIG } from '=>/base';
+import { __, CONFIG } from '=>/base';
 
 import {
   THREECamera,
@@ -12,7 +12,7 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const onglslstarter = ( init = {} ) => {
+export const onglslstarter = ( init = __.OBJECT ) => {
 
   const conf = init;
 
@@ -20,12 +20,12 @@ export const onglslstarter = ( init = {} ) => {
 
     if ( is.empty( conf.shader ) ) {
 
-      conf.shader = {};
-      conf.renderer = {};
+      conf.shader = Object.create( null );
+      conf.renderer = Object.create( null );
 
     }
 
-    const shader = THREEShader( conf.RENDERING_ENGINE, config )
+    const shader = THREEShader( conf.RENDERING_ENGINE, config );
     const renderer = THREERenderer( conf.RENDERING_ENGINE, CONFIG.RENDERER.config );
     const scene = THREEScene( conf.RENDERING_ENGINE );
     const camera = THREECamera( conf.RENDERING_ENGINE, CONFIG.CAMERA.config );
@@ -38,7 +38,7 @@ export const onglslstarter = ( init = {} ) => {
     renderer.onrender( {
       renderer,
       scene,
-      camera,
+      camera
     } );
 
     return onglslstarter( conf );
@@ -47,9 +47,9 @@ export const onglslstarter = ( init = {} ) => {
 
   const value = _ => conf;
 
-  return {
+  return Object.freeze( {
     value,
     withShader
-  };
+  } );
 
 };

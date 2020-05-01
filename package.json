@@ -11,7 +11,9 @@
     "canvas",
     "renderer",
     "loader",
-    "rendering engine"
+    "rendering engine",
+    "primitives builder",
+    "game-development"
   ],
   "main": "build/d2k.js",
   "repository": "https://github.com/monsieurbadia/d2k.js.git",

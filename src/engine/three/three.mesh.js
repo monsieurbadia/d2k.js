@@ -28,7 +28,7 @@ export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
 
       Object
         .keys( param )
-        .filter( key => MESH.DYNAMICS_PROPERTIES.includes( key ) )
+        .filter( key => MESH.THREE.DYNAMIC_PROPERTIES.includes( key ) )
         .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
 
       Object

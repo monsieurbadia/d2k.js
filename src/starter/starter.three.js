@@ -1,11 +1,12 @@
 import { is, merge } from 'u3s';
+import { __ } from '=>/base';
 import { Creater } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const onthreestarter = ( init = {} ) => {
+export const onthreestarter = ( init = __.OBJECT ) => {
 
   const conf = init;
 
@@ -46,7 +47,7 @@ export const onthreestarter = ( init = {} ) => {
 
   const value = _ => conf;
 
-  return {
+  return Object.freeze( {
     composify,
     value,
     withCamera: Creater.oncreate( { conf, name: 'camera', starter: onthreestarter } ),
@@ -55,6 +56,6 @@ export const onthreestarter = ( init = {} ) => {
     withMesh: Creater.oncreate( { conf, name: 'mesh', starter: onthreestarter } ),
     withRenderer: Creater.oncreate( { conf, name: 'renderer', starter: onthreestarter } ),
     withScene: Creater.oncreate( { conf, name: 'scene', starter: onthreestarter } ),
-  };
+  } );
 
 };

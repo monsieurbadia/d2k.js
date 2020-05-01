@@ -13,9 +13,9 @@ import {
 
 let version;
 
-export const onlayering = ( ...[ TARGET = {}, SOURCE = {} ] ) => TARGET.renderer[ Object.keys( TARGET.renderer ) ].assign( TARGET, SOURCE );
+export const onlayering = ( ...[ TARGET, SOURCE ] ) => TARGET.renderer[ Object.keys( TARGET.renderer ) ].assign( TARGET, SOURCE );
 
-export const onstarter = ( init = {} ) => {
+export const onstarter = ( init = __.OBJECT ) => {
 
   const conf = init;
 
@@ -47,9 +47,9 @@ export const onstarter = ( init = {} ) => {
 
   if ( version === undefined ) version = Version();
 
-  return {
+  return Object.freeze( {
     use,
     value
-  };
+  } );
 
 };

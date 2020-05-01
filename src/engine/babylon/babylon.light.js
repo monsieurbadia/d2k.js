@@ -1,4 +1,5 @@
 import { strings } from 'u3s';
+import { Event } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -12,6 +13,8 @@ export const BABYLONLight = ( RENDERING_ENGINE, { args = [ 0, 0, 0 ], type = 'ar
     'light', new RENDERING_ENGINE.Vector3( ...args ), scene
   );
 
-  return light;
+  return Object.assign( light, {
+    ...Event
+  } );
 
 };

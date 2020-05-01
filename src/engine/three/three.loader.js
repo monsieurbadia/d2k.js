@@ -1,5 +1,5 @@
 import { is, strings } from 'u3s';
-import { CALLBACKS } from '=>/base';
+import { CALLBACK } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -26,7 +26,7 @@ export const THREELoader = async ( RENDERING_ENGINE, { args, type } ) => {
     .then( response => response )
     .catch( error => error );
 
-  CALLBACKS.loaders.forEach( loader => loader( textures ) );
+  CALLBACK.loaders.forEach( loader => loader( textures ) );
 
   return textures;
 

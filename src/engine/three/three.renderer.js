@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { CALLBACKS } from '=>/base';
+import { CALLBACK } from '=>/base';
 import { Dom } from '=>/core';
 
 /**
@@ -101,7 +101,7 @@ export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) =>
   renderer.current.setPixelRatio( currentPixelRatio );
 
   return Object.assign( renderer.current, {
-    ...CALLBACKS,
+    ...CALLBACK,
     onrender,
     assign,
     clean
