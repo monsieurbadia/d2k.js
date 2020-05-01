@@ -17,16 +17,21 @@ export const BABYLONMesh = ( { RENDERING_ENGINE, config } ) => {
     .reduce( ( result, parameter ) => {
 
       const properties = Object.keys( parameter );
-      const materialInstanceName = strings.toFirstLetterUpperCaseReducer( parameter.material.type, 'material' );
       const currentMesh = Object.assign( RENDERING_ENGINE.MeshBuilder[ instanceName ]( name, parameter.args, scene ), { ...Event } );
       const modifyDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
-      const material = new RENDERING_ENGINE[ materialInstanceName ]( parameter.material.name, scene );
 
       modifyDynamicProperty( properties );
 
-      // TODO
-      currentMesh.material = material;
-      currentMesh.material.emissiveColor = new RENDERING_ENGINE.Color3( ...parameter.material.emissiveColor );
+      if ( is.exist( parameter.material ) ) {
+
+        // TODO
+        const materialInstanceName = strings.toFirstLetterUpperCaseReducer( parameter.material.type, 'material' );
+        const material = new RENDERING_ENGINE[ materialInstanceName ]( parameter.material.name, scene );
+  
+        currentMesh.material = material;
+        currentMesh.material.emissiveColor = new RENDERING_ENGINE.Color3( ...parameter.material.emissiveColor );
+
+      }
 
       return {
         ...result,
