@@ -12,13 +12,14 @@ const createUniforms = ( RENDERING_ENGINE, uniforms ) => {
   const byCoreUniforms = key => MATH.TYPES.includes( uniforms[ key ].type );
   const coreUniforms = ( result, key ) => {
 
-    const instanceName = MATH.PRIMITIVES[ uniforms[ key ].type ];
+    const uniform = uniforms[ key ];
+    const instanceName = MATH.PRIMITIVES[ uniform.type ];
 
-    uniforms[ key ].value = new RENDERING_ENGINE[ instanceName ]( ...uniforms[ key ].value );
+    uniform.value = new RENDERING_ENGINE[ instanceName ]( ...uniform.value );
 
     return {
       ...result,
-      [ key ]: uniforms[ key ]
+      [ key ]: uniform
     };
 
   };
@@ -34,24 +35,25 @@ const compile = chunks => {
 
   if ( is.empty( chunks ) ) return;
 
-  const byShadeType = key => /Shader/i.test( key );
-  const shadeParams = ( result, key ) => {
+  const byShaderType = key => /Shader/i.test( key );
+  const shaderParams = ( result, key ) => {
 
-    const chunk = SHADER.TYPE[ key ];
+    const shaderToInclude = SHADER.TYPE[ key ];
+    const shaderCurrent = chunks[ key ];
 
     return {
       ...result,
-      [ key ]: chunks[ key ].includes( chunk.name )
-        ? chunks[ key ].replace( chunk.name, chunk.template )
-        : chunks[ key ]
+      [ key ]: is.include( shaderCurrent, shaderToInclude.name )
+        ? shaderCurrent.replace( shaderToInclude.name, shaderToInclude.template )
+        : shaderCurrent
     };
 
   };
 
   return Object
     .keys( chunks )
-    .filter( byShadeType )
-    .reduce( shadeParams, chunks );
+    .filter( byShaderType )
+    .reduce( shaderParams, chunks );
 
 };
 

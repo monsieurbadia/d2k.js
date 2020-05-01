@@ -20,15 +20,16 @@ export const onglslstarter = ( init = __.OBJECT ) => {
 
     if ( is.empty( conf.shader ) ) {
 
-      conf.shader = Object.create( null );
-      conf.renderer = Object.create( null );
+      conf.shader = __.OBJECT;
+      conf.renderer = __.OBJECT;
 
     }
 
-    const shader = THREEShader( conf.RENDERING_ENGINE, config );
-    const renderer = THREERenderer( conf.RENDERING_ENGINE, CONFIG.RENDERER.config );
-    const scene = THREEScene( conf.RENDERING_ENGINE );
-    const camera = THREECamera( conf.RENDERING_ENGINE, CONFIG.CAMERA.config );
+    const { RENDERING_ENGINE } = conf;
+    const shader = THREEShader( { RENDERING_ENGINE, config } );
+    const renderer = THREERenderer( { RENDERING_ENGINE, config: CONFIG.RENDERER.config } );
+    const scene = THREEScene( { RENDERING_ENGINE } );
+    const camera = THREECamera( { RENDERING_ENGINE, config: CONFIG.CAMERA.config } );
 
     conf.shader[ name ] = shader;
     conf.renderer.current = renderer;

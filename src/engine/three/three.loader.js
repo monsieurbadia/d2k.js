@@ -15,7 +15,7 @@ const loadTexture = loader => ( { name, url } ) => {
 
 };
 
-export const THREELoader = async ( RENDERING_ENGINE, { args, type } ) => {
+export const THREELoader = async ( { RENDERING_ENGINE, config: { args, type } } ) => {
 
   const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( type, 'loader' ) ]();
   const sources = is.array( args ) ? args : [ args ];

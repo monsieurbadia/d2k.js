@@ -51,7 +51,7 @@ const oncreate = ( { conf, name, starter } ) => ( ...parameters ) => {
       .assign(
         conf,
         {
-          [ name ]: Creater.createPrimitive( params, name, conf.RENDERING_ENGINE )
+          [ name ]: createPrimitive( params, name, conf.RENDERING_ENGINE )
         }
       )
     );
@@ -77,7 +77,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
     };
 
     return primitivesName
-      ?.filter( byDefinedPrimitives )
+      .filter( byDefinedPrimitives )
       .reduce( primitive, {} );
 
   };
@@ -132,13 +132,13 @@ const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
   const primitive = ( result, parameter ) => {
 
     if ( is.empty( parameter.config ) ) parameter.config = {};
-    if ( is.array( parameter.config ) ) parameter.config.forEach( ( conf ) => conf.name = parameter.name );
+    if ( is.array( parameter.config ) ) parameter.config.forEach( conf => conf.name = parameter.name );
 
     parameter.config.name = parameter.name;
 
     return {
       ...result,
-      [ parameter.name ]: PRIMITIVE[ currentInstanceName ]( RENDERING_ENGINE, parameter.config )
+      [ parameter.name ]: PRIMITIVE[ currentInstanceName ]( { RENDERING_ENGINE, config: parameter.config } )
     };
 
   };

@@ -4,7 +4,7 @@ import { strings } from 'u3s';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const BABYLONCamera = ( RENDERING_ENGINE, { args, type } ) => {
+export const BABYLONCamera = ( { RENDERING_ENGINE, config: { args, name, type } } ) => {
 
   const { canvas, scene } = RENDERING_ENGINE.coreData;
   const [ alpha = false, beta = 1, radius = 1, target = [ 0, 0, 0 ] ] = args;

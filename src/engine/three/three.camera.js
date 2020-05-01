@@ -4,7 +4,7 @@ import { strings } from 'u3s';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const THREECamera = ( RENDERING_ENGINE, { args, name, position, type } ) => {
+export const THREECamera = ( { RENDERING_ENGINE, config: { args, name, position, type } } ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( type, 'camera' );
   const parsedArgs = args.map( arg => arg === null || arg === undefined ? ( arg = window.innerWidth / window.innerHeight ) : arg );

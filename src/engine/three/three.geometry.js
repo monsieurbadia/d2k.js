@@ -4,8 +4,8 @@ import { strings } from 'u3s';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const THREEGeometry = ( RENDERING_ENGINE, { args, type } ) => {
-  
+export const THREEGeometry = ( { RENDERING_ENGINE, config: { args, type } } ) => {
+
   const instanceName = strings.toFirstLetterUpperCaseReducer( type, 'geometry' );
 
   return new RENDERING_ENGINE[ instanceName ]( ...args );

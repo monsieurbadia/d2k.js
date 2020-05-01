@@ -1,6 +1,5 @@
 import { is, oftype } from 'u3s';
-import { MESH } from '=>/base';
-import { Event } from '=>/core';
+import { Event, Modifier } from '=>/core';
 
 import {
   THREEGeometry,
@@ -12,38 +11,32 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const THREEMesh = ( RENDERING_ENGINE, parameter ) => {
+export const THREEMesh = ( { RENDERING_ENGINE, config } ) => {
 
-  const group = THREEGroup( RENDERING_ENGINE );
-  const params = !is.array( parameter ) ? [ { ...parameter } ] : parameter;
-  const byValidParameter = param => oftype( param ) === 'object';
+  const group = THREEGroup( { RENDERING_ENGINE } );
+  const parameters = !is.array( config ) ? [ { ...config } ] : config;
+  const byValidParameter = parameter => oftype( parameter ) === 'object';
 
-  const mesh = params
+  const mesh = parameters
     .filter( byValidParameter )
-    .reduce( ( result, param ) => {
+    .reduce( ( result, parameter ) => {
 
-      const geometry = THREEGeometry( RENDERING_ENGINE, param.geometry );
-      const material = THREEMaterial( RENDERING_ENGINE, param.material );
-      const currentMesh = new RENDERING_ENGINE.Mesh( geometry, material );
+      const properties = Object.keys( parameter );
+      const geometry = THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
+      const material = THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
+      const currentMesh = Object.assign( new RENDERING_ENGINE.Mesh( geometry, material ), { ...Event } );
+      const modifyDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
 
-      Object
-        .keys( param )
-        .filter( key => MESH.THREE.DYNAMIC_PROPERTIES.includes( key ) )
-        .forEach( key => currentMesh[ key ].set( ...param[ key ] ) );
-
-      Object
-        .assign( currentMesh, {
-          ...Event
-        } );
+      modifyDynamicProperty( properties );
 
       return {
         ...result,
-        [ param.name ]: oftype( params ) === 'array' ? group.add( currentMesh ) : currentMesh
+        [ parameter.name ]: is.array( parameters ) ? group.add( currentMesh ) : currentMesh
       };
 
     }, {} );
 
-  return Object.assign( mesh[ parameter.name ], {
+  return Object.assign( mesh[ config.name ], {
     ...Event
   } );
 

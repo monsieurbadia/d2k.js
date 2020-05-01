@@ -6,7 +6,7 @@ import { Chunk, Event } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const THREEShader = ( RENDERING_ENGINE, { uniforms, fragmentShader, vertexShader } ) => {
+export const THREEShader = ( { RENDERING_ENGINE, config: { uniforms, fragmentShader, vertexShader } } ) => {
 
   const uniform = Chunk.createUniforms( RENDERING_ENGINE, merge( SHADER.UNIFORMS, uniforms ) );
   const shaderChunk = Chunk.compile( { uniforms: uniform, fragmentShader, vertexShader } );

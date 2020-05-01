@@ -21,7 +21,7 @@ const onrender = ( { engine, scene } ) => {
 
 };
 
-export const BABYLONEngine = RENDERING_ENGINE => {
+export const BABYLONEngine = ( { RENDERING_ENGINE } ) => {
 
   const { canvas } = RENDERING_ENGINE.coreData;
   const engine = new RENDERING_ENGINE.Engine( canvas, true );

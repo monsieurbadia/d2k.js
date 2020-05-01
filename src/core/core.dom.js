@@ -8,7 +8,6 @@ const setCanvasSize = ( element, width = window.innerWidth, height = window.inne
     
   element.width = width;
   element.height = height;
-  
   element.style.width = `${ width }px`;
   element.style.height = `${ height }px`;
 

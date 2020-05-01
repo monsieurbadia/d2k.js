@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { CALLBACK } from '=>/base';
+import { __, CALLBACK } from '=>/base';
 import { Dom } from '=>/core';
 
 /**
@@ -85,9 +85,9 @@ const resize = renderer => {
 
 };
 
-export const THREERenderer = ( RENDERING_ENGINE, { background, pixelRatio } ) => {
+export const THREERenderer = ( { RENDERING_ENGINE, config: { background, pixelRatio } } ) => {
 
-  const renderer = Object.create( null );
+  const renderer = __.OBJECT;
   const { canvas } = RENDERING_ENGINE.coreData;
   const context = canvas.getContext( 'webgl2', { alpha: false } );
   const currentPixelRatio = !is.exist( pixelRatio ) ? Dom.pixelRatio : pixelRatio;
