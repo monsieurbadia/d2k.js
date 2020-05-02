@@ -1,5 +1,10 @@
-import { is } from 'u3s';
-import { Dom, Event, Version } from '=>/core';
+import { is, fail } from 'u3s';
+
+import {
+  Dom,
+  Event,
+  Version
+} from '=>/core';
 
 import {
   onbabylonstarter,
@@ -13,13 +18,13 @@ import {
 
 let version;
 
-export const onlayering = ( ...[ TARGET, SOURCE ] ) => TARGET.renderer[ Object.keys( TARGET.renderer ) ].assign( TARGET, SOURCE );
+export const onrender = ( TARGET, SOURCE ) => TARGET.renderer.assign( TARGET, SOURCE );
 
 export const onstarter = ( init = __.OBJECT ) => {
 
   const conf = init;
 
-  const use = ( renderingEngine ) => {
+  const use = renderingEngine => {
 
     if ( is.empty( renderingEngine ) ) return onstarter( conf );
 

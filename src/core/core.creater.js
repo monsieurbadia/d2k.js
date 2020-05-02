@@ -51,7 +51,11 @@ const oncreate = ( { conf, name, starter } ) => ( ...parameters ) => {
       .assign(
         conf,
         {
-          [ name ]: createPrimitive( params, name, conf.RENDERING_ENGINE )
+          [ name ]: createPrimitive( {
+            parameters: params,
+            key: name,
+            RENDERING_ENGINE: conf.RENDERING_ENGINE
+          } )
         }
       )
     );
@@ -124,7 +128,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
 
 };
 
-const createPrimitive = ( parameters, key, RENDERING_ENGINE ) => {
+const createPrimitive = ( { parameters, key, RENDERING_ENGINE } ) => {
 
   const currentRenderingEngineName = RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
   const currentInstanceName = `${ currentRenderingEngineName }${ strings.toFirstLetterUpperCase( key ) }`;

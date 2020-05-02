@@ -1,4 +1,4 @@
-import { onlayering, onstarter } from '=>/starter';
+import { onrender, onstarter } from '=>/starter';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -8,7 +8,7 @@ export const d2k = _ =>
   (
     Object
       .freeze( {
-        onlayering,
+        onrender,
         onstarter
       } )
   );

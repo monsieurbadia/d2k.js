@@ -39,7 +39,8 @@
       window.addEventListener( 'DOMContentLoaded', _ => {
 
         const canvas = document.getElementById( 'viewRendering' );
-        const GLGLstarter = d2k.onstarter( { canvas, glsl: true } )
+        const GLGLstarter = d2k
+          .onstarter( { canvas, glsl: true } )
           .use( THREE )
           .withShader( {
             name: 'myShaderName',
@@ -64,14 +65,19 @@
 
         // GLGLstarter.shader.myShaderName.onrender( time => console.log( time ) );
 
-        GLGLstarter.event.onresize( size => {
+        GLGLstarter.shader.myShaderName.onresize( size => {
 
           GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = size[ 0 ];
           GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size[ 1 ];
 
         } );
 
-        // console.log( GLGLstarter );
+        // GLGLstarter.shader.myShaderName.onmousemove( _ => {
+
+        //   GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = screen.width;
+        //   GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = screen.height;
+
+        // } );
 
       }, false );
 

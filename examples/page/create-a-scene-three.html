@@ -37,7 +37,8 @@
     <script>
       window.addEventListener( "DOMContentLoaded", _ => {
 
-        const THREEstarter = d2k.onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+        const THREEstarter = d2k
+          .onstarter( { canvas: document.getElementById( "viewRendering" ) } )
           .use( THREE )
           .withCamera( {
             name: "current",
@@ -111,6 +112,7 @@
           } )
           .composify( {
             config: {
+              start: true,
               scene: {
                 main: "mySceneName",
                 others: [ { name: "mySceneBackgroundName" } ]

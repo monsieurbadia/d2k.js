@@ -30,11 +30,15 @@ export const onthreestarter = ( init = __.OBJECT ) => {
     
     };
 
-    starter.renderer.onrender( {
-      renderer: starter.renderer,
-      scene: starter.scene.main,
-      camera: starter.camera.main
-    } );
+    if ( config.start ) {
+
+      starter.renderer.onrender( {
+        renderer: starter.renderer,
+        scene: starter.scene.main,
+        camera: starter.camera.main
+      } );
+
+    }
 
     cleanUselessProperty( conf, [
       'canvas',

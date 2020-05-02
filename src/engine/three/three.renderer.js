@@ -6,65 +6,67 @@ import { Dom } from '=>/core';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const beforerenderlayering = ( { TARGET, SOURCE } ) => {
+const onrender = ( {
+  engine: targetEngine,
+  renderer: targetRenderer,
+  scene: targetScene,
+  camera: targetCamera
+} = {
+  engine: {},
+  renderer: {},
+  scene: {},
+  camera: {}
+}, {
+  scene: sourceScene
+} = {
+  scene: {}
+} ) => {
 
-  const { renderer: { current: renderer } } = TARGET;
-  const { engine: { current: engine } } = SOURCE;
-  const renders = [ ...renderer.renders, ...engine.renders ];
+  const render = _ => {
 
-  const render = _ => renderer.setAnimationLoop( _ => {
-
-    for ( let i = 0; i < renders.length; i++ ) {
-      if ( renders[ i ]( renderer.timer.getDelta() ) === null )
+    for ( let i = 0; i < CALLBACK.renders.length; i++ ) {
+      if ( CALLBACK.renders[ i ]( targetRenderer.timer.getDelta() ) === null )
         return null;
     }
 
-    renderer.getContext().bindVertexArray( null );
-    renderer.state.reset();
-    renderer.render( TARGET.scene.mySceneName, TARGET.camera.current );
-    SOURCE.scene.current.render();
+    if ( resize( targetRenderer ) ) {
 
-  } );
+      if ( is.exist( targetCamera ) ) {
 
-  return f => {
-
-    render();
-    
-    if ( f ) renders.push( f );
-
-  };
-
-};
-
-const onrender = ( { renderer, scene, camera } ) => {
-
-  renderer.setAnimationLoop( _ => {
-
-    for ( let i = 0; i < renderer.renders.length; i++ ) {
-      if ( renderer.renders[ i ]( renderer.timer.getDelta() ) === null )
-        return null;
-    }
-    
-    if ( resize( renderer ) ) {
-
-      if ( is.exist( camera ) ) {
-
-        camera.aspect = renderer.domElement.clientWidth / renderer.domElement.clientHeight;
-        camera.updateProjectionMatrix();
+        targetCamera.aspect = targetRenderer.domElement.clientWidth / targetRenderer.domElement.clientHeight;
+        targetCamera.updateProjectionMatrix();
 
       }
 
-      renderer.resizers.forEach( resizer => resizer( [ renderer.domElement.clientWidth, renderer.domElement.clientHeight ] ) );
+      CALLBACK.resizers.forEach( resizer => resizer( [ targetRenderer.domElement.clientWidth, targetRenderer.domElement.clientHeight ] ) );
 
     }
 
-    renderer.render( scene, camera );
+    if ( is.exist( targetRenderer ) || is.exist( targetEngine ) ) {
 
-  } );
+      targetRenderer.getContext().bindVertexArray( null );
+      targetRenderer.state.reset();
+      targetRenderer.render( targetScene, targetCamera );
+
+      if ( is.exist( targetEngine ) ) {
+        targetEngine.render();
+      }
+
+      if ( is.exist( sourceScene ) ) {
+        sourceScene.render();
+      }
+
+    }
+
+    window.requestAnimationFrame( render );
+
+  };
+
+  render();
 
 };
 
-const assign = ( TARGET, SOURCE ) => ( { onrenderlayering: beforerenderlayering( { TARGET, SOURCE } ) } );
+const assign = ( TARGET, SOURCE ) => onrender( TARGET, SOURCE );
 
 const clean = renderer => {
 
