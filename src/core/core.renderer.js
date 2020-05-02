@@ -1,5 +1,6 @@
 import { is } from 'u3s';
 import { CALLBACK } from '=>/base';
+import { Timer } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -20,15 +21,15 @@ const onrender = ( {
 } = {
   scene: {}
 } ) => {
-
+  
   const render = _ => {
 
     for ( let i = 0; i < CALLBACK.renders.length; i++ ) {
-      if ( CALLBACK.renders[ i ]( targetRenderer.timer.getDelta() ) === null )
+      if ( CALLBACK.renders[ i ]( Timer.getDelta() ) === null )
         return null;
     }
 
-    if ( resize( targetRenderer ) ) {
+    if ( is.exist( targetRenderer ) && resize( targetRenderer ) ) {
 
       if ( is.exist( targetCamera ) ) {
 
@@ -43,9 +44,13 @@ const onrender = ( {
 
     if ( is.exist( targetRenderer ) || is.exist( targetEngine ) ) {
 
-      targetRenderer.getContext().bindVertexArray( null );
-      targetRenderer.state.reset();
-      targetRenderer.render( targetScene, targetCamera );
+      if ( targetRenderer?.getContext ) {
+        
+        targetRenderer.getContext().bindVertexArray( null );
+        targetRenderer.state.reset();
+        targetRenderer.render( targetScene, targetCamera );
+
+      }
 
       if ( is.exist( targetEngine ) ) {
         targetScene.render();

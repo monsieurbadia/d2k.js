@@ -1,25 +1,9 @@
 import { CALLBACK } from '=>/base'
+import { Renderer } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
-
-const onrender = ( { engine, scene } ) => {
-
-  const renderLoop = _ => {
-
-    for ( let i = 0; i < engine.renders.length; i++ ) {
-      if ( engine.renders[ i ]( engine.getDeltaTime() ) === null )
-        return null;
-    }
-
-    scene.render();
-
-  };
-
-  engine.runRenderLoop( renderLoop );
-
-};
 
 export const BABYLONEngine = ( { RENDERING_ENGINE } ) => {
 
@@ -30,7 +14,7 @@ export const BABYLONEngine = ( { RENDERING_ENGINE } ) => {
 
   return Object.assign( engine, {
     ...CALLBACK,
-    onrender
+    ...Renderer
   } );
 
 };
