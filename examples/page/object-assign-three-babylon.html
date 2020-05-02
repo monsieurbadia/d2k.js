@@ -197,7 +197,6 @@
           } )
           .value();
 
-        console.log( THREEstarter, BABYLONstarter )
         d2k
           .onrender( {
             renderer: THREEstarter.renderer.current,
@@ -206,8 +205,7 @@
           }, {
             engine: BABYLONstarter.engine.current,
             scene: BABYLONstarter.scene.current
-          } )
-          // .onrenderlayering();
+          } );
 
         THREEstarter.mesh.myMeshName.onrender( time => {
 
