@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { __, CONFIG } from '=>/base';
+import { CONFIG } from '=>/base';
 
 import {
   THREECamera,
@@ -12,7 +12,7 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const onglslstarter = ( init = __.OBJECT ) => {
+export const onglslstarter = ( init = {} ) => {
 
   const conf = init;
 
@@ -20,8 +20,8 @@ export const onglslstarter = ( init = __.OBJECT ) => {
 
     if ( is.empty( conf.shader ) ) {
 
-      conf.shader = __.OBJECT;
-      conf.renderer = __.OBJECT;
+      conf.shader = {};
+      conf.renderer = {};
 
     }
 

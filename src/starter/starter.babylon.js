@@ -1,11 +1,10 @@
 import { Creater } from '=>/core';
-import { __ } from '../base/base.__';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const onbabylonstarter = ( init = __.OBJECT ) => {
+export const onbabylonstarter = ( init = {} ) => {
 
   const conf = init;
   const value = _ => conf;

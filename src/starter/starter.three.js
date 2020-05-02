@@ -1,12 +1,11 @@
 import { is, merge } from 'u3s';
-import { __ } from '=>/base';
 import { Creater } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const onthreestarter = ( init = __.OBJECT ) => {
+export const onthreestarter = ( init = {} ) => {
 
   const conf = init;
 

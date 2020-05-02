@@ -20,7 +20,7 @@ let version;
 
 export const onrender = ( TARGET, SOURCE ) => TARGET.renderer.assign( TARGET, SOURCE );
 
-export const onstarter = ( init = __.OBJECT ) => {
+export const onstarter = ( init = {} ) => {
 
   const conf = init;
 

@@ -1,5 +1,4 @@
 import { is, strings } from 'u3s';
-import { __ } from '=>/base';
 
 import {
   BABYLONCamera,
@@ -64,7 +63,7 @@ const oncreate = ( { conf, name, starter } ) => ( ...parameters ) => {
 
 const composeScene = ( { parameter, selectedPrimitives } ) => {
 
-  const composedScene = __.OBJECT;
+  const composedScene = Object.create( null );
 
   const getPrimitive = ( { primitivesName, parameter } ) => {
 
