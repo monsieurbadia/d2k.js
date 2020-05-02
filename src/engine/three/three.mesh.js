@@ -11,7 +11,10 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const THREEMesh = ( { RENDERING_ENGINE, config } ) => {
+export const THREEMesh = ( {
+  RENDERING_ENGINE,
+  config = {}
+} = {} ) => {
 
   const group = THREEGroup( { RENDERING_ENGINE } );
   const parameters = !is.array( config ) ? [ { ...config } ] : config;
@@ -19,24 +22,21 @@ export const THREEMesh = ( { RENDERING_ENGINE, config } ) => {
 
   const mesh = parameters
     .filter( byValidParameter )
-    .reduce( ( result, parameter ) => {
+    .map( parameter => {
 
       const properties = Object.keys( parameter );
       const geometry = THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
       const material = THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
       const currentMesh = Object.assign( new RENDERING_ENGINE.Mesh( geometry, material ), { ...Event } );
-      const modifyDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
+      const setDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
 
-      modifyDynamicProperty( properties );
+      setDynamicProperty( properties );
 
-      return {
-        ...result,
-        [ parameter.name ]: is.array( parameters ) ? group.add( currentMesh ) : currentMesh
-      };
+      return is.array( parameters ) ? group.add( currentMesh ) : currentMesh
 
-    }, {} );
+    }, [] )[ 0 ];
 
-  return Object.assign( mesh[ config.name ], {
+  return Object.assign( mesh, {
     ...Event
   } );
 

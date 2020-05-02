@@ -15,16 +15,24 @@ const loadTexture = loader => ( { name, url } ) => {
 
 };
 
-export const THREELoader = async ( { RENDERING_ENGINE, config: { args, type } } ) => {
+export const THREELoader = async ( {
+  RENDERING_ENGINE,
+  config = {
+    args: [],
+    type: 'object'
+  }
+} = {} ) => {
 
-  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( type, 'loader' ) ]();
-  const sources = is.array( args ) ? args : [ args ];
+  const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( config.type, 'loader' ) ]();
+  const sources = is.array( config.args ) ? config.args : [ config.args ];
   const textureArgs = sources.map( loadTexture( loader ) );
 
-  const textures = await Promise
-    .all( textureArgs )
-    .then( response => response )
-    .catch( error => error );
+  const textures = is.exist( textureArgs )
+    ? await Promise
+      .all( textureArgs )
+      .then( response => response )
+      .catch( error => error )
+    : sources;
 
   CALLBACK.loaders.forEach( loader => loader( textures ) );
 

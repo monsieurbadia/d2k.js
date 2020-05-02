@@ -1,4 +1,4 @@
-import { is, fail } from 'u3s';
+import { is } from 'u3s';
 
 import {
   Dom,

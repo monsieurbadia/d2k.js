@@ -14,6 +14,7 @@ export const MESH = Object.freeze( {
 
   THREE: {
     DYNAMIC_PROPERTIES: [
+      'name',
       'position',
       'rotation',
       'scale'

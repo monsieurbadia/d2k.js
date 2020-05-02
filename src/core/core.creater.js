@@ -35,7 +35,11 @@ const PRIMITIVE = Object.freeze( {
   THREEScene
 } );
 
-const oncreate = ( { conf, name, starter } ) => ( ...parameters ) => {
+const oncreate = ( {
+  conf,
+  name,
+  starter
+} ) => ( ...parameters ) => {
 
   if ( is.empty( conf[ name ] ) ) {
 
@@ -67,7 +71,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
 
   const getPrimitive = ( { primitivesName, parameter } ) => {
 
-    const byDefinedPrimitives = primitive => is.exist( parameter[ primitive.name ] );
+    const byDefinedPrimitive = primitive => is.exist( parameter[ primitive.name ] );
     const primitive = ( result, config ) => { 
 
       parameter[ config.name ].userData = { currentScene: config.parent };
@@ -80,7 +84,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
     };
 
     return primitivesName
-      .filter( byDefinedPrimitives )
+      .filter( byDefinedPrimitive )
       .reduce( primitive, {} );
 
   };
@@ -134,10 +138,8 @@ const createPrimitive = ( { parameters, key, RENDERING_ENGINE } ) => {
 
   const primitive = ( result, parameter ) => {
 
-    if ( is.empty( parameter.config ) ) parameter.config = {};
+    if ( is.exist( parameter.config ) ) parameter.config.name = parameter.name;
     if ( is.array( parameter.config ) ) parameter.config.forEach( conf => conf.name = parameter.name );
-
-    parameter.config.name = parameter.name;
 
     return {
       ...result,

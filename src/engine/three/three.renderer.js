@@ -15,19 +15,36 @@ const clean = renderer => {
 
 };
 
-export const THREERenderer = ( { RENDERING_ENGINE, config: { background, pixelRatio } } ) => {
+export const THREERenderer = ( {
+  RENDERING_ENGINE,
+  config = {
+    alpha: true,
+    antialias: true,
+    autoClear: true,
+    background: 0x000000,
+    pixelRatio: window.devicePixelRatio
+  }
+} = {} ) => {
 
   const renderer = Object.create( null );
   const { canvas } = RENDERING_ENGINE.coreData;
-  const context = canvas.getContext( 'webgl2', { alpha: false } );
-  const currentPixelRatio = !is.exist( pixelRatio ) ? Dom.pixelRatio : pixelRatio;
+  const context = canvas.getContext( 'webgl2' );
+  const currentPixelRatio = !is.exist( config.pixelRatio ) ? Dom.pixelRatio : config.pixelRatio;
 
-  if ( is.empty( renderer.current ) ) renderer.current = new RENDERING_ENGINE.WebGLRenderer( { antialias: true, canvas, context } );
+  if ( is.empty( renderer.current ) ) {
+    
+    renderer.current = new RENDERING_ENGINE.WebGLRenderer( {
+      alpha: config.alpha,
+      antialias: config.antialias,
+      canvas, context
+    } );
+
+  }
 
   renderer.current.timer = new RENDERING_ENGINE.Clock();
-  renderer.current.autoClear = false;
+  renderer.current.autoClear = config.autoClear;
 
-  renderer.current.setClearColor( background );
+  renderer.current.setClearColor( config.background );
   renderer.current.setPixelRatio( currentPixelRatio );
 
   return Object.assign( renderer.current, {
