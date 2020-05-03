@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k - create a scene with the threejs rendering engine</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="viewRendering"></canvas>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="../../src/index.js"></script>
+    <script>
+
+      window.addEventListener( "DOMContentLoaded", _ => {
+
+        fetch( 'http://localhost:5007/api/scene/babylon' )
+          .then( response => response.json() )
+          .then( ( { scene } ) => {
+
+            const starter = d2k
+              .onstarter( { canvas: 'viewRendering' } )
+              .use( BABYLON )
+              .withEngine( scene.engine )
+              .withScene( scene.scene )
+              .withCamera( scene.camera )
+              .withLight( scene.light )
+              .withMesh( scene.mesh )
+              .composify( scene.composify )
+              .value();
+
+            starter.mesh.myMeshName.onrender( time => {
+
+              starter.mesh.myMeshName.rotation.x -= time;
+              starter.mesh.myMeshName.rotation.y -= time;
+
+            } );
+
+          } );
+
+      }, false );
+
+    </script>
+  </body>
+</html>

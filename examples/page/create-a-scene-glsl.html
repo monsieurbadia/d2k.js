@@ -38,9 +38,8 @@
 
       window.addEventListener( 'DOMContentLoaded', _ => {
 
-        const canvas = document.getElementById( 'viewRendering' );
         const GLGLstarter = d2k
-          .onstarter( { canvas, glsl: true } )
+          .onstarter( { canvas: 'viewRendering', glsl: true } )
           .use( THREE )
           .withShader( {
             name: 'myShaderName',
