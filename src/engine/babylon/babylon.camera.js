@@ -7,22 +7,35 @@ import { strings } from 'u3s';
 export const BABYLONCamera = ( {
   RENDERING_ENGINE,
   config = {
-    args,
-    name,
-    type
+    args: [ 0, 0,2 ],
+    name: 'current-camera',
+    type: 'follow'
   }
 } = {} ) => {
 
+  const camera = {};
   const { canvas, scene } = RENDERING_ENGINE.coreData;
-  const [ alpha = false, beta = 1, radius = 1, target = [ 0, 0, 0 ] ] = config.args;
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'camera' );
-  const camera = new RENDERING_ENGINE[ instanceName ](
-    config.name, alpha, beta, radius, new RENDERING_ENGINE.Vector3.Zero( ...target ), scene
-  );
+  
+  if ( instanceName === 'ArcRotateCamera' ) {
+    
+    const [ alpha = Math.PI / 2, beta = Math.PI / 2, radius = 2, target = [ 0, 0, 0 ] ] = config.args;
 
-  camera.setTarget( RENDERING_ENGINE.Vector3.Zero() );
+    camera.current = new RENDERING_ENGINE[ instanceName ](
+      config.name, alpha, beta, radius, new RENDERING_ENGINE.Vector3( ...target ), scene
+    );
+
+  } else {
+
+    camera.current = new RENDERING_ENGINE[ instanceName ](
+      config.name, new RENDERING_ENGINE.Vector3( ...config.args ), scene
+    );
+
+  }
+
+  camera.current.setTarget( new RENDERING_ENGINE.Vector3.Zero() );
   scene.activeCamera.attachControl( canvas, true );
 
-  return camera;
+  return camera.current;
 
 };
