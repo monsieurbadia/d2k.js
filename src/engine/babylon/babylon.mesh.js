@@ -7,7 +7,16 @@ import { Event, Modifier } from '=>/core';
 
 export const BABYLONMesh = ( {
   RENDERING_ENGINE,
-  config = {}
+  config = {
+    args: { size: 0.20 },
+    position: [ 0, 0, 0 ],
+    type: 'box',
+    material: {
+      name: 'material',
+      type: 'standard',
+      emissiveColor: [ 0.1, 0.50, 0.75 ]
+    }
+  }
 } = {} ) => {
 
   const { scene } = RENDERING_ENGINE.coreData;

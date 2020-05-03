@@ -7,7 +7,7 @@ import { strings } from 'u3s';
 export const BABYLONCamera = ( {
   RENDERING_ENGINE,
   config = {
-    args: [ 0, 0,2 ],
+    args: [ 0, 0, 2 ],
     name: 'current-camera',
     type: 'follow'
   }

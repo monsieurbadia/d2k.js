@@ -8,9 +8,9 @@ import { Event } from '=>/core';
 export const BABYLONLight = ( {
   RENDERING_ENGINE,
   config = {
-    args: [ 0, 0, 0 ],
+    args: [ 0, 1, 0 ],
     name: 'current',
-    type: 'arc-to-rotate'
+    type: 'point'
   }
 } = {} ) => {
 
