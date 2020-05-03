@@ -69,16 +69,28 @@
           } )
           .withMesh( {
             name: 'myMesh1Name',
-            config: {
-              args: { size: 0.20 },
-              position: [ -0.20, 0, 0 ],
-              type: 'box',
-              material: {
-                name: 'material',
-                type: 'standard',
-                emissiveColor: [ 0.1, 0.50, 0.75 ]
+            config: [
+              {
+                args: { size: 0.20 },
+                position: [ -0.20, 0, 0 ],
+                type: 'box',
+                material: {
+                  name: 'material',
+                  type: 'standard',
+                  emissiveColor: [ 0.1, 0.50, 0.75 ]
+                }
+              },
+              {
+                args: { size: 0.20 },
+                position: [ -0.60, 0, 0 ],
+                type: 'box',
+                material: {
+                  name: 'material',
+                  type: 'standard',
+                  emissiveColor: [ 0.1, 0.50, 0.75 ]
+                }
               }
-            }
+            ]
           },
           {
             name: 'myMesh2Name',
@@ -95,10 +107,15 @@
           } )
           .value();
 
+          const meshes = BABYLONstarter.mesh.myMesh1Name.getChildren();
+
           BABYLONstarter.mesh.myMesh2Name.onrender( time => {
-          
-            BABYLONstarter.mesh.myMesh1Name.rotation.x -= time;
-            BABYLONstarter.mesh.myMesh1Name.rotation.y -= time;
+
+            meshes[ 0 ].rotation.x -= time;
+            meshes[ 0 ].rotation.y -= time;
+
+            meshes[ 1 ].rotation.x -= time;
+            meshes[ 1 ].rotation.y -= time;
 
             BABYLONstarter.mesh.myMesh2Name.rotation.x -= time;
             BABYLONstarter.mesh.myMesh2Name.rotation.y -= time;

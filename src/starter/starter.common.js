@@ -23,18 +23,19 @@ export const onrender = ( TARGET, SOURCE ) => TARGET.renderer.assign( TARGET, SO
 export const onstarter = ( init = {} ) => {
 
   const conf = init;
+  const canvas = conf.canvas instanceof HTMLCanvasElement ? conf.canvas : document.getElementById( conf.canvas );
 
   const use = renderingEngine => {
 
     if ( is.empty( renderingEngine ) ) return onstarter( conf );
 
-    Dom.setCanvasSize( conf.canvas );
-
     conf.event = Event;
     conf.RENDERING_ENGINE = renderingEngine;
     conf.RENDERING_ENGINE.coreData = {
-      canvas: conf.canvas,
+      canvas
     };
+
+    Dom.setCanvasSize( canvas );
 
     if ( conf.RENDERING_ENGINE.SceneComponentConstants ) {
       return onbabylonstarter( conf );

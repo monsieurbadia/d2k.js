@@ -41,7 +41,7 @@
           .onstarter( { canvas: document.getElementById( "viewRendering" ) } )
           .use( THREE )
           .withCamera( {
-            name: "current",
+            name: "myCameraName",
             config: {
               args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
               position: [ 0, 0, 100 ],
@@ -83,20 +83,11 @@
               scale: [ 1, 1, 1 ]
             } ]
           } )
-          .withRenderer( {
-            name: "current",
-            config: {
-              pixelRatio: window.devicePixelRatio,
-              size: [ window.innerWidth, window.innerHeight ],
-              type: "webgl"
-            }
-          } )
+
           .withLight( {
-            name: "toto",
+            name: "myLightName",
             config: {
               args: [ "0xffffbb 0x080820 1"  ],
-              position: [ 0, 0, 0 ],
-              rotation: [ 0, 0, 0 ],
               type: "hemisphere"
             }
           } )
@@ -110,6 +101,15 @@
           .withScene( {
             name: "mySceneName"
           } )
+          .withRenderer( {
+            name: "myRendererName",
+            config: {
+              autoClear: true,
+              pixelRatio: window.devicePixelRatio,
+              size: [ window.innerWidth, window.innerHeight ],
+              type: "webgl"
+            }
+          } )
           .composify( {
             config: {
               start: true,
@@ -118,12 +118,12 @@
                 others: [ { name: "mySceneBackgroundName" } ]
               },
               mesh: [ { name: "myMeshName", parent: "main" } ],
-              light: [ { name: "toto", parent: "main" } ],
+              light: [ { name: "myLightName", parent: "main" } ],
               camera: {
-                main: "current",
+                main: "myCameraName",
                 others: [ { name: "another" } ]
               },
-              renderer: "current"
+              renderer: "myRendererName"
             }
           } )
           .value();
@@ -140,7 +140,7 @@
 
         } );
 
-      window.THREEstarter = THREEstarter;
+        window.THREEstarter = THREEstarter;
 
       }, false );
 

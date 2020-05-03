@@ -38,9 +38,8 @@
     <script>
       window.addEventListener( 'DOMContentLoaded', _ => {
 
-        const canvas = document.getElementById( 'viewRendering' );
         const THREEstarter = d2k
-          .onstarter( { canvas } )
+          .onstarter( { canvas: 'viewRendering' } )
           .use( THREE )
           .withCamera( {
             name: 'current',
@@ -87,6 +86,7 @@
           .withRenderer( {
             name: 'current',
             config: {
+              autoClear: true,
               pixelRatio: window.devicePixelRatio,
               size: [ window.innerWidth, window.innerHeight ],
               camera: 'current',
@@ -128,13 +128,13 @@
           } )
           .value();
 
-        const BABYLONstarter = d2k.onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
+        const BABYLONstarter = d2k.onstarter( { canvas: 'viewRendering' } )
           .use( BABYLON )
           .withEngine( {
             name: 'current'
           } )
           .withScene( {
-            name: 'current',
+            name: 'mySceneName',
             config: {
               autoClear: false,
               fog: {
@@ -204,7 +204,7 @@
             camera: THREEstarter.camera.current
           }, {
             engine: BABYLONstarter.engine.current,
-            scene: BABYLONstarter.scene.current
+            scene: BABYLONstarter.scene.mySceneName
           } );
 
         THREEstarter.mesh.myMeshName.onrender( time => {
