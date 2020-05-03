@@ -7,9 +7,39 @@ import { Creater } from '=>/core';
 export const onbabylonstarter = ( init = {} ) => {
 
   const conf = init;
+
+  const composify = ( { config } ) => {
+
+    const cleanUselessProperty = ( object, properties ) => properties.forEach( property => delete object[ property ] );
+
+    const starter = Creater.composeScene( {
+      parameter: conf,
+      selectedPrimitives: config
+    } );
+
+
+    if ( config.start ) {
+
+      starter.engine.onrender( {
+        engine: starter.engine,
+        scene: starter.scene.main
+      } );
+
+    }
+
+    cleanUselessProperty( conf, [
+      'canvas',
+      'RENDERING_ENGINE'
+    ] );
+
+    return onbabylonstarter( conf );
+
+  };
+
   const value = _ => conf;
 
   return Object.freeze( {
+    composify,
     value,
     withCamera: Creater.oncreate( { conf, name: 'camera', starter: onbabylonstarter } ),
     withEngine: Creater.oncreate( { conf, name: 'engine', starter: onbabylonstarter } ),

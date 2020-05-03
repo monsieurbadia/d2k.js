@@ -32,7 +32,7 @@ export const THREEMesh = ( {
 
       setDynamicProperty( properties );
 
-      return is.array( parameters ) ? group.add( currentMesh ) : currentMesh
+      return is.array( config ) ? group.add( currentMesh ) : currentMesh
 
     }, [] )[ 0 ];
 

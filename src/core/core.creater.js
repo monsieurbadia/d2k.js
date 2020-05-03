@@ -89,43 +89,69 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
 
   };
 
-  composedScene.camera = Object
+  if ( is.exist( selectedPrimitives.camera ) ) {
+
+    composedScene.camera = Object
     .assign(
       {
         main: parameter.camera[ selectedPrimitives.camera.main ]
       },
       {
-        others: getPrimitive( {
+        others: selectedPrimitives.camera.others && getPrimitive( {
           primitivesName: selectedPrimitives.camera.others,
           parameter: parameter.camera
         } )
       }
     );
 
-  composedScene.mesh = getPrimitive( {
-    primitivesName: selectedPrimitives.mesh,
-    parameter: parameter.mesh
-  } );
+  }
+  
+  if ( is.exist( selectedPrimitives.mesh ) ) {
 
-  composedScene.light = getPrimitive( {
-    primitivesName: selectedPrimitives.light,
-    parameter: parameter.light
-  } );
+    composedScene.mesh = getPrimitive( {
+      primitivesName: selectedPrimitives.mesh,
+      parameter: parameter.mesh
+    } );
 
-  composedScene.renderer = parameter.renderer[ selectedPrimitives.renderer ];
+  }
+  
+  if ( is.exist( selectedPrimitives.light ) ) {
 
-  composedScene.scene = Object
+    composedScene.light = getPrimitive( {
+      primitivesName: selectedPrimitives.light,
+      parameter: parameter.light
+    } );
+
+  }
+  
+  if ( is.exist( selectedPrimitives.scene ) ) {
+
+    composedScene.scene = Object
     .assign(
       {
         main: parameter.scene[ selectedPrimitives.scene.main ]
       },
       {
-        others: getPrimitive( {
+        others: selectedPrimitives.scene.others && getPrimitive( {
           primitivesName: selectedPrimitives.scene.others,
           parameter: parameter.scene
         } )
       }
     );
+
+  }
+  
+  if ( is.exist( selectedPrimitives.renderer ) ) {
+
+    composedScene.renderer = parameter.renderer[ selectedPrimitives.renderer ];
+
+  } 
+  
+  if ( is.exist( selectedPrimitives.engine ) ) {
+
+    composedScene.engine = parameter.engine[ selectedPrimitives.engine ];
+
+  }
 
   return composedScene;
 
