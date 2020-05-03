@@ -34,7 +34,7 @@ export const BABYLONCamera = ( {
   }
 
   camera.current.setTarget( new RENDERING_ENGINE.Vector3.Zero() );
-  scene.activeCamera.attachControl( canvas, true );
+  camera.current.attachControl( canvas, true );
 
   return camera.current;
 
