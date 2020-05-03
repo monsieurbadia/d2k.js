@@ -475,7 +475,6 @@ fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
 
 primitive         | babylon.js                                  | three.js                                    |
 ------------------|---------------------------------------------|---------------------------------------------|
-audio             | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-check.svg"/> |
 camera            | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
 font              | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-check.svg"/> |
 geometry          | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
