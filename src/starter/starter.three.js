@@ -1,5 +1,5 @@
 import { is, merge } from 'u3s';
-import { Creater } from '=>/core';
+import { Creater, Deletion } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -11,21 +11,21 @@ export const onthreestarter = ( init = {} ) => {
 
   const composify = ( { config } ) => {
 
-    const cleanUselessProperty = ( object, properties ) => properties.forEach( property => delete object[ property ] );
+    const addObjectsToScene = objects3d => Object.keys( objects3d ).forEach( key => starter.scene[ objects3d[ key ].userData.currentScene ].add( objects3d[ key ] ) );
 
     const starter = Creater.composeScene( {
       parameter: conf,
       selectedPrimitives: config
     } );
 
-    const objects3D = merge(
+    const objects3d = merge(
       starter.light,
       starter.mesh
     );
 
-    if ( is.exist( objects3D ) ) {
+    if ( is.exist( objects3d ) ) {
 
-      Object.keys( objects3D ).forEach( key => starter.scene[ objects3D[ key ].userData.currentScene ].add( objects3D[ key ] ) );
+      addObjectsToScene( objects3d )
     
     };
 
@@ -39,7 +39,7 @@ export const onthreestarter = ( init = {} ) => {
 
     }
 
-    cleanUselessProperty( conf, [
+    Deletion.cleanUselessProperty( conf, [
       'canvas',
       'RENDERING_ENGINE'
     ] );

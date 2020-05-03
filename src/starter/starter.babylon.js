@@ -1,4 +1,4 @@
-import { Creater } from '=>/core';
+import { Creater, Deletion } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -10,13 +10,10 @@ export const onbabylonstarter = ( init = {} ) => {
 
   const composify = ( { config } ) => {
 
-    const cleanUselessProperty = ( object, properties ) => properties.forEach( property => delete object[ property ] );
-
     const starter = Creater.composeScene( {
       parameter: conf,
       selectedPrimitives: config
     } );
-
 
     if ( config.start ) {
 
@@ -27,7 +24,7 @@ export const onbabylonstarter = ( init = {} ) => {
 
     }
 
-    cleanUselessProperty( conf, [
+    Deletion.cleanUselessProperty( conf, [
       'canvas',
       'RENDERING_ENGINE'
     ] );

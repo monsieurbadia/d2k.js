@@ -3,6 +3,7 @@ export { Chunk } from './core.chunk';
 export { Dom } from './core.dom';
 export { Event } from './core.event';
 export { Modifier } from './core.modifier';
+export { Deletion } from './core.deletion';
 export { Renderer } from './core.renderer';
 export { Timer } from './core.timer';
 export { Version } from './core.version';
