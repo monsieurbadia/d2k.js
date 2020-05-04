@@ -36,7 +36,8 @@ export const THREERenderer = ( {
     renderer.current = new RENDERING_ENGINE.WebGLRenderer( {
       alpha: config.alpha,
       antialias: config.antialias,
-      canvas, context
+      canvas,
+      context
     } );
 
   }

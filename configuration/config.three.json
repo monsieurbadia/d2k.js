@@ -55,14 +55,22 @@
       "type": "webgl"
     }
   },
-  "light":{
+  "light":[ {
     "name": "myLightName",
     "config": {
       "args": [ "0xf1f5bb" ],
       "position": [ 0, 1, 30 ],
-      "type": "point"
+      "type": "directional"
     }
   },
+  {
+    "name": "myLight2Name",
+    "config": {
+      "args": [ "0xf1f5bb" ],
+      "position": [ 0, 1, 30 ],
+      "type": "ambient"
+    }
+  } ],
   "loader":{
     "name": "textures",
     "config": {

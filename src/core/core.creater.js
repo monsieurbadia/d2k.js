@@ -47,6 +47,10 @@ const oncreate = ( {
 
   };
 
+  if ( is.array( parameters[ 0 ] ) ) {
+    parameters = parameters[ 0 ];
+  }
+
   const params = name === 'renderer' ? [ parameters[ 0 ] ] : parameters;
 
   return starter(
