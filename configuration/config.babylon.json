@@ -18,8 +18,8 @@
   "mesh":{
     "name": "myMeshName",
     "config": {
-      "args": { "size": 0.20 },
-      "position": [ 0, 0, 0 ],
+      "args": { "size": 0.23 },
+      "position": [ 0.40, 0, 0 ],
       "type": "box",
       "material": {
         "name": "material",
@@ -43,7 +43,7 @@
   "scene":{
     "name": "mySceneName",
     "config": {
-      "autoClear": true,
+      "autoClear": false,
       "clearColor": [ 0.6, 0.6, 0.6 ]
     }
   }

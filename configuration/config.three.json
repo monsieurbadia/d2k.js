@@ -4,13 +4,13 @@
       "start": true,
       "scene": {
         "main": "mySceneName",
-        "others": [ { "name": "mySceneBackgroundName" } ]
+        "others": []
       },
       "mesh": [ { "name": "myMeshName", "parent": "main" } ],
       "light": [ { "name": "myLightName", "parent": "main" } ],
       "camera": {
         "main": "myCameraName",
-        "others": [ { "name": "another" } ]
+        "others": []
       },
       "renderer": "myRendererName"
     }
@@ -34,11 +34,13 @@
       },
       "material": {
         "args": {
-          "transparent": true
+          "color": "0x0fffff",
+
+          "transparent": false
         },
-        "type": "mesh-normal"
+        "type": "mesh-phong"
       },
-      "position": [ 0, 0, 0 ],
+      "position": [ 40, 0, 0 ],
       "rotation": [ 0, 0, 0 ],
       "scale": [ 1, 1, 1 ]
     }
@@ -46,6 +48,7 @@
   "renderer":{
     "name": "myRendererName",
     "config": {
+      "antialias": true,
       "autoClear": true,
       "pixelRatio": null,
       "size": [],
@@ -55,8 +58,9 @@
   "light":{
     "name": "myLightName",
     "config": {
-      "args": [ "0xffffbb 0x080820 1"  ],
-      "type": "hemisphere"
+      "args": [ "0xf1f5bb" ],
+      "position": [ 0, 1, 30 ],
+      "type": "point"
     }
   },
   "loader":{
