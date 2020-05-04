@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create a scene glsl</title>
+    <title>d2k - fetch scene - shader</title>
     <style>
       * {
         box-sizing: border-box;
@@ -43,7 +43,7 @@
           .then( ( { scene } ) => {
 
             const starter = d2k
-              .onstarter( { canvas: 'viewRendering', glsl: true } )
+              .onstarter( scene.init )
               .use( THREE )
               .withShader( scene.shader )
               .value();
