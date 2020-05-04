@@ -62,7 +62,7 @@
           } )
           .value();
 
-        // GLGLstarter.shader.myShaderName.onrender( time => console.log( time ) );
+        GLGLstarter.shader.myShaderName.onrender( time => time );
 
         GLGLstarter.shader.myShaderName.onresize( size => {
 
@@ -70,13 +70,6 @@
           GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size[ 1 ];
 
         } );
-
-        // GLGLstarter.shader.myShaderName.onmousemove( _ => {
-
-        //   GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = screen.width;
-        //   GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = screen.height;
-
-        // } );
 
       }, false );
 
