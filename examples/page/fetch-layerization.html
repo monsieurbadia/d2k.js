@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k - fetch layerization</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="viewRendering" touch-action="none"></canvas>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="../../src/index.js"></script>
+    <script>
+      window.addEventListener( 'DOMContentLoaded', _ => {
+
+        const operations = [
+          fetch( 'http://localhost:5007/api/scene/babylon' ).then( response => response.json() ),
+          fetch( 'http://localhost:5007/api/scene/three' ).then( response => response.json() )
+        ];
+
+        Promise.all( operations ).then( data => {
+
+          const BABYLONscene = data[ 0 ].scene;
+          const THREEscene = data[ 1 ].scene;
+
+          const THREEstarter = d2k
+            .onstarter( { canvas: 'viewRendering' } )
+            .use( THREE )
+            .withCamera( THREEscene.camera )
+            .withRenderer( THREEscene.renderer )
+            .withMesh( THREEscene.mesh )
+            .withLight( THREEscene.light )
+            .withScene( THREEscene.scene )
+            .composify( THREEscene.composify )
+            .value();
+
+          const BABYLONstarter = d2k
+            .onstarter( { canvas: 'viewRendering' } )
+            .use( BABYLON )
+            .withEngine( BABYLONscene.engine )
+            .withScene( BABYLONscene.scene )
+            .withCamera( BABYLONscene.camera )
+            .withLight( BABYLONscene.light )
+            .withMesh( BABYLONscene.mesh )
+            .composify( BABYLONscene.scene )
+            .value();
+
+          d2k
+            .onrender( {
+              renderer: THREEstarter.renderer.myRendererName,
+              scene: THREEstarter.scene.mySceneName,
+              camera: THREEstarter.camera.myCameraName
+            }, {
+              engine: BABYLONstarter.engine.myEngineName,
+              scene: BABYLONstarter.scene.mySceneName
+            } );
+
+          THREEstarter.mesh.myMeshName.onrender( time => {
+
+            THREEstarter.mesh.myMeshName.rotation.x -= time;
+            THREEstarter.mesh.myMeshName.rotation.y -= time;
+
+          } );
+
+          BABYLONstarter.mesh.myMeshName.onrender( time => {
+
+            BABYLONstarter.mesh.myMeshName.rotation.x += time + 0.009;
+            BABYLONstarter.mesh.myMeshName.rotation.y += time + 0.009;
+
+          } );
+
+        } );
+
+      }, false );
+
+    </script>
+  </body>
+</html>

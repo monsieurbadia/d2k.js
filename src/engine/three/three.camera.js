@@ -15,7 +15,7 @@ export const THREECamera = ( {
 } = {} ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'camera' );
-  const parsedArgs = config.args.map( arg => ( arg === null || arg === undefined ) ? ( arg = window.innerWidth / window.innerHeight ) : arg );
+  const parsedArgs = config.args.map( arg => arg === null || arg === undefined ? ( arg = window.innerWidth / window.innerHeight ) : arg );
   const camera = new RENDERING_ENGINE[ instanceName ]( ...parsedArgs );
 
   camera.name = config.name;

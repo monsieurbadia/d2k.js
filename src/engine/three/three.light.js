@@ -19,7 +19,7 @@ export const THREELight = ( {
   const light = new RENDERING_ENGINE[ instanceName ]( strings.ToInt( ...config.args, ' ' ) );
   const setDynamicProperty = Modifier.setDynamicProperty( { mesh: light, parameter: config } );
 
-  setDynamicProperty( properties )
+  setDynamicProperty( properties );
 
   return light;
 

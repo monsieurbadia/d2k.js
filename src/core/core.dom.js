@@ -5,7 +5,7 @@
 const add = ( element, child ) => element.appendChild( child );
 
 const setCanvasSize = ( element, width = window.innerWidth, height = window.innerHeight ) => {
-    
+
   element.width = width;
   element.height = height;
   element.style.width = `${ width }px`;

@@ -16,6 +16,7 @@ export const BABYLONScene = ( {
   const scene = new RENDERING_ENGINE.Scene( engine );
   const cleanCache = _ => engine.wipeCaches( true );
 
+  // TODO: dynamic
   if ( is.exist( config.clearColor ) ) scene.clearColor = new RENDERING_ENGINE.Color3( ...config.clearColor );
 
   scene.autoClear = config.autoClear;

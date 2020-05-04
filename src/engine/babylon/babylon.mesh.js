@@ -12,7 +12,7 @@ export const BABYLONMesh = ( {
     position: [ 0, 0, 0 ],
     type: 'box',
     material: {
-      name: 'material',
+      name: 'current-material',
       type: 'standard',
       emissiveColor: [ 0.1, 0.50, 0.75 ]
     }
@@ -20,7 +20,7 @@ export const BABYLONMesh = ( {
 } = {} ) => {
 
   const { scene } = RENDERING_ENGINE.coreData;
-  const group = Object.assign( RENDERING_ENGINE.MeshBuilder.CreateBox( name, { size: 1 }, scene ), { ...Event } );
+  const group = Object.assign( RENDERING_ENGINE.MeshBuilder.CreateBox( config.name, { size: 1 }, scene ), { ...Event } );
   const parameters = !is.array( config ) ? [ { ...config } ] : config;
   const byValidParameter = parameter => oftype( parameter ) === 'object';
 
@@ -32,7 +32,7 @@ export const BABYLONMesh = ( {
 
       const properties = Object.keys( parameter );
       const instanceName = strings.toFirstLetterUpperCaseReducer( 'create', parameter.type );
-      const currentMesh = Object.assign( RENDERING_ENGINE.MeshBuilder[ instanceName ]( name, parameter.args, scene ), { ...Event } );
+      const currentMesh = Object.assign( RENDERING_ENGINE.MeshBuilder[ instanceName ]( parameter.name, parameter.args, scene ), { ...Event } );
       const modifyDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
 
       modifyDynamicProperty( properties );

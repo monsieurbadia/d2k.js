@@ -30,6 +30,8 @@ export const THREEMesh = ( {
       const currentMesh = Object.assign( new RENDERING_ENGINE.Mesh( geometry, material ), { ...Event } );
       const setDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
 
+      currentMesh.receiveShadow = true;
+
       setDynamicProperty( properties );
 
       return is.array( config ) ? group.add( currentMesh ) : currentMesh
