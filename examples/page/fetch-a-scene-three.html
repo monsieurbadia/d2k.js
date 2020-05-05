@@ -52,12 +52,14 @@
               .composify( scene.composify )
               .value();
 
-              starter.mesh.myMeshName.onrender( time => {
+            starter.mesh.myMeshName.onloader( textures => textures );
 
-                starter.mesh.myMeshName.rotation.x += time;
-                starter.mesh.myMeshName.rotation.y += time;
+            starter.mesh.myMeshName.onrender( time => {
 
-              } );
+              starter.mesh.myMeshName.rotation.x += time;
+              starter.mesh.myMeshName.rotation.y += time;
+
+            } );
 
           } );
 

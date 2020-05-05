@@ -8,7 +8,6 @@ const handler = ( request, response, next ) => cors( request, response, _ => app
 
 app.use( cors );
 app.use( compression() );
-
 routes.setRoutes( app );
 
 module.exports.app = http

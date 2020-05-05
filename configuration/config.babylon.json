@@ -8,14 +8,14 @@
       }
     }
   },
-  "camera":{
+  "camera": {
     "name": "myCameraName",
     "config": {
       "args": [ 0, 0, 2 ],
       "type": "follow"
     }
   },
-  "mesh":{
+  "mesh": {
     "name": "myMeshName",
     "config": {
       "args": { "size": 0.23 },
@@ -28,10 +28,10 @@
       }
     }
   },
-  "engine":{
+  "engine": {
     "name":"myEngineName"
   },
-  "light":{
+  "light": {
     "name": "myLightName",
     "config": {
       "args": [ 0, 1, 0 ],
@@ -40,7 +40,7 @@
       "type": "point"
     }
   },
-  "scene":{
+  "scene": {
     "name": "mySceneName",
     "config": {
       "autoClear": false,

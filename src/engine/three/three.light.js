@@ -1,5 +1,5 @@
 import { strings } from 'u3s';
-import { Modifier } from '=>/core';
+import { Event, Modifier } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -8,7 +8,7 @@ import { Modifier } from '=>/core';
 export const THREELight = ( {
   RENDERING_ENGINE,
   config = {
-    args: [ "0xffffbb 0x080820 1" ],
+    args: [ '0xffffbb 0x080820 1' ],
     name: 'current-light',
     type: 'hemisphere'
   }
@@ -21,6 +21,8 @@ export const THREELight = ( {
 
   setDynamicProperty( properties );
 
-  return light;
+  return Object.assign( light, {
+    ...Event
+  } );
 
 };
