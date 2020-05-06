@@ -1,6 +1,6 @@
 {
   "name": "d2k",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": " javascript micro-layer based on three.js x babylon.js that will help you to used webgl api in a intuitive an functional way.",
   "keywords": [
     "javascript",
@@ -19,7 +19,7 @@
   "repository": "https://github.com/monsieurbadia/d2k.js.git",
   "author": "monsieurbadia <contact@monsieurbadia.com>",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "alias": {
     "=>": "./src/"
   },
