@@ -27,9 +27,9 @@ export const onglslstarter = ( init = {} ) => {
 
     const { RENDERING_ENGINE } = conf;
     const shader = THREEShader( { RENDERING_ENGINE, config } );
-    const renderer = THREERenderer( { RENDERING_ENGINE, config: CONFIG.RENDERER.config } );
+    const renderer = THREERenderer( { RENDERING_ENGINE, config: CONFIG.THREE.RENDERER.config } );
     const scene = THREEScene( { RENDERING_ENGINE } );
-    const camera = THREECamera( { RENDERING_ENGINE, config: CONFIG.CAMERA.config } );
+    const camera = THREECamera( { RENDERING_ENGINE, config: CONFIG.THREE.CAMERA.config } );
 
     conf.shader[ name ] = shader;
     conf.renderer.current = renderer;
