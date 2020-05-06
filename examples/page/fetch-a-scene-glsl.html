@@ -52,8 +52,8 @@
 
             starter.shader.myShaderName.onresize( size => {
 
-              starter.shader.myShaderName.material.uniforms.resolution.value.x = size[ 0 ];
-              starter.shader.myShaderName.material.uniforms.resolution.value.y = size[ 1 ];
+              starter.shader.myShaderName.material.uniforms.resolution.value.x = size.width;
+              starter.shader.myShaderName.material.uniforms.resolution.value.y = size.height;
 
             } );
 

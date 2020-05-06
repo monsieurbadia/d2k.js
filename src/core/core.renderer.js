@@ -11,16 +11,9 @@ const onrender = ( {
   renderer: targetRenderer,
   scene: targetScene,
   camera: targetCamera
-} = {
-  engine: {},
-  renderer: {},
-  scene: {},
-  camera: {}
-}, {
+} = {}, {
   scene: sourceScene
-} = {
-  scene: {}
-} ) => {
+} = {} ) => {
   
   const render = _ => {
 
@@ -38,7 +31,7 @@ const onrender = ( {
 
       }
 
-      CALLBACK.resizers.forEach( resizer => resizer( [ targetRenderer.domElement.clientWidth, targetRenderer.domElement.clientHeight ] ) );
+      CALLBACK.resizers.forEach( resizer => resizer( { width: targetRenderer.domElement.clientWidth, height: targetRenderer.domElement.clientHeight } ) );
 
     }
 
