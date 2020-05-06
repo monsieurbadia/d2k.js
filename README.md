@@ -1,8 +1,8 @@
 # <img src="images/d2k-logo-standard.png"/>
 
-# <img src="images/d2k-logo-standard.svg"/> d2k.js <!-- [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] -->
+# <img src="images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
 
-> *micro-couche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et fonctionnelle.*
+> *micro-couche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour t'aider à utiliser l'api webgl de façon intuitive et fonctionnelle.*
 
 <a href="https://twitter.com/monsieurbadia"><img src="./images/icons/icon-twitter.svg"/> follow me on twitter</a>
 
