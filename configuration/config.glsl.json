@@ -1,4 +1,8 @@
 {
+  "init": {
+    "canvas": "viewRendering",
+    "glsl": true
+  },
   "shader": {
     "name": "myShaderName",
     "config": {
