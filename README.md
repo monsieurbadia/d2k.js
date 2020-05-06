@@ -8,7 +8,7 @@
 
 
 
-[english](README.md) - [french](./documentation/documentation.readme.fr.md)    
+[english](README.md) - [french](./documentation/documentation.readme.fr-FR.md)    
 
 ## <img src="images/icons/icon-problem.svg"/> Problems
 
