@@ -107,22 +107,22 @@
             }
           } )
           .withScene( {
-            name: "mySceneName"
+            name: 'mySceneName'
           } )
           .composify( {
             config: {
               start: false,
               scene: {
-                main: "mySceneName",
-                others: [ { name: "mySceneBackgroundName" } ]
+                main: 'mySceneName',
+                others: [ { name: 'mySceneBackgroundName' } ]
               },
-              mesh: [ { name: "myMeshName", parent: "main" } ],
-              light: [ { name: "toto", parent: "main" } ],
+              mesh: [ { name: 'myMeshName', parent: 'main' } ],
+              light: [ { name: 'toto', parent: 'main' } ],
               camera: {
-                main: "current",
-                others: [ { name: "another" } ]
+                main: 'current',
+                others: [ { name: 'another' } ]
               },
-              renderer: "current"
+              renderer: 'current'
             }
           } )
           .value();

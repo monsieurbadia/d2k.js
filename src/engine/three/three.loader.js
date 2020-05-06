@@ -5,17 +5,17 @@ import { CALLBACK } from '=>/base';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const loadTexture = loader => ( { name, url } ) => {
+const loadPromiseData = loader => async ( { name, url } ) => {
 
-  const texture = loader.load( url );
+  const data = await loader.load( url );
 
-  texture.name = name;
-
-  return texture;
+  data.name = name;
+  
+  return data;
 
 };
 
-export const THREELoader = async ( {
+export const THREELoader = ( {
   RENDERING_ENGINE,
   config = {
     args: [],
@@ -25,17 +25,15 @@ export const THREELoader = async ( {
 
   const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( config.type, 'loader' ) ]();
   const sources = is.array( config.args ) ? config.args : [ config.args ];
-  const textureArgs = sources.map( loadTexture( loader ) );
+  const operations = sources.map( loadPromiseData( loader ) );
 
-  const textures = is.exist( textureArgs )
-    ? await Promise
-      .all( textureArgs )
-      .then( response => response )
-      .catch( error => error )
-    : sources;
+  console.log( operations)
+  return Promise.all( operations ).then( data => {
 
-  CALLBACK.loaders.forEach( loader => loader( textures ) );
+    setTimeout( _ => CALLBACK.loaders.forEach( loader => loader( data ) ), 100 );
 
-  return textures;
+    return data;
+
+  } );
 
 };

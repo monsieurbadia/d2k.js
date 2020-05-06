@@ -11,7 +11,7 @@ export const Modifier = Object.freeze( {
 
     const byValidDynamicProperty = key => MESH.THREE.DYNAMIC_PROPERTIES.includes( key );
     const setProperty = ( { mesh, parameter } ) => key => {
-      
+
       if ( is.exist( parameter[ key ] ) ) {
         if ( is.array( parameter[ key ] ) ) {
           mesh[ key ].set( ...parameter[ key ] )

@@ -38,30 +38,30 @@
       window.addEventListener( "DOMContentLoaded", _ => {
 
         const THREEstarter = d2k
-          .onstarter( { canvas: document.getElementById( "viewRendering" ) } )
+          .onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
           .use( THREE )
           .withCamera( {
-            name: "myCameraName",
+            name: 'myCameraName',
             config: {
               args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
               position: [ 0, 0, 100 ],
               rotation: [ 0, 0, 0 ],
               scale: [ 0, 0, 0 ],
-              type: "perspective"
+              type: 'perspective'
             }
           } )
           .withMesh( {
-            name: "myMeshName",
+            name: 'myMeshName',
             config: [ {
               geometry: {
                 args: [ 20, 20, 20 ],
-                type: "box-buffer"
+                type: 'box-buffer'
               },
               material: {
                 args: {
                   transparent: true
                 },
-                type: "mesh-normal"
+                type: 'mesh-normal'
               },
               position: [ -20, 0, 0 ],
               rotation: [ 0, 0, 0 ],
@@ -70,13 +70,13 @@
             {
               geometry: {
                 args: [ 20, 20, 20 ],
-                type: "box"
+                type: 'box'
               },
               material: {
                 args: {
                   transparent: true
                 },
-                type: "mesh-normal"
+                type: 'mesh-normal'
               },
               position: [ 20, 0, 0 ],
               rotation: [ 0, 0, 0 ],
@@ -85,45 +85,45 @@
           } )
 
           .withLight( {
-            name: "myLightName",
+            name: 'myLightName',
             config: {
-              args: [ "0xffffbb 0x080820 1"  ],
-              type: "hemisphere"
+              args: [ '0xffffbb 0x080820 1'  ],
+              type: 'hemisphere'
             }
           } )
           .withLoader( {
-            name: "textures",
+            name: 'textures',
             config: {
               args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-              type: "texture"
+              type: 'texture'
             }
           } )
           .withScene( {
-            name: "mySceneName"
+            name: 'mySceneName'
           } )
           .withRenderer( {
-            name: "myRendererName",
+            name: 'myRendererName',
             config: {
               autoClear: true,
               pixelRatio: window.devicePixelRatio,
               size: [ window.innerWidth, window.innerHeight ],
-              type: "webgl"
+              type: 'webgl'
             }
           } )
           .composify( {
             config: {
               start: true,
               scene: {
-                main: "mySceneName",
-                others: [ { name: "mySceneBackgroundName" } ]
+                main: 'mySceneName',
+                others: [ { name: 'mySceneBackgroundName' } ]
               },
-              mesh: [ { name: "myMeshName", parent: "main" } ],
-              light: [ { name: "myLightName", parent: "main" } ],
+              mesh: [ { name: 'myMeshName', parent: 'main' } ],
+              light: [ { name: 'myLightName', parent: 'main' } ],
               camera: {
-                main: "myCameraName",
-                others: [ { name: "another" } ]
+                main: 'myCameraName',
+                others: [ { name: 'another' } ]
               },
-              renderer: "myRendererName"
+              renderer: 'myRendererName'
             }
           } )
           .value();

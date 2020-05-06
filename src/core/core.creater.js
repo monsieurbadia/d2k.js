@@ -84,7 +84,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
         ...result,
         [ config.name ]: parameter[ config.name ]
       };
-    
+
     };
 
     return primitivesName
