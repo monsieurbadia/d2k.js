@@ -11,7 +11,8 @@ export const THREEShader = ( {
   config = CONFIG.THREE.SHADER
 } ) => {
 
-  const uniform = Chunk.createUniforms( { RENDERING_ENGINE, uniforms: merge( SHADER.UNIFORMS, config.uniforms ) } );
+  // TODO
+  const uniform = Chunk.createUniforms( { RENDERING_ENGINE, uniforms: merge( CONFIG.THREE.SHADER.uniforms, config.uniforms ) } );
   const shaderChunk = Chunk.compile( { uniforms: uniform, fragmentShader: config.fragmentShader, vertexShader: config.vertexShader } );
   const geometry = new RENDERING_ENGINE.PlaneBufferGeometry( ...SHADER.GEOMETRY.args );
   const material = new RENDERING_ENGINE.ShaderMaterial( shaderChunk );

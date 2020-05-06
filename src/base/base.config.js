@@ -94,9 +94,26 @@ export const CONFIG = Object.freeze( {
 
     SHADER: {
       name: 'current-shader',
-      uniforms: {},
+      geometry: [ 2, 2 ],
       fragmentShader: 'uniform vec2 resolution;\nuniform vec2 time;\nvoid main () {\n\tvec2 st = gl_FragCoord.xy / resolution.xy;\n\tgl_FragColor=vec4(st.x, st.y, 0.0, 1.0);\n}',
-      vertexShader: 'void main () {\n\tgl_Position = vec4( position, 1.0 );\n}'
+      vertexShader: 'void main () {\n\tgl_Position = vec4( position, 1.0 );\n}',
+      uniforms: {
+        mouse: {
+          type: 'v2',
+          value: []
+        },
+        resolution: {
+          type: 'v2',
+          value: [
+            window.innerWidth,
+            window.innerHeight
+          ]
+        },
+        time: {
+          type: 'f',
+          value: 1.0
+        }
+      },
     }
 
   }

@@ -1,7 +1,7 @@
 {
   "name": "d2k",
   "version": "0.0.0",
-  "description": "javascript micro-layer based on three.js and babylon.js to create 3d scenes quickly in an intuitive, elegant and functional way.",
+  "description": " javascript micro-layer based on three.js x babylon.js that will help you to used webgl api in a intuitive an functional way.",
   "keywords": [
     "javascript",
     "d2k",
