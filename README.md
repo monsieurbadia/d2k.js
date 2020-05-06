@@ -2,87 +2,146 @@
 
 # <img src="images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
 
+<p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
+
 > *micro-couche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour t'aider à utiliser l'api webgl de façon intuitive et fonctionnelle.*
-
-examples : [using shader](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [using three.js](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [using babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization](https://jsfiddle.net/_monsieurbadia/brq43fsu) - 
-
-<a href="https://twitter.com/monsieurbadia"><img src="./images/icons/icon-twitter.svg"/> follow me on twitter</a>
 
 [anglais](README.md) - [français](./documentation/documentation.readme.fr.md)    
 
 ## <img src="images/icons/icon-problem.svg"/> Problems
 
-- DRY do not repeat yourself).
-- lack of innovation of webgl starters of the type `three-starter-of-the-death-that-kills` `view-babylon-starter ++` etc.
-- waste my time to display a simple cube using the native wegl API.
+- DRY (do not repeat yourself).
 - webgl API too complex to make young people want to pay attention to 3d programming.
 
 ## <img src="images/icons/icon-solution.svg"/> Solutions
 
 - automate the creation of primitives.
-- automate the composition of the scene
-- create a scene from a `.json` file.
+- automate the composition of the scene.
+- create a scene from a `JSON` file.
+- support `GLSL` `THREE` `BABYLON`
 - switch between babylon and three in a single line of code.
 - create experimental experiences such as being able to make an `Object.assign (THREE, BABYLON)`, which would give a single canvas the possibility of displaying the two scenes simultaneously on the screen.
 
-## <img src="images/icons/icon-goals.svg"/> Goals
+## <img src="images/icons/icon-start-project.svg"/> Getting Started
 
-- support `GLSL`
-- support `THREE`
-- support `BABYLON`
-- support `JSON`
-- support `Object.assign (THREE, BABYLON)`
-- support `chrome` `edge` `firefox` `safari`
-
-## <img src="images/icons/icon-disclaimer.svg"/> Disclaimer
-
-I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors, over time, will disappear. changes will be coming for everyone's comfort, I hope. triforce!    
-
-## <img src="images/icons/icon-installation.svg"/> Install    
-    
 before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** via your shell.    
 
+**examples**    
+
+[using shader](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [using three.js](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [using babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization (three x babylon)](https://jsfiddle.net/_monsieurbadia/brq43fsu)
+
+## <img src="images/icons/icon-installation.svg"/> Install    
+       
 **shell**
 
 ```sh
 npm i d2k
 ```
 
-OU
+OR
 
 ```sh
 yarn add d2k
 ```
 
-voilà! the project is installed. check in `.package.json` if `d2k` is in the dependencies of your application.
-
 **alternative**
 
-download the project, copy the file `d2k.js` which is located in the folder `/dist` then you are free to install it in the place provided for this purpose in your application.    
-
-## <img src="images/icons/icon-start-project.svg"/> Start project
-
-maintenant, tu n'as plus qu'à importer **d2k** dans ton module ou ta page html.
+download the project, copy the file `d2k.js` which is located in the folder `/dist` then you are free to install it in the place provided for this purpose in your application. now you have to import d2k into your module or into your html page and follow this syntax.   
 
 **ecmascript**
 
 ```js
 import d2k from 'd2k';
+import * as THREE from 'three';
+
+window.addEventListener( 'DOMContentLoaded', _ => {
+
+  const THREEstarter = d2k
+    .onstarter( { canvas: 'myCanvasId' } )
+    .use( THREE )
+    .withScene( { name: 'mySceneName' } )
+    .withCamera( { name: 'myCameraName' } )
+    .withMesh( { name: 'myMeshName' } )
+    .withRenderer( { name: 'myRendererName' } )
+    .composify( {
+      config: {
+        start: true,
+        scene: { main: 'mySceneName' },
+        mesh: [ { name: 'myMeshName', parent: 'main' } ],
+        light: [ { name: 'myLightName', parent: 'main' } ],
+        camera: { main: 'myCameraName' },
+        renderer: 'myRendererName'
+      }
+    } )
+    .value();
+
+  // use the onrender method to update a mesh, the callback take time in argument.
+  THREEstarter.mesh.myMeshName.onrender( time => {
+
+    THREEstarter.mesh.myMeshName.rotation.x += time;
+    THREEstarter.mesh.myMeshName.rotation.y += time;
+
+  } );
+
+}, false );
 ```
 
-**html | javascript**
+**html x javascript**
 
 ```html
-<script src="./d2k.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>d2k.js - example - hello world</title>
+  </head>
+  <body>
+    <canvas id="myCanvasId" touch-action="none"></canvas>
+    <script src="https://raw.githack.com/monsieurbadia/d2k.js/master/build/d2k.js"></script>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script>
+      window.addEventListener( 'DOMContentLoaded', _ => {
+
+        const THREEstarter = d2k
+          .onstarter( { canvas: 'myCanvasId' } )
+          .use( THREE )
+          .withScene( { name: 'mySceneName' } )
+          .withCamera( { name: 'myCameraName' } )
+          .withMesh( { name: 'myMeshName' } )
+          .withRenderer( { name: 'myRendererName' } )
+          .composify( {
+            config: {
+              start: true,
+              scene: { main: 'mySceneName' },
+              mesh: [ { name: 'myMeshName', parent: 'main' } ],
+              light: [ { name: 'myLightName', parent: 'main' } ],
+              camera: { main: 'myCameraName' },
+              renderer: 'myRendererName'
+            }
+          } )
+          .value();
+
+        // use the onrender method to update a mesh, the callback take time in argument.
+        THREEstarter.mesh.myMeshName.onrender( time => {
+
+          THREEstarter.mesh.myMeshName.rotation.x += time;
+          THREEstarter.mesh.myMeshName.rotation.y += time;
+
+        } );
+
+      }, false );
+    </script>
+  </body>
+</html>
 ```
 
 ## <img src="images/icons/icon-syntax.svg"/> Syntax
 
-here is an overview of the syntax of ** d2k ** which allows you to chain methods to compose a `scene` step by step.
+following this syntax bellow which allows you to chain methods to compose a `scene` step by step.
 
-**glsl starter**
+**using glsl**
 
-create a 100% `gpu` scene through `shader` in `glsl`   
+create a 100% `gpu` scene through `shader` in `GLSL`   
 
 ```js
 const GLSLstarter = d2k
@@ -92,9 +151,9 @@ const GLSLstarter = d2k
   .value();
 ```
 
-**babylon starter**
+**using babylon.js**
 
-create a scene from the primitives from `BABYLON`    
+create a scene from the primitives of `BABYLON`    
 
 ```js
 const BABYLONstarter = d2k
@@ -108,9 +167,9 @@ const BABYLONstarter = d2k
   .value();
 ```
 
-**three starter**
+**using three.js**
 
-crée une scène à partir des primitives fournit par `THREE`   
+create a scene from the primitives of `THREE`     
 
 ```js
 const THREEstarter = d2k
@@ -124,27 +183,6 @@ const THREEstarter = d2k
   .withScene( /* camera config */ )
   .composify( /* camera config */ )
   .value();
-```
-
-**events**
-
-`mesh` `light` `camera` détiennent des évènements qui sont appelés dans des contextes précis `onrender` `onloader` `onresize`
-
-```js
-// get textures
-starter.mesh.myMeshName.onloader( textures => textures );
-
-// update
-starter.mesh.myMeshName.onrender( timer => {
-  starter.mesh.myMeshName.rotation.x += time;
-  starter.mesh.myMeshName.rotation.y += time;
-} );
-
-// resize
-starter.mesh.myMeshName.onresize( size => {
-  starter.mesh.myMeshName.material.uniforms.resolution.value.x += size.width;
-  starter.mesh.myMeshName.rotation.uniforms.resolution.value.y += size.height;
-} );
 ```
 
 ## <img src="images/icons/icon-api.svg"/> API
@@ -478,6 +516,27 @@ starter.mesh.myMeshName.onresize( size => {
   
   *contient l'ensemble de primitives que tu as créé à l'aide des méthodes `.with*`*
 
+**events**
+
+`mesh` `light` `camera` détiennent des évènements qui sont appelés dans des contextes précis `onrender` `onloader` `onresize`
+
+```js
+// get textures
+starter.mesh.myMeshName.onloader( textures => textures );
+
+// update
+starter.mesh.myMeshName.onrender( timer => {
+  starter.mesh.myMeshName.rotation.x += time;
+  starter.mesh.myMeshName.rotation.y += time;
+} );
+
+// resize
+starter.mesh.myMeshName.onresize( size => {
+  starter.mesh.myMeshName.material.uniforms.resolution.value.x += size.width;
+  starter.mesh.myMeshName.rotation.uniforms.resolution.value.y += size.height;
+} );
+```
+
 ## <img src="images/icons/icon-config.svg"/> Configuration
 
 *une `scene` peut être créer à partir d'un fichier `.json` qui devra respecté le format suivant : [.json format](./config/config.format.md)*    
@@ -512,6 +571,7 @@ fetch( 'http://localhost:5007/api/scene/babylon' )
 ```
 
 ```js
+// glsl
 fetch( 'http://localhost:5007/api/scene/glsl' )
   .then( response => response.json() )
   .then( ( { scene } ) => {
@@ -604,6 +664,10 @@ mesh              | <img src="images/icons/icon-not.svg"/>   | <img src="images/
 renderer          | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
 scene             | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
 
+## <img src="images/icons/icon-disclaimer.svg"/> Disclaimer
+
+I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors, over time, will disappear. changes will be coming for everyone's comfort, I hope. triforce! 
+
 ## <img src="images/icons/icon-reference.svg"/> Références
 
 - [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
@@ -622,7 +686,7 @@ Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/mast
 
 ## <img src="images/icons/icon-heart.svg"/> Contributeurs
 
-logo - [@mllemartins](https://twitter.com/mllemartins)        
+logo - [@Mlle_Martinss](https://twitter.com/Mlle_Martinss)        
 icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)     
 code - [@monsieurbadia](https://twitter.com/monsieurbadia)       
 
