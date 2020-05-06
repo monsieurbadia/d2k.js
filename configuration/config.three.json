@@ -75,7 +75,7 @@
   "loader":{
     "name": "textures",
     "config": {
-      "args": [ { "name": "img-1", "url": "/cover-front.28969be3.jpg" }, { "name": "img-2", "url": "/cover-front.28969be3.jpg" } ],
+      "args": [ { "name": "img-1", "url": "https://pbs.twimg.com/profile_images/1155986600230187010/I8KaBYEu_400x400.jpg" }, { "name": "img-2", "url": "https://pbs.twimg.com/profile_images/1155986600230187010/I8KaBYEu_400x400.jpg" } ],
       "type": "texture"
     }
   },

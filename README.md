@@ -4,7 +4,9 @@
 
 <p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
 
-> *javascript micro-layer based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to used webgl api in a intuitive an functional way.*
+> *primitive builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
+
+
 
 [english](README.md) - [french](./documentation/documentation.readme.fr.md)    
 
@@ -26,9 +28,9 @@
 
 before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** via your shell.    
 
-**examples**    
+**examples (jsfiddle)**    
 
-[using shader](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [using three.js](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [using babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization (three x babylon)](https://jsfiddle.net/_monsieurbadia/brq43fsu)
+[using shader](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [using three.js](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [using babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization (three.js x babylon.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [hello world](https://jsfiddle.net/_monsieurbadia/cx9tq8b5)  
 
 ## <img src="images/icons/icon-installation.svg"/> Install    
        
@@ -294,7 +296,7 @@ const THREEstarter = d2k
 
   ##### usage
 
-  `BABYLON` x `GLSL`
+  `BABYLON` x `THREE`
 
   ##### params
 
@@ -413,7 +415,7 @@ const THREEstarter = d2k
 
   ##### usage
 
-  `BABYLON`
+  `BABYLON` x `THREE`
 
   ##### params
 
@@ -473,7 +475,7 @@ const THREEstarter = d2k
 
   ##### usage
 
-  `GLSL` x `BABYLON`
+  `BABYLON` x `THREE`   
 
   ##### params
 
