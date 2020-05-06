@@ -4,6 +4,8 @@
 
 > *micro-couche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour t'aider à utiliser l'api webgl de façon intuitive et fonctionnelle.*
 
+examples : [using shader](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [using three.js](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [using babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization](https://jsfiddle.net/_monsieurbadia/brq43fsu) - 
+
 <a href="https://twitter.com/monsieurbadia"><img src="./images/icons/icon-twitter.svg"/> follow me on twitter</a>
 
 [anglais](README.md) - [français](./documentation/documentation.readme.fr.md)    
@@ -632,3 +634,5 @@ code - [@monsieurbadia](https://twitter.com/monsieurbadia)
 [npmtrends-url]: https://www.npmtrends.com/d2k
 [dev-dependencies]: https://img.shields.io/david/dev/monsieurbadia/d2k.js
 [dev-dependencies-url]: https://david-dm.org/monsieurbadia/d2k.js#info=devDependencies
+
+
