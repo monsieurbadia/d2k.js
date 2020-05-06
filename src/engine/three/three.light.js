@@ -14,12 +14,14 @@ export const THREELight = ( {
   }
 } = {} ) => {
 
-  const properties = Object.keys( config );
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'light' );
   const light = new RENDERING_ENGINE[ instanceName ]( strings.ToInt( ...config.args, ' ' ) );
-  const setDynamicProperty = Modifier.setDynamicProperty( { mesh: light, parameter: config } );
 
-  setDynamicProperty( properties );
+  Modifier.setDynamicProperty( {
+    object3d: light,
+    rendering: 'three',
+    parameter: config
+  } );
 
   return Object.assign( light, {
     ...Event

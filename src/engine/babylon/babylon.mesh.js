@@ -30,12 +30,14 @@ export const BABYLONMesh = ( {
     .filter( byValidParameter )
     .map( parameter => {
 
-      const properties = Object.keys( parameter );
       const instanceName = strings.toFirstLetterUpperCaseReducer( 'create', parameter.type );
       const currentMesh = Object.assign( RENDERING_ENGINE.MeshBuilder[ instanceName ]( parameter.name, parameter.args, scene ), { ...Event } );
-      const modifyDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
 
-      modifyDynamicProperty( properties );
+      Modifier.setDynamicProperty( {
+        object3d: currentMesh,
+        rendering: 'babylon',
+        parameter
+      } );
 
       if ( is.exist( parameter.material ) ) {
 

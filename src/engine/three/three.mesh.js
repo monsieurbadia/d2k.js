@@ -24,17 +24,17 @@ export const THREEMesh = ( {
     .filter( byValidParameter )
     .map( parameter => {
 
-      const properties = Object.keys( parameter );
       const geometry = THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
       const material = THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
       const currentMesh = Object.assign( new RENDERING_ENGINE.Mesh( geometry, material ), { ...Event } );
-      const setDynamicProperty = Modifier.setDynamicProperty( { mesh: currentMesh, parameter } );
 
-      currentMesh.receiveShadow = true;
+      Modifier.setDynamicProperty( {
+        object3d: currentMesh,
+        rendering: 'three',
+        parameter
+      } );
 
-      setDynamicProperty( properties );
-
-      return is.array( config ) ? group.add( currentMesh ) : currentMesh
+      return is.array( config ) ? group.add( currentMesh ) : currentMesh;
 
     }, [] )[ 0 ];
 

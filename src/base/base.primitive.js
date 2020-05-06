@@ -2,7 +2,7 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const MESH = Object.freeze( {
+export const PRIMITIVE = Object.freeze( {
 
   BABYLON: {
     DYNAMIC_PROPERTIES: [
@@ -16,6 +16,7 @@ export const MESH = Object.freeze( {
     DYNAMIC_PROPERTIES: [
       'name',
       'position',
+      'receiveShadow',
       'rotation',
       'scale'
     ]
