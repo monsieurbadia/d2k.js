@@ -1,4 +1,5 @@
 import { is, strings } from 'u3s';
+import { CONFIG } from '=>/base';
 import { Event } from '=>/core';
 
 /**
@@ -7,13 +8,7 @@ import { Event } from '=>/core';
 
 export const BABYLONLight = ( {
   RENDERING_ENGINE,
-  config = {
-    args: [ 0, 1, 0 ],
-    diffuse: [ 1, 1, 1 ],
-    specular: [ 1, 1, 1 ],
-    name: 'current',
-    type: 'point'
-  }
+  config = CONFIG.BABYLON.LIGHT
 } = {} ) => {
 
   const light = {};

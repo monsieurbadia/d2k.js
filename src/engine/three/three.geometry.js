@@ -1,4 +1,5 @@
 import { strings } from 'u3s';
+import { CONFIG } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -6,10 +7,7 @@ import { strings } from 'u3s';
 
 export const THREEGeometry = ( {
   RENDERING_ENGINE,
-  config = {
-    args: [ 20, 20, 20 ],
-    type: 'box-buffer'
-  }
+  config = CONFIG.THREE.GEOMETRY
 } = {} ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'geometry' );

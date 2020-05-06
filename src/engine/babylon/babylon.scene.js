@@ -1,4 +1,5 @@
 import { is } from 'u3s';
+import { CONFIG } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -6,10 +7,7 @@ import { is } from 'u3s';
 
 export const BABYLONScene = ( {
   RENDERING_ENGINE,
-  config = {
-    autoClear: true,
-    clearColor: [ 0, 0, 0 ]
-  }
+  config = CONFIG.BABYLON.SCENE
 } = {} ) => {
 
   const { engine } = RENDERING_ENGINE.coreData;

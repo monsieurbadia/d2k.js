@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { CALLBACK } from '=>/base';
+import { CALLBACK, CONFIG } from '=>/base';
 import { Dom, Renderer } from '=>/core';
 
 /**
@@ -17,13 +17,7 @@ const clean = renderer => {
 
 export const THREERenderer = ( {
   RENDERING_ENGINE,
-  config = {
-    alpha: true,
-    antialias: true,
-    autoClear: true,
-    background: 0x000000,
-    pixelRatio: window.devicePixelRatio
-  }
+  config = CONFIG.THREE.RENDERER
 } = {} ) => {
 
   const renderer = Object.create( null );

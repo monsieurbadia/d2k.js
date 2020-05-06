@@ -1,5 +1,5 @@
 import { merge } from 'u3s';
-import { SHADER } from '=>/base';
+import { CONFIG, SHADER } from '=>/base';
 import { Chunk, Event } from '=>/core';
 
 /**
@@ -8,11 +8,7 @@ import { Chunk, Event } from '=>/core';
 
 export const THREEShader = ( {
   RENDERING_ENGINE,
-  config = {
-    uniforms: {},
-    fragmentShader: 'uniform vec2 resolution;\nuniform vec2 time;\nvoid main () {\n\tvec2 st = gl_FragCoord.xy / resolution.xy;\n\tgl_FragColor=vec4(st.x, st.y, 0.0, 1.0);\n}',
-    vertexShader: 'void main () {\n\tgl_Position = vec4( position, 1.0 );\n}'
-  }
+  config = CONFIG.THREE.SHADER
 } ) => {
 
   const uniform = Chunk.createUniforms( { RENDERING_ENGINE, uniforms: merge( SHADER.UNIFORMS, config.uniforms ) } );

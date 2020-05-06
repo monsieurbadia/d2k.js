@@ -1,4 +1,5 @@
 import { strings } from 'u3s';
+import { CONFIG } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -6,11 +7,7 @@ import { strings } from 'u3s';
 
 export const BABYLONCamera = ( {
   RENDERING_ENGINE,
-  config = {
-    args: [ 0, 0, 2 ],
-    name: 'current-camera',
-    type: 'follow'
-  }
+  config = CONFIG.BABYLON.CAMERA
 } = {} ) => {
 
   const camera = {};

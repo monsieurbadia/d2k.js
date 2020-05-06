@@ -1,4 +1,5 @@
 import{ is, oftype, strings } from 'u3s';
+import { CONFIG } from '=>/base';
 import { Event, Modifier } from '=>/core';
 
 /**
@@ -7,16 +8,7 @@ import { Event, Modifier } from '=>/core';
 
 export const BABYLONMesh = ( {
   RENDERING_ENGINE,
-  config = {
-    args: { size: 0.20 },
-    position: [ 0, 0, 0 ],
-    type: 'box',
-    material: {
-      name: 'current-material',
-      type: 'standard',
-      emissiveColor: [ 0.1, 0.50, 0.75 ]
-    }
-  }
+  config = CONFIG.BABYLON.MESH
 } = {} ) => {
 
   const { scene } = RENDERING_ENGINE.coreData;

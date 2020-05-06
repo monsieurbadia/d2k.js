@@ -1,4 +1,5 @@
 import { is, strings } from 'u3s';
+import { CONFIG } from '=>/base';
 import { Chunk } from '=>/core';
 
 /**
@@ -7,13 +8,7 @@ import { Chunk } from '=>/core';
 
 export const THREEMaterial = ( {
   RENDERING_ENGINE,
-  config = {
-    args: {
-      color: 0x00ff00,
-      transparent: false
-    },
-    type: 'mesh-normal'
-  }
+  config = CONFIG.THREE.MATERIAL
 } = {} ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'material' );

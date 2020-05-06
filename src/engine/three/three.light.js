@@ -1,4 +1,5 @@
 import { strings } from 'u3s';
+import { CONFIG } from '=>/base';
 import { Event, Modifier } from '=>/core';
 
 /**
@@ -7,11 +8,7 @@ import { Event, Modifier } from '=>/core';
 
 export const THREELight = ( {
   RENDERING_ENGINE,
-  config = {
-    args: [ '0xffffbb 0x080820 1' ],
-    name: 'current-light',
-    type: 'hemisphere'
-  }
+  config = CONFIG.THREE.LIGHT
 } = {} ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'light' );

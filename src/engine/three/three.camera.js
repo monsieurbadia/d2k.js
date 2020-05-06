@@ -1,4 +1,5 @@
 import { strings } from 'u3s';
+import { CONFIG } from '=>/base';
 import { Modifier } from '=>/core';
 
 /**
@@ -7,12 +8,7 @@ import { Modifier } from '=>/core';
 
 export const THREECamera = ( {
   RENDERING_ENGINE,
-  config = {
-    args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
-    name: 'current-camera',
-    position: [ 0, 0, 80 ],
-    type: 'perspective'
-  }
+  config = CONFIG.THREE.CAMERA
 } = {} ) => {
 
   const instanceName = strings.toFirstLetterUpperCaseReducer( config.type, 'camera' );

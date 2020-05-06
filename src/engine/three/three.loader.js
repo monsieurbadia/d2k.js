@@ -1,5 +1,5 @@
 import { is, strings } from 'u3s';
-import { CALLBACK } from '=>/base';
+import { CALLBACK, CONFIG } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -17,10 +17,7 @@ const loadPromiseData = loader => async ( { name, url } ) => {
 
 export const THREELoader = ( {
   RENDERING_ENGINE,
-  config = {
-    args: [],
-    type: 'object'
-  }
+  config = CONFIG.THREE.LOADER
 } = {} ) => {
 
   const loader = new RENDERING_ENGINE[ strings.toFirstLetterUpperCaseReducer( config.type, 'loader' ) ]();

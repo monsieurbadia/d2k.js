@@ -1,4 +1,5 @@
 import { is, oftype } from 'u3s';
+import { CONFIG } from '=>/base';
 import { Event, Modifier } from '=>/core';
 
 import {
@@ -13,7 +14,7 @@ import {
 
 export const THREEMesh = ( {
   RENDERING_ENGINE,
-  config = {}
+  config = CONFIG.THREE.MESH
 } = {} ) => {
 
   const group = THREEGroup( { RENDERING_ENGINE } );
