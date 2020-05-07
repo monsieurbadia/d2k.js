@@ -38,18 +38,29 @@
       window.addEventListener( "DOMContentLoaded", _ => {
 
         const THREEstarter = d2k
+          /*
+
+          */
           .onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
           .use( THREE )
+          /*
+            create a camera, the args array is passed in the camera contructor,
+              - PerspectiveCamera args: [ fov : Number, aspect : Number, near : Number, far : Number ]
+              - OrthographicCamera args: [ left : Number, right : Number, top : Number, bottom : Number, near : Number, far : Number ]
+              - CubeCamera args: [ near : Number, far : Number, cubeResolution : Number, options : Object ]
+              - ArrayCamera args: [ array : Array ]
+          */
           .withCamera( {
             name: 'myCameraName',
             config: {
               args: [ 75, window.innerWidth / window.innerHeight, 0.1, 1000 ],
               position: [ 0, 0, 100 ],
-              rotation: [ 0, 0, 0 ],
-              scale: [ 1, 1, 1 ],
               type: 'perspective'
             }
           } )
+          /*
+
+          */
           .withMesh( {
             name: 'myMeshName',
             config: [ {
@@ -63,9 +74,7 @@
                 },
                 type: 'mesh-normal'
               },
-              position: [ -20, 0, 0 ],
-              rotation: [ 0, 0, 0 ],
-              scale: [ 1, 1, 1 ]
+              position: [ -20, 0, 0 ]
             },
             {
               geometry: {
@@ -78,26 +87,10 @@
                 },
                 type: 'mesh-normal'
               },
-              position: [ 20, 0, 0 ],
-              rotation: [ 0, 0, 0 ],
-              scale: [ 1, 1, 1 ]
+              position: [ 20, 0, 0 ]
             } ]
           } )
-
-          .withLight( {
-            name: 'myLightName',
-            config: {
-              args: [ '0xffffbb 0x080820 1'  ],
-              type: 'hemisphere'
-            }
-          } )
-          .withLoader( {
-            name: 'textures',
-            config: {
-              args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-              type: 'texture'
-            }
-          } )
+          /* create a scene */
           .withScene( {
             name: 'mySceneName'
           } )
@@ -106,29 +99,19 @@
             config: {
               autoClear: true,
               pixelRatio: window.devicePixelRatio,
-              size: [ window.innerWidth, window.innerHeight ],
-              type: 'webgl'
+              size: [ window.innerWidth, window.innerHeight ]
             }
           } )
           .composify( {
             config: {
               start: true,
-              scene: {
-                main: 'mySceneName',
-                others: [ { name: 'mySceneBackgroundName' } ]
-              },
-              mesh: [ { name: 'myMeshName', parent: 'main' } ],
-              light: [ { name: 'myLightName', parent: 'main' } ],
-              camera: {
-                main: 'myCameraName',
-                others: [ { name: 'another' } ]
-              },
+              scene: { main: 'mySceneName' },
+              mesh: [ { name: 'myMeshName', sceneParent: 'main' } ],
+              camera: { main: 'myCameraName' },
               renderer: 'myRendererName'
             }
           } )
           .value();
-
-        THREEstarter.mesh.myMeshName.onloader( textures => textures );
 
         THREEstarter.mesh.myMeshName.onrender( time => {
 

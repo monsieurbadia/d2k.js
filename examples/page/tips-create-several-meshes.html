@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k.js - tips - create several meshes</title>
+  </head>
+  <body>
+    <canvas id="viewRendering"></canvas>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="../../build/d2k.js"></script>
+    <script>
+      window.addEventListener( 'DOMContentLoaded', _ => {
+
+        const meshes = [];
+
+        for ( let i = 0; i < 100; i++ ) {
+
+          const mesh = {
+            name: `mesh-${ i }`,
+            config: {
+              geometry: {
+                args: [ 20, 20, 20 ],
+                type: 'box-buffer'
+              },
+              material: {
+                args: {},
+                type: 'mesh-normal'
+              },
+              position: [ 0, 0, i ]
+            }
+          };
+
+          meshes.push( mesh );
+
+        }
+
+        const starter = d2k
+          .onstarter( { canvas: 'viewRendering' } )
+          .use( THREE )
+          .withMesh( ...meshes )
+          .value();
+
+        console.log( starter.mesh );
+        
+        // output: {mesh-0: BoxBufferGeomtry, mesh-1: BoxBufferGeomtry, mesh-2: BoxBufferGeomtry, mesh-3: BoxBufferGeomtry, mesh-4: BoxBufferGeomtry, …}
+
+      } );
+    </script>
+  </body>
+</html>

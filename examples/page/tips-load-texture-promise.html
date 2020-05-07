@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k.js - tips - create several meshes</title>
+  </head>
+  <body>
+    <canvas id="viewRendering"></canvas>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="../../build/d2k.js"></script>
+    <script>
+      window.addEventListener( 'DOMContentLoaded', _ => {
+
+        const loadMeshWithTexturePromise = _ => {
+
+          const use = d2k
+            .onstarter( { canvas: 'viewRendering' } )
+            .use( THREE );
+
+          const texturesPromise = Promise.resolve( use.withLoader( {
+            name: "textures",
+            config: {
+              args: [
+                { "name": "img-1", "url": "/monsieurbadia-logo.44c8cb9b.jpg" },
+                { "name": "img-2", "url": "/monsieurbadia-logo.44c8cb9b.jpg" } ],
+              type: "texture"
+            }
+          } ).value().loader.textures );
+
+          const setTextures = textures => {
+
+            const mesh = use.withMesh( {
+              name: 'myMeshName',
+              config: {
+              geometry: {
+                args: [ 20, 20, 20 ],
+                type: 'box-buffer'
+              },
+              material: {
+                args: {
+                  transparent: true
+                },
+                type: 'mesh-normal'
+              },
+              position: [ -20, 0, 0 ]
+            } } ).value().mesh.myMeshName;
+
+            mesh.material.map = textures.find( texture => texture.name === 'img-1' );
+
+          };
+
+          return texturesPromise
+            .then( setTextures );
+        };
+
+        loadMeshWithTexturePromise();
+
+      } );
+    </script>
+  </body>
+</html>
