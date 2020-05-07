@@ -9,7 +9,7 @@ import { Chunk, Event } from '=>/core';
 export const THREEShader = ( {
   RENDERING_ENGINE,
   config = CONFIG.THREE.SHADER
-} ) => {
+} = {} ) => {
 
   // TODO
   const uniform = Chunk.createUniforms( { RENDERING_ENGINE, uniforms: merge( CONFIG.THREE.SHADER.uniforms, config.uniforms ) } );

@@ -5,7 +5,7 @@ import { MATH, SHADER } from '=>/base';
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const createUniforms = ( { RENDERING_ENGINE, uniforms } ) => {
+const createUniforms = ( { RENDERING_ENGINE, uniforms } = {} ) => {
 
   if ( is.include( uniforms, 'type' ) ) return uniforms;
 

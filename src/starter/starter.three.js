@@ -9,7 +9,7 @@ export const onthreestarter = ( init = {} ) => {
 
   const conf = init;
 
-  const composify = ( { config } ) => {
+  const composify = ( { config } = {} ) => {
 
     const addObjectsToScene = objects3d => Object.keys( objects3d ).forEach( key => starter.scene[ objects3d[ key ].userData.currentScene ].add( objects3d[ key ] ) );
 
@@ -25,7 +25,7 @@ export const onthreestarter = ( init = {} ) => {
 
     if ( is.exist( objects3d ) ) {
 
-      addObjectsToScene( objects3d )
+      addObjectsToScene( objects3d );
     
     };
 

@@ -39,7 +39,7 @@ const oncreate = ( {
   conf,
   name,
   starter
-} ) => ( ...parameters ) => {
+} = {} ) => ( ...parameters ) => {
 
   if ( is.empty( conf[ name ] ) ) {
 
@@ -78,7 +78,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
     const byDefinedPrimitive = primitive => is.exist( parameter[ primitive.name ] );
     const primitive = ( result, config ) => { 
 
-      parameter[ config.name ].userData = { currentScene: config.parent };
+      parameter[ config.name ].userData = { currentScene: config.sceneParent };
 
       return {
         ...result,
