@@ -1,6 +1,6 @@
 {
   "name": "d2k",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "primitive builder based on three.js x babylon.js that will help you to created a scene in an intuitive and functional way.",
   "keywords": [
     "javascript",
