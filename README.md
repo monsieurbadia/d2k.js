@@ -6,8 +6,6 @@
 
 > *primitive builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
 
-
-
 [english](README.md) - [french](./documentation/documentation.readme.fr-FR.md)    
 
 ## <img src="images/icons/icon-problem.svg"/> Problems
@@ -369,12 +367,13 @@ const THREEstarter = d2k
 
   ```js
   const starter = d2k.onstarter( /* init */ )
-    .use( BABYLON || THREE )
+    .use( THREE ) // you can also use BABYLON
     .withLoader( {
-      name: "textures",
+      name: "myLightName",
       config: {
-        args: [ { "name": "img-1", "url": "/my-image-path.jpg" }, { "name": "img-2", "url": "/my-image-pathjpg" } ],
-        type: "texture"
+        args: [ "0xf1f5bb" ],
+        position: [ 0, 1, 30 ],
+        type: "directional"
       }
     } );
   ```
@@ -389,7 +388,7 @@ const THREEstarter = d2k
 
   ##### params
 
-  `config` **{ Object }**: a `renderer` config  
+  `config` **{ Object }**: a `renderer` config.  
   `returns` **{ Object }**: collection of methods. 
 
   ##### example
@@ -411,7 +410,7 @@ const THREEstarter = d2k
 
 - ### `.withScene( config )`
 
-  *compose une `scene` à partir d'un objet `config` passer en paramètre de la méthode `.withScene`*
+  *compose a `scene` from a `config` object pass in parameter.*
 
   ##### usage
 
@@ -419,8 +418,8 @@ const THREEstarter = d2k
 
   ##### params
 
-  `config` **{ Object }**: définition de la config d'une `scene`  
-  `returns` **{ Object }**: collection de méthodes. 
+  `config` **{ Object }**: a `scene` config.  
+  `returns` **{ Object }**: collection of methods. 
 
   ##### example
 
@@ -432,7 +431,7 @@ const THREEstarter = d2k
 
 - ### `.withShader( config )`
 
-  *crée des `shader` à partir d'un objet `config` passer en paramètre de la méthode `.withShader`*
+  *create `shader` from a `config` object pass in parameter.*
 
   ##### usage
 
@@ -440,8 +439,8 @@ const THREEstarter = d2k
 
   ##### params
 
-  `config` **{ Object }**: définition de la config des `shader`  
-  `returns` **{ Object }**: collection de méthodes. 
+  `config` **{ Object }**: a `shader` config  
+  `returns` **{ Object }**: collection of methods. 
 
   ##### example
 

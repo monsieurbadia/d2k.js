@@ -13,7 +13,7 @@
 }
 ```
 
-**composify**
+**shader**
 
 ```json
 {

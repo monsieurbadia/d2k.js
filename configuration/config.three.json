@@ -6,8 +6,8 @@
         "main": "mySceneName",
         "others": []
       },
-      "mesh": [ { "name": "myMeshName", "parent": "main" } ],
-      "light": [ { "name": "myLightName", "parent": "main" } ],
+      "mesh": [ { "name": "myMeshName", "sceneParent": "main" } ],
+      "light": [ { "name": "myLightName", "sceneParent": "main" } ],
       "camera": {
         "main": "myCameraName",
         "others": []
