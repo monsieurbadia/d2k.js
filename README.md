@@ -1,6 +1,6 @@
-# <img src="images/d2k-logo-standard.png"/>
+# <img src="assets/images/d2k-logo-standard.png"/>
 
-# <img src="images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
+# <img src="assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
 
 <p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
 
@@ -8,12 +8,12 @@
 
 [english](README.md) - [french](./documentation/documentation.readme.fr-FR.md)    
 
-## <img src="images/icons/icon-problem.svg"/> Problems
+## <img src="assets/icons/icon-problem.svg"/> Problems
 
 - DRY (do not repeat yourself)
 - webgl API too complex to make young people want to pay attention to 3d programming
 
-## <img src="images/icons/icon-solution.svg"/> Solutions
+## <img src="assets/icons/icon-solution.svg"/> Solutions
 
 - automate the creation of primitives
 - automate the composition of the scene
@@ -22,15 +22,25 @@
 - switch between babylon.js and three.js with a single line of code
 - create experimental experience such as being able to make a kind of `Object.assign (THREE, BABYLON)`, which would give a single canvas the possibility of displaying the two scenes simultaneously on the screen
 
-## <img src="images/icons/icon-start-project.svg"/> Getting Started
+## <img src="assets/icons/icon-examples.svg"/> Examples
+
+**codepen**   
+
+[hello world (glsl)](https://codepen.io/monsieurbadia/pen/wvKmzXM) - [hello world (three.js)](https://codepen.io/monsieurbadia/pen/oNjqzYP) - [hello world (babylon.js)](https://codepen.io/monsieurbadia/pen/GRpxjOV) - [layerization - virtual joystick (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/j4n19puL)
+
+**jsfiddle**    
+
+[hello world (glsl)](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [hello world (three.js)](https://jsfiddle.net/_monsieurbadia/cx9tq8b5) - [hello world (babylon.js)](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization - hello world (three.js x babylon.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu)  
+
+**demo**    
+
+<a src="https://codepen.io/monsieurbadia/pen/ZEbxpqv"><img src="assets/gif/use-virtual-joystick-from-babylonjs-to-move-meshes-from-threejs.gif"/></a>
+
+## <img src="assets/icons/icon-start-project.svg"/> Getting Started
 
 before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** via your shell.    
 
-**examples (jsfiddle)**    
-
-[using shader](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [using three.js](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [using babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization (three.js x babylon.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [hello world](https://jsfiddle.net/_monsieurbadia/cx9tq8b5)  
-
-## <img src="images/icons/icon-installation.svg"/> Install    
+## <img src="assets/icons/icon-installation.svg"/> Install    
        
 **shell**
 
@@ -134,7 +144,7 @@ window.addEventListener( 'DOMContentLoaded', _ => {
 </html>
 ```
 
-## <img src="images/icons/icon-syntax.svg"/> Syntax
+## <img src="assets/icons/icon-syntax.svg"/> Syntax
 
 following this syntax bellow which allows you to chain methods to compose a `scene` step by step.
 
@@ -184,13 +194,13 @@ const THREEstarter = d2k
   .value();
 ```
 
-## <img src="images/icons/icon-config.svg"/> Configuration
+## <img src="assets/icons/icon-config.svg"/> Configuration
 
 *a `scene` can be created from a `JSON` file and must respect the following format:*
 
 [glsl config format](./config/../documentation/configuration/config.glsl.format.md) - [babylon.js config format](./config/../documentation/configuration/config.babylon.format.md) - [three.js config format](./documentation/configuration/config.three.format.md)   
 
-## <img src="images/icons/icon-api.svg"/> API
+## <img src="assets/icons/icon-api.svg"/> API
 
 ### `.onstarter( init )`
 
@@ -713,43 +723,43 @@ const fetchStarterScene = async ( url ) => {
 fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
 ```
 
-## <img src="images/icons/icon-primitive.svg"/> Primitives
+## <img src="assets/icons/icon-primitive.svg"/> Primitives
 
 primitive         | babylon.js                                  | three.js                                    |
 ------------------|---------------------------------------------|---------------------------------------------|
-audio             | <img src="images/icons/icon-check.svg"/> | <img src="images/icons/icon-check.svg"/> |
-camera            | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
-font              | <img src="images/icons/icon-check.svg"/> | <img src="images/icons/icon-check.svg"/> |
-geometry          | <img src="images/icons/icon-check.svg"/> | <img src="images/icons/icon-not.svg"/>   |
-group             | <img src="images/icons/icon-check.svg"/> | <img src="images/icons/icon-not.svg"/>   |
-light             | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
-loader            | <img src="images/icons/icon-check.svg"/> | <img src="images/icons/icon-not.svg"/>   |
-material          | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
-mesh              | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
-renderer          | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
-scene             | <img src="images/icons/icon-not.svg"/>   | <img src="images/icons/icon-not.svg"/>   |
+audio             | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
+camera            | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
+font              | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
+geometry          | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-not.svg"/>   |
+group             | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-not.svg"/>   |
+light             | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
+loader            | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-not.svg"/>   |
+material          | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
+mesh              | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
+renderer          | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
+scene             | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
 
-## <img src="images/icons/icon-disclaimer.svg"/> Disclaimer
+## <img src="assets/icons/icon-disclaimer.svg"/> Disclaimer
 
 I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors, over time, will disappear. changes will be coming for everyone's comfort, I hope. triforce! 
 
-## <img src="images/icons/icon-reference.svg"/> References
+## <img src="assets/icons/icon-reference.svg"/> References
 
 - [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
 - [BabylonJS](http://www.babylonjs.com)
 - [three.js](https://threejs.org)
 
-## <img src="images/icons/icon-copyright.svg"/> License
+## <img src="assets/icons/icon-copyright.svg"/> License
 
 Copyright ©️ 2020 monsieurbadia
 
 Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
 
-## <img src="images/icons/icon-supports.svg"/> Support
+## <img src="assets/icons/icon-supports.svg"/> Support
 
 *⭐️ this repository if this project helped you!*    
 
-## <img src="images/icons/icon-heart.svg"/> Contributors
+## <img src="assets/icons/icon-heart.svg"/> Contributors
 
 logo - [@Mlle_Martinss](https://twitter.com/Mlle_Martinss)        
 icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)     

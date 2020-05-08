@@ -1,42 +1,43 @@
-# <img src="../images/d2k-logo-standard.png"/>
+# <img src="../assets/images/d2k-logo-standard.png"/>
 
-# <img src="../images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
+# <img src="../assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
+
+<p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
 
 > *micro-couche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et fonctionnelle.*
 
-<a href="https://twitter.com/monsieurbadia"><img src="./../images/icons/icon-twitter.svg"/>suis moi sur twitter</a>
-
 [anglais](README.md) - [français](./documentation/documentation.readme.fr.md)    
 
-## <img src="../images/icons/icon-problem.svg"/> Problèmes
+## <img src="../assets/icons/icon-problem.svg"/> Problèmes
 
 - les répétitions entre chaque projet (don't repeat yourself).
 - manque d'innovation des starters webgl du type `three-starter-de-la-mort-qui-tue` `vue-babylon-starter++` etc.
-- perdre mon temps pour afficher un simple cube en utilisant l'api wegl native.
 - api webgl trop complexe pour donner envie aux jeunes de s'intéresser à la programmation 3d.
 
-## <img src="../images/icons/icon-solution.svg"/> Solutions
+## <img src="../assets/icons/icon-solution.svg"/> Solutions
 
 - automatiser la création des primitives.
 - automatiser la composition de la scène
-- créer une ou plusieurs scène(s) à partir d'un fichier `.json`.
-- switcher entre babylon et three en une seule ligne de code.
+- créer une scène à partir d'un fichier `JSON`.
+- supporter `GLSL` x `THREE` x `BABYLON`
+- switcher entre babylon.js et three.js en une seule ligne de code.
 - créer des expériences expérimentales comme par exemple être capable de faire un `Object.assign( THREE, BABYLON )`, qui donnerait à un canvas unique la possibilité d'afficher les deux scènes en simultanée à l'écran.
 
-## <img src="../images/icons/icon-goals.svg"/> Objectifs
+## <img src="../assets/icons/icon-examples.svg"/> Examples
 
-- supporter `GLSL`
-- supporter `THREE`
-- supporter `BABYLON`
-- supporter `JSON`
-- supporter `Object.assign( THREE, BABYLON )`
-- supporter `chrome` `edge` `firefox` `safari`
+**codepen**   
 
-## <img src="../images/icons/icon-disclaimer.svg"/> Avertissement
+[hello world glsl](https://codepen.io/monsieurbadia/pen/wvKmzXM) - [hello world three.js](https://codepen.io/monsieurbadia/pen/oNjqzYP) - [hello world babylon.js](https://codepen.io/monsieurbadia/pen/GRpxjOV) - [virtual joystick (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/j4n19puL)
 
-je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source et aider la communauté 3d. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps, disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
+**jsfiddle**    
 
-## <img src="../images/icons/icon-installation.svg"/> Installation    
+[hello world glsl](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [hello world three.js](https://jsfiddle.net/_monsieurbadia/cx9tq8b5) - [hello world babylon.js](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization (three.js x babylon.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu)  
+
+**demo**    
+
+<a src="https://codepen.io/monsieurbadia/pen/ZEbxpqv"><img src="../assets/gif/use-virtual-joystick-from-babylonjs-to-move-meshes-from-threejs.gif"/></a>
+
+## <img src="../assets/icons/icon-installation.svg"/> Installation    
     
 avant de commencer soit sûre d'avoir dans ton projet `three.js` et/ou `babylon.js` une fois que c'est bon pour toi, tu peux installer **d2k** via ton terminal.    
 
@@ -58,7 +59,7 @@ voilà, le projet est installé. vérifie dans `.package.json` si `d2k` se trouv
 
 télécharge le projet, copie le fichier `d2k.js` qui se situe dans le dossier `/dist` ensuite libre à toi de l'installer dans l'endroit prévu à cet effet dans ton application.
 
-## <img src="../images/icons/icon-start-project.svg"/> Démarrer le projet
+## <img src="../assets/icons/icon-start-project.svg"/> Démarrer le projet
 
 maintenant, tu n'as plus qu'à importer **d2k** dans ton module ou ta page html.
 
@@ -74,7 +75,7 @@ import d2k from 'd2k';
 <script src="./d2k.js"></script>
 ```
 
-## <img src="../images/icons/icon-syntax.svg"/> Syntaxe
+## <img src="../assets/icons/icon-syntax.svg"/> Syntaxe
 
 voici un aperçu de la syntaxe de **d2k** qui permet de faire du chaînage de méthodes pour composer une `scene` étape par étape.
 
@@ -145,7 +146,7 @@ starter.mesh.myMeshName.onresize( size => {
 } );
 ```
 
-## <img src="../images/icons/icon-api.svg"/> API
+## <img src="../assets/icons/icon-api.svg"/> API
 
 - ### `d2k.onstarter( init )`
 
@@ -476,7 +477,7 @@ starter.mesh.myMeshName.onresize( size => {
   
   *contient l'ensemble de primitives que tu as créé à l'aide des méthodes `.with*`*
 
-## <img src="../images/icons/icon-config.svg"/> Configuration
+## <img src="../assets/icons/icon-config.svg"/> Configuration
 
 *une `scene` peut être créer à partir d'un fichier `.json` qui devra respecté le format suivant : [.json format](./config/config.format.md)*    
 
@@ -586,39 +587,43 @@ const fetchStarterScene = async ( url ) => {
 fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
 ```
 
-## <img src="../images/icons/icon-primitive.svg"/> Primitives
+## <img src="../assets/icons/icon-primitive.svg"/> Primitives
 
 primitive         | babylon.js                                  | three.js                                    |
 ------------------|---------------------------------------------|---------------------------------------------|
-audio             | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-check.svg"/> |
-camera            | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
-font              | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-check.svg"/> |
-geometry          | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
-group             | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
-light             | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
-loader            | <img src="../images/icons/icon-check.svg"/> | <img src="../images/icons/icon-not.svg"/>   |
-material          | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
-mesh              | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
-renderer          | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
-scene             | <img src="../images/icons/icon-not.svg"/>   | <img src="../images/icons/icon-not.svg"/>   |
+audio             | <img src="../assets/icons/icon-check.svg"/> | <img src="../assets/icons/icon-check.svg"/> |
+camera            | <img src="../assets/icons/icon-not.svg"/>   | <img src="../assets/icons/icon-not.svg"/>   |
+font              | <img src="../assets/icons/icon-check.svg"/> | <img src="../assets/icons/icon-check.svg"/> |
+geometry          | <img src="../assets/icons/icon-check.svg"/> | <img src="../assets/icons/icon-not.svg"/>   |
+group             | <img src="../assets/icons/icon-check.svg"/> | <img src="../assets/icons/icon-not.svg"/>   |
+light             | <img src="../assets/icons/icon-not.svg"/>   | <img src="../assets/icons/icon-not.svg"/>   |
+loader            | <img src="../assets/icons/icon-check.svg"/> | <img src="../assets/icons/icon-not.svg"/>   |
+material          | <img src="../assets/icons/icon-not.svg"/>   | <img src="../assets/icons/icon-not.svg"/>   |
+mesh              | <img src="../assets/icons/icon-not.svg"/>   | <img src="../assets/icons/icon-not.svg"/>   |
+renderer          | <img src="../assets/icons/icon-not.svg"/>   | <img src="../assets/icons/icon-not.svg"/>   |
+scene             | <img src="../assets/icons/icon-not.svg"/>   | <img src="../assets/icons/icon-not.svg"/>   |
 
-## <img src="../images/icons/icon-reference.svg"/> Références
+## <img src="../assets/icons/icon-disclaimer.svg"/> Avertissement
+
+je ne suis pas un développeur, je suis un gars normal qui porte la programmation dans son coeur et souhaite contribuer à l'open source et aider la communauté 3d. pour l'instant, il ne s'agit que d'une version expérimentale d'une idée que j'avais en tête. Mais mon idée va évoluer à travers ce projet donc mes erreurs de conception, avec le temps, disparaîtrons. des changements seront à venir pour le confort de tous, je l'espère. triforce !
+
+## <img src="../assets/icons/icon-reference.svg"/> Références
 
 - [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
 - [BabylonJS](http://www.babylonjs.com)
 - [three.js](https://threejs.org)
 
-## <img src="../images/icons/icon-copyright.svg"/> License
+## <img src="../assets/icons/icon-copyright.svg"/> License
 
 Copyright ©️ 2020 monsieurbadia
 
 Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
 
-## <img src="../images/icons/icon-supports.svg"/> Support
+## <img src="../assets/icons/icon-supports.svg"/> Support
 
 *N'hésite pas à mettre une ⭐ si ce projet t'a aidé.*  
 
-## <img src="../images/icons/icon-heart.svg"/> Contributeurs
+## <img src="../assets/icons/icon-heart.svg"/> Contributeurs
 
 logo - [@mllemartins](https://twitter.com/mllemartins)        
 icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)     
