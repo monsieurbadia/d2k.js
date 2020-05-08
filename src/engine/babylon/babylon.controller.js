@@ -11,7 +11,7 @@ export const BABYLONController = ( {
 
   const controller = {};
 
-  if ( config.type === 'joystick' ) {
+  if ( config.type === 'virtual' ) {
 
     const [ leftJoystickArgs, rightJoystickArgs ] = config.args;
 
