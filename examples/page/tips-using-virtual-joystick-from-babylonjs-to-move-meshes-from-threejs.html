@@ -28,9 +28,20 @@
         z-index: 1;
         position: absolute;
       }
+
+      .content {
+        margin: 20px 0 0 20px;
+        z-index: 5;
+        width: 100%;
+        position: fixed;
+        color: white;
+        font-size: 12px;
+        font-family: sans-serif;
+      }
     </style>
   </head>
   <body>
+    <p class="content">drag to enable the virtual joystick</p>
     <canvas id="viewRendering" touch-action="none"></canvas>
     <script src="https://cdn.babylonjs.com/babylon.js"></script>
     <script src="https://threejs.org/build/three.js"></script>
