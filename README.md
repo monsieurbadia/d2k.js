@@ -34,7 +34,19 @@
 
 **demo**    
 
-<a src="https://codepen.io/monsieurbadia/pen/ZEbxpqv"><img src="assets/gif/use-virtual-joystick-from-babylonjs-to-move-meshes-from-threejs.gif"/></a>
+<p align="center">
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-10.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-1.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-3.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-4.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-9.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-5.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-11.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-6.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-7.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-8.gif" />
+  <img width="288" height="154" src="assets/gif/d2kjs-demo-2.gif" />
+</p>
 
 ## <img src="assets/icons/icon-start-project.svg"/> Getting Started
 
