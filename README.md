@@ -192,7 +192,7 @@ const THREEstarter = d2k
 
 ## <img src="images/icons/icon-api.svg"/> API
 
-- ### `d2k.onstarter( init )`
+### `.onstarter( init )`
 
   *initialize a `scene` from an `init` object pass in parameter. to create a scene `.onstarter()` has to be used first.*
 
@@ -215,7 +215,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `.use( RENDERING_ENGINE )`
+### `.use( RENDERING_ENGINE )`
 
   *define the current `RENDERING_ENGINE` wich will be used to create primitives. `.use()` has to been calls just after the `.onstarter()` method.*
 
@@ -236,7 +236,7 @@ const THREEstarter = d2k
     .use( BABYLON || THREE );
   ```
 
-- ### `.withCamera( config )`
+### `.withCamera( config )`
 
   *create a `camera` from an `config` object pass in parameter.*
 
@@ -267,7 +267,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `.withEngine( config )`
+### `.withEngine( config )`
 
   *define an `engine` from a `config` object passed as a parameter.*   
 
@@ -288,7 +288,7 @@ const THREEstarter = d2k
     .withEngine( { name: 'myEngineName' } );
   ```
 
-- ### `.withMesh( config )`
+### `.withMesh( config )`
 
   *create a `mesh` from an `config` object pass in parameter.*
 
@@ -322,7 +322,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `.withLight( config )`
+### `.withLight( config )`
 
   *create a `light` from a `config` object pass in parameter.*
 
@@ -350,7 +350,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `.withLoader( config )`
+### `.withLoader( config )`
 
   *load a `texture` | `object` from a `config` object to pass in parameter.*
 
@@ -378,7 +378,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `.withRenderer( config )`
+### `.withRenderer( config )`
 
   *create a `renderer` from a `config` object pass parameter.*
 
@@ -408,7 +408,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `.withScene( config )`
+### `.withScene( config )`
 
   *compose a `scene` from a `config` object pass in parameter.*
 
@@ -429,7 +429,7 @@ const THREEstarter = d2k
     .withScene( { name: "mySceneName" } );
   ```
 
-- ### `.withShader( config )`
+### `.withShader( config )`
 
   *create `shader` from a `config` object pass in parameter.*
 
@@ -468,7 +468,7 @@ const THREEstarter = d2k
     } );
   ```
 
-- ### `d2k.onrender( TARGET, SOURCE )`
+### `.onrender( TARGET, SOURCE )`
 
   *create a `scene` from a `TARGET` and a `SOURCE` pass in parameters. ***note: this method will get two different `starter` to merge them and display the two scenes through a single canvas. be careful, this part is still experimental.****   
 
@@ -513,7 +513,7 @@ const THREEstarter = d2k
   } );
   ```
 
-- ### `.composify( config )`
+### `.composify( config )`
 
   *composition of the scene to be displayed. This method allows you to compose a scene step by step.*   
 
@@ -547,7 +547,7 @@ const THREEstarter = d2k
   } );
   ```
 
-- ### `.value()`
+### `.value()`
 
   *returns a `starter` object that contains a collection of primitives. ***note: `.value()` can be called at any time during the creation step****   
 
@@ -570,11 +570,11 @@ const THREEstarter = d2k
     .value();
   ```
 
-- ### `starter`
+### `starter`
   
   *contains a collection of primitives you have created and some methods.*
 
-- ### `events`
+### `events`
 
   *`mesh` `light` `camera` hold events which are called in specific contexts `onrender` `onloader` `onresize`.* 
 
