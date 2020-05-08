@@ -23,7 +23,7 @@ export const onrender = ( TARGET, SOURCE ) => TARGET.renderer.assign( TARGET, SO
 export const onstarter = ( init = {} ) => {
 
   const conf = init;
-  const canvas = is.exist( conf.canvas ) && conf.canvas instanceof HTMLCanvasElement ? conf.canvas : document.getElementById( conf.canvas );
+  const canvas = conf.canvas && conf.canvas instanceof HTMLCanvasElement ? conf.canvas : document.getElementById( conf.canvas );
 
   const use = renderingEngine => {
 
@@ -35,7 +35,7 @@ export const onstarter = ( init = {} ) => {
       canvas
     };
 
-    if ( is.exist( canvas ) ) {
+    if ( canvas ) {
       
       Dom.setCanvasSize( canvas );
 
