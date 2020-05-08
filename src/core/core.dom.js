@@ -13,11 +13,42 @@ const setCanvasSize = ( element, width = window.innerWidth, height = window.inne
 
 };
 
+const getContext = _ => {
+
+  const context = {
+    WebGLRenderingContext: 'webgl',
+    WebGL2RenderingContext: 'webgl2',
+  };
+
+  let canvas = document.createElementNS( 'http://www.w3.org/1999/xhtml', 'canvas' );
+  let gl = null;
+
+  try {
+
+    gl = canvas.getContext( 'webgl2' );
+
+    if ( !gl ) gl = canvas.getContext( 'webgl' );
+
+  } catch ( error ) {
+
+    gl = null;
+  
+    console.warn( error );
+
+  }
+
+  canvas = null;
+
+  return context[ gl.constructor.name ];
+
+};
+
 export const Dom = {
 
   get body () { return document.body; },
   get pixelRatio () { return window.devicePixelRatio; },
   get size () { return [ window.innerWidth, window.innerHeight ]; },
+  get context () { return getContext() },
 
   add,
   setCanvasSize
