@@ -36,21 +36,23 @@
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', _ => {
+      window.addEventListener( 'DOMContentLoaded', function () {
 
         fetch( 'http://localhost:5007/api/scene/glsl' )
           .then( response => response.json() )
           .then( ( { scene } ) => {
 
-            const starter = d2k
+            var starter = d2k
               .onstarter( scene.init )
               .use( THREE )
               .withShader( scene.shader )
               .value();
 
-            starter.shader.myShaderName.onrender( time => starter.shader.myShaderName.material.uniforms.time.value += time );
+            starter.shader.myShaderName.onrender( function ( time ) {
+              starter.shader.myShaderName.material.uniforms.time.value += time;
+            } );
 
-            starter.shader.myShaderName.onresize( size => {
+            starter.shader.myShaderName.onresize( function ( size ) {
 
               starter.shader.myShaderName.material.uniforms.resolution.value.x = size.width;
               starter.shader.myShaderName.material.uniforms.resolution.value.y = size.height;

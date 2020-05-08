@@ -10,27 +10,27 @@
 
 ## <img src="assets/icons/icon-problem.svg"/> Problems
 
-- DRY (do not repeat yourself)
-- webgl API too complex to make young people want to pay attention to 3d programming
+- `DRY` (do not repeat yourself)
+- `WEBGL API` too complex to make young people want to pay attention to 3d programming
 
 ## <img src="assets/icons/icon-solution.svg"/> Solutions
 
 - automate the creation of primitives
 - automate the composition of the scene
-- create a scene from a `JSON` file
+- create a entire scene from a `JSON` config file
 - support `GLSL` x `THREE` x `BABYLON`
-- switch between babylon.js and three.js with a single line of code
+- switch between `BABYLON` and `THREE` quickly and just with one single line of code
 - create experimental experience such as being able to make a kind of `Object.assign (THREE, BABYLON)`, which would give a single canvas the possibility of displaying the two scenes simultaneously on the screen
 
 ## <img src="assets/icons/icon-examples.svg"/> Examples
 
 **codepen**   
 
-[hello world (glsl)](https://codepen.io/monsieurbadia/pen/wvKmzXM) - [hello world (three.js)](https://codepen.io/monsieurbadia/pen/oNjqzYP) - [hello world (babylon.js)](https://codepen.io/monsieurbadia/pen/GRpxjOV) - [layerization - virtual joystick (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/j4n19puL)
+[hello world (glsl)](https://codepen.io/monsieurbadia/pen/wvKmzXM) - [hello world (three.js)](https://codepen.io/monsieurbadia/pen/oNjqzYP) - [hello world (babylon.js)](https://codepen.io/monsieurbadia/pen/GRpxjOV) - [layerization - hello world (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [layerization - virtual joystick (babylon.js x three.js)](https://codepen.io/monsieurbadia/pen/ZEbxpqv)
 
 **jsfiddle**    
 
-[hello world (glsl)](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [hello world (three.js)](https://jsfiddle.net/_monsieurbadia/cx9tq8b5) - [hello world (babylon.js)](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization - hello world (three.js x babylon.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu)  
+[hello world (glsl)](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [hello world (three.js)](https://jsfiddle.net/_monsieurbadia/cx9tq8b5) - [hello world (babylon.js)](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization - hello world (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [layerization - virtual joystick (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/xz6kmt2e)  
 
 **demo**    
 
@@ -103,13 +103,14 @@ window.addEventListener( 'DOMContentLoaded', _ => {
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>d2k.js - example - hello world</title>
+    <title>d2k.js - hello world (three.js)</title>
   </head>
   <body>
     <canvas id="myCanvasId" touch-action="none"></canvas>
     <script src="https://raw.githack.com/monsieurbadia/d2k.js/master/build/d2k.js"></script>
     <script src="https://threejs.org/build/three.js"></script>
     <script>
+
       window.addEventListener( 'DOMContentLoaded', function () {
 
         var THREEstarter = d2k
@@ -131,7 +132,7 @@ window.addEventListener( 'DOMContentLoaded', _ => {
           .value();
 
         // use the onrender method to update a mesh, the callback take time in argument.
-        THREEstarter.mesh.myMeshName.onrender( time => {
+        THREEstarter.mesh.myMeshName.onrender( function ( time ) => {
 
           THREEstarter.mesh.myMeshName.rotation.x += time;
           THREEstarter.mesh.myMeshName.rotation.y += time;
@@ -139,6 +140,7 @@ window.addEventListener( 'DOMContentLoaded', _ => {
         } );
 
       }, false );
+
     </script>
   </body>
 </html>
@@ -146,11 +148,13 @@ window.addEventListener( 'DOMContentLoaded', _ => {
 
 ## <img src="assets/icons/icon-syntax.svg"/> Syntax
 
-following this syntax bellow which allows you to chain methods to compose a `scene` step by step.
+a `scene` must be created from a `JSON` config file and must respect the following format. anyway following allows you to chain methods to compose a `scene` step by step.
 
 **using glsl**
 
 create a 100% `gpu` scene through `shader` in `GLSL`   
+
+[glsl config format](./config/../documentation/configuration/config.glsl.format.md)
 
 ```js
 const GLSLstarter = d2k
@@ -163,6 +167,8 @@ const GLSLstarter = d2k
 **using babylon.js**
 
 create a scene from the primitives of `BABYLON`    
+
+[babylon.js config format](./config/../documentation/configuration/config.babylon.format.md)
 
 ```js
 const BABYLONstarter = d2k
@@ -180,6 +186,8 @@ const BABYLONstarter = d2k
 
 create a scene from the primitives of `THREE`     
 
+[three.js config format](./documentation/configuration/config.three.format.md)
+
 ```js
 const THREEstarter = d2k
   .onstarter( { canvas: 'myCanvasId' } )
@@ -193,12 +201,6 @@ const THREEstarter = d2k
   .composify( /* camera config */ )
   .value();
 ```
-
-## <img src="assets/icons/icon-config.svg"/> Configuration
-
-*a `scene` can be created from a `JSON` file and must respect the following format:*
-
-[glsl config format](./config/../documentation/configuration/config.glsl.format.md) - [babylon.js config format](./config/../documentation/configuration/config.babylon.format.md) - [three.js config format](./documentation/configuration/config.three.format.md)   
 
 ## <img src="assets/icons/icon-api.svg"/> API
 
@@ -615,7 +617,7 @@ const THREEstarter = d2k
   } );
   ```
 
-## Tips 
+## <img src="assets/icons/icon-tips.svg"/> Tips 
 
 **fetch scene from a `JSON` config file**
 

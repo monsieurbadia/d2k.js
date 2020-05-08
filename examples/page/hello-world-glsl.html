@@ -36,9 +36,9 @@
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', _ => {
+      window.addEventListener( 'DOMContentLoaded', function () {
 
-        const GLGLstarter = d2k
+        var GLGLstarter = d2k
           .onstarter( { canvas: 'viewRendering', glsl: true } )
           .use( THREE )
           .withShader( {
@@ -75,9 +75,11 @@
           } )
           .value();
 
-        GLGLstarter.shader.myShaderName.onrender( time => GLGLstarter.shader.myShaderName.material.uniforms.time.value += time );
+        GLGLstarter.shader.myShaderName.onrender( function ( time ) {
+          GLGLstarter.shader.myShaderName.material.uniforms.time.value += time;
+        } );
 
-        GLGLstarter.shader.myShaderName.onresize( size => {
+        GLGLstarter.shader.myShaderName.onresize( function ( size ) {
 
           GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = size[ 0 ];
           GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size[ 1 ];

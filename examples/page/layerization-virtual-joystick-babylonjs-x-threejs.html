@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k.js - tips - virtual joystick (babylon.js x three.js)</title>
+    <title>d2k.js - layerization - virtual joystick (babylon.js x three.js)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -47,6 +47,7 @@
     <script src="https://threejs.org/build/three.js"></script>
     <script src="../../src/index.js"></script>
     <script>
+
       window.addEventListener( 'DOMContentLoaded', function () {
 
         var THREEstarter = d2k
@@ -98,7 +99,7 @@
           } )
           .value();
 
-        const BABYLONstarter = d2k
+        var BABYLONstarter = d2k
           .onstarter()
           .use( BABYLON )
           .withController( {
@@ -111,7 +112,7 @@
           } )
           .value();
 
-        const movespeed = 5;
+        var movespeed = 5;
 
         THREEstarter.mesh.myMeshName.onrender( function ( time ) {
 

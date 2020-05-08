@@ -38,9 +38,9 @@
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', () => {
+      window.addEventListener( 'DOMContentLoaded', function () {
 
-        const BABYLONstarter = d2k.onstarter( { canvas: 'viewRendering' } )
+        var BABYLONstarter = d2k.onstarter( { canvas: 'viewRendering' } )
           .use( BABYLON )
           .withEngine( {
             name: 'current'
@@ -104,9 +104,9 @@
           } )
           .value();
 
-          const meshes = BABYLONstarter.mesh.myMesh1Name.getChildren();
+          var meshes = BABYLONstarter.mesh.myMesh1Name.getChildren();
 
-          BABYLONstarter.mesh.myMesh2Name.onrender( time => {
+          BABYLONstarter.mesh.myMesh2Name.onrender( function ( time ) {
 
             meshes[ 0 ].rotation.x -= time;
             meshes[ 0 ].rotation.y -= time;

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k.js - layerization (babylon.js x three.js)</title>
+    <title>d2k.js - layerization - hello world (babylon.js x three.js)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -37,9 +37,9 @@
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', _ => {
+      window.addEventListener( 'DOMContentLoaded', function () {
 
-        const THREEstarter = d2k
+        var THREEstarter = d2k
           .onstarter( { canvas: 'viewRendering' } )
           .use( THREE )
           .withCamera( {
@@ -58,14 +58,9 @@
                 type: 'box-buffer'
               },
               material: {
-                args: {
-                  transparent: true
-                },
                 type: 'mesh-normal'
               },
               position: [ -20, 0, 0 ],
-              scene: 'scene1',
-              group: {}
             },
             {
               geometry: {
@@ -73,14 +68,9 @@
                 type: 'box'
               },
               material: {
-                args: {
-                  transparent: false
-                },
                 type: 'mesh-normal'
               },
               position: [ 20, 0, 0 ],
-              scene: 'scene1',
-              group: {}
             } ]
           } )
           .withRenderer( {
@@ -89,22 +79,6 @@
               autoClear: true,
               pixelRatio: window.devicePixelRatio,
               size: [ window.innerWidth, window.innerHeight ],
-              camera: 'current',
-              scene: 'scene1'
-            }
-          } )
-          .withLight( {
-            name: 'toto',
-            config: {
-              args: [ '0xffffbb 0x080820 1'  ],
-              type: 'hemisphere'
-            }
-          } )
-          .withLoader( {
-            name: 'textures',
-            config: {
-              args: [ { name: 'img-1', url: '/cover-front.28969be3.jpg' }, { name: 'img-2', url: '/cover-front.28969be3.jpg' } ],
-              type: 'texture'
             }
           } )
           .withScene( {
@@ -115,20 +89,17 @@
               start: false,
               scene: {
                 main: 'mySceneName',
-                others: [ { name: 'mySceneBackgroundName' } ]
               },
               mesh: [ { name: 'myMeshName', sceneParent: 'main' } ],
-              light: [ { name: 'toto', sceneParent: 'main' } ],
               camera: {
                 main: 'current',
-                others: [ { name: 'another' } ]
               },
               renderer: 'current'
             }
           } )
           .value();
 
-        const BABYLONstarter = d2k.onstarter( { canvas: 'viewRendering' } )
+        var BABYLONstarter = d2k.onstarter( { canvas: 'viewRendering' } )
           .use( BABYLON )
           .withEngine( {
             name: 'current'
@@ -136,14 +107,7 @@
           .withScene( {
             name: 'mySceneName',
             config: {
-              autoClear: false,
-              fog: {
-                mode: 'exp',
-                color: [ 0.9, 0.9, 0.85 ],
-                density: 0,
-                end: 0,
-                start: 0
-              }
+              autoClear: false
             }
           } )
           .withCamera( {
@@ -198,7 +162,7 @@
             scene: BABYLONstarter.scene.mySceneName
           } );
 
-        THREEstarter.mesh.myMeshName.onrender( time => {
+        THREEstarter.mesh.myMeshName.onrender( function ( time ) {
 
           THREEstarter.mesh.myMeshName.children[ 0 ].rotation.x += time;
           THREEstarter.mesh.myMeshName.children[ 0 ].rotation.y += time;
@@ -208,7 +172,7 @@
 
         } );
 
-        BABYLONstarter.mesh.myMesh1Name.onrender( time => {
+        BABYLONstarter.mesh.myMesh1Name.onrender( function ( time ) {
 
           BABYLONstarter.mesh.myMesh1Name.rotation.x -= time + 0.009;
           BABYLONstarter.mesh.myMesh1Name.rotation.y -= time + 0.009;

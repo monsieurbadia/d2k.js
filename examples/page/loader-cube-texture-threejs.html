@@ -36,13 +36,13 @@
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', _ => {
+      window.addEventListener( 'DOMContentLoaded', function () {
 
-        const starter = fetch( 'http://localhost:5007/api/scene/three' )
+        var starter = fetch( 'http://localhost:5007/api/scene/three' )
           .then( response => response.json() )
           .then( ( { scene } ) => {
 
-            const starter = d2k
+            var starter = d2k
               .onstarter( { canvas: 'viewRendering' } )
               .use( THREE )
               .withLoader( scene.loader )
@@ -54,14 +54,14 @@
               .composify( scene.composify )
               .value();
 
-            starter.mesh.myMeshName.onloader( textures => {
+            starter.mesh.myMeshName.onloader( function ( textures ) {
 
               starter.mesh.myMeshName.material.map = textures.find( texture => texture.name === 'img-1' );
               starter.mesh.myMeshName.material.needsUpdate = true;
 
             } );
 
-            starter.mesh.myMeshName.onrender( time => {
+            starter.mesh.myMeshName.onrender( function ( time ) {
 
               starter.mesh.myMeshName.rotation.x += time;
               starter.mesh.myMeshName.rotation.y += time;

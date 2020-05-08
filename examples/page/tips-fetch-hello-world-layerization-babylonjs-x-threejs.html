@@ -37,20 +37,20 @@
     <script src="../../src/index.js"></script>
     <script>
 
-      window.addEventListener( 'DOMContentLoaded', _ => {
+      window.addEventListener( 'DOMContentLoaded', function () {
 
-        const operations = [
-          fetch( 'http://localhost:5007/api/scene/babylon' ).then( response => response.json() ),
-          fetch( 'http://localhost:5007/api/scene/three' ).then( response => response.json() )
+        var operations = [
+          fetch( 'http://localhost:5007/api/scene/babylon' ).then( function ( response ) { return response.json(); } ),
+          fetch( 'http://localhost:5007/api/scene/three' ).then( function ( response ) { return response.json(); } )
         ];
 
-        Promise.all( operations ).then( data => {
+        Promise.all( operations ).then( function ( data ) {
 
-          const BABYLONscene = data[ 0 ].scene;
-          const THREEscene = data[ 1 ].scene;
+          var BABYLONscene = data[ 0 ].scene;
+          var THREEscene = data[ 1 ].scene;
 
           // create primitive from three.js
-          const THREEstarter = d2k
+          var THREEstarter = d2k
             .onstarter( THREEscene.init )
             .use( THREE )
             .withCamera( THREEscene.camera )
@@ -62,7 +62,7 @@
             .value();
 
           // create primitive from babylon.js
-          const BABYLONstarter = d2k
+          var BABYLONstarter = d2k
             .onstarter( BABYLONscene.init )
             .use( BABYLON )
             .withEngine( BABYLONscene.engine )
@@ -90,7 +90,7 @@
             } );
 
           // mesh from three.js
-          THREEstarter.mesh.myMeshName.onrender( time => {
+          THREEstarter.mesh.myMeshName.onrender( function ( time ) {
 
             THREEstarter.mesh.myMeshName.rotation.x -= time;
             THREEstarter.mesh.myMeshName.rotation.y -= time;
@@ -98,7 +98,7 @@
           } );
 
           // mesh from babylon.js
-          BABYLONstarter.mesh.myMeshName.onrender( time => {
+          BABYLONstarter.mesh.myMeshName.onrender( function ( time ) {
 
             BABYLONstarter.mesh.myMeshName.rotation.x += time + 0.009;
             BABYLONstarter.mesh.myMeshName.rotation.y += time + 0.009;
