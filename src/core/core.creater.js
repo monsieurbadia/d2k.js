@@ -2,6 +2,7 @@ import { is, strings } from 'u3s';
 
 import {
   BABYLONCamera,
+  BABYLONController,
   BABYLONEngine,
   BABYLONLight,
   BABYLONMesh,
@@ -23,6 +24,7 @@ import {
 
 const PRIMITIVE = Object.freeze( {
   BABYLONCamera,
+  BABYLONController,
   BABYLONLight,
   BABYLONMesh,
   BABYLONEngine,

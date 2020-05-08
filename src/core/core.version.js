@@ -3,12 +3,13 @@ import { ua } from 'u3s';
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
+export const Version = _ => {
 
-export const Version = semver => {
+  const { version } = require( '../../package.json' );
+  const [ name, semver ] = [ `d2k.js`, `v${ version }` ];
 
-  const [ name, version ] = [ `d2k.js`, `v${ semver || '0.0.0' }` ];
   const args = [
-    `%c ${ name } %c ${ version } `,
+    `%c ${ name } %c ${ semver } `,
     `color: #ffffff; background: #000000; padding: 3px 0;`,
     `padding: 3px 0; color: #000000; background: #ffffff; text-decoration: none;`,
   ];

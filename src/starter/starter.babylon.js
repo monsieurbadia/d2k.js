@@ -39,6 +39,7 @@ export const onbabylonstarter = ( init = {} ) => {
     composify,
     value,
     withCamera: Creater.oncreate( { conf, name: 'camera', starter: onbabylonstarter } ),
+    withController: Creater.oncreate( { conf, name: 'controller', starter: onbabylonstarter } ),
     withEngine: Creater.oncreate( { conf, name: 'engine', starter: onbabylonstarter } ),
     withLight: Creater.oncreate( { conf, name: 'light', starter: onbabylonstarter } ),
     withMesh: Creater.oncreate( { conf, name: 'mesh', starter: onbabylonstarter } ),

@@ -22,7 +22,7 @@ export const THREERenderer = ( {
 
   const renderer = Object.create( null );
   const { canvas } = RENDERING_ENGINE.coreData;
-  const context = canvas.getContext( 'webgl2' );
+  const context = canvas.getContext( Dom.context );
   const currentPixelRatio = !is.exist( config.pixelRatio ) ? Dom.pixelRatio : config.pixelRatio;
 
   if ( is.empty( renderer.current ) ) {
