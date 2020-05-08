@@ -37,7 +37,10 @@ export const BABYLONMesh = ( {
         const material = new RENDERING_ENGINE[ materialInstanceName ]( parameter.material.name, scene );
   
         currentMesh.material = material;
-        currentMesh.material.emissiveColor = new RENDERING_ENGINE.Color3( ...parameter.material.emissiveColor );
+
+        if ( parameter.material.emissiveColor ) {
+          currentMesh.material.emissiveColor = new RENDERING_ENGINE.Color3( ...parameter.material.emissiveColor );
+        }
 
       }
 
