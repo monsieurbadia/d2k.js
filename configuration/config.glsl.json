@@ -6,8 +6,8 @@
   "shader": {
     "name": "myShaderName",
     "config": {
-      "vertexShader": "void main () {\n\tgl_Position = vec4( position, 1.0 );\n}",
-      "fragmentShader": "uniform vec2 resolution;\nuniform vec2 time;\nvoid main () {\n\tvec2 st = gl_FragCoord.xy / resolution.xy;\n\tgl_FragColor=vec4(st.x, st.y, 0.0, 1.0);\n}"
+      "vertexShader": "uniform vec2 resolution;\nvarying vec2 vUv;\n\nvoid main () {\n\n\tvUv = uv;\n\tvUv = position.xy;\n\tvUv.x *= resolution.x / resolution.y;\n\tgl_Position = vec4(position.xy, 0.0, 1.0);\n\n}",
+      "fragmentShader": "uniform vec2 resolution;\nuniform float time;\nvarying vec2 vUv;\n\nvoid main () {\n\n\tvec2 st = gl_FragCoord.xy / resolution.xy;\n\tvec3 col = 0.5 + 0.5*cos(time+vUv.xyx+vec3(0,2,4));\n\tgl_FragColor=vec4(col, 1.0);\n\n}"
     }
   }
 }

@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - fetch scene - layerization</title>
+    <title>d2k.js - tips - fetch layerization (babylon.js x three.js)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -36,6 +36,7 @@
     <script src="https://threejs.org/build/three.js"></script>
     <script src="../../src/index.js"></script>
     <script>
+
       window.addEventListener( 'DOMContentLoaded', _ => {
 
         const operations = [
@@ -48,8 +49,9 @@
           const BABYLONscene = data[ 0 ].scene;
           const THREEscene = data[ 1 ].scene;
 
+          // create primitive from three.js
           const THREEstarter = d2k
-            .onstarter( { canvas: 'viewRendering' } )
+            .onstarter( THREEscene.init )
             .use( THREE )
             .withCamera( THREEscene.camera )
             .withRenderer( THREEscene.renderer )
@@ -59,8 +61,9 @@
             .composify( THREEscene.composify )
             .value();
 
+          // create primitive from babylon.js
           const BABYLONstarter = d2k
-            .onstarter( { canvas: 'viewRendering' } )
+            .onstarter( BABYLONscene.init )
             .use( BABYLON )
             .withEngine( BABYLONscene.engine )
             .withScene( BABYLONscene.scene )
@@ -69,6 +72,12 @@
             .withMesh( BABYLONscene.mesh )
             .composify( BABYLONscene.scene )
             .value();
+
+          // then use .onrender( TARGET, SOURCE ) like goku and vegeta turning into gogeta
+          // the target must to be primitives from three.js. you cannot switch the order.
+          // the second parameter has to be primitive from babylon.js.
+          // note: this mode is experimental, if you want to use it in production is our own risk,
+          // but if you are not afraid, you're a BAWS!
 
           d2k
             .onrender( {
@@ -80,6 +89,7 @@
               scene: BABYLONstarter.scene.mySceneName
             } );
 
+          // mesh from three.js
           THREEstarter.mesh.myMeshName.onrender( time => {
 
             THREEstarter.mesh.myMeshName.rotation.x -= time;
@@ -87,6 +97,7 @@
 
           } );
 
+          // mesh from babylon.js
           BABYLONstarter.mesh.myMeshName.onrender( time => {
 
             BABYLONstarter.mesh.myMeshName.rotation.x += time + 0.009;

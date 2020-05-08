@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create scene - threejs</title>
+    <title>d2k.js - hello world (three.js)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -35,13 +35,16 @@
     <script src="https://threejs.org/build/three.min.js"></script>
     <script src="../../src/index.js"></script>
     <script>
+
       window.addEventListener( "DOMContentLoaded", _ => {
 
         const THREEstarter = d2k
           /*
-
+            ways to set a canvas
+            - myCanvasName { String } - a canvas id
+            - myCanvas { HTMLCanvasElement } - a html canvas element
           */
-          .onstarter( { canvas: document.getElementById( 'viewRendering' ) } )
+          .onstarter( { canvas: 'viewRendering' } )
           .use( THREE )
           /*
             create a camera, the args array is passed in the camera contructor,
@@ -58,9 +61,6 @@
               type: 'perspective'
             }
           } )
-          /*
-
-          */
           .withMesh( {
             name: 'myMeshName',
             config: [ {
@@ -69,9 +69,6 @@
                 type: 'box-buffer'
               },
               material: {
-                args: {
-                  transparent: true
-                },
                 type: 'mesh-normal'
               },
               position: [ -20, 0, 0 ]
@@ -82,15 +79,11 @@
                 type: 'box'
               },
               material: {
-                args: {
-                  transparent: true
-                },
                 type: 'mesh-normal'
               },
               position: [ 20, 0, 0 ]
             } ]
           } )
-          /* create a scene */
           .withScene( {
             name: 'mySceneName'
           } )

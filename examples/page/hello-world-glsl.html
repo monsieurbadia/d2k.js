@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create scene - shader</title>
+    <title>d2k.js - hello world (glsl)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -45,24 +45,37 @@
             name: 'myShaderName',
             config : {
               vertexShader: `
-                void main () {
-                  gl_Position = vec4(position, 1.0);
-                }
+              uniform vec2 resolution;
+              varying vec2 vUv;
+
+              void main () {
+
+                vUv = uv;
+                vUv = position.xy;
+                vUv.x *= resolution.x / resolution.y;
+
+                gl_Position = vec4(position.xy, 0.0, 1.0);
+
+              }
               `,
               fragmentShader: `
                 uniform vec2 resolution;
                 uniform float time;
+                varying vec2 vUv;
 
                 void main () {
+
                   vec2 st = gl_FragCoord.xy / resolution.xy;
-                  gl_FragColor=vec4(st.x, st.y, 0.0, 1.0);
+                  vec3 col = 0.5 + 0.5*cos(time+vUv.xyx+vec3(0,2,4));
+                  gl_FragColor=vec4(col, 1.0);
+
                 }
               `
             }
           } )
           .value();
 
-        GLGLstarter.shader.myShaderName.onrender( time => time );
+        GLGLstarter.shader.myShaderName.onrender( time => GLGLstarter.shader.myShaderName.material.uniforms.time.value += time );
 
         GLGLstarter.shader.myShaderName.onresize( size => {
 

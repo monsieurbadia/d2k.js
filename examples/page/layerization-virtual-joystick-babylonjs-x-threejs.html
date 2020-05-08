@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - tips - using virtual joystick from babylon.js to move meshes from three.js with d2k.js</title>
+    <title>d2k.js - tips - virtual joystick (babylon.js x three.js)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -68,12 +68,8 @@
                 type: 'box-buffer'
               },
               material: {
-                args: {
-                  transparent: true
-                },
                 type: 'mesh-normal'
-              },
-              position: [ 0, 0, 0 ]
+              }
             }
           } )
           .withRenderer( {

@@ -1,4 +1,7 @@
 {
+  "init": {
+    "canvas": "viewRendering"
+  },
   "composify": {
     "config": {
       "start": true,

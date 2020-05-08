@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - fetch scene - shader</title>
+    <title>d2k.js - tips - fetch hello world (glsl)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -48,7 +48,7 @@
               .withShader( scene.shader )
               .value();
 
-            starter.shader.myShaderName.onrender( time => time );
+            starter.shader.myShaderName.onrender( time => starter.shader.myShaderName.material.uniforms.time.value += time );
 
             starter.shader.myShaderName.onresize( size => {
 

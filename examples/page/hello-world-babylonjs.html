@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>d2k - create scene - babylon</title>
+    <title>d2k.js - hello world (babylon.js)</title>
     <style>
       * {
         box-sizing: border-box;
@@ -63,8 +63,6 @@
             name: 'myLightName',
             config: {
               args: [ 0, 1, 0 ],
-              diffuse: [ 1, 1, 1 ],
-              specular: [ 1, 1, 1 ],
               type: 'point'
             }
           } )
@@ -77,8 +75,7 @@
                 type: 'box',
                 material: {
                   name: 'material',
-                  type: 'standard',
-                  emissiveColor: [ 0.1, 0.50, 0.75 ]
+                  type: 'standard'
                 }
               },
               {
@@ -87,8 +84,7 @@
                 type: 'box',
                 material: {
                   name: 'material',
-                  type: 'standard',
-                  emissiveColor: [ 0.1, 0.50, 0.75 ]
+                  type: 'standard'
                 }
               }
             ]
