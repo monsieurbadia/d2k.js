@@ -4,7 +4,7 @@
 
 <p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
 
-> *primitive builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
+> *3d object builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
 
 [english](README.md) - [french](./documentation/documentation.readme.fr-FR.md)    
 
@@ -56,7 +56,6 @@
   <img width="288" height="154" src="https://i.imgur.com/42puRDC.gif" />
   <img width="288" height="154" src="https://i.imgur.com/u8YInkA.gif" />
   <img width="288" height="154" src="https://i.imgur.com/7PuCuwE.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/mNgmd3M.gif" />
 </p>
 
 ## <img src="assets/icons/icon-start-project.svg"/> Getting Started
@@ -81,154 +80,341 @@ yarn add d2k
 
 download the project, copy the file `d2k.js` which is located in the folder `/dist` then you are free to install it in the place provided for this purpose in your application. now you have to import d2k into your module or into your html page and follow this syntax.   
 
-**ecmascript**
-
-```js
-import d2k from 'd2k';
-import * as THREE from 'three';
-
-window.addEventListener( 'DOMContentLoaded', _ => {
-
-  const THREEstarter = d2k
-    .onstarter( { canvas: 'myCanvasId' } )
-    .use( THREE )
-    .withScene( { name: 'mySceneName' } )
-    .withCamera( { name: 'myCameraName' } )
-    .withMesh( { name: 'myMeshName' } )
-    .withRenderer( { name: 'myRendererName' } )
-    .composify( {
-      config: {
-        start: true,
-        scene: { main: 'mySceneName' },
-        mesh: [ { name: 'myMeshName', parent: 'main' } ],
-        camera: { main: 'myCameraName' },
-        renderer: 'myRendererName'
-      }
-    } )
-    .value();
-
-  // use the onrender method to update a mesh, the callback take time in argument.
-  THREEstarter.mesh.myMeshName.onrender( time => {
-
-    THREEstarter.mesh.myMeshName.rotation.x += time;
-    THREEstarter.mesh.myMeshName.rotation.y += time;
-
-  } );
-
-}, false );
-```
-
-**html x javascript**
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>d2k.js - hello world (three.js)</title>
-  </head>
-  <body>
-    <canvas id="myCanvasId" touch-action="none"></canvas>
-    <script src="https://raw.githack.com/monsieurbadia/d2k.js/master/build/d2k.js"></script>
-    <script src="https://threejs.org/build/three.js"></script>
-    <script>
-
-      window.addEventListener( 'DOMContentLoaded', function () {
-
-        var THREEstarter = d2k
-          .onstarter( { canvas: 'myCanvasId' } )
-          .use( THREE )
-          .withScene( { name: 'mySceneName' } )
-          .withCamera( { name: 'myCameraName' } )
-          .withMesh( { name: 'myMeshName' } )
-          .withRenderer( { name: 'myRendererName' } )
-          .composify( {
-            config: {
-              start: true,
-              scene: { main: 'mySceneName' },
-              mesh: [ { name: 'myMeshName', parent: 'main' } ],
-              camera: { main: 'myCameraName' },
-              renderer: 'myRendererName'
-            }
-          } )
-          .value();
-
-        // use the onrender method to update a mesh, the callback take time in argument.
-        THREEstarter.mesh.myMeshName.onrender( function ( time ) => {
-
-          THREEstarter.mesh.myMeshName.rotation.x += time;
-          THREEstarter.mesh.myMeshName.rotation.y += time;
-
-        } );
-
-      }, false );
-
-    </script>
-  </body>
-</html>
-```
-
 ## <img src="assets/icons/icon-syntax.svg"/> Syntax
 
-a `scene` must be created from a `JSON` config file and must respect the following format. anyway following allows you to chain methods to compose a `scene` step by step.
+you are able to create 3d object from `THREE` or `BABYLON` following a unique syntax. code snippets below compare the syntaxes using by those librairies and **d2k**.
 
-**using glsl**
+- ### create a scene
 
-create a 100% `gpu` scene through `shader` in `GLSL`   
+  you can also to chain methods to compose a `scene` step by step. for your information, a `scene` can be created from a `JSON` config file and must respect the following format below.
 
-[glsl config format](./config/../documentation/configuration/config.glsl.format.md)
+  </br> [glsl config format](./config/../documentation/configuration/config.glsl.format.md) - [babylon.js config format](./config/../documentation/configuration/config.babylon.format.md) - [three.js config format](./documentation/configuration/config.three.format.md)
 
-```js
-const GLSLstarter = d2k
-  .onstarter( { canvas: 'myCanvasId', glsl: true } )
-  .use( THREE ) //
-  .withShader( /*  shader config */ )
-  .value();
-```
+  #### using glsl
 
-**using babylon.js**
+  *use `GPU` through `shader` with `GLSL`*            
 
-create a scene from the primitives of `BABYLON`    
+  ```js
+  const GLSLstarter = d2k
+    .onstarter( { canvas: 'myCanvasId', glsl: true } )
+    .use( THREE )
+    .withShader( /*  ... */ )
+    .value();
+  ```
 
-[babylon.js config format](./config/../documentation/configuration/config.babylon.format.md)
+  #### using babylon.js
 
-```js
-const BABYLONstarter = d2k
-  .onstarter( { canvas: 'myCanvasId' } )
-  .use( BABYLON )
-  .withEngine( /* engine config */)
-  .withScene( /* scene config */)
-  .withLight( /* light config */)
-  .withMesh( /* mesh config */)
-  .composify( /* composify config */ )
-  .value();
-```
+  *create a scene from the primitives of `BABYLON`*    
 
-**using three.js**
+  ```js
+  var BABYLONstarter = d2k
+    .onstarter( { canvas: 'myCanvasId' } )
+    .use( BABYLON )
+    .withEngine( /* ... */ )
+    .withScene( /* ... */ )
+    .withLight( /* ... */ )
+    .withMesh( /* ... */ )
+    .composify( /* ... */ )
+    .value();
+  ```
 
-create a scene from the primitives of `THREE`     
+  #### using three.js
 
-[three.js config format](./documentation/configuration/config.three.format.md)
+  *create a scene from the primitives of `THREE`*       
+    
+  ```js
+  var THREEstarter = d2k
+    .onstarter( { canvas: 'myCanvasId' } )
+    .use( THREE )
+    .withCamera( /* ... */ )
+    .withMesh( /* ... */ )
+    .withRenderer( /* ... */ )
+    .withLight( /* ... */ )
+    .withLoader( /* ... */ )
+    .withScene( /* ... */ )
+    .composify( /* ... */ )
+    .value();
+  ```
 
-```js
-const THREEstarter = d2k
-  .onstarter( { canvas: 'myCanvasId' } )
-  .use( THREE )
-  .withCamera( /* camera config */ )
-  .withMesh( /* mesh config */ )
-  .withRenderer( /* renderer config */ )
-  .withLight( /* light config */ )
-  .withLoader( /* loader config */ )
-  .withScene( /* camera config */ )
-  .composify( /* camera config */ )
-  .value();
-```
+- ### create 3d object
+
+  #### scene
+
+  ```js
+  // babylon.js
+  var scene = new BABYLON.Scene();
+
+  // three.js
+  var scene = new THREE.Scene();
+
+  // d2k.js
+  .withScene( { name: 'mySceneName' } );
+  ```
+
+  #### camera
+
+  ```js
+  // babylon.js
+  var camera = new THREE.FreeCamera( /* ... */ );
+
+  // three.js
+  var camera = new THREE.PerspectiveCamera( /* ... */ );
+
+  // d2k.js
+  .withCamera( { name: 'myCameraName' } );
+  ```
+
+  #### engine - renderer
+
+  ```js
+  // babylon.js
+  var engine = new BABYLON.Engine( /* ... */ );
+
+  // three.js
+  var renderer = new THREE.WebGLRenderer( /* ... */ );
+
+  // d2k.js
+  .withRenderer( { name: 'myRendererName' } );
+  ```
+
+  #### mesh
+
+  ```js
+  // babylon.js
+  var mesh = new BABYLON.MeshBuilder.createBox( /* ... */ );
+
+  // three.js
+  var mesh = new THREE.Mesh( /* ... */ );
+
+  // d2k.js
+  .withMesh( { name: 'myMeshNameName' } );
+  ```
+
+  #### light
+
+  ```js
+  // babylon.js
+  var pointLight = new BABYLON.PointLight( /* ... */ );
+
+  // three.js
+  var pointLight = new THREE.PointLight( /* ... */ );
+
+  // d2k.js
+  .withLight( { name: 'myLightName' } );
+  ```
+
+  #### loader
+
+  ```js
+  // babylon.js
+  var assetsManager = new BABYLON.AssetsManager( /* ... */ );
+
+  // three.js
+  var textureLoader = new THREE.TextureLoader( /* ... */ );
+
+  // d2k.js
+  .withLoader( { name: 'myLoaderName' } );
+  ```
+
+- ### create 3d object with parameters
+
+  #### scene
+
+  ```js
+  // babylon.js
+  var canvas = document.getElementById( 'myCanvasId' );
+  var engine = new BABYLON.Engine( canvas, true );
+  var scene = new BABYLON.Scene( engine );
+  var color = new BABYLON.Color3.Blue();
+
+  scene.clearColor = color
+  scene.fogMode = BABYLON.Scene.FOGMODE_EXP;
+  scene.fogColor = color;
+
+  // three.js
+  var name = 'mySceneName';
+  var scene = new THREE.Scene();
+  var color = 0x0000ff;
+  var near = 10;
+  var far = 100;
+
+  scene.background = new THREE.Color( color );
+  scene.fog = new THREE.Fog( color, near, far );
+
+  // d2k.js
+  .withScene( {
+    name: 'mySceneName',
+    config: {
+      fog: '0x0000ff 10 100',
+      background: '0x0000ff'
+    }
+  } );
+  ```
+
+  #### camera
+
+  ```js
+  // babylon.js
+  var name = 'myCameraName';
+  var x = 0;
+  var y = 10;
+  var z = 20;
+  var position = new BABYLON.Vector3( x, y, z );
+  var camera = new BABYLON.FreeCamera( name, position, null );
+
+  // three.js
+  var name = 'myCameraName';
+  var fov = 45;
+  var aspect = window.innerWidth / window.innerHeight;
+  var near = 0.1;
+  var far = 100;
+  var position = [ 0, 10, 20 ];
+  var camera = new THREE.PerspectiveCamera( fov, aspect, near, far );
+
+  camera.name = name;
+  camera.position.fromArray( position );
+
+  // d2k.js
+  .withCamera( {
+    name: 'myCameraName',
+    config: {
+      args: [ 45, 2, 0.1, 100 ],
+      position: [ 0, 10, 20 ]
+    }
+  } );
+  ```
+
+  #### engine - renderer
+
+  ```js
+  // babylon.js
+  var canvas = document.getElementById( 'myCanvasId' );
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var engine = new BABYLON.Engine( canvas, true );
+
+  engine.setSize( width, height );
+
+  // three.js
+  var canvas = document.getElementById( 'myCanvasId' );
+  var width = window.innerWidth;
+  var height = window.innerHeight;
+  var renderer = new THREE.WebGLRenderer( { antialias: true, canvas } );
+
+  renderer.setSize( width, height );
+
+  // d2k.js
+  .withRenderer( {
+    name: 'myRendererName',
+    config: {
+      size: [ window.innerWidth, window.innerHeight ]
+    }
+  } );
+  ```
+
+  #### mesh
+
+  ```js
+  // babylon.js
+  var name = 'myMeshName';
+  var options = { size: 1 };
+  var mesh = BABYLON.MeshBuilder.CreateBox( name, options, null );
+
+  mesh.position.set( 0, 20, 0 );
+
+  // three.js
+  var width = 1;
+  var height = 1;
+  var depth = 1;
+  var geometry = new THREE.BoxGeometry( width, height, depth );
+  var material = new THREE.StandardMaterial();
+  var mesh = new THREE.Mesh( geometry, material );
+
+  mesh.position.set( 0, 20, 0 );
+
+  // d2k.js
+  .withMesh( {
+    name: 'myMeshName',
+    config: {
+      geometry: {
+        args: [ 1, 1, 1 ],
+        type: 'box-buffer'
+      },
+      material: {
+        type: 'standard'
+      },
+      position: [ 0, 20, 0 ]
+    }
+  } );
+  ```
+
+  #### light    
+
+  ```js
+  // babylon.js
+  var name = 'myLightName';
+  var x = 0;
+  var y = 4;
+  var z = 0;
+  var position = new BABYLON.Vector3( x, y, z );
+  var light = new BABYLON.PointLight( name, new BABYLON.Vector3( x, y, z ), null );
+
+  // three.js
+  var name = 'myLightName';
+  var color = 0x0000ff;
+  var intensity = 1;
+  var distance = 100;
+  var light = new THREE.PointLight( color, intensify, distance );
+
+  light.name = name;
+  light.position.set( 0, 4, 0 );
+
+  // d2k.js
+  .withLight( {
+    name: 'myLightName',
+    config: {
+      args: [ '0x0000ff 1 100' ],
+      position: [ 0, 4, 0 ]
+    }
+  } );
+  ```
+
+  #### loader
+
+  ```js
+  // babylon.js
+  var canvas = document.getElementById( 'myCanvasId' );
+  var engine = new BABYLON.Engine( canvas, true );
+  var scene = new BABYLON.Scene( engine );
+  var assetsManager = new BABYLON.AssetsManager( scene );
+  var name = 'myLoaderName';
+  var url = 'my-texture-path/my-texture-name.jpg';
+  var loader = assetsManager.addTextureTask( name, url );
+
+  // three.js
+  var name = 'myLoaderName';
+  var url = 'my-texture-path/my-texture-name.jpg';
+  var loader = new THREE.TextureLoader( url );
+
+  loader.name = 'myLoaderName';
+
+  // d2k.js
+  .withLoader( {
+    name: 'myLoaderName'
+    config: {
+      args: [ {
+        url: 'my-texture-path/my-texture-name.jpg'
+      } ]
+      type: 'texture'
+    }
+  } );
+  ```
 
 ## <img src="assets/icons/icon-api.svg"/> API
 
 ### `.onstarter( init )`
 
-  *initialize a `scene` from an `init` object pass in parameter. to create a scene `.onstarter()` has to be used first.*
+  *initialize a `scene` from an `init` object pass in parameter. to create a scene `.onstarter()` has to be called first.*
 
   ##### usage
 
@@ -242,7 +428,7 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k
+  var starter = d2k
     .onstarter( {
       canvas: 'myCanvasId', // or use an HTMLCanvasElement,
       glsl: false // optional
@@ -265,9 +451,9 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k
+  var starter = d2k
     .onstarter( /* init */ )
-    .use( BABYLON || THREE );
+    .use( THREE );
   ```
 
 ### `.withCamera( config )`
@@ -280,15 +466,15 @@ const THREEstarter = d2k
 
   ##### params
 
-  `config` **{ Object }**: definition of the configuration of a `camera`.  
-  `returns` **{ Object }**: collection of methods. 
+  `config` **{ Object }**: definition of the configuration of a `camera`.   
+  `returns` **{ Object }**: collection of methods.  
 
   ##### example
 
   ```js
-  const starter = d2k
+  var starter = d2k
     .onstarter( /* init */ )
-    .use( BABYLON || THREE )
+    .use( /* ... */ )
     .withCamera( {
       name: 'myCameraName',
       config: {
@@ -303,7 +489,7 @@ const THREEstarter = d2k
 
 ### `.withEngine( config )`
 
-  *define an `engine` from a `config` object passed as a parameter.*   
+  *define an `engine` from a `config` object passed as a parameter.*    
 
   ##### usage
 
@@ -317,7 +503,7 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* init */ )
     .use( BABYLON )
     .withEngine( { name: 'myEngineName' } );
   ```
@@ -338,8 +524,8 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
-    .use( BABYLON || THREE )
+  var starter = d2k.onstarter( /* init */ )
+    .use( /* ... */ )
     .withMesh( {
       name: "myMeshName",
       config: {
@@ -372,8 +558,8 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
-    .use( BABYLON || THREE )
+  var starter = d2k.onstarter( /* init */ )
+    .use( /* ... */ )
     .withLight( {
       name: "myLightName",
       config: {
@@ -400,7 +586,7 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* init */ )
     .use( THREE ) // you can also use BABYLON
     .withLoader( {
       name: "myLightName",
@@ -428,8 +614,8 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
-    .use( BABYLON || THREE )
+  var starter = d2k.onstarter( /* init */ )
+    .use( /* ... */ )
     .withRenderer( {
       name: "myRendererName",
       config: {
@@ -458,8 +644,8 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
-    .use( BABYLON || THREE )
+  var starter = d2k.onstarter( /* init */ )
+    .use( /* ... */ )
     .withScene( { name: "mySceneName" } );
   ```
 
@@ -479,7 +665,7 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* init */ )
     .use( THREE )
     .withShader( {
       name: 'myShaderName',
@@ -519,7 +705,7 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  // babylonjs only
+  // babylon.js only
   BABYLONstarter.renderer.onrender( {
     engine: BABYLONstarter.engine.myEngineName
     scene: BABYLONstarter.scene.mySceneName
@@ -527,7 +713,7 @@ const THREEstarter = d2k
   ```
 
   ```js
-  // threejs only
+  // three.js only
   THREEstarter.renderer.onrender( {
     renderer: THREEstarter.renderer,
     scene: THREEstarter.scene.main,
@@ -536,7 +722,7 @@ const THREEstarter = d2k
   ```
 
   ```js
-  // both together
+  // layerization
   d2k.onrender( {
     renderer: THREEstarter.renderer.current,
     scene: THREEstarter.scene.mySceneName,
@@ -563,18 +749,18 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k.composify( {
+  var starter = d2k.composify( {
     config: {
       start: true,
       scene: {
         main: 'mySceneName',
-        others: []
       },
-      mesh: [ { 'name': 'myMeshName', 'parent': 'main' } ],
-      light: [ { 'name': 'myLightName', 'parent': 'main' } ],
+      mesh: [ {
+        name: 'myMeshName',
+        parent: 'main'
+      } ],
       camera: {
         main: 'myCameraName',
-        others: []
       },
       renderer: 'myRendererName'
     }
@@ -583,7 +769,7 @@ const THREEstarter = d2k
 
 ### `.value()`
 
-  *returns a `starter` object that contains a collection of primitives. ***note: `.value()` can be called at any time during the creation step****   
+  *return a `starter` object that contains a collection of 3d objects. ***note: `.value()` can be called at any time during the creation step `with`.****   
 
   ##### usage
 
@@ -597,16 +783,16 @@ const THREEstarter = d2k
   ##### example
 
   ```js
-  const starter = d2k
-    .onstarter( /* init config */ )
-    .use( BABYLON || THREE )
-    .withCamera( /* camera config */ )
+  var starter = d2k
+    .onstarter( /* ... */ )
+    .use( /* ... */ )
+    .withCamera( /* ... */ )
     .value();
   ```
 
 ### `starter`
   
-  *contains a collection of primitives you have created and some methods.*
+  *contains a collection of 3d objects you have created and some methods.*
 
 ### `events`
 
@@ -616,140 +802,92 @@ const THREEstarter = d2k
 
   ```js
   // get textures
-  starter.mesh.myMeshName.onloader( textures => textures );
+  starter.mesh.myMeshName.onloader( function ( data ) { /* ... */ } );
   ```
 
   ##### onrender
 
   ```js
   // update
-  starter.mesh.myMeshName.onrender( timer => {
-    starter.mesh.myMeshName.rotation.x += time;
-    starter.mesh.myMeshName.rotation.y += time;
-  } );
+  starter.mesh.myMeshName.onrender( function ( timer ) { /* ... */ } );
   ```
 
   ##### onresize
 
   ```js
   // resize
-  starter.mesh.myMeshName.onresize( size => {
-    starter.mesh.myMeshName.material.uniforms.resolution.value.x += size.width;
-    starter.mesh.myMeshName.rotation.uniforms.resolution.value.y += size.height;
-  } );
+  starter.mesh.myMeshName.onresize( function ( size ) { /* ... */ } );
   ```
 
 ## <img src="assets/icons/icon-tips.svg"/> Tips 
 
-**fetch scene from a `JSON` config file**
+- ### fetch scene from a `JSON` config file
 
-```js
-// babylon
-fetch( 'http://localhost:5007/api/scene/babylon' )
-  .then( response => response.json() )
-  .then( ( { scene } ) => {
+  #### from glsl
 
-    const starter = d2k
-      .onstarter( { canvas: 'viewRendering' } )
-      .use( BABYLON )
-      .withEngine( scene.engine )
-      .withScene( scene.scene )
-      .withCamera( scene.camera )
-      .withLight( scene.light )
-      .withMesh( scene.mesh )
-      .composify( scene.composify )
-      .value();
+  ```js
+  fetch( 'https://mydomain.com/v0/my/scene/config/endpoint' )
+    .then( function ( response ) { return response.json(); } )
+    .then( function ( data ) {
 
-    starter.mesh.myMeshName.onrender( time => {
-
-      starter.mesh.myMeshName.rotation.x -= time;
-      starter.mesh.myMeshName.rotation.y -= time;
+      // create 
+      var scene = data.scene;
+      var starter = d2k
+        .onstarter( scene.init )
+        .use( THREE )
+        .withShader( scene.shader )
+        .value();
 
     } );
+  ```
 
-  } );
-```
+  #### from babylon.js
 
-```js
-// glsl
-fetch( 'http://localhost:5007/api/scene/glsl' )
-  .then( response => response.json() )
-  .then( ( { scene } ) => {
+  ```js
+  fetch( 'https://mydomain.com/v0/my/scene/config/endpoint' )
+    .then( function ( response ) { return response.json(); } )
+    .then( function ( data ) {
 
-    const starter = d2k
-      .onstarter( scene.init )
-      .use( THREE )
-      .withShader( scene.shader )
-      .value();
-
-    starter.shader.myShaderName.onrender( time => time );
-
-    starter.shader.myShaderName.onresize( size => {
-
-      starter.shader.myShaderName.material.uniforms.resolution.value.x = size.width;
-      starter.shader.myShaderName.material.uniforms.resolution.value.y = size.height;
+      var scene = data.scene;
+      var starter = d2k
+        .onstarter( { canvas: 'myCanvasId' } )
+        .use( BABYLON )
+        .withEngine( scene.engine )
+        .withScene( scene.scene )
+        .withCamera( scene.camera )
+        .withLight( scene.light )
+        .withMesh( scene.mesh )
+        .composify( scene.composify )
+        .value();
 
     } );
+  ```
 
-  } );
-```
+  #### from three.js
 
-```js
-// three
-fetch( 'http://localhost:5007/api/scene/three' )
-  .then( response => response.json() )
-  .then( ( { scene } ) => {
+  ```js
+  fetch( 'https://mydomain.com/v0/my/scene/config/endpoint' )
+    .then( function ( response ) { return response.json(); )
+    .then( function ( data ) {
 
-    const starter = d2k
-      .onstarter( { canvas: 'viewRendering' } )
-      .use( THREE )
-      .withCamera( scene.camera )
-      .withRenderer( scene.renderer )
-      .withMesh( scene.mesh )
-      .withLight( scene.light )
-      .withScene( scene.scene )
-      .composify( scene.composify )
-      .value();
-
-    starter.mesh.myMeshName.onloader( textures => textures );
-
-    starter.mesh.myMeshName.onrender( time => {
-
-      starter.mesh.myMeshName.rotation.x += time;
-      starter.mesh.myMeshName.rotation.y += time;
+      var scene = data.scene;
+      var starter = d2k
+        .onstarter( { canvas: 'myCanvasId' } )
+        .use( THREE )
+        .withCamera( scene.camera )
+        .withRenderer( scene.renderer )
+        .withMesh( scene.mesh )
+        .withLight( scene.light )
+        .withScene( scene.scene )
+        .composify( scene.composify )
+        .value();
 
     } );
+  ```
 
-  } );
-```
+## <img src="assets/icons/icon-primitive.svg"/> 3d objects
 
-```js
-// async
-const fetchStarterScene = async ( url ) => {
-
-  const response = await fetch( url );
-  const sceneConfig = await response.json();
-  const data = d2k.onstarter( { canvas: 'viewRendering' } )
-    .use( THREE )
-    .onstarter( { canvas: 'viewRendering' } )
-    .withCamera( scene.camera )
-    .withRenderer( scene.renderer )
-    .withMesh( scene.mesh )
-    .withLight( scene.light )
-    .withScene( scene.scene )
-    .composify( scene.composify )
-    .value();
-
-  return data;
-
-};
-
-fetchStarterScene( 'https://mydomain.com/my/scene/config/endpoint' );
-```
-
-## <img src="assets/icons/icon-primitive.svg"/> Primitives
-
-primitive         | babylon.js                                  | three.js                                    |
+3d objects         | babylon.js                                  | three.js                                    |
 ------------------|---------------------------------------------|---------------------------------------------|
 audio             | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
 camera            | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
@@ -797,10 +935,3 @@ code - [@monsieurbadia](https://twitter.com/monsieurbadia)
 [npmtrends-url]: https://www.npmtrends.com/d2k
 [dev-dependencies]: https://img.shields.io/david/dev/monsieurbadia/d2k.js
 [dev-dependencies-url]: https://david-dm.org/monsieurbadia/d2k.js#info=devDependencies
-
-
-i thing this guy understand people who follow their dreams and try to be creative.
-thank you so much @dc. T'es dans le turfu !
-
-let me the time to learn more about those two librairies and i will improve my project.
-Then people will understand why is cool tu used d2k.js

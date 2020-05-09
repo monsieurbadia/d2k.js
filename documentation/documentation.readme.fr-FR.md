@@ -4,7 +4,7 @@
 
 <p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
 
-> *micro-couche javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes 3d rapidement de façon intuitive, élégante et fonctionnelle.*
+> *3d object builder javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes de façon intuitive et fonctionnelle.*
 
 [anglais](README.md) - [français](./documentation/documentation.readme.fr.md)    
 
