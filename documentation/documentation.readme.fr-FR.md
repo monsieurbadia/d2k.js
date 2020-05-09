@@ -35,7 +35,19 @@
 
 **demo**    
 
-<a src="https://codepen.io/monsieurbadia/pen/ZEbxpqv"><img src="../assets/gif/use-virtual-joystick-from-babylonjs-to-move-meshes-from-threejs.gif"/></a>
+<p align="center">
+  <img width="288" height="154" src="https://i.imgur.com/0zFiHe3.gif" />
+  <img width="288" height="154" src="https://imgur.com/bjsTn1O.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/OlNcpkW.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/9ibGxfp.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/cGiXfMP.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/Pu4g9G9.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/j17urwj.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/xjoQStV.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/1PTEL8y.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/PyW5eDk.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/FKrOswa.gif" />
+</p>
 
 ## <img src="../assets/icons/icon-installation.svg"/> Installation    
     

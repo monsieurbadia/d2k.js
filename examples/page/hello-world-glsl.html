@@ -81,8 +81,8 @@
 
         GLGLstarter.shader.myShaderName.onresize( function ( size ) {
 
-          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = size[ 0 ];
-          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size[ 1 ];
+          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = size.width;
+          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size.height;
 
         } );
 

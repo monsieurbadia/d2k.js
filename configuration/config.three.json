@@ -10,8 +10,18 @@
         "main": "mySceneName",
         "others": []
       },
-      "mesh": [ { "name": "myMeshName", "sceneParent": "main" } ],
-      "light": [ { "name": "myLightName", "sceneParent": "main" } ],
+      "mesh": [
+        {
+          "name": "myMeshName",
+          "sceneParent": "main"
+        }
+      ],
+      "light": [
+        {
+          "name": "myLightName",
+          "sceneParent": "main"
+        }
+      ],
       "camera": {
         "main": "myCameraName",
         "others": []
@@ -79,7 +89,16 @@
   "loader":{
     "name": "textures",
     "config": {
-      "args": [ { "name": "img-1", "url": "https://pbs.twimg.com/profile_images/1155986600230187010/I8KaBYEu_400x400.jpg" }, { "name": "img-2", "url": "https://pbs.twimg.com/profile_images/1155986600230187010/I8KaBYEu_400x400.jpg" } ],
+      "args": [
+        {
+          "name": "img-1",
+          "url": "https://avatars1.githubusercontent.com/u/64764206?s=400&u=efa3309281300351ef1b7535705b915019bee7fa&v=4"
+        },
+        { 
+          "name": "img-2",
+          "url": "https://avatars1.githubusercontent.com/u/64764206?s=400&u=efa3309281300351ef1b7535705b915019bee7fa&v=4"
+        }
+      ],
       "type": "texture"
     }
   },

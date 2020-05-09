@@ -26,26 +26,36 @@
 
 **codepen**   
 
-[hello world (glsl)](https://codepen.io/monsieurbadia/pen/wvKmzXM) - [hello world (three.js)](https://codepen.io/monsieurbadia/pen/oNjqzYP) - [hello world (babylon.js)](https://codepen.io/monsieurbadia/pen/GRpxjOV) - [layerization - hello world (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [layerization - virtual joystick (babylon.js x three.js)](https://codepen.io/monsieurbadia/pen/ZEbxpqv)
+[hello world (glsl)](https://codepen.io/monsieurbadia/pen/wvKmzXM) - [hello world (three.js)](https://codepen.io/monsieurbadia/pen/oNjqzYP) - [hello world (babylon.js)](https://codepen.io/monsieurbadia/pen/GRpxjOV) - [layerization - hello world (babylon.js x three.js)](https://codepen.io/monsieurbadia/pen/ExVEwwJ) - [layerization - virtual joystick (babylon.js x three.js)](https://codepen.io/monsieurbadia/pen/ZEbxpqv)
 
 **jsfiddle**    
 
-[hello world (glsl)](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [hello world (three.js)](https://jsfiddle.net/_monsieurbadia/cx9tq8b5) - [hello world (babylon.js)](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization - hello world (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [layerization - virtual joystick (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/xz6kmt2e)  
+[hello world (glsl)](https://jsfiddle.net/_monsieurbadia/j4n19puL) - [hello world (three.js)](https://jsfiddle.net/_monsieurbadia/yga7rf09) - [hello world (babylon.js)](https://jsfiddle.net/_monsieurbadia/b8ju2gmz) - [layerization - hello world (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/brq43fsu) - [layerization - virtual joystick (babylon.js x three.js)](https://jsfiddle.net/_monsieurbadia/xz6kmt2e)  
 
 **demo**    
 
 <p align="center">
-  <img width="288" height="154" src="https://i.imgur.com/0zFiHe3.gif" />
   <img width="288" height="154" src="https://imgur.com/bjsTn1O.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/OlNcpkW.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/0zFiHe3.gif" />
   <img width="288" height="154" src="https://i.imgur.com/9ibGxfp.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/t8FTKyG.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/CjMplaT.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/OlNcpkW.gif" />
   <img width="288" height="154" src="https://i.imgur.com/cGiXfMP.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/xjoQStV.gif" />
   <img width="288" height="154" src="https://i.imgur.com/Pu4g9G9.gif" />
   <img width="288" height="154" src="https://i.imgur.com/j17urwj.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/xjoQStV.gif" />
   <img width="288" height="154" src="https://i.imgur.com/1PTEL8y.gif" />
   <img width="288" height="154" src="https://i.imgur.com/PyW5eDk.gif" />
   <img width="288" height="154" src="https://i.imgur.com/FKrOswa.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/CrEK4A2.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/xSY7fvy.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/SV3IV8d.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/Aq6pfMF.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/G8HrW02.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/42puRDC.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/ffKjrXX.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/c0tkFUk.gif" />
 </p>
 
 ## <img src="assets/icons/icon-start-project.svg"/> Getting Started
@@ -90,7 +100,6 @@ window.addEventListener( 'DOMContentLoaded', _ => {
         start: true,
         scene: { main: 'mySceneName' },
         mesh: [ { name: 'myMeshName', parent: 'main' } ],
-        light: [ { name: 'myLightName', parent: 'main' } ],
         camera: { main: 'myCameraName' },
         renderer: 'myRendererName'
       }
@@ -787,3 +796,10 @@ code - [@monsieurbadia](https://twitter.com/monsieurbadia)
 [npmtrends-url]: https://www.npmtrends.com/d2k
 [dev-dependencies]: https://img.shields.io/david/dev/monsieurbadia/d2k.js
 [dev-dependencies-url]: https://david-dm.org/monsieurbadia/d2k.js#info=devDependencies
+
+
+i thing this guy understand people who follow their dreams and try to be creative.
+thank you so much @dc. T'es dans le turfu !
+
+let me the time to learn more about those two librairies and i will improve my project.
+Then people will understand why is cool tu used d2k.js

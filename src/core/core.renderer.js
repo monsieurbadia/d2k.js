@@ -14,7 +14,7 @@ const onrender = ( {
 } = {}, {
   scene: sourceScene
 } = {} ) => {
-  
+
   const render = _ => {
 
     for ( let i = 0; i < CALLBACK.renders.length; i++ ) {
@@ -26,12 +26,34 @@ const onrender = ( {
 
       if ( is.exist( targetCamera ) ) {
 
-        targetCamera.aspect = targetRenderer.domElement.clientWidth / targetRenderer.domElement.clientHeight;
+        const width = targetRenderer.domElement.clientWidth;
+        const height = targetRenderer.domElement.clientHeight;
+
+        targetCamera.aspect = width / height;
         targetCamera.updateProjectionMatrix();
+
+        switch ( targetCamera.type ) {
+
+          case 'OrthographicCamera':
+
+            const center = { x: width, y: height };
+
+            targetCamera.left = - center.x;
+            targetCamera.right = center.x;
+            targetCamera.top = center.y;
+            targetCamera.bottom = - center.y;
+
+            break;
+
+          default:
+
+            return;
+
+        }
 
       }
 
-      CALLBACK.resizers.forEach( resizer => resizer( { width: targetRenderer.domElement.clientWidth, height: targetRenderer.domElement.clientHeight } ) );
+      CALLBACK.resizers.forEach( resizer => resizer( { width, height } ) );
 
     }
 

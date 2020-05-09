@@ -14,12 +14,11 @@ export const Modifier = Object.freeze( {
     const byValidDynamicProperty = key => PRIMITIVE[ rendering ].DYNAMIC_PROPERTIES.includes( key );
     const setProperty = ( { object3d, parameter } ) => key => {
 
-      if ( is.exist( parameter[ key ] ) ) {
-        if ( is.array( parameter[ key ] ) ) {
-          object3d[ key ].set( ...parameter[ key ] )
-        } else {
-          object3d[ key ] = parameter[ key ];
-        }
+      console.log( parameter[ key ], is.empty( parameter[ key ] ) );
+      if ( is.array( parameter[ key ] ) ) {
+        object3d[ key ].set( ...parameter[ key ] );
+      } else {
+        object3d[ key ] = parameter[ key ];
       }
 
     };
