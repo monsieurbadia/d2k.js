@@ -1,4 +1,4 @@
-import { is, oftype } from 'u3s';
+import { is, oftype, strings } from 'u3s';
 import { CONFIG } from '=>/base';
 import { Event, Modifier } from '=>/core';
 
@@ -11,6 +11,9 @@ import {
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
+
+const mat = {};
+const geo = {};
 
 export const THREEMesh = ( {
   RENDERING_ENGINE,
@@ -25,9 +28,21 @@ export const THREEMesh = ( {
     .filter( byValidParameter )
     .map( parameter => {
 
-      const geometry = THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
-      const material = THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
+      const materialInstanceName = strings.toFirstLetterUpperCaseReducer( parameter.material.type );
+      const geometryInstanceName = strings.toFirstLetterUpperCaseReducer( parameter.geometry.type );
+      const materialHasBeenCreatedBefore = is.include( mat.material, materialInstanceName );
+      const geometryHasBeenCreatedBefore = is.include( mat.geometry, geometryInstanceName );
+      const geometry = geometryHasBeenCreatedBefore ? geo.geometry[ geometryInstanceName ] : THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
+      const material = materialHasBeenCreatedBefore ? mat.material[ materialInstanceName ] : THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
       const currentMesh = Object.assign( new RENDERING_ENGINE.Mesh( geometry, material ), { ...Event } );
+
+      mat.geometry = {
+        [ geometryInstanceName ]: geometry
+      };
+
+      mat.material = {
+        [ materialInstanceName ]: material
+      };
 
       Modifier.setDynamicProperty( {
         object3d: currentMesh,

@@ -37,30 +37,31 @@
 <p align="center">
   <img width="288" height="154" src="https://imgur.com/bjsTn1O.gif" />
   <img width="288" height="154" src="https://i.imgur.com/0zFiHe3.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/9ibGxfp.gif" />
   <img width="288" height="154" src="https://i.imgur.com/GSloinP.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/iuyjoJd.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/G8HrW02.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/oVk7PNk.gif" />
   <img width="288" height="154" src="https://i.imgur.com/OlNcpkW.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/iuyjoJd.gif" />
   <img width="288" height="154" src="https://i.imgur.com/cGiXfMP.gif" />
   <img width="288" height="154" src="https://i.imgur.com/xjoQStV.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/Pu4g9G9.gif" />
   <img width="288" height="154" src="https://i.imgur.com/j17urwj.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/9ibGxfp.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/Pu4g9G9.gif" />
   <img width="288" height="154" src="https://i.imgur.com/1PTEL8y.gif" />
   <img width="288" height="154" src="https://i.imgur.com/PyW5eDk.gif" />
   <img width="288" height="154" src="https://i.imgur.com/FKrOswa.gif" />
   <img width="288" height="154" src="https://i.imgur.com/CrEK4A2.gif" />
   <img width="288" height="154" src="https://i.imgur.com/xSY7fvy.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/oVk7PNk.gif" />
   <img width="288" height="154" src="https://i.imgur.com/Aq6pfMF.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/G8HrW02.gif" />
   <img width="288" height="154" src="https://i.imgur.com/42puRDC.gif" />
   <img width="288" height="154" src="https://i.imgur.com/u8YInkA.gif" />
   <img width="288" height="154" src="https://i.imgur.com/7PuCuwE.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/mNgmd3M.gif" />
 </p>
 
 ## <img src="assets/icons/icon-start-project.svg"/> Getting Started
 
-before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** via your shell.    
+before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** using your shell.    
 
 ## <img src="assets/icons/icon-installation.svg"/> Install    
        
