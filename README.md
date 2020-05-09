@@ -38,8 +38,8 @@
   <img width="288" height="154" src="https://imgur.com/bjsTn1O.gif" />
   <img width="288" height="154" src="https://i.imgur.com/0zFiHe3.gif" />
   <img width="288" height="154" src="https://i.imgur.com/9ibGxfp.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/t8FTKyG.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/CjMplaT.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/GSloinP.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/iuyjoJd.gif" />
   <img width="288" height="154" src="https://i.imgur.com/OlNcpkW.gif" />
   <img width="288" height="154" src="https://i.imgur.com/cGiXfMP.gif" />
   <img width="288" height="154" src="https://i.imgur.com/xjoQStV.gif" />
@@ -50,12 +50,12 @@
   <img width="288" height="154" src="https://i.imgur.com/FKrOswa.gif" />
   <img width="288" height="154" src="https://i.imgur.com/CrEK4A2.gif" />
   <img width="288" height="154" src="https://i.imgur.com/xSY7fvy.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/SV3IV8d.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/oVk7PNk.gif" />
   <img width="288" height="154" src="https://i.imgur.com/Aq6pfMF.gif" />
   <img width="288" height="154" src="https://i.imgur.com/G8HrW02.gif" />
   <img width="288" height="154" src="https://i.imgur.com/42puRDC.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/ffKjrXX.gif" />
-  <img width="288" height="154" src="https://i.imgur.com/c0tkFUk.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/u8YInkA.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/7PuCuwE.gif" />
 </p>
 
 ## <img src="assets/icons/icon-start-project.svg"/> Getting Started
