@@ -1,6 +1,6 @@
 import { is } from 'u3s';
 import { CALLBACK } from '=>/base';
-import { Timer } from '=>/core';
+import { Dom, Timer } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -22,38 +22,35 @@ const onrender = ( {
         return null;
     }
 
-    if ( is.exist( targetRenderer ) && resize( targetRenderer ) ) {
+    if ( is.exist( targetRenderer ) && resize( targetRenderer ) || is.exist( targetEngine ) && resize( targetEngine ) ) {
+
+      const canvas = targetRenderer ? targetRenderer.domElement : targetEngine.getRenderingCanvas();
+      const width = canvas.clientWidth;
+      const height = canvas.clientHeight;
 
       if ( is.exist( targetCamera ) ) {
-
-        const width = targetRenderer.domElement.clientWidth;
-        const height = targetRenderer.domElement.clientHeight;
 
         targetCamera.aspect = width / height;
         targetCamera.updateProjectionMatrix();
 
-        switch ( targetCamera.type ) {
+        if ( targetCamera.type === 'OrthographicCamera' ) {
 
-          case 'OrthographicCamera':
+          const center = { x: width, y: height };
 
-            const center = { x: width, y: height };
-
-            targetCamera.left = - center.x;
-            targetCamera.right = center.x;
-            targetCamera.top = center.y;
-            targetCamera.bottom = - center.y;
-
-            break;
-
-          default:
-
-            return;
+          targetCamera.left = - center.x;
+          targetCamera.right = center.x;
+          targetCamera.top = center.y;
+          targetCamera.bottom = - center.y;
 
         }
 
-      }
+        CALLBACK.resizers.forEach( resizer => resizer( { width, height } ) );
 
-      CALLBACK.resizers.forEach( resizer => resizer( { width, height } ) );
+      } else {
+
+        targetEngine.resize();
+
+      }
 
     }
 
@@ -87,11 +84,15 @@ const onrender = ( {
 
 const resize = renderer => {
 
-  const width = window.innerWidth;
-  const height = window.innerHeight;
-  const needsToBeResized = renderer.domElement.width !== width || renderer.domElement.height !== height;
+  const pixelRatio = Dom.pixelRatio;
+  const width = Dom.size.width * pixelRatio;
+  const height = Dom.size.height * pixelRatio;
+  const canvas = renderer.domElement || renderer.getRenderingCanvas();
+  const needsToBeResized = canvas.width !== width || canvas.height !== height;
 
-  if ( needsToBeResized ) renderer.setSize( width, height );
+  if ( needsToBeResized ) {
+    renderer.setSize( width, height );
+  }
 
   return needsToBeResized;
 
