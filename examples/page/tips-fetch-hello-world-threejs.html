@@ -39,7 +39,7 @@
       window.addEventListener( 'DOMContentLoaded', function () {
 
         fetch( 'http://localhost:5007/api/scene/three' )
-          .then( function ( response ) { response.json(); } )
+          .then( function ( response ) { return response.json(); } )
           .then( function ( data ) {
 
             var scene = data.scene;
