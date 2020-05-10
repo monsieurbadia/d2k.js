@@ -1,8 +1,6 @@
 # <img src="assets/images/d2k-logo-standard.png"/>
 
-# <img src="assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url]
-
-<p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
+# <img src="assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] [![Twitter Account][twitter]][twitter-url]
 
 > *3d object builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
 
@@ -11,7 +9,7 @@
   <a href="./documentation/documentation.readme.fr-FR.md">french</a>
 </p>    
 
-[Examples](#examples) &mdash; [Getting Started](#getting-started) &mdash; [Syntax](#syntax) &mdash; [API](#api) &mdash; [Tips](#tips) &mdash; [3d objects](#3d-objects) &mdash; [Disclaimer](#disclaimer) &mdash; [References](#references) - [license](#license) - [support](#support)
+[Examples](#examples) &mdash; [Getting Started](#getting-started) &mdash; [Syntax](#syntax) &mdash; [API](#api) &mdash; [Tips](#tips) &mdash; [3d objects](#3d-objects) &mdash; [Disclaimer](#disclaimer) &mdash; [License](#license) &mdash; [Support](#support) &mdash; [Contributors](#contributors)
 
 ## <img src="assets/icons/icon-problem.svg"/> Problems ##
 
@@ -912,7 +910,7 @@ scene             | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/
 
 ## <a name="disclaimer"></a> <img src="assets/icons/icon-disclaimer.svg"/> Disclaimer
 
-I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors, over time, will disappear. changes will be coming for everyone's comfort, I hope. triforce! 
+I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this project is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors will disappear as long as i progress. changes will be coming for everyone's comfort, I hope. triforce! 
 
 ## <img src="assets/icons/icon-reference.svg"/> References
 
@@ -928,7 +926,7 @@ Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/mast
 
 ## <a name="support"></a> <img src="assets/icons/icon-supports.svg"/> Support
 
-*⭐️ this repository if this project helped you!*    
+*⭐️ this repository if this project helped you! you're a BAWS*    
 
 ## <img src="assets/icons/icon-heart.svg"/> Contributors
 
@@ -944,3 +942,5 @@ code - [@monsieurbadia](https://twitter.com/monsieurbadia)
 [npmtrends-url]: https://www.npmtrends.com/d2k
 [dev-dependencies]: https://img.shields.io/david/dev/monsieurbadia/d2k.js
 [dev-dependencies-url]: https://david-dm.org/monsieurbadia/d2k.js#info=devDependencies
+[twitter]: https://img.shields.io/twitter/follow/monsieurbadia?label=follow
+[twitter-url]: https://twitter.com/monsieurbadia
