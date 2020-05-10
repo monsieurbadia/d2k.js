@@ -6,23 +6,28 @@
 
 > *3d object builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
 
-[english](README.md) - [french](./documentation/documentation.readme.fr-FR.md)    
+<p style="text-align: right">
+  <a href="README.md">english</a> -
+  <a href="./documentation/documentation.readme.fr-FR.md">french</a>
+</p>    
 
-## <img src="assets/icons/icon-problem.svg"/> Problems
+[Examples](#examples) &mdash; [Getting Started](#getting-started) &mdash; [Syntax](#syntax) &mdash; [API](#api) &mdash; [Tips](#tips) &mdash; [3d objects](#3d-objects) &mdash; [Disclaimer](#disclaimer) &mdash; [References](#references) - [license](#license) - [support](#support)
+
+## <img src="assets/icons/icon-problem.svg"/> Problems ##
 
 - `DRY` (do not repeat yourself)
-- `WEBGL API` too complex to make young people want to pay attention to 3d programming
+- `WEBGL API` too complex to make young people or begginners.
 
-## <img src="assets/icons/icon-solution.svg"/> Solutions
+## <img src="assets/icons/icon-solution.svg"/> Solutions ##
 
 - automate the creation of primitives
 - automate the composition of the scene
 - create a entire scene from a `JSON` config file
 - support `GLSL` x `THREE` x `BABYLON`
-- switch between `BABYLON` and `THREE` quickly and just with one single line of code
-- create experimental experience such as being able to make a kind of `Object.assign (THREE, BABYLON)`, which would give a single canvas the possibility of displaying the two scenes simultaneously on the screen
+- switch between `BABYLON` x `THREE` quickly with one line of code
+- `layerization` to run scenes from `BABYLON` x `THREE` together in a single canvas simultaneously - experimental experience
 
-## <img src="assets/icons/icon-examples.svg"/> Examples
+## <a name="examples"></a> <img src="assets/icons/icon-examples.svg"/> Examples ##
 
 **codepen**   
 
@@ -58,29 +63,36 @@
   <img width="288" height="154" src="https://i.imgur.com/7PuCuwE.gif" />
 </p>
 
-## <img src="assets/icons/icon-start-project.svg"/> Getting Started
+## <a name="getting-started"></a> <img src="assets/icons/icon-installation.svg"/> Getting Started ##    
 
 before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** using your shell.    
 
-## <img src="assets/icons/icon-installation.svg"/> Install    
-       
-**shell**
+**npm**
 
 ```sh
 npm i d2k
 ```
 
-OR
+**cdn**
 
-```sh
-yarn add d2k
+[https://rawcdn.githack.com/monsieurbadia/d2k.js/build/d2k.js](https://rawcdn.githack.com/monsieurbadia/d2k.js/d4230cceeb8650911e83a3ff074cb59e59c0e85a/build/d2k.js) - production
+[https://raw.githack.com/monsieurbadia/d2k.js/master/build/d2k.js](https://raw.githack.com/monsieurbadia/d2k.js/master/build/d2k.js) - development
+
+then import d2k:
+
+**javascript**
+
+```js
+import d2k from 'd2k';
 ```
 
-**alternative**
+**html**
 
-download the project, copy the file `d2k.js` which is located in the folder `/dist` then you are free to install it in the place provided for this purpose in your application. now you have to import d2k into your module or into your html page and follow this syntax.   
+```html
+<script src="./src/d2k.js">
+```
 
-## <img src="assets/icons/icon-syntax.svg"/> Syntax
+## <a name="syntax"></a> <img src="assets/icons/icon-syntax.svg"/> Syntax ##
 
 you are able to create 3d object from `THREE` or `BABYLON` following a unique syntax. code snippets below compare the syntaxes using by those librairies and **d2k**.
 
@@ -88,7 +100,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
   you can also to chain methods to compose a `scene` step by step. for your information, a `scene` can be created from a `JSON` config file and must respect the following format below.
 
-  </br> [glsl config format](./config/../documentation/configuration/config.glsl.format.md) - [babylon.js config format](./config/../documentation/configuration/config.babylon.format.md) - [three.js config format](./documentation/configuration/config.three.format.md)
+  [glsl config format](./config/../documentation/configuration/config.glsl.format.md) - [babylon.js config format](./config/../documentation/configuration/config.babylon.format.md) - [three.js config format](./documentation/configuration/config.three.format.md)
 
   #### using glsl
 
@@ -410,7 +422,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   } );
   ```
 
-## <img src="assets/icons/icon-api.svg"/> API
+## <a name="api"></a> <img src="assets/icons/icon-api.svg"/> API
 
 ### `.onstarter( init )`
 
@@ -694,7 +706,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
   ##### usage
 
-  `BABYLON` x `THREE`    
+  `BABYLON` x `THREE`
 
   ##### params
 
@@ -819,7 +831,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   starter.mesh.myMeshName.onresize( function ( size ) { /* ... */ } );
   ```
 
-## <img src="assets/icons/icon-tips.svg"/> Tips 
+## <a name="tips"></a> <img src="assets/icons/icon-tips.svg"/> Tips 
 
 - ### create a scene - fetch
 
@@ -882,7 +894,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
     } );
   ```
 
-## <img src="assets/icons/icon-primitive.svg"/> 3d objects
+## <a name="tips"></a> <img src="assets/icons/icon-primitive.svg"/> 3d objects
 
 3d objects        | babylon.js                               | three.js                                 |
 ------------------|------------------------------------------|------------------------------------------|
@@ -898,7 +910,7 @@ mesh              | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/
 renderer          | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
 scene             | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
 
-## <img src="assets/icons/icon-disclaimer.svg"/> Disclaimer
+## <a name="disclaimer"></a> <img src="assets/icons/icon-disclaimer.svg"/> Disclaimer
 
 I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors, over time, will disappear. changes will be coming for everyone's comfort, I hope. triforce! 
 
@@ -914,7 +926,7 @@ Copyright ©️ 2020 monsieurbadia
 
 Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
 
-## <img src="assets/icons/icon-supports.svg"/> Support
+## <a name="support"></a> <img src="assets/icons/icon-supports.svg"/> Support
 
 *⭐️ this repository if this project helped you!*    
 
