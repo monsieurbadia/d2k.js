@@ -53,24 +53,24 @@
           .withMesh( {
             name: 'myMeshName',
             config: [ {
+              position: [ -20, 0, 0 ],
               geometry: {
                 args: [ 20, 20, 20 ],
                 type: 'box-buffer'
               },
               material: {
                 type: 'mesh-normal'
-              },
-              position: [ -20, 0, 0 ],
+              }
             },
             {
+              position: [ 20, 0, 0 ],
               geometry: {
                 args: [ 20, 20, 20 ],
                 type: 'box'
               },
               material: {
                 type: 'mesh-normal'
-              },
-              position: [ 20, 0, 0 ],
+              }
             } ]
           } )
           .withRenderer( {
@@ -99,7 +99,8 @@
           } )
           .value();
 
-        var BABYLONstarter = d2k.onstarter( { canvas: 'viewRendering' } )
+        var BABYLONstarter = d2k
+          .onstarter( { canvas: 'viewRendering' } )
           .use( BABYLON )
           .withEngine( {
             name: 'current'

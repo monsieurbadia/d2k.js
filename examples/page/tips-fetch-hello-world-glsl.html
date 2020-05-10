@@ -39,9 +39,10 @@
       window.addEventListener( 'DOMContentLoaded', function () {
 
         fetch( 'http://localhost:5007/api/scene/glsl' )
-          .then( response => response.json() )
-          .then( ( { scene } ) => {
+          .then( function ( response ) { return response.json(); } )
+          .then( function ( data ) {
 
+            var scene = data.scene;
             var starter = d2k
               .onstarter( scene.init )
               .use( THREE )

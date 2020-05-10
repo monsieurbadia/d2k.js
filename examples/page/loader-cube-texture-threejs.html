@@ -39,9 +39,10 @@
       window.addEventListener( 'DOMContentLoaded', function () {
 
         var starter = fetch( 'http://localhost:5007/api/scene/three' )
-          .then( response => response.json() )
-          .then( ( { scene } ) => {
+          .then( function ( response ) { response.json(); } )
+          .then( function ( data ) {
 
+            var scene = data.scene;
             var starter = d2k
               .onstarter( { canvas: 'viewRendering' } )
               .use( THREE )
@@ -56,7 +57,7 @@
 
             starter.mesh.myMeshName.onloader( function ( textures ) {
 
-              starter.mesh.myMeshName.material.map = textures.find( texture => texture.name === 'img-1' );
+              starter.mesh.myMeshName.material.map = textures.find( function ( texture ) { return texture.name === 'img-1'; } );
               starter.mesh.myMeshName.material.needsUpdate = true;
 
             } );

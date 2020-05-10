@@ -39,9 +39,10 @@
       window.addEventListener( 'DOMContentLoaded', function () {
 
         fetch( 'http://localhost:5007/api/scene/three' )
-          .then( response => response.json() )
-          .then( ( { scene } ) => {
+          .then( function ( response ) { response.json(); } )
+          .then( function ( data ) {
 
+            var scene = data.scene;
             var starter = d2k
               .onstarter( scene.init )
               .use( THREE )
@@ -52,8 +53,6 @@
               .withScene( scene.scene )
               .composify( scene.composify )
               .value();
-
-            starter.mesh.myMeshName.onloader( textures => textures );
 
             starter.mesh.myMeshName.onrender( time => {
 

@@ -76,8 +76,6 @@
           .withRenderer( {
             name: 'myRendererName',
             config: {
-              autoClear: true,
-              pixelRatio: window.devicePixelRatio,
               size: [ window.innerWidth, window.innerHeight ]
             }
           } )
@@ -90,7 +88,10 @@
               scene: {
                 main: 'mySceneName',
               },
-              mesh: [ { name: 'myMeshName', sceneParent: 'main' } ],
+              mesh: [ {
+                name: 'myMeshName',
+                sceneParent: 'main'
+              } ],
               camera: {
                 main: 'myCameraName',
               },

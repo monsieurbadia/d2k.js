@@ -49,7 +49,7 @@
           var BABYLONscene = data[ 0 ].scene;
           var THREEscene = data[ 1 ].scene;
 
-          // create primitive from three.js
+          // 1. create 3d objects from three.js
           var THREEstarter = d2k
             .onstarter( THREEscene.init )
             .use( THREE )
@@ -61,7 +61,7 @@
             .composify( THREEscene.composify )
             .value();
 
-          // create primitive from babylon.js
+          // 2. create 3d objects from babylon.js
           var BABYLONstarter = d2k
             .onstarter( BABYLONscene.init )
             .use( BABYLON )
@@ -73,12 +73,7 @@
             .composify( BABYLONscene.scene )
             .value();
 
-          // then use .onrender( TARGET, SOURCE ) like goku and vegeta turning into gogeta
-          // the target must to be primitives from three.js. you cannot switch the order.
-          // the second parameter has to be primitive from babylon.js.
-          // note: this mode is experimental, if you want to use it in production is our own risk,
-          // but if you are not afraid, you're a BAWS!
-
+          // 3. layerization
           d2k
             .onrender( {
               renderer: THREEstarter.renderer.myRendererName,

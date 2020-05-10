@@ -39,20 +39,8 @@
       window.addEventListener( "DOMContentLoaded", function () {
 
         var THREEstarter = d2k
-          /*
-            ways to set a canvas
-            - myCanvasName { String } - a canvas id
-            - myCanvas { HTMLCanvasElement } - a html canvas element
-          */
           .onstarter( { canvas: 'viewRendering' } )
           .use( THREE )
-          /*
-            create a camera, the args array is passed in the camera contructor,
-              - PerspectiveCamera args: [ fov : Number, aspect : Number, near : Number, far : Number ]
-              - OrthographicCamera args: [ left : Number, right : Number, top : Number, bottom : Number, near : Number, far : Number ]
-              - CubeCamera args: [ near : Number, far : Number, cubeResolution : Number, options : Object ]
-              - ArrayCamera args: [ array : Array ]
-          */
           .withCamera( {
             name: 'myCameraName',
             config: {
@@ -64,26 +52,26 @@
           .withMesh( {
             name: 'myMeshName',
             config: [ {
+              visible: true,
+              position: [ -20, 0, 0 ],
               geometry: {
                 args: [ 20, 20, 20 ],
                 type: 'box-buffer'
               },
               material: {
                 type: 'mesh-normal'
-              },
-              visible: true,
-              position: [ -20, 0, 0 ]
+              }
             },
             {
+              visible: true,
+              position: [ 20, 0, 0 ],
               geometry: {
                 args: [ 20, 20, 20 ],
                 type: 'box'
               },
               material: {
                 type: 'mesh-normal'
-              },
-              visible: true,
-              position: [ 20, 0, 0 ]
+              }
             } ]
           } )
           .withScene( {
