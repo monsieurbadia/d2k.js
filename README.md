@@ -414,15 +414,15 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ### `.onstarter( init )`
 
-  *initialize a `scene` from an `init` object pass in parameter. to create a scene `.onstarter()` has to be called first.*
+  initialize a `scene` from an `init` object pass in parameter. to create a scene `.onstarter()` has to be called first.    
 
   ##### usage
 
-  `GLSL` x `BABYLON` x `THREE`
+  `GLSL` x `BABYLON` x `THREE`      
 
   ##### params
 
-  `init` **{ Object }**: initialize a `starter`    
+  `init` **{ Object }**: initialize a `starter`.        
   `returns` **{ Object }**: collection of methods.     
 
   ##### example
@@ -430,50 +430,50 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   ```js
   var starter = d2k
     .onstarter( {
-      canvas: 'myCanvasId', // or use an HTMLCanvasElement,
-      glsl: false // optional
+      canvas: 'myCanvasId',
+      glsl: false
     } );
   ```
 
 ### `.use( RENDERING_ENGINE )`
 
-  *define the current `RENDERING_ENGINE` wich will be used to create primitives. `.use()` has to been calls just after the `.onstarter()` method.*
+  define the current `RENDERING_ENGINE` wich will be used to create primitives. `.use()` has to been calls just after the `.onstarter()` method.    
 
   ##### usage
 
-  `GLSL` x `BABYLON` x `THREE`
+  `GLSL` x `BABYLON` x `THREE`    
 
   ##### params
 
-  `RENDERING_ENGINE` **{ Object }**: the current engine (`THREE` | `BABYLON`)     
+  `RENDERING_ENGINE` **{ Object }**: the current rendering engine.         
   `returns` **{ Object }**: collection of methods.     
 
   ##### example
 
   ```js
   var starter = d2k
-    .onstarter( /* init */ )
+    .onstarter( /* ... */ )
     .use( THREE );
   ```
 
 ### `.withCamera( config )`
 
-  *create a `camera` from an `config` object pass in parameter.*
+  create a `camera` from an `config` object pass in parameter.    
 
   ##### usage
 
-  `BABYLON` x `THREE`
+  `BABYLON` x `THREE`   
 
   ##### params
 
-  `config` **{ Object }**: definition of the configuration of a `camera`.   
-  `returns` **{ Object }**: collection of methods.  
+  `config` **{ Object }**: definition of the configuration of a `camera`.     
+  `returns` **{ Object }**: collection of methods.    
 
   ##### example
 
   ```js
   var starter = d2k
-    .onstarter( /* init */ )
+    .onstarter( /* ... */ )
     .use( /* ... */ )
     .withCamera( {
       name: 'myCameraName',
@@ -489,28 +489,28 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ### `.withEngine( config )`
 
-  *define an `engine` from a `config` object passed as a parameter.*    
+  define an `engine` from a `config` object passed as a parameter.    
 
   ##### usage
 
-  `BABYLON`
+  `BABYLON`   
 
   ##### params
 
   `config` **{ Object }**: a `engine` config.     
-  `returns` **{ Object }**: collection of methods.     
+  `returns` **{ Object }**: collection of methods.      
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* ... */ )
     .use( BABYLON )
     .withEngine( { name: 'myEngineName' } );
   ```
 
 ### `.withMesh( config )`
 
-  *create a `mesh` from an `config` object pass in parameter.*
+  create a `mesh` from an `config` object pass in parameter.    
 
   ##### usage
 
@@ -518,106 +518,106 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
   ##### params
 
-  `config` **{ Object }**: a `mesh` config. 
-  `returns` **{ Object }**: collection of methods. 
+  `config` **{ Object }**: a `mesh` config.     
+  `returns` **{ Object }**: collection of methods.    
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* ... */ )
     .use( /* ... */ )
     .withMesh( {
-      name: "myMeshName",
+      name: 'myMeshName',
       config: {
+        position: [ -20, 0, 0 ],
         geometry: {
           args: [ 20, 20, 20 ],
-          type: "box-buffer"
+          type: 'box-buffer'
         },
         material: {
-          args: { "transparent": true },
-          type: "mesh-normal"
+          args: { 'transparent': true },
+          type: 'mesh-normal'
         },
-        positions: [ -20, 0, 0 ],
       }
     } );
   ```
 
 ### `.withLight( config )`
 
-  *create a `light` from a `config` object pass in parameter.*
+  create a `light` from a `config` object pass in parameter.       
 
   ##### usage
 
-  `BABYLON` x `THREE`
+  `BABYLON` x `THREE`   
 
   ##### params
 
-  `config` **{ Object }**: a `light` config. 
-  `returns` **{ Object }**: collection of methods. 
+  `config` **{ Object }**: a `light` config.    
+  `returns` **{ Object }**: collection of methods.    
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* ... */ )
     .use( /* ... */ )
     .withLight( {
-      name: "myLightName",
+      name: 'myLightName',
       config: {
-        args: [ "0xf1f5bb" ],
+        args: [ '0xf1f5bb' ],
         position: [ 0, 1, 30 ],
-        type: "directional"
+        type: 'directional'
       }
     } );
   ```
 
 ### `.withLoader( config )`
 
-  *load a `texture` | `object` from a `config` object to pass in parameter.*
+  load a `texture` | `object` from a `config` object to pass in parameter.    
 
   ##### usage
 
-  `THREE`
+  `THREE`   
 
   ##### params
 
-  `config` **{ Object }**: a `loader` config.  
-  `returns` **{ Object }**: collection of methods. 
+  `config` **{ Object }**: a `loader` config.     
+  `returns` **{ Object }**: collection of methods.    
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
-    .use( THREE ) // you can also use BABYLON
+  var starter = d2k.onstarter( /* ... */ )
+    .use( THREE )
     .withLoader( {
-      name: "myLightName",
+      name: 'myLightName',
       config: {
-        args: [ "0xf1f5bb" ],
+        args: [ '0xf1f5bb' ],
         position: [ 0, 1, 30 ],
-        type: "directional"
+        type: 'directional'
       }
     } );
   ```
 
 ### `.withRenderer( config )`
 
-  *create a `renderer` from a `config` object pass parameter.*
+  create a `renderer` from a `config` object pass parameter.
 
   ##### usage
 
-  `THREE`
+  `THREE`   
 
   ##### params
 
   `config` **{ Object }**: a `renderer` config.  
-  `returns` **{ Object }**: collection of methods. 
+  `returns` **{ Object }**: collection of methods.  
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* ... */ )
     .use( /* ... */ )
     .withRenderer( {
-      name: "myRendererName",
+      name: 'myRendererName',
       config: {
         antialias: true,
         autoClear: true,
@@ -630,42 +630,42 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ### `.withScene( config )`
 
-  *compose a `scene` from a `config` object pass in parameter.*
+  compose a `scene` from a `config` object pass in parameter.   
 
   ##### usage
 
-  `BABYLON` x `THREE`
+  `BABYLON` x `THREE`     
 
   ##### params
 
-  `config` **{ Object }**: a `scene` config.  
-  `returns` **{ Object }**: collection of methods. 
+  `config` **{ Object }**: a `scene` config.    
+  `returns` **{ Object }**: collection of methods.  
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* ... */ )
     .use( /* ... */ )
-    .withScene( { name: "mySceneName" } );
+    .withScene( { name: 'mySceneName' } );
   ```
 
 ### `.withShader( config )`
 
-  *create `shader` from a `config` object pass in parameter.*
+  create `shader` from a `config` object pass in parameter.   
 
   ##### usage
 
-  `GLSL`
+  `GLSL`    
 
   ##### params
 
-  `config` **{ Object }**: a `shader` config  
-  `returns` **{ Object }**: collection of methods. 
+  `config` **{ Object }**: a `shader` config.    
+  `returns` **{ Object }**: collection of methods.  
 
   ##### example
 
   ```js
-  var starter = d2k.onstarter( /* init */ )
+  var starter = d2k.onstarter( /* ... */ )
     .use( THREE )
     .withShader( {
       name: 'myShaderName',
@@ -688,24 +688,24 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
     } );
   ```
 
-### `.onrender( TARGET, SOURCE )`
+### `.onrender( TARGET: THREEstarter, SOURCE?: BABYLONstarter )`
 
-  *create a `scene` from a `TARGET` and a `SOURCE` pass in parameters. ***note: this method will get two different `starter` to merge them and display the two scenes through a single canvas. be careful, this part is still experimental.****   
+  create a `scene` from a `TARGET` and a `SOURCE` pass in parameters. ***note: this method will get two different `starter` to merge them and display the two scenes through a single canvas. be careful, this part is still experimental.***   
 
   ##### usage
 
-  `BABYLON` x `THREE`   
+  `BABYLON` x `THREE`    
 
   ##### params
 
-  `TARGET` **{ Object }**: a `THREE` starter.
-  `SOURCE` **{ Object }**: a `BABYLON` starter.
+  `TARGET` **{ Object }**: a `THREEstarter` starter.   
+  `SOURCE` **{ Object }**: a `BABYLONstarter` starter.   
   `returns` **{ Object }**: a `renderer`.   
 
   ##### example
 
   ```js
-  // babylon.js only
+  // babylon.js
   BABYLONstarter.renderer.onrender( {
     engine: BABYLONstarter.engine.myEngineName
     scene: BABYLONstarter.scene.mySceneName
@@ -713,7 +713,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   ```
 
   ```js
-  // three.js only
+  // three.js
   THREEstarter.renderer.onrender( {
     renderer: THREEstarter.renderer,
     scene: THREEstarter.scene.main,
@@ -722,7 +722,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   ```
 
   ```js
-  // layerization
+  // layerization (three.js x babylon.js)
   d2k.onrender( {
     renderer: THREEstarter.renderer.current,
     scene: THREEstarter.scene.mySceneName,
@@ -735,11 +735,11 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ### `.composify( config )`
 
-  *composition of the scene to be displayed. This method allows you to compose a scene step by step.*   
+  *composition of the scene to be displayed. This method allows you to compose a scene step by step.*       
 
   ##### usage
 
-  `BABYLON` x `THREE`
+  `BABYLON` x `THREE`   
 
   ##### params
 
@@ -777,7 +777,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
   ##### params
 
-  `no params`   
+  `no params`     
   `returns` **{ Object }**: a `starter` collection.    
 
   ##### example
@@ -792,16 +792,16 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ### `starter`
   
-  *contains a collection of 3d objects you have created and some methods.*
+  *contains a collection of 3d objects you have created and some methods.*    
 
 ### `events`
 
-  *`mesh` `light` `camera` hold events which are called in specific contexts `onrender` `onloader` `onresize`.* 
+  *`mesh` `light` `camera` hold events which are called in specific contexts `onrender` `onloader` `onresize`.*     
 
   ##### onloader
 
   ```js
-  // get textures
+  // data
   starter.mesh.myMeshName.onloader( function ( data ) { /* ... */ } );
   ```
 
@@ -821,7 +821,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ## <img src="assets/icons/icon-tips.svg"/> Tips 
 
-- ### fetch scene from a `JSON` config file
+- ### create a scene - fetch
 
   #### from glsl
 
@@ -830,7 +830,6 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
     .then( function ( response ) { return response.json(); } )
     .then( function ( data ) {
 
-      // create 
       var scene = data.scene;
       var starter = d2k
         .onstarter( scene.init )
@@ -857,7 +856,6 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
         .withCamera( scene.camera )
         .withLight( scene.light )
         .withMesh( scene.mesh )
-        .composify( scene.composify )
         .value();
 
     } );
@@ -879,7 +877,6 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
         .withMesh( scene.mesh )
         .withLight( scene.light )
         .withScene( scene.scene )
-        .composify( scene.composify )
         .value();
 
     } );
@@ -887,8 +884,8 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
 
 ## <img src="assets/icons/icon-primitive.svg"/> 3d objects
 
-3d objects         | babylon.js                                  | three.js                                    |
-------------------|---------------------------------------------|---------------------------------------------|
+3d objects        | babylon.js                               | three.js                                 |
+------------------|------------------------------------------|------------------------------------------|
 audio             | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
 camera            | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
 font              | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
