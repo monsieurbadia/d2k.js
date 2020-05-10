@@ -2,7 +2,7 @@
 
 # <img src="assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] [![Twitter Account][twitter]][twitter-url]
 
-> *3d object builder based on [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) that will help you to created a scene in an intuitive and functional way.*
+> *3d object builder from the Dark side of the Force*
 
 <p style="text-align: right">
   <a href="README.md">english</a> -
@@ -14,16 +14,13 @@
 ## <img src="assets/icons/icon-problem.svg"/> Problems ##
 
 - `DRY` (do not repeat yourself)
-- `WEBGL API` too complex to make young people or begginners.
 
 ## <img src="assets/icons/icon-solution.svg"/> Solutions ##
 
-- automate the creation of primitives
-- automate the composition of the scene
-- create a entire scene from a `JSON` config file
+- automate 3d object creating
+- automate scene composing
 - support `GLSL` x `THREE` x `BABYLON`
-- switch between `BABYLON` x `THREE` quickly with one line of code
-- `layerization` to run scenes from `BABYLON` x `THREE` together in a single canvas simultaneously - experimental experience
+- support `layerization` *(experimental experience)*
 
 ## <a name="examples"></a> <img src="assets/icons/icon-examples.svg"/> Examples ##
 

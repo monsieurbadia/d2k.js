@@ -4,7 +4,7 @@
 
 <p align="center"><a href="https://twitter.com/monsieurbadia"><img alt= "Twitter Follow" src="https://img.shields.io/twitter/follow/monsieurbadia?label=follow"/></a></p>
 
-> *3d object builder javascript basé sur [three.js](https://threejs.org) x [babylon.js](https://www.babylonjs.com) pour créer des scènes de façon intuitive et fonctionnelle.*
+> *3d object builder from the Dark side of the Force*
 
 [anglais](README.md) - [français](./documentation/documentation.readme.fr.md)    
 
@@ -16,7 +16,7 @@
 
 ## <img src="../assets/icons/icon-solution.svg"/> Solutions
 
-- automatiser la création des primitives.
+- automatiser la création d'object 3d.
 - automatiser la composition de la scène
 - créer une scène à partir d'un fichier `JSON`.
 - supporter `GLSL` x `THREE` x `BABYLON`
