@@ -57,7 +57,7 @@ const onrender = ( {
     if ( is.exist( targetRenderer ) || is.exist( targetEngine ) ) {
 
       if ( targetRenderer?.getContext ) {
-        
+
         targetRenderer.getContext().bindVertexArray( null );
         targetRenderer.state.reset();
         targetRenderer.render( targetScene, targetCamera );

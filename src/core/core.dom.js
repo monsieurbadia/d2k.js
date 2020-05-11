@@ -47,7 +47,7 @@ export const Dom = {
 
   get body () { return document.body; },
   get pixelRatio () { return window.devicePixelRatio; },
-  get size () { return [ window.innerWidth, window.innerHeight ]; },
+  get size () { return { width: window.innerWidth, height: window.innerHeight }; },
   get context () { return getContext() },
 
   add,
