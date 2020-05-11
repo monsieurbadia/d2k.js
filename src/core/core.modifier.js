@@ -1,5 +1,5 @@
 import { is } from 'u3s'
-import { PRIMITIVE } from '=>/base';
+import { OBJECTS3D } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -11,7 +11,7 @@ export const Modifier = Object.freeze( {
 
     const properties = Object.keys( payload.parameter );
     const rendering = payload.rendering.toUpperCase();
-    const byValidDynamicProperty = key => PRIMITIVE[ rendering ].DYNAMIC_PROPERTIES.includes( key );
+    const byValidDynamicProperty = key => OBJECTS3D[ rendering ].DYNAMIC_PROPERTIES.includes( key );
     const setProperty = ( { object3d, parameter } ) => key => {
 
       if ( is.array( parameter[ key ] ) ) {

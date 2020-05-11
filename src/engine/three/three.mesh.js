@@ -1,5 +1,5 @@
 import { is, oftype, strings } from 'u3s';
-import { CONFIG } from '=>/base';
+import { CONFIG, OBJECTS3D } from '=>/base';
 import { Event, Modifier } from '=>/core';
 
 import {
@@ -11,9 +11,6 @@ import {
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
-
-const mat = {};
-const geo = {};
 
 export const THREEMesh = ( {
   RENDERING_ENGINE,
@@ -30,19 +27,14 @@ export const THREEMesh = ( {
 
       const materialInstanceName = strings.toFirstLetterUpperCaseReducer( parameter.material.type );
       const geometryInstanceName = strings.toFirstLetterUpperCaseReducer( parameter.geometry.type );
-      const materialHasBeenCreatedBefore = is.include( mat.material, materialInstanceName );
-      const geometryHasBeenCreatedBefore = is.include( mat.geometry, geometryInstanceName );
-      const geometry = geometryHasBeenCreatedBefore ? geo.geometry[ geometryInstanceName ] : THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
-      const material = materialHasBeenCreatedBefore ? mat.material[ materialInstanceName ] : THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
+      const materialHasBeenCreatedBefore = is.include( OBJECTS3D.CACHE.material, materialInstanceName );
+      const geometryHasBeenCreatedBefore = is.include( OBJECTS3D.CACHE.geometry, geometryInstanceName );
+      const geometry = geometryHasBeenCreatedBefore ? OBJECTS3D.CACHE.geometry[ geometryInstanceName ] : THREEGeometry( { RENDERING_ENGINE, config: parameter.geometry } );
+      const material = materialHasBeenCreatedBefore ? OBJECTS3D.CACHE.material[ materialInstanceName ] : THREEMaterial( { RENDERING_ENGINE, config: parameter.material } );
       const currentMesh = Object.assign( new RENDERING_ENGINE.Mesh( geometry, material ), { ...Event } );
 
-      mat.geometry = {
-        [ geometryInstanceName ]: geometry
-      };
-
-      mat.material = {
-        [ materialInstanceName ]: material
-      };
+      OBJECTS3D.CACHE.geometry = { [ geometryInstanceName ]: geometry };
+      OBJECTS3D.CACHE.material = { [ materialInstanceName ]: material };
 
       Modifier.setDynamicProperty( {
         object3d: currentMesh,

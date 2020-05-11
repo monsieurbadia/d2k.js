@@ -22,7 +22,7 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-const PRIMITIVE = Object.freeze( {
+const OBJECTS3D = Object.freeze( {
   BABYLONCamera,
   BABYLONController,
   BABYLONLight,
@@ -175,7 +175,7 @@ const createPrimitive = ( { parameters, key, RENDERING_ENGINE } ) => {
 
     return {
       ...result,
-      [ parameter.name ]: PRIMITIVE[ currentInstanceName ]( { RENDERING_ENGINE, config: parameter.config } )
+      [ parameter.name ]: OBJECTS3D[ currentInstanceName ]( { RENDERING_ENGINE, config: parameter.config } )
     };
 
   };

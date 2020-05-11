@@ -1,5 +1,5 @@
 export { CALLBACK } from './base.callback';
 export { CONFIG } from './base.config';
 export { MATH } from './base.math';
-export { PRIMITIVE } from './base.primitive';
+export { OBJECTS3D } from './base.objects3d';
 export { SHADER } from './base.shader';

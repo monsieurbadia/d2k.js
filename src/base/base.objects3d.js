@@ -2,7 +2,9 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const PRIMITIVE = Object.freeze( {
+export const OBJECTS3D = Object.freeze( {
+
+  CACHE: Object.create( null ),
 
   BABYLON: {
     DYNAMIC_PROPERTIES: [
