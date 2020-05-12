@@ -14,7 +14,7 @@
   ],
   "main": "build/d2k.js",
   "repository": "https://github.com/monsieurbadia/d2k.js.git",
-  "author": "monsieurbadia <contact@monsieurbadia.com>",
+  "author": "monsieurbadia (https://monsieurbadia.com)",
   "license": "MIT",
   "private": false,
   "alias": {
@@ -29,6 +29,7 @@
     "@babel/plugin-transform-runtime": "^7.9.0",
     "concurrently": "^5.2.0",
     "parcel-bundler": "^1.12.4",
+    "parcel-plugin-glsl": "./root_modules/parcel-plugin-glsl",
     "u3s": "^0.0.13"
   }
 }
