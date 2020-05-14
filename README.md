@@ -56,6 +56,7 @@
   <img width="288" height="154" src="https://i.imgur.com/42puRDC.gif" />
   <img width="288" height="154" src="https://i.imgur.com/u8YInkA.gif" />
   <img width="288" height="154" src="https://i.imgur.com/7PuCuwE.gif" />
+  <img width="288" height="154" src="https://i.imgur.com/sNgZ3ha.gif" />
 </p>
 
 ## <a name="getting-started"></a> <img src="assets/icons/icon-installation.svg"/> Getting Started ##    
