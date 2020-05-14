@@ -3,7 +3,8 @@ import { ua } from 'u3s';
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
-export const Version = _ => {
+
+export const Semverlog = _ => {
 
   const { version } = require( '../../package.json' );
   const [ name, semver ] = [ `d2k.js`, `v${ version }` ];
