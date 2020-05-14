@@ -2,7 +2,7 @@
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const SHADER = Object.freeze( {
+export const GLSL = Object.freeze( {
 
   GEOMETRY: {
     args: [ 2, 2 ]

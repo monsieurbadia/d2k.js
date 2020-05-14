@@ -1,20 +1,20 @@
 import { merge } from 'u3s';
-import { CONFIG, SHADER } from '=>/base';
+import { CONFIG, GLSL } from '=>/base';
 import { Chunk, Event } from '=>/core';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-export const THREEShader = ( {
+export const THREEGLSL = ( {
   RENDERING_ENGINE,
-  config = CONFIG.THREE.SHADER
+  config = CONFIG.THREE.GLSL
 } = {} ) => {
 
-  // TODO
-  const uniform = Chunk.createUniforms( { RENDERING_ENGINE, uniforms: merge( CONFIG.THREE.SHADER.uniforms, config.uniforms ) } );
+  // TODO: put geometry and material in cache
+  const uniform = Chunk.createUniforms( { RENDERING_ENGINE, uniforms: merge( CONFIG.THREE.GLSL.uniforms, config.uniforms ) } );
   const shaderChunk = Chunk.compile( { uniforms: uniform, fragmentShader: config.fragmentShader, vertexShader: config.vertexShader } );
-  const geometry = new RENDERING_ENGINE.PlaneBufferGeometry( ...SHADER.GEOMETRY.args );
+  const geometry = new RENDERING_ENGINE.PlaneBufferGeometry( ...GLSL.GEOMETRY.args );
   const material = new RENDERING_ENGINE.ShaderMaterial( shaderChunk );
   const shader = new RENDERING_ENGINE.Mesh( geometry, material );
 

@@ -11,6 +11,7 @@ import {
 
 import {
   THREECamera,
+  THREEGLSL,
   THREELight,
   THREELoader,
   THREEMesh,
@@ -30,6 +31,7 @@ const OBJECTS3D = Object.freeze( {
   BABYLONEngine,
   BABYLONScene,
   THREECamera,
+  THREEGLSL,
   THREELight,
   THREELoader,
   THREEMesh,
@@ -50,14 +52,15 @@ const oncreate = ( {
   };
 
   if ( is.array( parameters[ 0 ] ) ) {
+
     parameters = parameters[ 0 ];
+
   }
 
   const params = name === 'renderer' ? [ parameters[ 0 ] ] : parameters;
 
   return starter(
-    Object
-      .assign(
+    Object.assign(
         conf,
         {
           [ name ]: createPrimitive( {
@@ -78,6 +81,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
   const getPrimitive = ( { primitivesName, parameter } ) => {
 
     const byDefinedPrimitive = primitive => is.exist( parameter[ primitive.name ] );
+
     const primitive = ( result, config ) => { 
 
       parameter[ config.name ].userData = { currentScene: config.sceneParent };
@@ -97,9 +101,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
 
   if ( is.exist( selectedPrimitives.camera ) ) {
 
-    composedScene.camera = Object
-    .assign(
-      {
+    composedScene.camera = Object.assign( {
         main: parameter.camera[ selectedPrimitives.camera.main ]
       },
       {
@@ -107,11 +109,19 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
           primitivesName: selectedPrimitives.camera.others,
           parameter: parameter.camera
         } )
-      }
-    );
+      } );
 
   }
   
+  if ( is.exist( selectedPrimitives.uicomponent ) ) {
+
+    composedScene.uicomponent = getPrimitive( {
+      primitivesName: selectedPrimitives.uicomponent,
+      parameter: parameter.uicomponent
+    } );
+
+  }
+
   if ( is.exist( selectedPrimitives.mesh ) ) {
 
     composedScene.mesh = getPrimitive( {
@@ -132,9 +142,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
   
   if ( is.exist( selectedPrimitives.scene ) ) {
 
-    composedScene.scene = Object
-    .assign(
-      {
+    composedScene.scene = Object.assign( {
         main: parameter.scene[ selectedPrimitives.scene.main ]
       },
       {
@@ -142,8 +150,7 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
           primitivesName: selectedPrimitives.scene.others,
           parameter: parameter.scene
         } )
-      }
-    );
+      } );
 
   }
   
@@ -166,7 +173,8 @@ const composeScene = ( { parameter, selectedPrimitives } ) => {
 const createPrimitive = ( { parameters, key, RENDERING_ENGINE } ) => {
 
   const currentRenderingEngineName = RENDERING_ENGINE.BoxBufferGeometry ? 'THREE' : 'BABYLON';
-  const currentInstanceName = `${ currentRenderingEngineName }${ strings.toFirstLetterUpperCase( key ) }`;
+  const formatedInstanceName = strings.toFirstLetterUpperCase( key );
+  const currentInstanceName = `${ currentRenderingEngineName }${ formatedInstanceName }`;
 
   const primitive = ( result, parameter ) => {
 

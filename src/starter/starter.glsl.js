@@ -3,9 +3,9 @@ import { CONFIG } from '=>/base';
 
 import {
   THREECamera,
+  THREEGLSL,
   THREERenderer,
-  THREEScene,
-  THREEShader,
+  THREEScene
 } from '=>/engine/three';
 
 /**
@@ -26,7 +26,7 @@ export const onglslstarter = ( init = {} ) => {
     }
 
     const { RENDERING_ENGINE } = conf;
-    const shader = THREEShader( { RENDERING_ENGINE, config } );
+    const shader = THREEGLSL( { RENDERING_ENGINE, config } );
     const renderer = THREERenderer( { RENDERING_ENGINE, config: CONFIG.THREE.RENDERER.config } );
     const scene = THREEScene( { RENDERING_ENGINE } );
     const camera = THREECamera( { RENDERING_ENGINE, config: CONFIG.THREE.CAMERA.config } );

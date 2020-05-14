@@ -15,9 +15,13 @@ export const Modifier = Object.freeze( {
     const setProperty = ( { object3d, parameter } ) => key => {
 
       if ( is.array( parameter[ key ] ) ) {
+
         object3d[ key ].set( ...parameter[ key ] );
+
       } else {
+
         object3d[ key ] = parameter[ key ];
+
       }
 
     };

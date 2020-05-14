@@ -3,7 +3,7 @@ import { is } from 'u3s';
 import {
   Dom,
   Event,
-  Version
+  Semverlog
 } from '=>/core';
 
 import {
@@ -16,7 +16,7 @@ import {
  * @author monsieurbadia / https://monsieurbadia.com/
  */
 
-let version;
+let semver;
 
 export const onrender = ( TARGET, SOURCE ) => TARGET.renderer.assign( TARGET, SOURCE );
 
@@ -36,7 +36,7 @@ export const onstarter = ( init = {} ) => {
     };
 
     if ( canvas ) {
-      
+
       Dom.setCanvasSize( canvas );
 
     }
@@ -47,15 +47,15 @@ export const onstarter = ( init = {} ) => {
       return onglslstarter( conf );
     } else if ( conf.RENDERING_ENGINE.BoxBufferGeometry && !conf.glsl ) {
       return onthreestarter( conf );
+    } else {
+      return console.log( 'invalid rendering engine' );
     }
-
-    return console.log( 'invalid rendering engine' );
 
   };
 
   const value = _ => conf;
 
-  if ( version === undefined ) version = Version();
+  if ( semver === undefined ) semver = Semverlog();
 
   return Object.freeze( {
     use,

@@ -1,5 +1,5 @@
 import { is } from 'u3s';
-import { MATH, SHADER } from '=>/base';
+import { MATH, GLSL } from '=>/base';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com/
@@ -38,7 +38,7 @@ const compile = chunks => {
   const byShaderType = key => /Shader/i.test( key );
   const shaderParams = ( result, key ) => {
 
-    const shaderToInclude = SHADER.TYPE[ key ];
+    const shaderToInclude = GLSL.TYPE[ key ];
     const shaderCurrent = chunks[ key ];
 
     return {

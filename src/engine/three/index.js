@@ -1,5 +1,6 @@
 export { THREECamera } from './three.camera';
 export { THREEGeometry } from './three.geometry';
+export { THREEGLSL } from './three.glsl';
 export { THREEGroup } from './three.group';
 export { THREELight } from './three.light';
 export { THREELoader } from './three.loader';
@@ -7,4 +8,3 @@ export { THREEMaterial } from './three.material';
 export { THREEMesh } from './three.mesh';
 export { THREERenderer } from './three.renderer';
 export { THREEScene } from './three.scene';
-export { THREEShader } from './three.shader';

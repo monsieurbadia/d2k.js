@@ -11,7 +11,8 @@ export const onthreestarter = ( init = {} ) => {
 
   const composify = ( { config } = {} ) => {
 
-    const addObjectsToScene = objects3d => Object.keys( objects3d ).forEach( key => starter.scene[ objects3d[ key ].userData.currentScene ].add( objects3d[ key ] ) );
+    const makeAddingOne3dObjectToScene = key => starter.scene[ objects3d[ key ].userData.currentScene ].add( objects3d[ key ] );
+    const makeAdding3dObjectsToScene = objects3d => Object.keys( objects3d ).forEach( makeAddingOne3dObjectToScene );
 
     const starter = Creater.composeScene( {
       parameter: conf,
@@ -20,12 +21,15 @@ export const onthreestarter = ( init = {} ) => {
 
     const objects3d = merge(
       starter.light,
-      starter.mesh
+      {
+        ...starter.mesh,
+        ...starter.uicomponent
+      }
     );
 
     if ( is.exist( objects3d ) ) {
 
-      addObjectsToScene( objects3d );
+      makeAdding3dObjectsToScene( objects3d );
     
     };
 
@@ -54,6 +58,7 @@ export const onthreestarter = ( init = {} ) => {
     composify,
     value,
     withCamera: Creater.oncreate( { conf, name: 'camera', starter: onthreestarter } ),
+    withUIComponent: Creater.oncreate( { conf, name: 'uicomponent', starter: onthreestarter } ),
     withLight: Creater.oncreate( { conf, name: 'light', starter: onthreestarter } ),
     withLoader: Creater.oncreate( { conf, name: 'loader', starter: onthreestarter } ),
     withMesh: Creater.oncreate( { conf, name: 'mesh', starter: onthreestarter } ),
