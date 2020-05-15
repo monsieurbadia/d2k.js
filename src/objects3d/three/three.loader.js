@@ -2,7 +2,7 @@ import { is, strings } from 'u3s';
 import { CALLBACK, CONFIG } from '=>/base';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 const loadPromiseData = loader => async ( { name, url } ) => {

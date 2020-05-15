@@ -1,7 +1,7 @@
 import { CONFIG } from '=>/base';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const BABYLONController = ( {

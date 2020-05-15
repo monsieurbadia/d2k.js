@@ -3,7 +3,7 @@ import { CONFIG } from '=>/base';
 import { Chunk } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const THREEMaterial = ( {

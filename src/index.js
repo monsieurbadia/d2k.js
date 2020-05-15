@@ -1,7 +1,7 @@
 import { onrender, onstarter } from '=>/starter';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const d2k = _ =>

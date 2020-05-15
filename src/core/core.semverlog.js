@@ -1,7 +1,7 @@
 import { ua } from 'u3s';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const Semverlog = _ => {

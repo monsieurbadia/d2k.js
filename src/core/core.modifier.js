@@ -2,7 +2,7 @@ import { is } from 'u3s'
 import { OBJECTS3D } from '=>/base';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const Modifier = Object.freeze( {

@@ -1,5 +1,5 @@
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 const add = ( element, child ) => element.appendChild( child );

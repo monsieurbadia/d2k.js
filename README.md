@@ -6,7 +6,7 @@
 
 <p style="text-align: right">
   <a href="README.md">english</a> -
-  <a href="./documentation/documentation.readme.fr-FR.md">french</a>
+  <!-- <a href="./documentation/documentation.readme.fr-FR.md">french</a> -->
 </p>    
 
 [Examples](#examples) &mdash; [Getting Started](#getting-started) &mdash; [Syntax](#syntax) &mdash; [API](#api) &mdash; [Tips](#tips) &mdash; [3d objects](#3d-objects) &mdash; [Disclaimer](#disclaimer) &mdash; [License](#license) &mdash; [Support](#support) &mdash; [Contributors](#contributors)
@@ -67,6 +67,12 @@ before you start be sure that your project include `three.js` and / or `babylon.
 
 ```sh
 npm i d2k
+```
+
+**yarn**
+
+```sh
+yarn add d2k
 ```
 
 **cdn**

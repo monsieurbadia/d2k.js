@@ -2,7 +2,7 @@ import { is } from 'u3s';
 import { MATH, GLSL } from '=>/base';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 const createUniforms = ( { RENDERING_ENGINE, uniforms } = {} ) => {

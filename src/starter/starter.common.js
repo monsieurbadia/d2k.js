@@ -13,7 +13,7 @@ import {
 } from '=>/starter';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 let semver;

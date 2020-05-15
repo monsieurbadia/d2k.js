@@ -6,10 +6,10 @@ import {
   THREEGeometry,
   THREEGroup,
   THREEMaterial
-} from '=>/engine/three';
+} from '=>/objects3d/three';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const THREEMesh = ( {

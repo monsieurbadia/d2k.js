@@ -3,7 +3,7 @@ import { CONFIG, OBJECTS3D } from '=>/base';
 import { CachingSystem, Modifier } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const THREECamera = ( {

@@ -3,7 +3,7 @@ import { CALLBACK } from '=>/base';
 import { Dom, Timer } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 const onrender = ( {

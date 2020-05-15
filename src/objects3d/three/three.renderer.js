@@ -3,7 +3,7 @@ import { CALLBACK, CONFIG } from '=>/base';
 import { Dom, Renderer } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 const assign = ( TARGET, SOURCE ) => Renderer.onrender( TARGET, SOURCE );

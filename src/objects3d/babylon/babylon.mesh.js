@@ -3,7 +3,7 @@ import { CONFIG } from '=>/base';
 import { Event, Modifier } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const BABYLONMesh = ( {

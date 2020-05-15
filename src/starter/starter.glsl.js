@@ -6,10 +6,10 @@ import {
   THREEGLSL,
   THREERenderer,
   THREEScene
-} from '=>/engine/three';
+} from '=>/objects3d/three';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const onglslstarter = ( init = {} ) => {

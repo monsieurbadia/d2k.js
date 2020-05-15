@@ -3,7 +3,7 @@ import { CONFIG, GLSL } from '=>/base';
 import { Chunk, Event } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const THREEGLSL = ( {

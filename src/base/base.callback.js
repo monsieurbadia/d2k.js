@@ -1,5 +1,5 @@
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const CALLBACK = Object.freeze( {

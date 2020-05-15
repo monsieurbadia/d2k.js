@@ -2,7 +2,7 @@ import { strings } from 'u3s';
 import { CONFIG } from '=>/base';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const BABYLONCamera = ( {

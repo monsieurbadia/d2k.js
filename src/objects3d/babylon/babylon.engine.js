@@ -2,7 +2,7 @@ import { CALLBACK } from '=>/base'
 import { Renderer } from '=>/core';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 export const BABYLONEngine = ( { RENDERING_ENGINE } = {} ) => {

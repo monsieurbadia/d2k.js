@@ -7,7 +7,7 @@ import {
   BABYLONLight,
   BABYLONMesh,
   BABYLONScene
-} from '=>/engine/babylon';
+} from '=>/objects3d/babylon';
 
 import {
   THREECamera,
@@ -17,10 +17,10 @@ import {
   THREEMesh,
   THREERenderer,
   THREEScene
-} from '=>/engine/three';
+} from '=>/objects3d/three';
 
 /**
- * @author monsieurbadia / https://monsieurbadia.com/
+ * @author monsieurbadia / https://monsieurbadia.com
  */
 
 const OBJECTS3D = Object.freeze( {
