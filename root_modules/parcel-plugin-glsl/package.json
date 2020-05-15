@@ -1,9 +1,0 @@
-{
-  "name": "parcel-plugin-glsl",
-  "version": "1.0.0",
-  "description": "javascript micro-plugin that tell to parcel bundler how to deal with glsl files",
-  "main": "index.js",
-  "repository": "https://github.com/monsieurbadia/parcel-plugin-glsl.git",
-  "author": "monsieurbadia (https://monsieurbadia.com)",
-  "license": "MIT"
-}
