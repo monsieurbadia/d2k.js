@@ -1,4 +1,5 @@
 import { onrender, onstarter } from '=>/starter';
+import { Object3d } from '=>/objects3d/d2k';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
@@ -13,4 +14,4 @@ export const d2k = _ =>
       } )
   );
 
-module.exports =  d2k();
+module.exports = d2k();

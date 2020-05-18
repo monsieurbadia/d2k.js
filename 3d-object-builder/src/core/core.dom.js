@@ -25,9 +25,7 @@ const getContext = _ => {
 
   try {
 
-    gl = canvas.getContext( 'webgl2' );
-
-    if ( !gl ) gl = canvas.getContext( 'webgl' );
+    gl = canvas.getContext( 'webgl' ) || canvas.getContext( 'webgl2' );
 
   } catch ( error ) {
 

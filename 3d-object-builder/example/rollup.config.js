@@ -4,7 +4,7 @@ import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
-import config from 'sapper/config/rollup.js';
+import config from 'sapper/config/rollup';
 import pkg from './package.json';
 
 const mode = process.env.NODE_ENV;
