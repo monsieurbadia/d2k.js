@@ -2370,6 +2370,11 @@ getpass@^0.1.1:
   dependencies:
     assert-plus "^1.0.0"
 
+gl-matrix@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/gl-matrix/-/gl-matrix-3.3.0.tgz#232eef60b1c8b30a28cbbe75b2caf6c48fd6358b"
+  integrity sha512-COb7LDz+SXaHtl/h4LeaFcNdJdAQSDeVqjiIihSXNrkWObZLhDI4hIkZC11Aeqp7bcE72clzB0BnDXr2SmslRA==
+
 glob-parent@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/glob-parent/-/glob-parent-3.1.0.tgz#9e6af6299d8d3bd2bd40430832bd113df906c5ae"
@@ -3619,9 +3624,6 @@ parcel-bundler@^1.12.4:
     v8-compile-cache "^2.0.0"
     ws "^5.1.1"
 
-parcel-plugin-glsl@./root_modules/parcel-plugin-glsl:
-  version "1.0.0"
-
 parse-asn1@^5.0.0:
   version "5.1.5"
   resolved "https://registry.yarnpkg.com/parse-asn1/-/parse-asn1-5.1.5.tgz#003271343da58dc94cace494faef3d2147ecea0e"
@@ -4568,6 +4570,11 @@ shebang-regex@^1.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-1.0.0.tgz#da42f49740c0b42db2ca9728571cb190c98efea3"
   integrity sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=
 
+sig3@^0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/sig3/-/sig3-0.0.7.tgz#4ce081beb83ed0711d7fa3129128718ad7f62638"
+  integrity sha512-iBkRcHjvxp7862usvMk/vbEFaifxhNIah2MvXNDE1N1ckbbPm7nU7U9bBapMKb8HB6LYuUzZkHYhv1HK2k+okw==
+
 signal-exit@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
@@ -5050,10 +5057,10 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
   integrity sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
 
-u3s@^0.0.13:
-  version "0.0.13"
-  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.13.tgz#7044e560238431f46e6836b167281306b0d113c2"
-  integrity sha512-2gspwrhPxk+Nz8Spp2OSaKhzOedj4DaXnfDklvrGqlp8WKL1Xs6g905ENKX0GUpFjLyem/rDh7vyFTBl3Gm7Kw==
+u3s@^0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/u3s/-/u3s-0.0.16.tgz#a3c00e6419354be27dd1f3575b3a162740a453dd"
+  integrity sha512-cZ17t/pRkqkcPgOhmpjyuZvAva+Sh2wJyPom5EvZWPFUgozk4rSX4JE8ncKDrmhJQU/nwFgSmQkU6Lp1eHIiBw==
 
 uncss@^0.17.2:
   version "0.17.3"
