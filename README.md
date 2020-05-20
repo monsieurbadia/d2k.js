@@ -1,6 +1,6 @@
-# <img src="assets/images/d2k-logo-standard.png"/>
+# <img src="__assets/images/d2k-logo-standard.png"/>
 
-# <img src="assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] [![Twitter Account][twitter]][twitter-url]
+# <img src="__assets/images/d2k-logo-standard.svg"/> d2k.js [![NPM Package][npm]][npm-url] [![Build Size][build-size]][build-size-url] [![NPM Downloads][npm-downloads]][npmtrends-url] [![Dev Dependencies][dev-dependencies]][dev-dependencies-url] [![Twitter Account][twitter]][twitter-url]
 
 > *3d object builder from the Dark side of the Force*
 
@@ -11,18 +11,18 @@
 
 [Examples](#examples) &mdash; [Getting Started](#getting-started) &mdash; [Syntax](#syntax) &mdash; [API](#api) &mdash; [Tips](#tips) &mdash; [3d objects](#3d-objects) &mdash; [Disclaimer](#disclaimer) &mdash; [License](#license) &mdash; [Support](#support) &mdash; [Contributors](#contributors)
 
-## <img src="assets/icons/icon-problem.svg"/> Problems ##
+## <img src="__assets/icons/icon-problem.svg"/> Problems ##
 
 - `DRY` (do not repeat yourself)
 
-## <img src="assets/icons/icon-solution.svg"/> Solutions ##
+## <img src="__assets/icons/icon-solution.svg"/> Solutions ##
 
 - automate 3d object creating
 - automate scene composing
 - support `GLSL` x `THREE` x `BABYLON`
 - support `layerization` *(experimental experience)*
 
-## <a name="examples"></a> <img src="assets/icons/icon-examples.svg"/> Examples ##
+## <a name="examples"></a> <img src="__assets/icons/icon-examples.svg"/> Examples ##
 
 **codepen**   
 
@@ -59,7 +59,7 @@
   <img width="288" height="154" src="https://i.imgur.com/sNgZ3ha.gif" />
 </p>
 
-## <a name="getting-started"></a> <img src="assets/icons/icon-installation.svg"/> Getting Started ##    
+## <a name="getting-started"></a> <img src="__assets/icons/icon-installation.svg"/> Getting Started ##    
 
 before you start be sure that your project include `three.js` and / or `babylon.js`, once it's good for you, you can install **d2k** using your shell.    
 
@@ -94,7 +94,7 @@ import d2k from 'd2k';
 <script src="./src/d2k.js">
 ```
 
-## <a name="syntax"></a> <img src="assets/icons/icon-syntax.svg"/> Syntax ##
+## <a name="syntax"></a> <img src="__assets/icons/icon-syntax.svg"/> Syntax ##
 
 you are able to create 3d object from `THREE` or `BABYLON` following a unique syntax. code snippets below compare the syntaxes using by those librairies and **d2k**.
 
@@ -424,7 +424,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   } );
   ```
 
-## <a name="api"></a> <img src="assets/icons/icon-api.svg"/> API
+## <a name="api"></a> <img src="__assets/icons/icon-api.svg"/> API
 
 ### `.onstarter( init )`
 
@@ -833,7 +833,7 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
   starter.mesh.myMeshName.onresize( function ( size ) { /* ... */ } );
   ```
 
-## <a name="tips"></a> <img src="assets/icons/icon-tips.svg"/> Tips 
+## <a name="tips"></a> <img src="__assets/icons/icon-tips.svg"/> Tips 
 
 - ### create a scene - fetch
 
@@ -896,43 +896,43 @@ you are able to create 3d object from `THREE` or `BABYLON` following a unique sy
     } );
   ```
 
-## <a name="tips"></a> <img src="assets/icons/icon-primitive.svg"/> 3d objects
+## <a name="tips"></a> <img src="__assets/icons/icon-primitive.svg"/> 3d objects
 
 3d objects        | babylon.js                               | three.js                                 |
 ------------------|------------------------------------------|------------------------------------------|
-audio             | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
-camera            | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
-font              | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-check.svg"/> |
-geometry          | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-not.svg"/>   |
-group             | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-not.svg"/>   |
-light             | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
-loader            | <img src="assets/icons/icon-check.svg"/> | <img src="assets/icons/icon-not.svg"/>   |
-material          | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
-mesh              | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
-renderer          | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
-scene             | <img src="assets/icons/icon-not.svg"/>   | <img src="assets/icons/icon-not.svg"/>   |
+audio             | <img src="__assets/icons/icon-check.svg"/> | <img src="__assets/icons/icon-check.svg"/> |
+camera            | <img src="__assets/icons/icon-not.svg"/>   | <img src="__assets/icons/icon-not.svg"/>   |
+font              | <img src="__assets/icons/icon-check.svg"/> | <img src="__assets/icons/icon-check.svg"/> |
+geometry          | <img src="__assets/icons/icon-check.svg"/> | <img src="__assets/icons/icon-not.svg"/>   |
+group             | <img src="__assets/icons/icon-check.svg"/> | <img src="__assets/icons/icon-not.svg"/>   |
+light             | <img src="__assets/icons/icon-not.svg"/>   | <img src="__assets/icons/icon-not.svg"/>   |
+loader            | <img src="__assets/icons/icon-check.svg"/> | <img src="__assets/icons/icon-not.svg"/>   |
+material          | <img src="__assets/icons/icon-not.svg"/>   | <img src="__assets/icons/icon-not.svg"/>   |
+mesh              | <img src="__assets/icons/icon-not.svg"/>   | <img src="__assets/icons/icon-not.svg"/>   |
+renderer          | <img src="__assets/icons/icon-not.svg"/>   | <img src="__assets/icons/icon-not.svg"/>   |
+scene             | <img src="__assets/icons/icon-not.svg"/>   | <img src="__assets/icons/icon-not.svg"/>   |
 
-## <a name="disclaimer"></a> <img src="assets/icons/icon-disclaimer.svg"/> Disclaimer
+## <a name="disclaimer"></a> <img src="__assets/icons/icon-disclaimer.svg"/> Disclaimer
 
 I am not a developer, I am a normal guy who carries programming in his heart and wants to contribute to open source and help the 3d community. for now, this project is just an experimental version of an idea I had in mind. But my idea will evolve through this project so my design errors will disappear as long as i progress. changes will be coming for everyone's comfort, I hope. triforce! 
 
-## <img src="assets/icons/icon-reference.svg"/> References
+## <img src="__assets/icons/icon-reference.svg"/> References
 
 - [Mr.doob's Code Style™](https://github.com/mrdoob/three.js/wiki/Mr.doob's-Code-Style%E2%84%A2)
 - [BabylonJS](http://www.babylonjs.com)
 - [three.js](https://threejs.org)
 
-## <img src="assets/icons/icon-copyright.svg"/> License
+## <img src="__assets/icons/icon-copyright.svg"/> License
 
 Copyright ©️ 2020 monsieurbadia
 
 Released under the [MIT](https://github.com/monsieurbadia/glsl-reports/blob/master/LICENSE.md) license
 
-## <a name="support"></a> <img src="assets/icons/icon-supports.svg"/> Support
+## <a name="support"></a> <img src="__assets/icons/icon-supports.svg"/> Support
 
 *⭐️ this repository if this project helped you! you're a BAWS*    
 
-## <img src="assets/icons/icon-heart.svg"/> Contributors
+## <img src="__assets/icons/icon-heart.svg"/> Contributors
 
 logo - [@Mlle_Martinss](https://twitter.com/Mlle_Martinss)        
 icons - [@AdrienCoquet](https://twitter.com/AdrienCoquet)     
