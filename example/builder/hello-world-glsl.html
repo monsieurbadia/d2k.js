@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k.js - hello world (glsl)</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="viewRendering" touch-action="none"></canvas>
+    <script src="https://threejs.org/build/three.min.js"></script>
+    <script src="../../src/3d-object-builder/index.js"></script>
+    <script>
+
+      window.addEventListener( 'DOMContentLoaded', function () {
+
+        var GLGLstarter = d2k
+          .onstarter( { canvas: 'viewRendering', glsl: true } )
+          .use( THREE )
+          .withShader( {
+            name: 'myShaderName',
+            config : {
+              vertexShader: `
+              uniform vec2 resolution;
+              varying vec2 vUv;
+
+              void main () {
+
+                vUv = uv;
+                vUv = position.xy;
+                vUv.x *= resolution.x / resolution.y;
+
+                gl_Position = vec4(position.xy, 0.0, 1.0);
+
+              }
+              `,
+              fragmentShader: `
+                uniform vec2 resolution;
+                uniform float time;
+                varying vec2 vUv;
+
+                void main () {
+
+                  vec2 st = gl_FragCoord.xy / resolution.xy;
+                  vec3 col = 0.5 + 0.5*cos(time+vUv.xyx+vec3(0,2,4));
+                  gl_FragColor=vec4(col, 1.0);
+
+                }
+              `
+            }
+          } )
+          .value();
+
+        GLGLstarter.shader.myShaderName.onrender( function ( time ) {
+          GLGLstarter.shader.myShaderName.material.uniforms.time.value += time;
+        } );
+
+        GLGLstarter.shader.myShaderName.onresize( function ( size ) {
+
+          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.x = size.width;
+          GLGLstarter.shader.myShaderName.material.uniforms.resolution.value.y = size.height;
+
+        } );
+
+      }, false );
+
+    </script>
+  </body>
+</html>

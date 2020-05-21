@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>d2k.js - tips - fetch layerization (babylon.js x three.js)</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        width: 100%;
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        overflow: hidden;
+      }
+
+      canvas {
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        z-index: 100;
+        position: absolute;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="viewRendering" touch-action="none"></canvas>
+    <script src="https://cdn.babylonjs.com/babylon.js"></script>
+    <script src="https://threejs.org/build/three.js"></script>
+    <script src="../../src/3d-object-builder/index.js"></script>
+    <script>
+
+      window.addEventListener( 'DOMContentLoaded', function () {
+
+        var operations = [
+          fetch( 'http://localhost:5007/api/scene/babylon' ).then( function ( response ) { return response.json(); } ),
+          fetch( 'http://localhost:5007/api/scene/three' ).then( function ( response ) { return response.json(); } )
+        ];
+
+        Promise.all( operations ).then( function ( data ) {
+
+          var BABYLONscene = data[ 0 ].scene;
+          var THREEscene = data[ 1 ].scene;
+
+          // 1. create 3d objects from three.js
+          var THREEstarter = d2k
+            .onstarter( THREEscene.init )
+            .use( THREE )
+            .withCamera( THREEscene.camera )
+            .withRenderer( THREEscene.renderer )
+            .withMesh( THREEscene.mesh )
+            .withLight( THREEscene.light )
+            .withScene( THREEscene.scene )
+            .composify( THREEscene.composify )
+            .value();
+
+          // 2. create 3d objects from babylon.js
+          var BABYLONstarter = d2k
+            .onstarter( BABYLONscene.init )
+            .use( BABYLON )
+            .withEngine( BABYLONscene.engine )
+            .withScene( BABYLONscene.scene )
+            .withCamera( BABYLONscene.camera )
+            .withLight( BABYLONscene.light )
+            .withMesh( BABYLONscene.mesh )
+            .composify( BABYLONscene.scene )
+            .value();
+
+          // 3. layerization
+          d2k
+            .onrender( {
+              renderer: THREEstarter.renderer.myRendererName,
+              scene: THREEstarter.scene.mySceneName,
+              camera: THREEstarter.camera.myCameraName
+            }, {
+              engine: BABYLONstarter.engine.myEngineName,
+              scene: BABYLONstarter.scene.mySceneName
+            } );
+
+          // mesh from three.js
+          THREEstarter.mesh.myMeshName.onrender( function ( time ) {
+
+            THREEstarter.mesh.myMeshName.rotation.x -= time;
+            THREEstarter.mesh.myMeshName.rotation.y -= time;
+
+          } );
+
+          // mesh from babylon.js
+          BABYLONstarter.mesh.myMeshName.onrender( function ( time ) {
+
+            BABYLONstarter.mesh.myMeshName.rotation.x += time + 0.009;
+            BABYLONstarter.mesh.myMeshName.rotation.y += time + 0.009;
+
+          } );
+
+        } );
+
+      }, false );
+
+    </script>
+  </body>
+</html>
