@@ -1,15 +1,8 @@
-# logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# dependency directories
 node_modules/
-
 dist/
-
-# cache
 .cache/
-
-# test
 test/.report/

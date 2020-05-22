@@ -1,15 +1,15 @@
 {
   "name": "d2k",
   "version": "0.0.16",
-  "description": "rendering engine from the Dark side of the Force",
+  "description": "rendering engine from the Dark side of the Force - wip",
   "keywords": [
     "javascript",
     "3d",
     "rendering-engine",
     "3d-object-builder",
-    "game-development",
     "webgl",
     "webgl2",
+    "game-development",
     "canvas",
     "html5"
   ],
@@ -19,20 +19,18 @@
   "license": "MIT",
   "private": false,
   "alias": {
-    "=>": "./src/"
+    "=>": "./src"
   },
   "scripts": {
-    "dev:example": "concurrently \"node __functions/index.js\" \"parcel __example/index.html --global d2k\"",
-    "prod:build:3d-object-builder": "parcel build 3d-object-builder/src/index.js -d __build/ --out-file d2k-3d-object-builder.js --experimental-scope-hoisting --global d2k",
-    "prod:build:rendering-engine": "parcel build rendering-engine/src/index.js -d __build/ --out-file d2k-rendering-engine.js --experimental-scope-hoisting --global d2k"
+    "dev:example": "concurrently \"node functions/index.js\" \"parcel example/index.html --global d2k\"",
+    "prod:build:3d-object-builder": "parcel build src/3d-object-builder/index.js -d build/ --out-file d2k-3d-object-builder.js --experimental-scope-hoisting --global d2k",
+    "prod:build:rendering-engine": "parcel build src/rendering-engine/index.js -d build/ --out-file d2k-rendering-engine.js --experimental-scope-hoisting --global d2k"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/plugin-transform-runtime": "^7.9.0",
     "concurrently": "^5.2.0",
-    "gl-matrix": "^3.3.0",
     "parcel-bundler": "^1.12.4",
-    "sig3": "^0.0.7",
-    "u3s": "^0.0.16"
+    "u3s": "^0.0.18"
   }
 }
