@@ -1,5 +1,5 @@
-export let ARRAY_TYPE = (typeof Float32Array !== 'undefined') ? Float32Array : Array;
-export const EPSILON = 0.000001;
+let ARRAY_TYPE = (typeof Float32Array !== 'undefined') ? Float32Array : Array;
+const EPSILON = 0.000001;
 
 /**
  * Creates a new identity mat4

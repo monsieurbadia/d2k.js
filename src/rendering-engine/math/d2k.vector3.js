@@ -1,11 +1,19 @@
 import { pipe } from 'u3s';
 import * as λ from './λ/d2k.vec3';
 
-const createConstructor = config => instance => {
+/**
+ * @author monsieurbadia / https://monsieurbadia.com
+ */
 
-  instance.x = config.x;
-  instance.y = config.y;
-  instance.z = config.z;
+const createConstructor = ( {
+  x = 0,
+  y = 0,
+  z = 0
+} ) => instance => {
+
+  instance.x = x;
+  instance.y = y;
+  instance.z = z;
 
   return instance;
 
@@ -27,10 +35,10 @@ const createPrototype = instance => {
 
 const makeInitializing = instance => instance;
 
-export const Vector3 = function Vector3 ( x = 0, y = 0, z = 0 ) {
+export const Vector3 = function Vector3 ( config ) {
 
   return pipe(
-    createConstructor( { x, y, z } ),
+    createConstructor( config ),
     createPrototype,
     makeInitializing
   )( this );

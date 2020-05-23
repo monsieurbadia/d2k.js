@@ -38,10 +38,10 @@ const makeInitializing = instance => {
 
 };
 
-export const Color = function Color ( config ) {
+export const Color = function Color ( config = {} ) {
 
   return pipe(
-    createConstructor( { x, y, z } ),
+    createConstructor( config ),
     createPrototype,
     makeInitializing
   )( this );

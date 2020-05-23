@@ -58,6 +58,8 @@ const createPrototype = instance => {
 
     Object.assign( instance, { left, right, bottom, top, near, far } );
 
+    return instance;
+
   };
 
   return instance;

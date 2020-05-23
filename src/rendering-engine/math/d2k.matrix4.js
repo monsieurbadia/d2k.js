@@ -1,6 +1,10 @@
 import * as λ from './λ/d2k.mat4';
 import { pipe } from 'u3s';
 
+/**
+ * @author monsieurbadia / https://monsieurbadia.com
+ */
+
 const createConstructor = _ => instance => {
 
   instance.value = λ.create();

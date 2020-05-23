@@ -14,11 +14,11 @@ const createConstructor = instance => {
 
 const createPrototype = instance => instance;
 
-export const Geometry = function Geometry ( config ) {
+export const Geometry = function Geometry () {
 
   Object.assign( this,
     Archetype.extend(
-      createConstructor( config ),
+      createConstructor(),
       createPrototype
     )
   );

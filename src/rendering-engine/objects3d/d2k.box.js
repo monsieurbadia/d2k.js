@@ -79,15 +79,15 @@ const createConstructor = ( {
   instance.colors = [];
 
   const colors = [
-    [1.0, 0.0, 0.0, 1.0],
-    [1.0, 1.0, 0.0, 1.0],
-    [0.0, 1.0, 0.0, 1.0],
-    [1.0, 0.5, 0.5, 1.0],
-    [1.0, 0.0, 1.0, 1.0],
-    [0.0, 0.0, 1.0, 1.0] 
+    [ 1.0, 0.0, 0.0, 1.0 ],
+    [ 1.0, 1.0, 0.0, 1.0 ],
+    [ 0.0, 1.0, 0.0, 1.0 ],
+    [ 1.0, 0.5, 0.5, 1.0 ],
+    [ 1.0, 0.0, 1.0, 1.0 ],
+    [ 0.0, 0.0, 1.0, 1.0 ] 
   ];
 
-  for (let i in colors) {
+  for ( let i in colors ) {
     let color = colors[ i ];
     for ( let j = 0; j < 4; j++ ) {
       instance.colors = instance.colors.concat( color );
@@ -111,7 +111,7 @@ const createPrototype = instance => instance;
 
 export const Box = function Box ( config = {} ) {
 
-  Object.assign( this,
+  return Object.assign( this,
     Renderable.extend(
       createConstructor( config ),
       createPrototype
