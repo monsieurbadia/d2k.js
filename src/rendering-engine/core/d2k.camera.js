@@ -16,8 +16,8 @@ export class Camera extends Renderable {
   constructor ( {
     fov = 45 * Math.PI / 180,
     aspect = window.innerWidth / window.innerHeight,
-    near = 0.1,
-    far = 100,
+    near = 1e-2,
+    far = 1e4,
     type = '',
     left = 0,
     right = 0,

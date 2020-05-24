@@ -47,6 +47,7 @@ const vshaderSource = `
   varying vec3 pViewPosition;
 
   void main () {
+
     vec4 mvPosition = modelViewMatrix * position;
     vec4 mPosition = object3dMatrix * vec4( position.xyz, 1.0 );
     pViewPosition = cameraPosition - mPosition.xyz;
@@ -103,8 +104,6 @@ export class Renderer {
   onrender = ( { scene, camera } ) => {
     
     let object3d;
-
-    this.gl.clear( this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT );
 
 		this.gl.uniform3f( this.program.cameraPosition, camera.position.x, camera.position.y, camera.position.z );
 
@@ -216,8 +215,6 @@ export class Renderer {
       .setSize()
       .clear();
 
-    this.gl.viewport( 0, 0, this.canvas.width, this.canvas.height );
-
     return this;
 
   };
@@ -226,6 +223,8 @@ export class Renderer {
 
     this.canvas.width = width * this.dpr;
     this.canvas.height = height * this.dpr;
+
+    this.gl.viewport( 0, 0, this.canvas.width, this.canvas.height );
 
     Object.assign( this.canvas.style, {
       width: `${ width }px`,
