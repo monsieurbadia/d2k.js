@@ -4,12 +4,13 @@
 
 > *3d object builder from the Dark side of the Force*
 
-<p style="text-align: right">
-  <a href="README.md">english</a> -
-  <!-- <a href="./documentation/documentation.readme.fr-FR.md">french</a> -->
-</p>    
+<!-- <p style="text-align: right">
+  <a href="README.md">english</a>
+</p>     -->
 
 [Examples](#examples) &mdash; [Getting Started](#getting-started) &mdash; [Syntax](#syntax) &mdash; [API](#api) &mdash; [Tips](#tips) &mdash; [3d objects](#3d-objects) &mdash; [Disclaimer](#disclaimer) &mdash; [License](#license) &mdash; [Support](#support) &mdash; [Contributors](#contributors)
+
+*i am also working on a rendering engine (`src/rendering-engine`) but i am start from scratch so let me know if you want to contribute.*
 
 ## <img src="assets/icons/icon-problem.svg"/> Problems ##
 
