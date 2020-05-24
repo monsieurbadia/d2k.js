@@ -53,9 +53,12 @@
       window.addEventListener( 'resize', _ => renderer.resize(), false );
       window.requestAnimationFrame( render );
 
-      function render( now ) {
+      function render ( now ) {
 
         window.requestAnimationFrame( render );
+
+        camera.rotation.y += 0.001;
+        camera.rotation.z += 0.001;
 
         renderer.onrender( {
           scene,

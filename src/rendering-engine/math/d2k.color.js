@@ -1,49 +1,25 @@
-import { pipe } from 'u3s';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const createConstructor = color => instance => {
+export class Color {
 
-  instance.color = color;
+  constructor ( color ) {
 
-  return instance;
-
-};
-
-const createPrototype = instance => {
-
-  instance.parse = ( colorValue = instance.color ) => {
-
-    const hex = Math.floor( colorValue );
-
-		instance.r = ( hex >> 16 & 255 ) / 255;
-		instance.g = ( hex >> 8 & 255 ) / 255;
-    instance.b = ( hex & 255 ) / 255;
-
-    return instance;
+    this.parse( color );
 
   };
 
-  return instance;
+  parse = ( colorValue = this.color ) => {
 
-};
+    const hex = Math.floor( colorValue );
 
-const makeInitializing = instance => {
+		this.r = ( hex >> 16 & 255 ) / 255;
+		this.g = ( hex >> 8 & 255 ) / 255;
+    this.b = ( hex & 255 ) / 255;
 
-  instance.parse( instance.color );
+    return this;
 
-  return instance;
+  };
 
-};
-
-export const Color = function Color ( config = {} ) {
-
-  return pipe(
-    createConstructor( config ),
-    createPrototype,
-    makeInitializing
-  )( this );
-
-};
+}

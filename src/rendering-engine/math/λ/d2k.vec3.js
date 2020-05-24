@@ -1,3 +1,20 @@
+import { ARRAY_TYPE } from './d2k.base';
+
+/**
+ * Creates a new, empty vec3
+ *
+ * @returns {vec3} a new 3D vector
+ */
+export function create() {
+  let out = new ARRAY_TYPE(3);
+  if (ARRAY_TYPE != Float32Array) {
+    out[0] = 0;
+    out[1] = 0;
+    out[2] = 0;
+  }
+  return out;
+}
+
 /**
  * Calculates the length of a vec3
  *

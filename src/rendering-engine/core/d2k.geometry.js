@@ -1,26 +1,12 @@
-import { Archetype } from './d2k.archetype';
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const createConstructor = instance => {
+export class Geometry {
 
-  instance.attributes = {};
+  attributes = {};
+	faces = [];
+  uvs = [];
+  vertices = [];
 
-  return instance;
-
-};
-
-const createPrototype = instance => instance;
-
-export const Geometry = function Geometry () {
-
-  Object.assign( this,
-    Archetype.extend(
-      createConstructor(),
-      createPrototype
-    )
-  );
-
-};
+}

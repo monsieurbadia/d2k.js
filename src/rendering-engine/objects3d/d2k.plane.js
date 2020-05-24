@@ -5,45 +5,21 @@ import { Matrix4 } from '../math/d2k.matrix4';
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const createConstructor = ( {
-  name = ''
-} = {} ) => instance => {
+export class Plane extends Renderable {
+  
+  viewMatrix = new Matrix4();
+  indices = [ 0, 1, 2, 1, 2, 3 ];
+  vertices = [ -1.0, 1.0, 0.0, 1.0, 1.0, 0.0, -1.0,-1.0, 0.0, 1.0,-1.0, 0.0 ];
+  colors = [ 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0 ];
 
-  instance.name = name;
-  instance.viewMatrix = new Matrix4();
+  constructor ( {
+    name = ''
+  } = {} ) {
 
-  instance.indices = [
-    0, 1, 2,
-    1, 2, 3,
-  ];
+    super();
 
-  instance.positions = [ 
-    -1.0, 1.0, 0.0,
-     1.0, 1.0, 0.0, 
-    -1.0,-1.0, 0.0,
-     1.0,-1.0, 0.0 
-  ];
+    this.name = name;
 
-  instance.colors = [ 
-    1.0, 0.0, 0.0, 1.0,
-    0.0, 1.0, 0.0, 1.0,
-    0.0, 0.0, 1.0, 1.0,
-    1.0, 1.0, 0.0, 1.0 
-  ];
+  }
 
-  return instance;
-
-};
-
-const createPrototype = instance => instance;
-
-export const Plane = function Plane ( config = {} ) {
-
-  Object.assign( this,
-    Renderable.extend(
-      createConstructor( config ),
-      createPrototype
-    )
-  );
-
-};
+}

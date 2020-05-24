@@ -1,4 +1,4 @@
-import { Renderable } from '../core/d2k.renderable';
+import { Renderable } from './d2k.renderable';
 import { Matrix4 } from '../math/d2k.matrix4';
 import { Vector3 } from '../math/d2k.vector3';
 
@@ -6,80 +6,45 @@ import { Vector3 } from '../math/d2k.vector3';
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const createConstructor = ( {
-  fov = 45 * Math.PI / 180,
-  aspect = window.innerWidth / window.innerHeight,
-  near = 0.1,
-  far = 100,
-  type = ''
-} = {} ) => instance => {
+export class Camera extends Renderable {
 
-  instance.type = type;
-  instance.isCamera = true;
-  instance.fov = fov;
-  instance.aspect = aspect;
-  instance.near = near;
-  instance.far = far;
-  instance.projectionMatrix = new Matrix4();
-  instance.modelViewMatrix = new Matrix4();
-  instance.worldPosition = new Vector3();
+  isCamera = true;
+  projectionMatrix = new Matrix4();
+  modelViewMatrix = new Matrix4();
+  worldPosition = new Vector3();
 
-  return instance;
+  constructor ( {
+    fov = 45 * Math.PI / 180,
+    aspect = window.innerWidth / window.innerHeight,
+    near = 0.1,
+    far = 100,
+    type = '',
+    left = 0,
+    right = 0,
+    bottom = 0,
+    top = 0
+  } = {} ) {
 
-};
+    super();
 
-const createPrototype = instance => {
+    Object.assign( this, { fov, aspect, near, far, left, right, bottom, top, type } );
 
-  instance.perspective = ( { fov, aspect, near, far } = {} ) => {
+  }
 
-    instance.projectionMatrix.toPerspective( {
-      fov,
-      aspect,
-      near,
-      far
-    } );
+  perspective = ( { fov, aspect, near, far } = {} ) => {
 
-    Object.assign( instance, { fov, aspect, near, far } );
+    this.projectionMatrix.toPerspective( { fov, aspect, near, far } );
 
-    return instance;
+    return Object.assign( this, { fov, aspect, near, far } );
 
   };
 
-  instance.orthogonal = ( { left, right, bottom, top, near, far } = {} ) => {
+  orthogonal = ( { left, right, bottom, top, near, far } = {} ) => {
 
-    instance.projectionMatrix.toOrthogonal( {
-      left,
-      right,
-      bottom,
-      top,
-      near,
-      far
-    } );
+    this.projectionMatrix.toOrthogonal( { left, right, bottom, top, near, far } );
 
-    Object.assign( instance, { left, right, bottom, top, near, far } );
-
-    return instance;
+    return Object.assign( this, { left, right, bottom, top, near, far } );
 
   };
 
-  return instance;
-
-};
-
-const makeInitializing = instance => {
-
-  return instance;
-
-};
-
-export const Camera = function Camera ( config = {} ) {
-
-  Object.assign( this,
-    Renderable.extend(
-      createConstructor( config ),
-      createPrototype,
-      makeInitializing
-    )
-  );
-
-};
+}

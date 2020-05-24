@@ -1,50 +1,23 @@
 import { uniqid } from 'u3s';
-import { Archetype } from './d2k.archetype';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const createConstructor = _ => instance => {
+export class Scene {
 
-  instance.uuid = uniqid();
-  instance.name = '';
-  instance.type = 'scene';
-  instance.isScene = true;
-  instance.children = [];
+  children = [];
+  uuid = uniqid();
+  name = '';
+  type = 'scene';
+  isScene = true;
 
-  return instance;
+  add = object3d => {
 
-};
+    this.children.push( object3d );
 
-const createPrototype = instance => {
-
-  instance.add = object3d => {
-
-    instance.children.push( object3d );
-
-    return instance;
+    return this;
 
   };
 
-  return instance;
-
-};
-
-const makeInitializing = instance => {
-
-  return instance;
-
-};
-
-export const Scene = function Scene () {
-
-  Object.assign( this, 
-    Archetype.extend(
-      createConstructor(),
-      createPrototype,
-      makeInitializing
-    )
-  );
-
-};
+}

@@ -1,4 +1,3 @@
-export { Archetype } from './core/d2k.archetype';
 export { Box } from './objects3d/d2k.box';
 export { Camera } from './core/d2k.camera';
 export { Color } from './math/d2k.color';

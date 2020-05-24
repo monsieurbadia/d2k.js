@@ -1,29 +1,15 @@
-import { Archetype } from './d2k.archetype';
 import { Color } from '../math/d2k.color';
 
-const createConstructor = ( { color = 0x00fff0 } = {} ) => instance => {
+/**
+ * @author monsieurbadia / https://monsieurbadia.com
+ */
 
-  instance.color = new Color( color );
+export class Material {
 
-  return instance;
+  constructor ( { color = 0x00fff0 } = {} ) {
 
-};
+    this.color = new Color( color );
 
-const createPrototype = instance => {
+  }
 
-  return instance;
-
-};
-
-export const Material = function Material ( config ) {
-
-  return Object.assign( this,
-    Archetype.extend(
-      createConstructor( config ),
-      createPrototype
-    )
-  );
-
-};
-
-console.log( new Material() );
+}

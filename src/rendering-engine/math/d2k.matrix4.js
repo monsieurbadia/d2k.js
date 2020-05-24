@@ -1,115 +1,90 @@
 import * as λ from './λ/d2k.mat4';
-import { pipe } from 'u3s';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const createConstructor = _ => instance => {
+export class Matrix4 {
 
-  instance.value = λ.create();
+  value = λ.create();
 
-  return instance;
-
-};
-
-const createPrototype = ( instance ) => {
-
-  instance.identity = _ => {
+  identity = _ => {
     
-    λ.identity( instance.value );
+    λ.identity( this.value );
     
-    return instance;
+    return this;
 
   };
 
-  instance.inverse = a => {
+  inverse = a => {
 
-    λ.invert( instance.value, a );
+    λ.invert( this.value, a );
 
-    return instance;
-
-  };
-
-  instance.lookAt = ( eye, center, up ) => {
-
-    λ.lookAt( instance.value, eye, center, up );
-
-    return instance;
+    return this;
 
   };
 
-  instance.rotate = ( m = instance.value, v, axis ) => {
+  lookAt = ( eye, center, up ) => {
+
+    λ.lookAt( this.value, eye, center, up );
+
+    return this;
+
+  };
+
+  rotate = ( m, v, axis ) => {
   
-    λ.rotate( instance.value, m, v, axis );
+    λ.rotate( this.value, m, v, axis );
     
-    return instance;
+    return this;
   
   };
 
-  instance.scale = ( m = instance.value, v ) => {
+  scale = ( m, v ) => {
 
-    λ.scale( instance.value, m, typeof v === 'number' ? [ v, v, v ] : v );
+    λ.scale( this.value, m, typeof v === 'number' ? [ v, v, v ] : v );
 
-    return instance;
+    return this;
   };
 
-  instance.set = ( m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 ) => {
+  set = ( m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 ) => {
     
-    λ.set( instance.value, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 );
+    λ.set( this.value, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 );
 
-    return instance;
-
-  };
-
-  instance.toOrthogonal = ( { left, right, bottom, top, near, far } = {} ) => {
-
-    λ.ortho( instance.value, left, right, bottom, top, near, far );
-
-    return instance;
+    return this;
 
   };
 
-  instance.toPerspective = ( { fov, aspect, near, far } = {} ) => {
+  toOrthogonal = ( { left, right, bottom, top, near, far } = {} ) => {
 
-    λ.perspective( instance.value, fov, aspect, near, far );
+    λ.ortho( this.value, left, right, bottom, top, near, far );
 
-    return instance;
-
-  };
-
-  instance.transpose = a => {
-
-    λ.set( instance.value, a );
-
-    return instance;
+    return this;
 
   };
 
-  instance.translate = ( m = instance.value, v ) => {
+  toPerspective = ( { fov, aspect, near, far } = {} ) => {
 
-    λ.translate( instance.value, m, v );
+    λ.perspective( this.value, fov, aspect, near, far );
 
-    return instance;
+    return this;
 
   };
 
-  return instance;
+  transpose = a => {
 
-};
+    λ.set( this.value, a );
 
-const makeInitializing = instance => {
+    return this;
 
-  return instance;
+  };
 
-};
+  translate = ( m, v ) => {
 
-export const Matrix4 = function Matrix4 () {
+    λ.translate( this.value, m, v );
 
-  return pipe(
-    createConstructor(),
-    createPrototype,
-    makeInitializing
-  )( this );
+    return this;
 
-};
+  };
+
+}
