@@ -10,7 +10,7 @@ export class Color {
 
   };
 
-  parse = ( colorValue = this.color ) => {
+  parse ( colorValue = this.color ) {
 
     const hex = Math.floor( colorValue );
 

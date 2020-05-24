@@ -101,7 +101,7 @@ export class Renderer {
 
   }
 
-  onrender = ( { scene, camera } ) => {
+  onrender ( { scene, camera } ) {
     
     let object3d;
 
@@ -153,7 +153,7 @@ export class Renderer {
 
   };
 
-  clear = _ => {
+  clear () {
     
     this.gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
     this.gl.clearDepth( 1.0 );
@@ -163,7 +163,7 @@ export class Renderer {
   
   };
 
-  initGL = _ => {
+  initGL () {
 
     this.gl.enable( this.gl.DEPTH_TEST );
     this.gl.depthFunc( this.gl.LEQUAL ); 
@@ -172,7 +172,7 @@ export class Renderer {
 
   };
 
-  initProgram = _ => {
+  initProgram () {
 
     this.program = this.gl.createProgram();
 
@@ -209,7 +209,7 @@ export class Renderer {
 
   };
 
-  resize = _ => {
+  resize () {
 
     this
       .setSize()
@@ -219,7 +219,7 @@ export class Renderer {
 
   };
 
-  setSize = ( { width = window.innerWidth, height = window.innerHeight } = {} ) => {
+  setSize ( { width = window.innerWidth, height = window.innerHeight } = {} ) {
 
     this.canvas.width = width * this.dpr;
     this.canvas.height = height * this.dpr;
@@ -235,7 +235,7 @@ export class Renderer {
 
   };
 
-  setupMatrices = ( { camera } ) => {
+  setupMatrices ( { camera } ) {
 
     switch ( camera.type ) {
 

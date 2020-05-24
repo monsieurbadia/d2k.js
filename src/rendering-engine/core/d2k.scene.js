@@ -12,7 +12,7 @@ export class Scene {
   type = 'scene';
   isScene = true;
 
-  add = object3d => {
+  add ( object3d ) {
 
     this.children.push( object3d );
 

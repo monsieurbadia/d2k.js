@@ -28,7 +28,7 @@ export class Box extends Renderable {
 
   }
 
-  processColors = ( colors = this.baseColors ) => {
+  processColors ( colors = this.baseColors ) {
 
     for ( let i in colors ) {
       

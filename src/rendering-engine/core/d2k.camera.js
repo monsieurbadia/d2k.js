@@ -31,20 +31,21 @@ export class Camera extends Renderable {
 
   }
 
-  perspective = ( { fov, aspect, near, far } = {} ) => {
+  perspective ( { fov, aspect, near, far } = {} ) {
 
     this.projectionMatrix.toPerspective( { fov, aspect, near, far } );
 
     return Object.assign( this, { fov, aspect, near, far } );
 
-  };
+  }
 
-  orthogonal = ( { left, right, bottom, top, near, far } = {} ) => {
+  orthogonal ( { left, right, bottom, top, near, far } = {} ) {
 
     this.projectionMatrix.toOrthogonal( { left, right, bottom, top, near, far } );
 
     return Object.assign( this, { left, right, bottom, top, near, far } );
 
-  };
+  }
 
 }
+console.log( Camera )

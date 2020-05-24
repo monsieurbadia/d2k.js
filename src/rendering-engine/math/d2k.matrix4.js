@@ -8,7 +8,7 @@ export class Matrix4 {
 
   value = λ.create();
 
-  identity = _ => {
+  identity () {
     
     λ.identity( this.value );
     
@@ -16,7 +16,7 @@ export class Matrix4 {
 
   };
 
-  inverse = a => {
+  inverse ( a ) {
 
     λ.invert( this.value, a );
 
@@ -24,7 +24,7 @@ export class Matrix4 {
 
   };
 
-  lookAt = ( eye, center, up ) => {
+  lookAt ( eye, center, up ) {
 
     λ.lookAt( this.value, eye, center, up );
 
@@ -32,7 +32,7 @@ export class Matrix4 {
 
   };
 
-  rotate = ( m, v, axis ) => {
+  rotate ( m, v, axis ) {
   
     λ.rotate( this.value, m, v, axis );
     
@@ -40,14 +40,14 @@ export class Matrix4 {
   
   };
 
-  scale = ( m, v ) => {
+  scale ( m, v ) {
 
     λ.scale( this.value, m, typeof v === 'number' ? [ v, v, v ] : v );
 
     return this;
   };
 
-  set = ( m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 ) => {
+  set ( m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 ) {
     
     λ.set( this.value, m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 );
 
@@ -55,7 +55,7 @@ export class Matrix4 {
 
   };
 
-  toOrthogonal = ( { left, right, bottom, top, near, far } = {} ) => {
+  toOrthogonal ( { left, right, bottom, top, near, far } = {} ) {
 
     λ.ortho( this.value, left, right, bottom, top, near, far );
 
@@ -63,7 +63,7 @@ export class Matrix4 {
 
   };
 
-  toPerspective = ( { fov, aspect, near, far } = {} ) => {
+  toPerspective ( { fov, aspect, near, far } = {} ) {
 
     λ.perspective( this.value, fov, aspect, near, far );
 
@@ -71,7 +71,7 @@ export class Matrix4 {
 
   };
 
-  transpose = a => {
+  transpose ( a ) {
 
     λ.set( this.value, a );
 
@@ -79,7 +79,7 @@ export class Matrix4 {
 
   };
 
-  translate = ( m, v ) => {
+  translate ( m, v ) {
 
     λ.translate( this.value, m, v );
 
