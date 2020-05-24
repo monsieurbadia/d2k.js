@@ -16,19 +16,6 @@ export function create() {
 }
 
 /**
- * Calculates the length of a vec3
- *
- * @param {ReadonlyVec3} a vector to calculate length of
- * @returns {Number} length of a
- */
-export function length(a) {
-  let x = a[0];
-  let y = a[1];
-  let z = a[2];
-  return Math.hypot(x, y, z);
-}
-
-/**
  * Copy the values from one vec3 to another
  *
  * @param {vec3} out the receiving vector
@@ -43,15 +30,20 @@ export function copy(out, a) {
 }
 
 /**
- * Set the components of a vec3 to the given values
+ * Calculates the length of a vec3
  *
- * @param {vec3} out the receiving vector
- * @param {Number} x X component
- * @param {Number} y Y component
- * @param {Number} z Z component
- * @returns {vec3} out
+ * @param {ReadonlyVec3} a vector to calculate length of
+ * @returns {Number} length of a
  */
-export function set(out, x, y, z) {
+export function length(a) {
+  let x = a[0];
+  let y = a[1];
+  let z = a[2];
+  return Math.hypot(x, y, z);
+}
+
+export function fromValues(x, y, z) {
+  let out = new ARRAY_TYPE(3);
   out[0] = x;
   out[1] = y;
   out[2] = z;
@@ -72,4 +64,21 @@ export function multiply(out, a, b) {
   out[2] = a[2] * b[2];
   return out;
 }
+
+/**
+ * Set the components of a vec3 to the given values
+ *
+ * @param {vec3} out the receiving vector
+ * @param {Number} x X component
+ * @param {Number} y Y component
+ * @param {Number} z Z component
+ * @returns {vec3} out
+ */
+export function set(out, x, y, z) {
+  out[0] = x;
+  out[1] = y;
+  out[2] = z;
+  return out;
+}
+
 

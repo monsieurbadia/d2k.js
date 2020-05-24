@@ -36,7 +36,7 @@
     <script src="../../src/rendering-engine/index.js"></script>
     <script>
 
-      const { Box, Camera, Renderer, Scene } = d2k;
+      const { Triangle, Camera, Renderer, Scene } = d2k;
 
       const scene = new Scene();
 
@@ -45,9 +45,9 @@
 
       const renderer = new Renderer();
       
-      const box = new Box();
+      const triangle = new Triangle();
 
-      scene.add( box );
+      scene.add( triangle );
 
       document.body.appendChild( renderer.canvas );
       window.addEventListener( 'resize', _ => renderer.resize(), false );
@@ -67,7 +67,7 @@
       
       }
 
-      console.log( { box, camera, renderer, scene } );
+      console.log( { triangle, camera, renderer, scene } );
 
     </script>
   </body>

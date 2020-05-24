@@ -7,7 +7,6 @@ import { Renderable } from '../core/d2k.renderable';
 
 export class Box extends Renderable {
 
-  colors = [];
   baseColors = [
     [ 1.0, 0.0, 0.0, 1.0 ],
     [ 1.0, 1.0, 0.0, 1.0 ],
@@ -16,8 +15,10 @@ export class Box extends Renderable {
     [ 1.0, 0.0, 1.0, 1.0 ],
     [ 0.0, 0.0, 1.0, 1.0 ] 
   ];
-  name = name;
+
+  colors = [];
   matrix = new Matrix4();
+  name = '';
 
   constructor () {
     
@@ -30,10 +31,15 @@ export class Box extends Renderable {
   processColors = ( colors = this.baseColors ) => {
 
     for ( let i in colors ) {
+      
       let color = colors[ i ];
+      
       for ( let j = 0; j < 4; j++ ) {
+      
         this.colors = this.colors.concat( color );
+      
       }
+    
     }
 
     return this.colors;

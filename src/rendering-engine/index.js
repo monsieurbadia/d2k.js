@@ -6,3 +6,4 @@ export { Plane } from './objects3d/d2k.plane';
 export { Renderer } from './core/d2k.renderer';
 export { Renderable } from './core/d2k.renderable';
 export { Scene } from './core/d2k.scene';
+export { Triangle } from './objects3d/d2k.triangle';

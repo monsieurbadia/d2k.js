@@ -6,18 +6,36 @@ import * as λ from './λ/d2k.vec3';
 
 export class Vector3 {
 
-  x = null;
-  y = null;
-  z = null;
+  x = 0;
+  y = 0;
+  z = 0;
 
-  value = λ.create();
+  get value () { return [ this.x, this.y, this.z ]; }
+  
+  set value ( value ) { 
 
-  set = ( x, y, z ) => {
+    this.x = value[ 0 ]
+    this.y = value[ 1 ] 
+    this.z = value[ 2 ]
 
-    λ.set( this.value, x, y, z );
+    return this;
+
+  }
+
+  constructor ( x = 0, y = x, z = x ) {
+
+    this.value = λ.fromValues( x, y, z );
+
+  }
+
+  set ( x = 0, y = x, z = x ) {
+
+    this.value = λ.set( this.value, x, y, z );
 
     return this;
 
   }
 
 }
+
+console.log( new Vector3() );
