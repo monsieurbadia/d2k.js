@@ -48,4 +48,3 @@ export class Camera extends Renderable {
   }
 
 }
-console.log( Camera )

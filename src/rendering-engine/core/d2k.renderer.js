@@ -1,5 +1,8 @@
 import { fail } from 'u3s';
 import { Matrix4 } from '../math/d2k.matrix4';
+import fshaderSource from '../glsl/renderer.fragment.glsl';
+import vshaderSource from '../glsl/renderer.vertex.glsl';
+
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
@@ -29,56 +32,15 @@ const getShader = ( { gl, type, codeSource } ) => {
 
 };
 
-const vshaderSource = `
-  // # λ <• /* TODO: including */ •>
-  
-  attribute vec4 position;
-  attribute vec4 color;
-  attribute vec2 texture2d;
-
-  uniform vec2 resolution;
-  uniform mat4 object3dMatrix;
-  uniform mat4 modelViewMatrix;
-  uniform mat4 projectionMatrix;
-  uniform vec3 cameraPosition;
-
-  varying vec4 vColor;
-  varying vec2 vTexture;
-  varying vec3 pViewPosition;
-
-  void main () {
-
-    vec4 mvPosition = modelViewMatrix * position;
-    vec4 mPosition = object3dMatrix * vec4( position.xyz, 1.0 );
-    pViewPosition = cameraPosition - mPosition.xyz;
-
-    vColor = color;
-
-    gl_Position = projectionMatrix * mvPosition;
-  }
-`;
-
-const fshaderSource = `
-  #ifdef GL_ES
-  precision highp float;
-  #endif
-
-  varying vec4 vColor;
-  varying vec3 pViewPosition;
-
-  void main () {
-
-    gl_FragColor = vColor;
-  }
-`;
-
-
 export class Renderer {
 
   gl = null;
+  radian = 0;
   program = null;
   modelViewMatrix = new Matrix4();
-  radian = 0;
+  failIfMajorPerformanceCaveat = true;
+  powerPreference = 'default';
+  preserveDrawingBuffer = false;
 
   constructor ( {
     alpha = false,
@@ -87,12 +49,18 @@ export class Renderer {
     canvas = document.createElement( 'canvas' ),
     width = 200,
     height = 200,
-    dpr = window.devicePixelRatio
+    dpr = window.devicePixelRatio,
   } = {} ) {
 
     Object.assign( this, { alpha, antialias, autoClear, canvas, width, height, dpr } );
 
-    this.gl = canvas.getContext( 'webgl', { alpha, antialias } );
+    this.gl = canvas.getContext( 'webgl', {
+      alpha,
+      antialias,
+      failIfMajorPerformanceCaveat: this.failIfMajorPerformanceCaveat,
+      powerPreference: this.powerPreference,
+      preserveDrawingBuffer: this.preserveDrawingBuffer
+    } );
 
     this
       .initProgram()
@@ -125,7 +93,7 @@ export class Renderer {
         this.gl.bindBuffer( this.gl.ELEMENT_ARRAY_BUFFER, object3d.__indexBuffer );
         this.gl.bufferData( this.gl.ELEMENT_ARRAY_BUFFER, new Uint16Array( object3d.indices ), this.gl.STATIC_DRAW );
 
-        this.setupMatrices( { object3d: null, camera } );
+        this.setupMatrices( { object3d, camera } );
   
         this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__positionBuffer );
         this.gl.vertexAttribPointer( this.program.position, 3, this.gl.FLOAT, false, 0, 0 );
@@ -141,11 +109,11 @@ export class Renderer {
         this.gl.uniformMatrix4fv( this.program.modelViewMatrix, false, camera.modelViewMatrix.value );
         this.gl.uniformMatrix4fv( this.program.object3dMatrix, false, object3d.matrix.value );
 
+        this.gl.drawElements( this.gl.TRIANGLES, object3d.indices.length, this.gl.UNSIGNED_SHORT, 0 );
+
       }
 
     }
-
-    this.gl.drawElements( this.gl.TRIANGLES, object3d.indices.length, this.gl.UNSIGNED_SHORT, 0 );
 
     this.radian += Math.PI / 180;
 
@@ -235,7 +203,7 @@ export class Renderer {
 
   };
 
-  setupMatrices ( { camera } ) {
+  setupMatrices ( { object3d, camera } ) {
 
     switch ( camera.type ) {
 
@@ -271,6 +239,9 @@ export class Renderer {
     camera.modelViewMatrix.identity();
     camera.modelViewMatrix.translate( camera.modelViewMatrix.value, [ camera.position.x, camera.position.y, camera.position.z ] );
     camera.modelViewMatrix.rotate( camera.modelViewMatrix.value, this.radian, [ camera.rotation.x, camera.rotation.y, camera.rotation.z ] );
+
+    object3d.matrix.identity();
+    object3d.matrix.translate( object3d.matrix.value, [ object3d.position.x, object3d.position.y, object3d.position.z ] );
 
     return this;
 

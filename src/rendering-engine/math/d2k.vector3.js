@@ -14,9 +14,9 @@ export class Vector3 {
   
   set value ( value ) { 
 
-    this.x = value[ 0 ]
-    this.y = value[ 1 ] 
-    this.z = value[ 2 ]
+    this.x = value[ 0 ];
+    this.y = value[ 1 ]; 
+    this.z = value[ 2 ];
 
     return this;
 
@@ -37,5 +37,3 @@ export class Vector3 {
   }
 
 }
-
-console.log( new Vector3() );
