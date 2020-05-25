@@ -1,5 +1,6 @@
 import { Matrix4 } from '../math/d2k.matrix4';
 import { Renderable } from '../core/d2k.renderable';
+import { Vector4 } from '../math/d2k.vector4';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
@@ -7,23 +8,23 @@ import { Renderable } from '../core/d2k.renderable';
 
 export class Box extends Renderable {
 
-  baseColors = [
-    [ 1.0, 0.0, 0.0, 1.0 ],
-    [ 1.0, 1.0, 0.0, 1.0 ],
-    [ 0.0, 1.0, 0.0, 1.0 ],
-    [ 1.0, 0.5, 0.5, 1.0 ],
-    [ 1.0, 0.0, 1.0, 1.0 ],
-    [ 0.0, 0.0, 1.0, 1.0 ] 
-  ];
-
   colors = [];
   matrix = new Matrix4();
   name = '';
 
-  constructor () {
-    
-    super();
+  constructor ( { color = [ 1.0, 0.5, 0.5, 0.0 ] } = {} ) {
 
+    super();
+    
+    this.baseColors = [
+      new Vector4( ...color ).value,
+      new Vector4( ...color ).value,
+      new Vector4( ...color ).value,
+      new Vector4( ...color ).value,
+      new Vector4( ...color ).value,
+      new Vector4( ...color ).value
+    ];
+    
     this.colors = this.processColors();
 
   }
