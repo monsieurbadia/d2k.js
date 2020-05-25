@@ -61,8 +61,8 @@
         
         window.requestAnimationFrame( render );
         
-        camera.rotation.y += 0.001;
-        camera.rotation.z += 0.001;
+        camera.rotation.y += Math.PI / 180;
+        camera.rotation.z += Math.PI / 180;
 
         renderer.onrender( {
           scene,

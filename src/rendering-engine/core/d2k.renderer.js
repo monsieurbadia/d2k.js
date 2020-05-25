@@ -3,7 +3,6 @@ import { Matrix4 } from '../math/d2k.matrix4';
 import fshaderSource from '../glsl/renderer.fragment.glsl';
 import vshaderSource from '../glsl/renderer.vertex.glsl';
 
-
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
@@ -122,7 +121,7 @@ export class Renderer {
   };
 
   clear () {
-    
+
     this.gl.clearColor( 0.0, 0.0, 0.0, 1.0 );
     this.gl.clearDepth( 1.0 );
     this.gl.clear( this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT );
@@ -169,10 +168,6 @@ export class Renderer {
     this.program.color = this.gl.getAttribLocation( this.program, 'color' );
     this.gl.enableVertexAttribArray( this.program.color );
 
-		this.program.viewMatrixArray = new Float32Array( 16 );
-		this.program.modelViewMatrixArray = new Float32Array( 16 );
-    this.program.projectionMatrixArray = new Float32Array( 16 );
-
     return this;
 
   };
@@ -192,7 +187,7 @@ export class Renderer {
     this.canvas.width = width * this.dpr;
     this.canvas.height = height * this.dpr;
 
-    this.gl.viewport( 0, 0, this.canvas.width, this.canvas.height );
+    this.setViewportSize();
 
     Object.assign( this.canvas.style, {
       width: `${ width }px`,
@@ -245,6 +240,14 @@ export class Renderer {
 
     return this;
 
-  };
+  }
+
+  setViewportSize ( width = this.canvas.width, height = this.canvas.height ) {
+
+    this.gl.viewport( 0, 0, width, height );
+
+    return this;
+
+  }
 
 }
