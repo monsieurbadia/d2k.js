@@ -16,7 +16,7 @@ export class Matrix4 {
 
   };
 
-  inverse ( a ) {
+  invert ( a ) {
 
     λ.invert( this.value, a );
 

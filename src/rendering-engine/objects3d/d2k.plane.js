@@ -8,10 +8,11 @@ import { Vector3 } from '../math/d2k.vector3';
 
 export class Plane extends Renderable {
   
-  vertices = [];
-  viewMatrix = new Matrix4();
-  indices = [ 0, 1, 2, 1, 2, 3 ];
   colors = [ 1.0, 0.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0 ];
+  indices = [ 0, 1, 2, 1, 2, 3 ];
+  normals = [];
+  viewMatrix = new Matrix4();
+  vertices = [];
 
   constructor ( {
     name = '',

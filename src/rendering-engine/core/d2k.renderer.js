@@ -1,5 +1,5 @@
 import { fail } from 'u3s';
-import { Matrix4 } from '../math/d2k.matrix4';
+// import { Matrix4 } from '../math/d2k.matrix4';
 import fshaderSource from '../glsl/renderer.fragment.glsl';
 import vshaderSource from '../glsl/renderer.vertex.glsl';
 
@@ -36,7 +36,6 @@ export class Renderer {
   gl = null;
   radian = 0;
   program = null;
-  modelViewMatrix = new Matrix4();
   failIfMajorPerformanceCaveat = true;
   powerPreference = 'default';
   preserveDrawingBuffer = false;
@@ -72,14 +71,12 @@ export class Renderer {
     
     let object3d;
 
-		this.gl.uniform3f( this.program.cameraPosition, camera.position.x, camera.position.y, camera.position.z );
-
     for ( let i = 0; i < scene.children.length; i++ ) {
   
       object3d = scene.children[ i ];
 
       if ( object3d ) {
-
+        
         if ( !object3d.__positionBuffer ) object3d.__positionBuffer = this.gl.createBuffer();
         this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__positionBuffer );
         this.gl.bufferData( this.gl.ARRAY_BUFFER, new Float32Array( object3d.vertices ), this.gl.STATIC_DRAW );
@@ -87,10 +84,20 @@ export class Renderer {
         if ( !object3d.__colorBuffer ) object3d.__colorBuffer = this.gl.createBuffer();
         this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__colorBuffer );
         this.gl.bufferData( this.gl.ARRAY_BUFFER, new Float32Array( object3d.colors ), this.gl.STATIC_DRAW );
-  
+
+        if ( object3d.normals.length > 0 ) {
+          
+          if ( !object3d.__normalBuffer ) object3d.__normalBuffer = this.gl.createBuffer();
+          this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__normalBuffer );
+          this.gl.bufferData( this.gl.ARRAY_BUFFER, new Float32Array( object3d.normals ), this.gl.STATIC_DRAW );
+
+        }
+
         if ( !object3d.__indexBuffer ) object3d.__indexBuffer = this.gl.createBuffer();
         this.gl.bindBuffer( this.gl.ELEMENT_ARRAY_BUFFER, object3d.__indexBuffer );
         this.gl.bufferData( this.gl.ELEMENT_ARRAY_BUFFER, new Uint16Array( object3d.indices ), this.gl.STATIC_DRAW );
+
+        this.gl.bindBuffer( this.gl.ELEMENT_ARRAY_BUFFER, object3d.__indexBuffer );
 
         this.setupMatrices( { object3d, camera } );
   
@@ -101,11 +108,18 @@ export class Renderer {
         this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__colorBuffer );
         this.gl.vertexAttribPointer( this.program.color, 4, this.gl.FLOAT, false, 0, 0 );
         this.gl.enableVertexAttribArray( this.program.color );
-      
-        this.gl.bindBuffer( this.gl.ELEMENT_ARRAY_BUFFER, object3d.__indexBuffer );
         
-        this.gl.uniformMatrix4fv( this.program.projectionMatrix, false, camera.projectionMatrix.value );
+        if ( object3d.normals.length > 0 ) {
+
+          this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__normalBuffer );
+          this.gl.vertexAttribPointer( this.program.normal, 3, this.gl.FLOAT, false, 0, 0 );
+          this.gl.enableVertexAttribArray( this.program.normal );
+
+        }
+
         this.gl.uniformMatrix4fv( this.program.modelViewMatrix, false, camera.modelViewMatrix.value );
+        this.gl.uniformMatrix4fv( this.program.normalMatrix, false, camera.normalMatrix.value );
+        this.gl.uniformMatrix4fv( this.program.projectionMatrix, false, camera.projectionMatrix.value );
         this.gl.uniformMatrix4fv( this.program.object3dMatrix, false, object3d.matrix.value );
 
         this.gl.drawElements( this.gl.TRIANGLES, object3d.indices.length, this.gl.UNSIGNED_SHORT, 0 );
@@ -155,18 +169,20 @@ export class Renderer {
 
     this.gl.useProgram( this.program );
 
-		this.program.modelViewMatrix = this.gl.getUniformLocation( this.program, 'modelViewMatrix' );
-    this.program.projectionMatrix = this.gl.getUniformLocation( this.program, 'projectionMatrix' );
-    this.program.normalMatrix = this.gl.getUniformLocation( this.program, 'normalMatrix' );
-    this.program.object3dMatrix = this.gl.getUniformLocation( this.program, 'object3dMatrix' );
-		this.program.cameraPosition = this.gl.getUniformLocation( this.program, 'cameraPosition' );
-    this.program.resolution = this.gl.getUniformLocation( this.program, 'resolution' );
+    this.program.color = this.gl.getAttribLocation( this.program, 'color' );
+    this.gl.enableVertexAttribArray( this.program.color );
+
+    this.program.normal = this.gl.getAttribLocation( this.program, 'normal' );
+    // this.gl.enableVertexAttribArray( this.program.normal );
 
     this.program.position = this.gl.getAttribLocation( this.program, 'position' );
     this.gl.enableVertexAttribArray( this.program.position );
 
-    this.program.color = this.gl.getAttribLocation( this.program, 'color' );
-    this.gl.enableVertexAttribArray( this.program.color );
+		this.program.modelViewMatrix = this.gl.getUniformLocation( this.program, 'modelViewMatrix' );
+		this.program.normalMatrix = this.gl.getUniformLocation( this.program, 'normalMatrix' );
+    this.program.object3dMatrix = this.gl.getUniformLocation( this.program, 'object3dMatrix' );
+    this.program.projectionMatrix = this.gl.getUniformLocation( this.program, 'projectionMatrix' );
+    this.program.uSampler = this.gl.getUniformLocation( this.program, 'uSampler' );
 
     return this;
 
@@ -198,7 +214,7 @@ export class Renderer {
 
   };
 
-  setupMatrices ( { object3d, camera } ) {
+  setupMatrices ( { object3d, camera } = {} ) {
 
     switch ( camera.type ) {
 

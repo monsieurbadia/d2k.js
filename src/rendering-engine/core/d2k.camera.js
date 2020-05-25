@@ -1,6 +1,5 @@
 import { Renderable } from './d2k.renderable';
 import { Matrix4 } from '../math/d2k.matrix4';
-import { Vector3 } from '../math/d2k.vector3';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
@@ -9,9 +8,9 @@ import { Vector3 } from '../math/d2k.vector3';
 export class Camera extends Renderable {
 
   isCamera = true;
-  projectionMatrix = new Matrix4();
   modelViewMatrix = new Matrix4();
-  worldPosition = new Vector3();
+  normalMatrix = new Matrix4();
+  projectionMatrix = new Matrix4();
 
   constructor ( {
     fov = 45 * Math.PI / 180,
