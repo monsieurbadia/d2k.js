@@ -1,6 +1,5 @@
 import { Matrix4 } from '../math/d2k.matrix4';
 import { Renderable } from '../core/d2k.renderable';
-import { Vector4 } from '../math/d2k.vector4';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
@@ -8,6 +7,7 @@ import { Vector4 } from '../math/d2k.vector4';
 
 export class Box extends Renderable {
 
+  baseColors = [];
   colors = [];
   matrix = new Matrix4();
   name = '';
@@ -16,15 +16,12 @@ export class Box extends Renderable {
 
     super();
     
-    this.baseColors = [
-      new Vector4( ...color ).value,
-      new Vector4( ...color ).value,
-      new Vector4( ...color ).value,
-      new Vector4( ...color ).value,
-      new Vector4( ...color ).value,
-      new Vector4( ...color ).value
-    ];
-    
+    for ( let i = 1; i <= 6; i++ ) {
+
+      this.baseColors.push( color );
+
+    }
+
     this.colors = this.processColors();
 
   }
@@ -36,7 +33,7 @@ export class Box extends Renderable {
       let color = colors[ i ];
       
       for ( let j = 0; j < 4; j++ ) {
-      
+
         this.colors = this.colors.concat( color );
       
       }

@@ -1,35 +1,10 @@
 import { fail } from 'u3s';
-// import { Matrix4 } from '../math/d2k.matrix4';
 import fshaderSource from '../glsl/renderer.fragment.glsl';
 import vshaderSource from '../glsl/renderer.vertex.glsl';
 
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
-
-const getShader = ( { gl, type, codeSource } ) => {
-
-  const shader = {
-    fragment: gl.createShader( gl.FRAGMENT_SHADER ),
-    vertex: gl.createShader( gl.VERTEX_SHADER )
-  };
-
-  const currentShader = shader[ type ];
-
-  gl.shaderSource( currentShader, codeSource );
-  gl.compileShader( currentShader );
-
-  if ( !gl.getShaderParameter( currentShader, gl.COMPILE_STATUS ) ) {
-
-    console.log( gl.getShaderInfoLog( currentShader ) );
-
-    return null;
-
-  }
-
-  return currentShader;
-
-};
 
 export class Renderer {
 
@@ -47,12 +22,12 @@ export class Renderer {
     canvas = document.createElement( 'canvas' ),
     width = 200,
     height = 200,
-    dpr = window.devicePixelRatio,
+    dpr = window.devicePixelRatio
   } = {} ) {
 
     Object.assign( this, { alpha, antialias, autoClear, canvas, width, height, dpr } );
 
-    this.gl = canvas.getContext( 'webgl', {
+    this.gl = canvas.getContext( 'experimental-webgl', {
       alpha,
       antialias,
       failIfMajorPerformanceCaveat: this.failIfMajorPerformanceCaveat,
@@ -123,6 +98,7 @@ export class Renderer {
         this.gl.uniformMatrix4fv( this.program.object3dMatrix, false, object3d.matrix.value );
 
         this.gl.drawElements( this.gl.TRIANGLES, object3d.indices.length, this.gl.UNSIGNED_SHORT, 0 );
+        this.gl.flush();
 
       }
 
@@ -132,7 +108,7 @@ export class Renderer {
 
     return this;
 
-  };
+  }
 
   clear () {
 
@@ -142,7 +118,31 @@ export class Renderer {
 
     return this
   
-  };
+  }
+
+  getShader = ( { type, codeSource } ) => {
+
+    const shader = {
+      fragment: this.gl.createShader( this.gl.FRAGMENT_SHADER ),
+      vertex: this.gl.createShader( this.gl.VERTEX_SHADER )
+    };
+  
+    const currentShader = shader[ type ];
+  
+    this.gl.shaderSource( currentShader, codeSource );
+    this.gl.compileShader( currentShader );
+  
+    if ( !this.gl.getShaderParameter( currentShader, this.gl.COMPILE_STATUS ) ) {
+  
+      console.log( this.gl.getShaderInfoLog( currentShader ) );
+  
+      return null;
+  
+    }
+  
+    return currentShader;
+  
+  }
 
   initGL () {
 
@@ -151,14 +151,14 @@ export class Renderer {
 
     return this;
 
-  };
+  }
 
   initProgram () {
 
     this.program = this.gl.createProgram();
 
-    this.gl.attachShader( this.program, getShader( { gl: this.gl, type: 'fragment', codeSource: fshaderSource } ) );
-    this.gl.attachShader( this.program, getShader( { gl: this.gl, type: 'vertex', codeSource: vshaderSource } ) );
+    this.gl.attachShader( this.program, this.getShader( { type: 'fragment', codeSource: fshaderSource } ) );
+    this.gl.attachShader( this.program, this.getShader( { type: 'vertex', codeSource: vshaderSource } ) );
 		this.gl.linkProgram( this.program );
 
 		if ( !this.gl.getProgramParameter( this.program, this.gl.LINK_STATUS ) ) {
@@ -170,13 +170,8 @@ export class Renderer {
     this.gl.useProgram( this.program );
 
     this.program.color = this.gl.getAttribLocation( this.program, 'color' );
-    this.gl.enableVertexAttribArray( this.program.color );
-
     this.program.normal = this.gl.getAttribLocation( this.program, 'normal' );
-    // this.gl.enableVertexAttribArray( this.program.normal );
-
     this.program.position = this.gl.getAttribLocation( this.program, 'position' );
-    this.gl.enableVertexAttribArray( this.program.position );
 
 		this.program.modelViewMatrix = this.gl.getUniformLocation( this.program, 'modelViewMatrix' );
 		this.program.normalMatrix = this.gl.getUniformLocation( this.program, 'normalMatrix' );
@@ -186,7 +181,7 @@ export class Renderer {
 
     return this;
 
-  };
+  }
 
   resize () {
 
@@ -196,7 +191,7 @@ export class Renderer {
 
     return this;
 
-  };
+  }
 
   setSize ( { width = window.innerWidth, height = window.innerHeight } = {} ) {
 
@@ -212,7 +207,7 @@ export class Renderer {
 
     return this;
 
-  };
+  }
 
   setupMatrices ( { object3d, camera } = {} ) {
 

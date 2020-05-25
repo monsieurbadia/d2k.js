@@ -12,7 +12,7 @@ export class Vector4 {
   w = 0;
 
   get value () { return [ this.x, this.y, this.z, this.w ]; }
-  
+
   set value ( value ) { 
 
     this.x = value[ 0 ];

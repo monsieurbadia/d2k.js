@@ -1,3 +1,4 @@
+import { flatten } from 'u3s';
 import { Renderable } from '../core/d2k.renderable';
 import { Matrix4 } from '../math/d2k.matrix4';
 import { Vector3 } from '../math/d2k.vector3';
@@ -12,7 +13,6 @@ export class Plane extends Renderable {
   indices = [ 0, 1, 2, 1, 2, 3 ];
   normals = [];
   viewMatrix = new Matrix4();
-  vertices = [];
 
   constructor ( {
     name = '',
@@ -35,11 +35,13 @@ export class Plane extends Renderable {
     const width_half = this.width / 2;
     const height_half = this.height / 2;
 
-    this.vertices.push( ...new Vector3( -width_half,  height_half, 0 ).value );
-    this.vertices.push( ...new Vector3(  width_half,  height_half, 0 ).value );
-    this.vertices.push( ...new Vector3( -width_half, -height_half, 0 ).value );
-    this.vertices.push( ...new Vector3(  width_half, -height_half, 0 ).value );
-
+    this.vertices = flatten( [
+      new Vector3( -width_half,  height_half, 0 ).value,
+      new Vector3(  width_half,  height_half, 0 ).value,
+      new Vector3( -width_half, -height_half, 0 ).value,
+      new Vector3(  width_half, -height_half, 0 ).value
+    ] );
+    
   }
 
 }
