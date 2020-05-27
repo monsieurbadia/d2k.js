@@ -14,7 +14,7 @@ export class Matrix4 {
     
     return this;
 
-  };
+  }
 
   invert ( a ) {
 
@@ -22,7 +22,7 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
   lookAt ( eye, center, up ) {
 
@@ -30,15 +30,31 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
-  rotate ( m, v, axis ) {
+  rotate ( m, rad, axis ) {
   
-    λ.rotate( this.value, m, v, axis );
+    λ.rotate( this.value, m, rad, axis );
     
     return this;
   
-  };
+  }
+
+  rotateX ( m, angle ) {
+
+    λ.rotateX( this.value, m, angle );
+
+    return this;
+  
+  }
+
+  rotateY ( m, angle ) {
+
+    λ.rotateY( this.value, m, angle );
+
+    return this;
+  
+  }
 
   scale ( m, v ) {
 
@@ -46,7 +62,7 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
   set ( m00, m01, m02, m03, m10, m11, m12, m13, m20, m21, m22, m23, m30, m31, m32, m33 ) {
     
@@ -54,7 +70,7 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
   toOrthogonal ( { left, right, bottom, top, near, far } = {} ) {
 
@@ -62,7 +78,7 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
   toPerspective ( { fov, aspect, near, far } = {} ) {
 
@@ -70,7 +86,7 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
   transpose ( a ) {
 
@@ -78,7 +94,7 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
   translate ( m, v ) {
 
@@ -86,6 +102,6 @@ export class Matrix4 {
 
     return this;
 
-  };
+  }
 
 }
