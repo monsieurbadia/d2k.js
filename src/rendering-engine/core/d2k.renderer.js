@@ -1,4 +1,5 @@
 import { fail } from 'u3s';
+import { Mouse } from './d2k.mouse';
 import fshaderSource from '../glsl/renderer.fragment.glsl';
 import vshaderSource from '../glsl/renderer.vertex.glsl';
 
@@ -34,6 +35,9 @@ export class Renderer {
       powerPreference: this.powerPreference,
       preserveDrawingBuffer: this.preserveDrawingBuffer
     } );
+
+    this.mouse = new Mouse( 0, 0, canvas );
+    this.mouse.enable = true;
 
     this
       .initProgram()
@@ -243,11 +247,19 @@ export class Renderer {
     }
 
     camera.modelViewMatrix.identity();
-    camera.modelViewMatrix.translate( camera.modelViewMatrix.value, [ camera.position.x, camera.position.y, camera.position.z ] );
-    camera.modelViewMatrix.rotate( camera.modelViewMatrix.value, this.radian, [ camera.rotation.x, camera.rotation.y, camera.rotation.z ] );
+    camera.modelViewMatrix.translate( camera.modelViewMatrix.value, camera.position.value );
+    camera.modelViewMatrix.rotate( camera.modelViewMatrix.value, this.radian, camera.rotation.value );
 
     object3d.matrix.identity();
-    object3d.matrix.translate( object3d.matrix.value, [ object3d.position.x, object3d.position.y, object3d.position.z ] );
+    object3d.matrix.translate( object3d.matrix.value, object3d.position.value );
+
+    // TODO
+    if ( this.mouse.enable ) {
+
+      object3d.matrix.rotateX( object3d.matrix.value, this.mouse.THETA );
+      object3d.matrix.rotateY( object3d.matrix.value, this.mouse.PHI );
+
+    }
 
     return this;
 

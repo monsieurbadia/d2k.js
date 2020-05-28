@@ -46,13 +46,8 @@
       const renderer = new Renderer();
       
       const box = new Box();
-      const box2 = new Box();
-
-      // box.position.x = 2;
 
       scene.add( box );
-      // scene.add( box2 );
-
       document.body.appendChild( renderer.canvas );
       window.addEventListener( 'resize', _ => renderer.resize(), false );
       window.requestAnimationFrame( render );
