@@ -242,7 +242,7 @@ export class Renderer {
         break;
 
       default:
-        return;
+        break;
 
     }
 
@@ -252,14 +252,10 @@ export class Renderer {
 
     object3d.matrix.identity();
     object3d.matrix.translate( object3d.matrix.value, object3d.position.value );
-
-    // TODO
-    if ( this.mouse.enable ) {
-
-      object3d.matrix.rotateX( object3d.matrix.value, this.mouse.THETA );
-      object3d.matrix.rotateY( object3d.matrix.value, this.mouse.PHI );
-
-    }
+    object3d.matrix.rotateX( object3d.matrix.value, this.mouse.PHI );
+    object3d.matrix.rotateY( object3d.matrix.value, this.mouse.THETA );
+    
+    this.mouse.render();
 
     return this;
 

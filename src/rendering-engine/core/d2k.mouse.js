@@ -13,14 +13,14 @@ export class Mouse {
   enable = false;
   direction = new Vector2();
   position = new Vector2();
-  last_position = new Vector2();
+  lastPosition = new Vector2();
 
   constructor ( x = 0, y = x, canvas ) {
 
     this.canvas = canvas;
-    this.onmousedown = this.onmousedown.bind(this);
-    this.onmousemove = this.onmousemove.bind(this);
-    this.onmouseup = this.onmouseup.bind(this);
+    this.onmousedown = this.onmousedown.bind( this );
+    this.onmousemove = this.onmousemove.bind( this );
+    this.onmouseup = this.onmouseup.bind( this );
 
     this.position.set( x, y );
 
@@ -34,8 +34,8 @@ export class Mouse {
   onmousedown ( event ) {
 
     this.drag = true;
-    this.last_position.x = event.pageX;
-    this.last_position.y = event.pageY;
+    this.lastPosition.x = event.pageX;
+    this.lastPosition.y = event.pageY;
 
     event.preventDefault();
 
@@ -47,12 +47,16 @@ export class Mouse {
 
     if ( !this.drag ) return false;
 
-    this.direction.x = ( event.pageX - this.last_position.x ) * 2 * Math.PI / this.canvas.offsetWidth;
-    this.direction.y = ( event.pageY - this.last_position.y ) * 2 * Math.PI / this.canvas.offsetHeight;
-    this.THETA += this.direction.x;
-    this.PHI += this.direction.y;
-    this.last_position.x = event.pageX;
-    this.last_position.y = event.pageY;
+    if ( this.enable ) {
+
+      this.direction.x = ( event.pageX - this.lastPosition.x ) * 2 * Math.PI / this.canvas.offsetWidth;
+      this.direction.y = ( event.pageY - this.lastPosition.y ) * 2 * Math.PI / this.canvas.offsetHeight;
+      this.THETA += this.direction.x;
+      this.PHI += this.direction.y;
+      this.lastPosition.x = event.pageX;
+      this.lastPosition.y = event.pageY;
+
+    }
 
     event.preventDefault();
 
@@ -61,6 +65,21 @@ export class Mouse {
   onmouseup ( event ) {
 
     this.drag = false;
+
+    event.preventDefault();
+
+  }
+
+  render () {
+    
+    if ( this.enable && !this.drag ) {
+    
+      this.direction.x *= this.AMORTIZATION;
+      this.direction.y *= this.AMORTIZATION;
+      this.THETA += this.direction.x;
+      this.PHI += this.direction.y;
+
+    }
 
   }
 
