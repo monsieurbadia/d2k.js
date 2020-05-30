@@ -36,29 +36,31 @@
     <script src="../../src/rendering-engine/index.js"></script>
     <script>
 
-      const { Camera, Plane, Renderer, Scene } = d2k;
+      const { Box, Camera, Renderer, Scene } = d2k;
 
       const scene = new Scene();
 
-      const camera = new Camera();
+      const camera = new Camera( { type: 'perspective' } );
       camera.position.z = -8;
 
       const renderer = new Renderer();
 
-      const plane = new Plane( { width: 2, height: 2 } );
+      const box = new Box();
 
-      scene.add( plane );
-
+      scene.add( box );
       document.body.appendChild( renderer.canvas );
       window.addEventListener( 'resize', _ => renderer.resize(), false );
 
       renderer.onrender( ( { time } ) => {
 
+        camera.rotation.y += Math.PI / 180;
+        camera.rotation.z += Math.PI / 180;
+
         renderer.render( { scene, camera } );
-        
+
       } );
 
-      console.log( { camera, plane, renderer, scene } );
+      console.log( { box, camera, renderer, scene } );
 
     </script>
   </body>

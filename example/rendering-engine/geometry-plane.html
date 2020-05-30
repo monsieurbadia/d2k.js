@@ -50,21 +50,15 @@
       scene.add( plane );
       document.body.appendChild( renderer.canvas );
       window.addEventListener( 'resize', _ => renderer.resize(), false );
-      window.requestAnimationFrame( render );
 
-      function render ( now ) {
-
-        window.requestAnimationFrame( render );
+      renderer.onrender( ( { time } ) => {
 
         camera.rotation.y += Math.PI / 180;
         camera.rotation.z += Math.PI / 180;
 
-        renderer.onrender( {
-          scene,
-          camera
-        } );
+        renderer.render( { scene, camera } );
 
-      }
+      } );
 
       console.log( { camera, plane, renderer, scene } );
 

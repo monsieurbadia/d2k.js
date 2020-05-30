@@ -1,4 +1,4 @@
-import { fail } from 'u3s';
+import { oftype } from 'u3s';
 import { Mouse } from './d2k.mouse';
 import fshaderSource from '../glsl/renderer.fragment.glsl';
 import vshaderSource from '../glsl/renderer.vertex.glsl';
@@ -7,11 +7,17 @@ import vshaderSource from '../glsl/renderer.vertex.glsl';
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
+let animationFrameId = 0;
+
 export class Renderer {
 
   gl = null;
   radian = 0;
   program = null;
+  isContextLost = false;
+  isRendering = false;
+  animationFrame = null;
+  lastFrame = null;
   failIfMajorPerformanceCaveat = true;
   powerPreference = 'default';
   preserveDrawingBuffer = false;
@@ -26,7 +32,12 @@ export class Renderer {
     dpr = window.devicePixelRatio
   } = {} ) {
 
+    this.onAnimationFrame = this.onAnimationFrame.bind( this );
+
     Object.assign( this, { alpha, antialias, autoClear, canvas, width, height, dpr } );
+
+    canvas.addEventListener( 'webglcontextlost', this.oncontextlost, false );
+    canvas.addEventListener( 'webglcontextrestored', this.oncontextrestore, false );
 
     this.gl = canvas.getContext( 'experimental-webgl', {
       alpha,
@@ -46,20 +57,45 @@ export class Renderer {
 
   }
 
-  onrender ( { scene, camera } ) {
+  oncontextlost ( event ) {
     
+    event.preventDefault();
+
+    console.log( '<• renderer context lost.' );
+
+    this.isContextLost = true;
+
+  }
+
+  oncontextrestore ( event ) {
+
+    console.log( '<• renderer context lost.' );
+
+    this.isContextLost = false;
+
+    this
+      .initProgram()
+      .initGL()
+      .resize();
+
+  }
+
+  render ( { scene, camera } ) {
+
     let object3d;
+
+    if ( this.isContextLost ) return;
 
     for ( let i = 0; i < scene.children.length; i++ ) {
   
       object3d = scene.children[ i ];
 
       if ( object3d ) {
-        
+
         if ( !object3d.__positionBuffer ) object3d.__positionBuffer = this.gl.createBuffer();
         this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__positionBuffer );
         this.gl.bufferData( this.gl.ARRAY_BUFFER, new Float32Array( object3d.vertices ), this.gl.STATIC_DRAW );
-  
+
         if ( !object3d.__colorBuffer ) object3d.__colorBuffer = this.gl.createBuffer();
         this.gl.bindBuffer( this.gl.ARRAY_BUFFER, object3d.__colorBuffer );
         this.gl.bufferData( this.gl.ARRAY_BUFFER, new Float32Array( object3d.colors ), this.gl.STATIC_DRAW );
@@ -102,6 +138,7 @@ export class Renderer {
         this.gl.uniformMatrix4fv( this.program.object3dMatrix, false, object3d.matrix.value );
 
         this.gl.drawElements( this.gl.TRIANGLES, object3d.indices.length, this.gl.UNSIGNED_SHORT, 0 );
+
         this.gl.flush();
 
       }
@@ -120,8 +157,19 @@ export class Renderer {
     this.gl.clearDepth( 1.0 );
     this.gl.clear( this.gl.COLOR_BUFFER_BIT | this.gl.DEPTH_BUFFER_BIT );
 
+    this.clean();
+
     return this
   
+  }
+
+  clean () {
+
+    this.canvas.removeEventListener( 'webglcontextlost', this.oncontextlost, false );
+    this.canvas.removeEventListener( 'webglcontextrestored', this.oncontextrestore, false );
+
+    window.cancelAnimationFrame( animationFrameId );
+
   }
 
   getShader = ( { type, codeSource } ) => {
@@ -167,7 +215,7 @@ export class Renderer {
 
 		if ( !this.gl.getProgramParameter( this.program, this.gl.LINK_STATUS ) ) {
 
-			fail.warning = `Could not initialise shaders, ${ gl.getProgramInfoLog( this.program ) }`;
+		  alert( `Could not initialise shader program, ${ gl.getProgramInfoLog( this.program ) }` );
 
 		}
 
@@ -242,7 +290,7 @@ export class Renderer {
         break;
 
       default:
-        break;
+        return;
 
     }
 
@@ -254,10 +302,49 @@ export class Renderer {
     object3d.matrix.translate( object3d.matrix.value, object3d.position.value );
     object3d.matrix.rotateX( object3d.matrix.value, this.mouse.PHI );
     object3d.matrix.rotateY( object3d.matrix.value, this.mouse.THETA );
-    
+
     this.mouse.render();
 
     return this;
+
+  }
+
+  onAnimationFrame ( time = 0 ) {
+  
+    if ( !this.isRendering ) return;
+
+    if ( oftype( this.animationFrame ) === 'function' ) {
+
+      this.animationFrame( { time } );
+  
+      animationFrameId = window.requestAnimationFrame( this.onAnimationFrame );
+  
+    }
+ 
+  }
+
+  start () {
+
+    if ( this.isRendering ) return;
+    if ( this.animationFrame === null ) return;
+
+    animationFrameId = window.requestAnimationFrame( this.onAnimationFrame );
+    
+    this.isRendering = true;
+
+  }
+
+  stop () {
+
+    this.isRendering = false;
+
+  }
+
+  onrender ( f ) {
+
+    this.animationFrame = f;
+
+    this.start();
 
   }
 
@@ -270,3 +357,5 @@ export class Renderer {
   }
 
 }
+
+
