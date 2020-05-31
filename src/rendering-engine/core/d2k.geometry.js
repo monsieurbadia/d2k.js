@@ -5,7 +5,7 @@
 export class Geometry {
 
   attributes = {};
-	faces = [];
+  faces = [];
   uvs = [];
   vertices = [];
 

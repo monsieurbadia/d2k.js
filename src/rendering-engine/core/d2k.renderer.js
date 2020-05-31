@@ -69,7 +69,7 @@ export class Renderer {
 
   oncontextrestore ( event ) {
 
-    console.log( '<• renderer context lost.' );
+    console.log( '<• renderer context restored.' );
 
     this.isContextLost = false;
 
@@ -80,7 +80,7 @@ export class Renderer {
 
   }
 
-  render ( { scene, camera } ) {
+  render ( { scene, camera } = {} ) {
 
     let object3d;
 
@@ -168,11 +168,17 @@ export class Renderer {
     this.canvas.removeEventListener( 'webglcontextlost', this.oncontextlost, false );
     this.canvas.removeEventListener( 'webglcontextrestored', this.oncontextrestore, false );
 
-    window.cancelAnimationFrame( animationFrameId );
+    if ( animationFrameId ) {
+    
+      window.cancelAnimationFrame( animationFrameId );
+    
+      animationFrameId = 0;
+
+    }
 
   }
 
-  getShader = ( { type, codeSource } ) => {
+  getShader = ( { type, codeSource } = {} ) => {
 
     const shader = {
       fragment: this.gl.createShader( this.gl.FRAGMENT_SHADER ),
@@ -225,8 +231,8 @@ export class Renderer {
     this.program.normal = this.gl.getAttribLocation( this.program, 'normal' );
     this.program.position = this.gl.getAttribLocation( this.program, 'position' );
 
-		this.program.modelViewMatrix = this.gl.getUniformLocation( this.program, 'modelViewMatrix' );
-		this.program.normalMatrix = this.gl.getUniformLocation( this.program, 'normalMatrix' );
+    this.program.modelViewMatrix = this.gl.getUniformLocation( this.program, 'modelViewMatrix' );
+    this.program.normalMatrix = this.gl.getUniformLocation( this.program, 'normalMatrix' );
     this.program.object3dMatrix = this.gl.getUniformLocation( this.program, 'object3dMatrix' );
     this.program.projectionMatrix = this.gl.getUniformLocation( this.program, 'projectionMatrix' );
     this.program.uSampler = this.gl.getUniformLocation( this.program, 'uSampler' );
