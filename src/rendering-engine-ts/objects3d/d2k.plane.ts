@@ -3,9 +3,11 @@ import { Renderable } from '../core/d2k.renderable';
 import { Matrix4 } from '../math/d2k.matrix4';
 import { Vector3 } from '../math/d2k.vector3';
 
+
 /**
  * @author monsieurbadia / https://monsieurbadia.com
  */
+
 
 export class Plane extends Renderable {
   

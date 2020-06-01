@@ -1,7 +1,6 @@
 import { uniqid } from 'u3s/src/u3s';
 import { Renderable } from './d2k.renderable';
 import { Matrix4 } from '../math/d2k.matrix4';
-import { Vector3 } from '../math/d2k.vector3';
 
 
 /**

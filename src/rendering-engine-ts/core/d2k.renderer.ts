@@ -257,8 +257,6 @@ export class Renderer {
     this.program.projectionMatrix = this.gl.getUniformLocation( this.program, 'projectionMatrix' );
     // this.program.uSampler = this.gl.getUniformLocation( this.program, 'uSampler' );
 
-    console.log( this.program );
-
     return this;
 
   }
