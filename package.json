@@ -1,7 +1,7 @@
 {
   "name": "d2k",
   "version": "0.0.18",
-  "description": "rendering engine from the Dark side of the Force - wip",
+  "description": "rendering engine from the Dark side of the Force - typescript migration",
   "type": "module",
   "module": "src/rendering-engine-ts/index.ts",
   "keywords": [
@@ -26,7 +26,7 @@
   "scripts": {
     "dev:example": "concurrently \"node functions/index.js\" \"parcel example/index.html --global d2k\"",
     "prod:build:3d-object-builder": "parcel build src/3d-object-builder/index.js -d build/ --out-file d2k-3d-object-builder.js --experimental-scope-hoisting --global d2k",
-    "prod:build:rendering-engine": "parcel build src/rendering-engine/index.js -d build/ --out-file d2k-rendering-engine.js --experimental-scope-hoisting --global d2k"
+    "prod:build:rendering-engine": "parcel build src/rendering-engine/index.ts -d build/ --out-file d2k-rendering-engine.js --experimental-scope-hoisting --global d2k"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
