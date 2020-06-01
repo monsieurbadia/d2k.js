@@ -8,17 +8,17 @@
     "moduleResolution": "node",
     "outDir": "./",
     "resolveJsonModule": true,
-    "rootDir": "./src/rendering-engine-ts",
+    "rootDir": "src/rendering-engine",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "es2017",
   },
   "files": [
-    "src/rendering-engine-ts/index.ts",
-    "src/rendering-engine-ts/types.d.ts",
-    "src/rendering-engine-ts/math/λ/types.d.ts",
+    "src/rendering-engine/index.ts",
+    "src/rendering-engine/types.d.ts",
+    "src/rendering-engine/math/λ/types.d.ts",
   ],
-  "include": [ "src/rendering-engine-ts/**/*.ts", "src/rendering-engine-ts/glsl/*.glsl" ],
+  "include": [ "src/rendering-engine/**/*.ts", "src/rendering-engine/glsl/*.glsl" ],
   "exclude": [ "node_modules" ]
 }

@@ -6,36 +6,14 @@ import { Renderable } from '../core/d2k.renderable';
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-
-const processColors: ( payload: number[] ) => any[] = payload => {
-
-  let colors: any[] = [];
-
-  for ( let i in colors ) {
-      
-    let color = payload[ i ];
-    
-    for ( let j = 0; j < 4; j++ ) {
-
-      colors = colors.concat( color );
-    
-    }
-  
-  }
-
-  return colors;
-
-};
-
-
 export class Box extends Renderable {
 
   baseColors: any[] = [];
-  colors: number[] = [];
+  colors = [];
   matrix = new Matrix4();
-  name: string = '';
+  name = '';
 
-  constructor ( { color = [ 1.0, 0.5, 0.5, 0.0 ] }: { color?: number[] } = {} ) {
+  constructor ( { color = [ 1.0, 0.5, 0.5, 0.0 ] } = {} ) {
 
     super();
     
@@ -45,11 +23,29 @@ export class Box extends Renderable {
 
     }
 
-    this.colors = processColors( this.baseColors );
+    this.colors = this.processColors();
 
   }
 
-  textures: number[] = [
+  processColors ( colors = this.baseColors ) {
+
+    for ( let i in colors ) {
+      
+      let color = colors[ i ];
+      
+      for ( let j = 0; j < 4; j++ ) {
+
+        this.colors = this.colors.concat( color );
+      
+      }
+    
+    }
+
+    return this.colors;
+
+  };
+
+  textures = [
     0.0,  0.0,
     1.0,  0.0,
     1.0,  1.0,
@@ -81,7 +77,7 @@ export class Box extends Renderable {
     0.0,  1.0,
   ];
 
-  normals: number[] = [
+  normals = [
      0.0,  0.0,  1.0,
      0.0,  0.0,  1.0,
      0.0,  0.0,  1.0,
@@ -113,7 +109,7 @@ export class Box extends Renderable {
     -1.0,  0.0,  0.0
   ];
 
-  vertices: number[] = [ 
+  vertices = [ 
     -0.5, -0.5,  0.5,
      0.5, -0.5,  0.5,
      0.5,  0.5,  0.5,
@@ -145,7 +141,7 @@ export class Box extends Renderable {
     -0.5, -0.5, -0.5 
   ];
 
-  indices: number[] = [
+  indices = [
     0,  1,  2,    0,  2 , 3,
     4,  5,  6,    4,  6 , 7,
     8,  9, 10,    8, 10, 11,
