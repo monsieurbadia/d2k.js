@@ -36,7 +36,7 @@
     <script src="../../src/rendering-engine/index.js"></script>
     <script>
 
-      const { Camera, Plane, Renderer, Scene } = d2k;
+      const { Camera, Material, Mesh, Plane, Renderer, Scene } = d2k;
 
       const scene = new Scene();
 
@@ -45,7 +45,9 @@
 
       const renderer = new Renderer();
 
+      const material = new Material();
       const plane = new Plane();
+      const mesh = new Mesh( { geometry: plane, material: material } );
 
       scene.add( plane );
       document.body.appendChild( renderer.canvas );
@@ -60,7 +62,7 @@
 
       } );
 
-      console.log( { camera, plane, renderer, scene } );
+      console.log( { camera, material, mesh, plane, renderer, scene } );
 
     </script>
   </body>

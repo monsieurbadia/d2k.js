@@ -2,12 +2,14 @@
  * @author monsieurbadia / https://monsieurbadia.com
  */
 
-const isPowerOf2 = ( value ) => ( value & ( value - 1 ) ) == 0;
+
+const isPowerOf2: ( value: number ) => boolean = ( value ) => ( value & ( value - 1 ) ) == 0;
+
 
 // TOTO: - gltf support - image support - async
 export class Texture {
 
-  loadTexture ( { gl, url } ) {
+  loadTexture ( { gl, url }: { gl?: any | WebGLRenderingContext, url?: string } ) {
 
     const texture = gl.createTexture();
     const level = 0;
@@ -18,7 +20,7 @@ export class Texture {
     const srcFormat = gl.RGBA;
     const srcType = gl.UNSIGNED_BYTE;
     const pixel = new Uint8Array( [ 0, 0, 255, 255 ] );
-    const image = new Image();
+    const image: HTMLImageElement = new Image();
 
     gl.bindTexture( gl.TEXTURE_2D, texture );
     gl.texImage2D( gl.TEXTURE_2D, level, internalFormat, width, height, border, srcFormat, srcType, pixel );
@@ -42,7 +44,7 @@ export class Texture {
 
     };
 
-    image.src = url;
+    if ( url ) image.src = url;
 
     return texture;
 
